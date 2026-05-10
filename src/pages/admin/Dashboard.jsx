@@ -778,6 +778,7 @@ export default function Dashboard() {
   // Screenshot signed URLs cache
   const [screenshotUrls, setScreenshotUrls] = useState({})
   const [idPhotoUrls, setIdPhotoUrls] = useState({})
+  const [waiverUrls, setWaiverUrls] = useState({})
 
   // ── Auth guard ──────────────────────────────────────────────────────────
   useEffect(() => {
@@ -799,10 +800,10 @@ export default function Dashboard() {
       .select(`
         id, ticket_code, full_name, email, phone,
         attendee_type, college, department, year_level, block,
-        student_id, student_id_photo_url,
+        student_id, student_id_photo_url, cor_or_id_url,
         payment_method, payment_status, payment_reference,
         payment_screenshot_url, amount_paid,
-        is_checked_in, created_at,
+        waiver_url, is_checked_in, created_at,
         ticket_types ( name, price )
       `)
       .order('created_at', { ascending: false })
@@ -869,7 +870,7 @@ export default function Dashboard() {
 
   // Open verify modal and load screenshot
   async function openVerifyModal(order) {
-    setModal({ type: 'verify', order, screenshotUrl: null, idPhotoUrl: null })
+    setModal({ type: 'verify', order, screenshotUrl: null, idPhotoUrl: null, waiverUrl: null })
 
     // Load screenshot
     if (order.payment_screenshot_url) {
@@ -883,16 +884,29 @@ export default function Dashboard() {
       setModal(prev => prev ? { ...prev, screenshotUrl: url } : prev)
     }
 
-    // Load student ID photo
-    if (order.student_id_photo_url) {
+    // Load student ID / COR photo (support both column names)
+    const idPhotoPath = order.student_id_photo_url || order.cor_or_id_url
+    if (idPhotoPath) {
       const url = await getSignedUrl(
         'student-id-photos',
-        order.student_id_photo_url,
+        idPhotoPath,
         idPhotoUrls,
         setIdPhotoUrls,
         `id_${order.id}`
       )
       setModal(prev => prev ? { ...prev, idPhotoUrl: url } : prev)
+    }
+
+    // Load waiver
+    if (order.waiver_url) {
+      const url = await getSignedUrl(
+        'waiver-forms',
+        order.waiver_url,
+        waiverUrls,
+        setWaiverUrls,
+        `waiver_${order.id}`
+      )
+      setModal(prev => prev ? { ...prev, waiverUrl: url } : prev)
     }
   }
 
@@ -1364,17 +1378,38 @@ export default function Dashboard() {
               </div>
             )}
 
-            {/* Student ID photo */}
-            {modal.order.student_id_photo_url && (
+            {/* Student ID / COR photo */}
+            {(modal.order.student_id_photo_url || modal.order.cor_or_id_url) && (
               <div style={{ marginTop: '1rem' }}>
-                <div className="screenshot-label">Student ID Photo</div>
+                <div className="screenshot-label">Student ID / COR Photo</div>
                 <div className="screenshot-viewer">
                   {modal.idPhotoUrl ? (
-                    <img src={modal.idPhotoUrl} alt="Student ID" />
+                    <img src={modal.idPhotoUrl} alt="Student ID / COR" />
                   ) : (
                     <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--muted)', fontSize: '0.82rem' }}>
                       Loading ID photo...
                     </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Waiver / Consent form */}
+            {modal.order.waiver_url && (
+              <div style={{ marginTop: '1rem' }}>
+                <div className="screenshot-label">Consent / Waiver Form</div>
+                <div style={{ padding: '0.85rem 1rem', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border)', borderRadius: '8px' }}>
+                  {modal.waiverUrl ? (
+                    <a
+                      href={modal.waiverUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ color: '#93c5fd', fontSize: '0.82rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+                    >
+                      📄 View / Download Waiver Form
+                    </a>
+                  ) : (
+                    <div style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>Loading waiver...</div>
                   )}
                 </div>
               </div>
