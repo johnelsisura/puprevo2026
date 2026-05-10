@@ -274,19 +274,19 @@ export default function Landing() {
           font-size: 0.9rem;
           letter-spacing: 0.05em;
           text-transform: uppercase;
-          background: var(--red);
-          color: white;
+          background: var(--gold);
+          color: #000;
           border: none;
           padding: 1rem 2.5rem;
           border-radius: 4px;
           cursor: pointer;
           transition: transform 0.15s, box-shadow 0.15s;
-          box-shadow: 0 4px 30px rgba(255,59,48,0.4);
+          box-shadow: 0 4px 30px rgba(255,215,0,0.35);
         }
 
         .btn-primary:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 40px rgba(255,59,48,0.6);
+          box-shadow: 0 8px 40px rgba(255,215,0,0.55);
         }
 
         .btn-secondary {
@@ -422,8 +422,8 @@ export default function Landing() {
           font-size: 0.85rem;
           letter-spacing: 0.06em;
           text-transform: uppercase;
-          background: var(--red);
-          color: white;
+          background: var(--gold);
+          color: #000;
           border: none;
           padding: 0.85rem;
           border-radius: 6px;
