@@ -754,32 +754,35 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   /* ── RIGHT SIDEBAR ── */
   .sidebar {
     background: rgba(13,21,48,0.85); backdrop-filter: blur(12px);
-    border-left: 1px solid var(--border); padding: 2rem 1.75rem;
-    position: sticky; top: 0; max-height: 100vh; overflow-y: auto;
+    border-left: 1px solid var(--border); padding: 1.5rem 1.5rem;
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
     display: flex; flex-direction: column;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.1) transparent;
   }
-  @media (max-width: 900px) { .sidebar { position: static; max-height: none; overflow-y: visible; } }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+  @media (max-width: 900px) { .sidebar { position: static; height: auto; overflow-y: visible; } }
   .sidebar-title {
     font-family: 'Syne', sans-serif; font-size: 0.68rem; font-weight: 700;
     letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 1.5rem;
+    color: var(--muted); margin-bottom: 1rem;
   }
 
   .ticket-preview {
     background: linear-gradient(135deg, rgba(26,79,214,0.15) 0%, rgba(6,13,31,0.9) 100%);
     border: 1px solid rgba(255,59,48,0.25);
-    border-radius: 12px; overflow: hidden; margin-bottom: 2rem;
+    border-radius: 12px; overflow: hidden; margin-bottom: 1.25rem;
   }
-  .ticket-preview-top { background: var(--orange); padding: 1rem 1.25rem; }
+  .ticket-preview-top { background: var(--orange); padding: 0.75rem 1rem; }
   .ticket-preview-event {
-    font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: white; line-height: 1;
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.15rem; color: white; line-height: 1.1;
   }
   .ticket-preview-date {
-    font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 600;
-    letter-spacing: 0.15em; color: rgba(255,255,255,0.75);
-    text-transform: uppercase; margin-top: 0.2rem;
+    font-family: 'Syne', sans-serif; font-size: 0.58rem; font-weight: 600;
+    letter-spacing: 0.1em; color: rgba(255,255,255,0.75);
+    text-transform: uppercase; margin-top: 0.15rem;
   }
-  .ticket-preview-body { padding: 1.25rem; }
+  .ticket-preview-body { padding: 0.85rem 1rem; }
   .ticket-preview-type {
     font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700;
     letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.2rem;
@@ -797,7 +800,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     border: none; border-top: 1px dashed rgba(255,255,255,0.1); margin: 1rem 0;
   }
 
-  .breakdown { margin-bottom: 2rem; }
+  .breakdown { margin-bottom: 1.25rem; }
   .breakdown-row {
     display: flex; justify-content: space-between; align-items: center;
     padding: 0.6rem 0; font-size: 0.88rem; color: var(--muted);
