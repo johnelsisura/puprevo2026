@@ -99,11 +99,12 @@ export default function Landing() {
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-          --red: #E4001B;
-          --gold: #F5C842;
+          --red: #FF3B30;
+          --gold: #FFD700;
+          --blue: #1A4FD6;
           --cream: #FAF5E9;
-          --dark: #0A0500;
-          --card-bg: #110900;
+          --dark: #060D1F;
+          --card-bg: #0D1530;
         }
 
         body { background: var(--dark); color: var(--cream); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
@@ -126,10 +127,11 @@ export default function Landing() {
         .hero-bg {
           position: absolute; inset: 0;
           background:
-            radial-gradient(ellipse 80% 60% at 50% 0%, rgba(228,0,27,0.18) 0%, transparent 70%),
-            radial-gradient(ellipse 50% 40% at 80% 80%, rgba(245,200,66,0.08) 0%, transparent 60%),
-            radial-gradient(ellipse 40% 35% at 10% 50%, rgba(228,0,27,0.07) 0%, transparent 60%),
-            radial-gradient(ellipse 35% 30% at 90% 30%, rgba(245,200,66,0.06) 0%, transparent 60%),
+            radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,59,48,0.16) 0%, transparent 70%),
+            radial-gradient(ellipse 50% 40% at 80% 80%, rgba(255,215,0,0.08) 0%, transparent 60%),
+            radial-gradient(ellipse 40% 35% at 10% 50%, rgba(26,79,214,0.14) 0%, transparent 60%),
+            radial-gradient(ellipse 35% 30% at 90% 30%, rgba(255,215,0,0.06) 0%, transparent 60%),
+            radial-gradient(ellipse 30% 25% at 50% 90%, rgba(26,79,214,0.08) 0%, transparent 60%),
             var(--dark);
           z-index: 0;
           animation: bgPulse 8s ease-in-out infinite;
@@ -143,8 +145,8 @@ export default function Landing() {
         .hero-grid {
           position: absolute; inset: 0;
           background-image:
-            linear-gradient(rgba(228,0,27,0.06) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(228,0,27,0.06) 1px, transparent 1px);
+            linear-gradient(rgba(26,79,214,0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(26,79,214,0.08) 1px, transparent 1px);
           background-size: 60px 60px;
           z-index: 0;
           animation: gridDrift 20s linear infinite;
@@ -168,9 +170,9 @@ export default function Landing() {
 
         .deco-note:nth-child(1) { top: 12%; left: 6%;  font-size: 32px; color: var(--red);  animation-duration: 4.5s; animation-delay: 0s;   }
         .deco-note:nth-child(2) { top: 25%; right: 8%; font-size: 22px; color: var(--gold); animation-duration: 5.5s; animation-delay: 1s;   }
-        .deco-note:nth-child(3) { top: 55%; left: 4%;  font-size: 18px; color: var(--gold); animation-duration: 6s;   animation-delay: 2s;   }
-        .deco-note:nth-child(4) { top: 18%; right: 22%;font-size: 26px; color: var(--red);  animation-duration: 4s;   animation-delay: 0.5s; }
-        .deco-note:nth-child(5) { top: 68%; right: 7%; font-size: 20px; color: var(--cream);animation-duration: 5s;   animation-delay: 1.5s; }
+        .deco-note:nth-child(3) { top: 55%; left: 4%;  font-size: 18px; color: var(--blue); animation-duration: 6s;   animation-delay: 2s;   }
+        .deco-note:nth-child(4) { top: 18%; right: 22%;font-size: 26px; color: var(--gold); animation-duration: 4s;   animation-delay: 0.5s; }
+        .deco-note:nth-child(5) { top: 68%; right: 7%; font-size: 20px; color: var(--blue); animation-duration: 5s;   animation-delay: 1.5s; }
         .deco-note:nth-child(6) { top: 40%; left: 9%;  font-size: 16px; color: var(--red);  animation-duration: 7s;   animation-delay: 3s;   }
         .deco-note:nth-child(7) { top: 78%; left: 20%; font-size: 24px; color: var(--gold); animation-duration: 4.8s; animation-delay: 2.5s; }
 
@@ -183,7 +185,7 @@ export default function Landing() {
 
         .badge {
           display: inline-block;
-          border: 1px solid rgba(245,200,66,0.4);
+          border: 1px solid rgba(255,215,0,0.4);
           color: var(--gold);
           font-family: 'Syne', sans-serif;
           font-size: 0.7rem;
@@ -193,7 +195,7 @@ export default function Landing() {
           padding: 0.4rem 1.2rem;
           border-radius: 2rem;
           margin-bottom: 2rem;
-          background: rgba(245,200,66,0.06);
+          background: rgba(255,215,0,0.06);
         }
 
         .title {
@@ -279,12 +281,12 @@ export default function Landing() {
           border-radius: 4px;
           cursor: pointer;
           transition: transform 0.15s, box-shadow 0.15s;
-          box-shadow: 0 4px 30px rgba(228,0,27,0.4);
+          box-shadow: 0 4px 30px rgba(255,59,48,0.4);
         }
 
         .btn-primary:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 40px rgba(228,0,27,0.6);
+          box-shadow: 0 8px 40px rgba(255,59,48,0.6);
         }
 
         .btn-secondary {
@@ -345,9 +347,9 @@ export default function Landing() {
           transition: transform 0.2s, border-color 0.2s;
         }
 
-        .ticket-card:hover { transform: translateY(-4px); border-color: rgba(228,0,27,0.4); }
+        .ticket-card:hover { transform: translateY(-4px); border-color: rgba(255,59,48,0.4); }
 
-        .ticket-card.featured { border-color: rgba(245,200,66,0.3); }
+        .ticket-card.featured { border-color: rgba(255,215,0,0.3); }
 
         .ticket-header {
           padding: 1.5rem;
@@ -370,11 +372,11 @@ export default function Landing() {
           font-weight: 700;
           letter-spacing: 0.15em;
           text-transform: uppercase;
-          background: rgba(245,200,66,0.15);
+          background: rgba(255,215,0,0.15);
           color: var(--gold);
           padding: 0.25rem 0.6rem;
           border-radius: 2rem;
-          border: 1px solid rgba(245,200,66,0.3);
+          border: 1px solid rgba(255,215,0,0.3);
         }
 
         .ticket-price { padding: 1.5rem; }
@@ -478,7 +480,7 @@ export default function Landing() {
           transition: border-color 0.2s;
         }
 
-        details.faq-item[open] { border-color: rgba(228,0,27,0.35); }
+        details.faq-item[open] { border-color: rgba(255,59,48,0.35); }
 
         summary.faq-summary {
           font-family: 'Syne', sans-serif;
@@ -629,8 +631,8 @@ export default function Landing() {
 
             {/* BENEFICIARIES */}
             <div className="detail-item" style={{
-              background: 'rgba(228,0,27,0.06)',
-              border: '1px solid rgba(228,0,27,0.2)',
+              background: 'rgba(26,79,214,0.06)',
+              border: '1px solid rgba(26,79,214,0.2)',
               gridColumn: '1 / -1',
             }}>
               <div className="detail-icon">❤️</div>
