@@ -218,7 +218,7 @@ export default function Landing() {
         .btn-secondary:hover { border-color: rgba(250,245,233,0.5); background: rgba(255,255,255,0.04); }
 
         /* ---- SECTIONS ---- */
-        .section { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
+        .section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
         .section-label {
           font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700;
           letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
@@ -327,7 +327,7 @@ export default function Landing() {
         .ticket-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
         /* ---- SPONSORS ---- */
-        .sponsors-wrap { text-align: center; padding: 2rem 0; }
+        .sponsors-wrap { text-align: center; padding: 0.5rem 0; }
         .sponsors-img {
           max-width: 700px; width: 100%; opacity: 0.85;
           transition: opacity 0.2s;
@@ -356,7 +356,7 @@ export default function Landing() {
         }
 
         /* ---- DIVIDER ---- */
-        .divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0 2rem; }
+        .divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0; }
 
         /* ---- FOOTER ---- */
         .footer {
@@ -495,7 +495,7 @@ export default function Landing() {
           <div style={{
             fontFamily: "'DM Sans', sans-serif", fontSize: '0.95rem', lineHeight: '1.85',
             color: 'rgba(250,245,233,0.7)', maxWidth: '760px', marginBottom: '2.5rem',
-            textAlign: 'center'
+            textAlign: 'center', margin: '0 auto 2.5rem auto'
           }}>
             <p>The PUP Communication Society proudly presents <strong style={{ color: 'var(--cream)' }}>PUP REVO 2026: Sound Against Silence — A Benefit Concert for Safer Kids</strong>, a revived and reimagined flagship concert that brings together music, creative media, and social advocacy. More than just entertainment, the event serves as a platform to amplify voices, raise awareness, and inspire action against child abuse, exploitation, and trafficking.</p>
             <p style={{ marginTop: '1rem' }}>In partnership with ABS-CBN Bantay Bata 163 and World Vision Philippines, this benefit concert aims to mobilize the PUP community and beyond to turn sound into a force for change—because silence should never protect harm.</p>
