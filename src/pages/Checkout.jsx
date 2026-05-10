@@ -70,11 +70,11 @@ const css = `
   }
 
   .form-panel {
-    padding: 3rem 4rem;
+    padding: 2rem 3rem;
     max-width: 680px;
   }
 
-  @media (max-width: 600px) { .form-panel { padding: 2rem 1.5rem; } }
+  @media (max-width: 600px) { .form-panel { padding: 1.5rem 1.25rem; } }
 
   .back-btn {
     display: inline-flex; align-items: center; gap: 0.5rem;
@@ -89,14 +89,15 @@ const css = `
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
     line-height: 1; margin-bottom: 0.5rem;
+    color: var(--cream);
   }
 
   .form-sub {
-    font-size: 0.85rem; color: var(--muted); margin-bottom: 2.5rem;
+    font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem;
   }
 
   .steps {
-    display: flex; gap: 0; margin-bottom: 2.5rem;
+    display: flex; gap: 0; margin-bottom: 1.75rem;
     border-bottom: 1px solid var(--border);
   }
 
@@ -110,7 +111,7 @@ const css = `
   .step.active { color: var(--cream); border-bottom-color: var(--orange); }
   .step.done { color: var(--gold); }
 
-  .field-group { margin-bottom: 1.5rem; }
+  .field-group { margin-bottom: 1rem; }
 
   .field-row {
     display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
@@ -389,11 +390,11 @@ const css = `
   /* ── RIGHT SIDEBAR ── */
   .sidebar {
     background: rgba(13,21,48,0.85); backdrop-filter: blur(12px);
-    border-left: 1px solid var(--border); padding: 3rem 2rem;
-    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    border-left: 1px solid var(--border); padding: 2rem 1.75rem;
+    position: sticky; top: 0; max-height: 100vh; overflow-y: auto;
     display: flex; flex-direction: column;
   }
-  @media (max-width: 900px) { .sidebar { position: static; height: auto; } }
+  @media (max-width: 900px) { .sidebar { position: static; max-height: none; overflow-y: visible; } }
   .sidebar-title {
     font-family: 'Syne', sans-serif; font-size: 0.68rem; font-weight: 700;
     letter-spacing: 0.25em; text-transform: uppercase;
@@ -459,22 +460,22 @@ const SERVICE_FEE_RATE = 0.06
 
 // Non-PUPian classifications
 const PUBLIC_ATTENDEE_OPTS = [
-  { value: 'alumni',   icon: '🏆', label: 'Alumni' },
-  { value: 'faculty',  icon: '👨‍🏫', label: 'Faculty' },
-  { value: 'outsider', icon: '🌐', label: 'Outsider' },
+  { value: 'alumni',   icon: 'fa-solid fa-graduation-cap', label: 'Alumni' },
+  { value: 'faculty',  icon: 'fa-solid fa-chalkboard-user', label: 'Faculty' },
+  { value: 'outsider', icon: 'fa-solid fa-globe', label: 'Outsider' },
 ]
 
 const PAYMENT_OPTS = [
   {
     key: 'gcash',
-    icon: '💚',
+    icon: 'fa-solid fa-mobile-screen-button',
     name: 'GCash',
     desc: 'Send to our GCash number and upload screenshot.',
     hasFee: true,
   },
   {
     key: 'walk_in',
-    icon: '🏫',
+    icon: 'fa-solid fa-school',
     name: 'Walk-in',
     desc: 'Pay cash at PUP Lagoon before the event day.',
     hasFee: false,
@@ -702,7 +703,7 @@ export default function Checkout() {
             <div>
               <div className="field-row">
                 <div className="field-group">
-                  <label>Full Name (Given Name, M.I., Last Name) *</label>
+                  <label>Full Name *</label>
                   <input
                     className={errors.full_name ? 'error' : ''}
                     placeholder="Ex. Juan L. Dela Cruz"
@@ -813,7 +814,7 @@ export default function Checkout() {
               {/* ── PUP Student Fields ── */}
               {isPUPian && (
                 <div className="ticket-fields">
-                  <div className="ticket-fields-title">🎓 PUP Student Details</div>
+                  <div className="ticket-fields-title"><i className="fa-solid fa-graduation-cap" style={{ marginRight: '0.5rem' }} />PUP Student Details</div>
                   <div className="field-hint" style={{ marginBottom: '1rem', color: 'rgba(250,245,233,0.45)' }}>
                     PUP students enrolled in other campuses aside from the Main Campus may still identify as PUPians.
                   </div>
@@ -896,7 +897,7 @@ export default function Checkout() {
               {/* ── Non-PUPian / Public Fields ── */}
               {!isPUPian && form.ticket_type_id && (
                 <div className="ticket-fields">
-                  <div className="ticket-fields-title">👤 Non-PUPian / Public Details</div>
+                  <div className="ticket-fields-title"><i className="fa-solid fa-user" style={{ marginRight: '0.5rem' }} />Non-PUPian / Public Details</div>
 
                   <div className="field-group">
                     <label>Classification *</label>
@@ -907,7 +908,7 @@ export default function Checkout() {
                           className={`attendee-opt ${form.attendee_type === opt.value ? 'selected' : ''}`}
                           onClick={() => set('attendee_type', opt.value)}
                         >
-                          <div className="attendee-opt-icon">{opt.icon}</div>
+                          <div className="attendee-opt-icon"><i className={opt.icon} /></div>
                           <div className="attendee-opt-label">{opt.label}</div>
                         </div>
                       ))}
@@ -949,10 +950,10 @@ export default function Checkout() {
                   <div className="waiver-box-text">
                     Please carefully read and complete the <strong>consent, waiver,</strong> and <strong>payment form</strong> before proceeding. <strong>All information provided</strong> must be HONEST and COMPLETE, as <strong>failure to comply may result</strong> in the FORFEITURE OF YOUR REGISTRATION, even if payment has already been made, and <strong>NO REFUND WILL BE ISSUED.</strong>
                     <br /><br />
-                    🔗 <a href="https://docs.google.com/document/d/1GDeKp0xexvj3g53Zhp-7PI9wgvMOcbZ67LCflV2AWX8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Consent Form and Waiver Form</a>
+                    <i className="fa-solid fa-link" style={{ marginRight: '0.35rem' }} /><a href="https://docs.google.com/document/d/1GDeKp0xexvj3g53Zhp-7PI9wgvMOcbZ67LCflV2AWX8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Consent Form and Waiver Form</a>
                   </div>
                   <div className="waiver-steps">
-                    ➡️ Make a copy of the document, insert your signature with printed name, and upload the completed file below.
+                    <i className="fa-solid fa-arrow-right" style={{ marginRight: '0.4rem', color: 'var(--gold)' }} />Make a copy of the document, insert your signature with printed name, and upload the completed file below.
                   </div>
                   <div className="field-group" style={{ marginBottom: 0 }}>
                     <label>Upload Consent / Waiver Form *</label>
@@ -1022,7 +1023,7 @@ export default function Checkout() {
                     >
                       {opt.hasFee && <div className="payment-card-fee">+6% service fee</div>}
                       {!opt.hasFee && <div className="payment-card-free">No fee</div>}
-                      <div className="payment-card-icon">{opt.icon}</div>
+                      <div className="payment-card-icon"><i className={opt.icon} /></div>
                       <div className="payment-card-name">{opt.name}</div>
                       <div className="payment-card-desc">{opt.desc}</div>
                     </div>
@@ -1034,7 +1035,7 @@ export default function Checkout() {
               {/* GCash payment proof */}
               {form.payment_method === 'gcash' && (
                 <div className="payment-proof">
-                  <div className="payment-proof-title">💚 GCash — Payment Proof</div>
+                  <div className="payment-proof-title"><i className="fa-solid fa-mobile-screen-button" style={{ marginRight: '0.4rem', color: '#4ade80' }} />GCash — Payment Proof</div>
 
                   <div style={{
                     background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border)',
@@ -1046,8 +1047,23 @@ export default function Checkout() {
                     , then fill in the details below.
                     <br />
                     <span style={{ color: 'rgba(250,245,233,0.35)', fontSize: '0.75rem' }}>
-                      💚 Upload your screenshot and reference number. Admin will verify and confirm your ticket within 24–48 hours.
+                      <i className="fa-solid fa-circle-info" style={{ marginRight: '0.3rem' }} />Upload your screenshot and reference number. Admin will verify and confirm your ticket within 24–48 hours.
                     </span>
+                  </div>
+
+                  <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                    <img
+                      src={isPUPian ? '/gcashpuprevopupian.png' : '/gcashpuprevononpupian.png'}
+                      alt="GCash QR Code"
+                      style={{
+                        width: '180px', height: '180px', objectFit: 'contain',
+                        border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px',
+                        background: 'white', padding: '6px',
+                      }}
+                    />
+                    <div style={{ fontSize: '0.7rem', color: 'rgba(250,245,233,0.35)', marginTop: '0.4rem', fontFamily: 'Syne', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                      Scan to pay via GCash
+                    </div>
                   </div>
 
                   <div className="field-group">
@@ -1079,7 +1095,7 @@ export default function Checkout() {
               {/* Walk-in instructions */}
               {form.payment_method === 'walk_in' && (
                 <div className="walkin-info">
-                  🏫 <strong>Walk-in Payment:</strong> Pay cash at <strong>PUP Lagoon</strong> before the event day. Your slot is reserved — bring your booking reference code when you pay. Slot is NOT confirmed until cash is received and confirmed.
+                  <i className="fa-solid fa-school" style={{ marginRight: '0.5rem' }} /><strong>Walk-in Payment:</strong> Pay cash at <strong>PUP Lagoon</strong> before the event day. Your slot is reserved — bring your booking reference code when you pay. Slot is NOT confirmed until cash is received and confirmed.
                 </div>
               )}
 
@@ -1164,10 +1180,10 @@ export default function Checkout() {
 
           <div className="payment-note">
             {form.payment_method === 'gcash' && (
-              <>💚 <strong>GCash</strong> — Upload your screenshot and reference number. Admin will verify and confirm your ticket within 24–48 hours.</>
+              <><i className="fa-solid fa-mobile-screen-button" style={{ marginRight: '0.4rem', color: '#4ade80' }} /><strong>GCash</strong> — Upload your screenshot and reference number. Admin will verify and confirm your ticket within 24–48 hours.</>
             )}
             {form.payment_method === 'walk_in' && (
-              <>🏫 <strong>Walk-in</strong> — Slot reserved. Pay cash at PUP Lagoon before event day. Present your booking reference.</>
+              <><i className="fa-solid fa-school" style={{ marginRight: '0.4rem', color: 'var(--gold)' }} /><strong>Walk-in</strong> — Slot reserved. Pay cash at PUP Lagoon before event day. Present your booking reference.</>
             )}
             {!form.payment_method && (
               <>Select a payment method to continue.</>
