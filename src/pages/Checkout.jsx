@@ -612,7 +612,10 @@ export default function Checkout() {
     const ext = file.name.split('.').pop()
     const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
     const { data, error } = await supabase.storage.from(bucket).upload(path, file)
-    if (error) throw error
+    if (error) {
+    console.error('UPLOAD ERROR — bucket:', bucket, '| error:', error)
+    throw error
+    }
     return data.path
   }
 
