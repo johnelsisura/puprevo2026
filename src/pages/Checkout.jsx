@@ -595,18 +595,38 @@ export default function Checkout() {
   // Pre-select ticket type from URL param
   useEffect(() => {
     async function fetchTickets() {
-      const { data } = await supabase
+      const { data: types } = await supabase
         .from('ticket_types')
-        .select('id, name, price, total_slots, sold_count')
-      if (data) {
-        setTicketTypes(data)
+        .select('id, name, price, total_slots')
+
+      if (types) {
+        // Count actual non-cancelled orders per ticket type
+        const { data: counts } = await supabase
+          .from('orders')
+          .select('ticket_type_id')
+          .neq('payment_status', 'cancelled')
+
+        const countMap = {}
+        if (counts) {
+          counts.forEach(o => {
+            countMap[o.ticket_type_id] = (countMap[o.ticket_type_id] || 0) + 1
+          })
+        }
+
+        const enriched = types.map(t => ({
+          ...t,
+          sold_count: countMap[t.id] || 0,
+        }))
+
+        setTicketTypes(enriched)
+
         const type = searchParams.get('type')
         if (type === 'student') {
-          const t = data.find(d => d.name === 'PUP Student')
-          if (t) setForm(f => ({ ...f, ticket_type_id: t.id, ticket_name: t.name, ticket_price: t.price }))
+          const t = enriched.find(d => d.name === 'PUP Student')
+          if (t && t.sold_count < t.total_slots) setForm(f => ({ ...f, ticket_type_id: t.id, ticket_name: t.name, ticket_price: t.price }))
         } else if (type === 'public') {
-          const t = data.find(d => d.name === 'Public')
-          if (t) setForm(f => ({ ...f, ticket_type_id: t.id, ticket_name: t.name, ticket_price: t.price }))
+          const t = enriched.find(d => d.name === 'Public')
+          if (t && t.sold_count < t.total_slots) setForm(f => ({ ...f, ticket_type_id: t.id, ticket_name: t.name, ticket_price: t.price }))
         }
       }
     }
