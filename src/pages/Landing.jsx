@@ -603,7 +603,7 @@ export default function Landing() {
                         <div className="slot-bar-fill" style={{ width: `${pct}%` }} />
                       </div>
                       <div className="slot-text">
-                        {soldOut ? '<i class="fa-solid fa-circle-xmark" style="margin-right:0.35rem;color:var(--red)" /> Sold Out' : `${remaining} slots remaining`}
+                        {soldOut ? <><i className="fa-solid fa-circle-xmark" style={{ marginRight: '0.35rem', color: 'var(--red)' }} /> Sold Out</> : `${remaining} slots remaining`}
                       </div>
                     </div>
                     <div className="ticket-desc">
@@ -638,7 +638,7 @@ export default function Landing() {
                         <div className="slot-bar-fill" style={{ width: `${pct}%` }} />
                       </div>
                       <div className="slot-text">
-                        {soldOut ? '<i class="fa-solid fa-circle-xmark" style="margin-right:0.35rem;color:var(--red)" /> Sold Out' : `${remaining} slots remaining`}
+                        {soldOut ? <><i className="fa-solid fa-circle-xmark" style={{ marginRight: '0.35rem', color: 'var(--red)' }} /> Sold Out</> : `${remaining} slots remaining`}
                       </div>
                     </div>
                     <div className="ticket-desc">
