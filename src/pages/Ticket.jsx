@@ -3,21 +3,31 @@
 //
 // REQUIRES in index.html <head>:
 // <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+// <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 import { useEffect, useState, useCallback } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom'
 import { QRCodeSVG } from 'qrcode.react'
 import { supabase } from '../lib/supabase'
 
+// Inject Font Awesome if not already loaded
+if (!document.querySelector('link[href*="font-awesome"]')) {
+  const fa = document.createElement('link')
+  fa.rel = 'stylesheet'
+  fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css'
+  document.head.appendChild(fa)
+}
+
 const css = `
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --red: #E4001B;
-    --gold: #F5C842;
+    --red: #FF3B30;
+    --gold: #FFD700;
+    --blue: #1A4FD6;
     --cream: #FAF5E9;
-    --dark: #0A0500;
-    --card: #110900;
+    --dark: #060D1F;
+    --card: #0D1530;
     --border: rgba(255,255,255,0.07);
     --muted: rgba(250,245,233,0.4);
   }
@@ -39,19 +49,46 @@ const css = `
     position: relative;
   }
 
+  /* ── Background — matches Landing exactly ── */
   .bg {
     position: fixed; inset: 0;
     background:
-      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(228,0,27,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,59,48,0.16) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 80% 80%, rgba(255,215,0,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 35% at 10% 50%, rgba(26,79,214,0.14) 0%, transparent 60%),
+      radial-gradient(ellipse 35% 30% at 90% 30%, rgba(255,215,0,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 30% 25% at 50% 90%, rgba(26,79,214,0.08) 0%, transparent 60%),
       var(--dark);
     z-index: 0;
+    animation: bgPulse 8s ease-in-out infinite;
   }
+
+  @keyframes bgPulse { 0%,100%{opacity:1} 50%{opacity:0.75} }
+
+  .bg-grid {
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(26,79,214,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,79,214,0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+    animation: gridDrift 20s linear infinite;
+  }
+
+  @keyframes gridDrift { 0%{background-position:0 0} 100%{background-position:60px 60px} }
 
   .content {
     position: relative;
     z-index: 1;
     width: 100%;
     max-width: 480px;
+  }
+
+  /* ── Logo ── */
+  .ticket-logo {
+    display: block;
+    width: 80px;
+    margin: 0 auto 1.25rem auto;
   }
 
   /* ── Status banner ── */
@@ -80,8 +117,8 @@ const css = `
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(245,200,66,0.1);
-    border: 1px solid rgba(245,200,66,0.3);
+    background: rgba(255,215,0,0.1);
+    border: 1px solid rgba(255,215,0,0.3);
     color: var(--gold);
     font-family: 'Syne', sans-serif;
     font-size: 0.75rem;
@@ -118,7 +155,7 @@ const css = `
   /* ── Ticket card ── */
   .ticket-card {
     background: var(--card);
-    border: 1px solid rgba(228,0,27,0.2);
+    border: 1px solid rgba(255,59,48,0.2);
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
@@ -218,6 +255,7 @@ const css = `
     margin-bottom: 0.3rem;
   }
 
+  /* Payment method & amount use Bebas Neue — same font as event title */
   .detail-value {
     font-family: 'Syne', sans-serif;
     font-size: 0.88rem;
@@ -226,6 +264,12 @@ const css = `
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .detail-value.bebas {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.06em;
   }
 
   /* Tear line */
@@ -283,12 +327,12 @@ const css = `
   /* Walk-in notice */
   .walkin-notice {
     margin-top: 1.5rem;
-    background: rgba(245,200,66,0.06);
-    border: 1px solid rgba(245,200,66,0.2);
+    background: rgba(255,215,0,0.06);
+    border: 1px solid rgba(255,215,0,0.2);
     border-radius: 10px;
     padding: 1.25rem;
     font-size: 0.82rem;
-    color: rgba(245,200,66,0.9);
+    color: rgba(255,215,0,0.9);
     line-height: 1.7;
     text-align: center;
   }
@@ -338,8 +382,8 @@ const css = `
   }
 
   .btn-email {
-    background: rgba(228,0,27,0.15);
-    border: 1px solid rgba(228,0,27,0.3);
+    background: rgba(255,59,48,0.15);
+    border: 1px solid rgba(255,59,48,0.3);
     color: var(--red);
   }
 
@@ -351,6 +395,42 @@ const css = `
     color: var(--muted);
     line-height: 1.6;
   }
+
+  .save-hint a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,215,0,0.3);
+    transition: opacity 0.15s;
+  }
+
+  .save-hint a:hover { opacity: 0.8; }
+
+  /* Thank you block */
+  .thank-you {
+    margin-top: 1.5rem;
+    background: rgba(26,79,214,0.06);
+    border: 1px solid rgba(26,79,214,0.2);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(250,245,233,0.65);
+    line-height: 1.75;
+    text-align: center;
+  }
+
+  .thank-you strong {
+    color: var(--cream);
+  }
+
+  .thank-you a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,215,0,0.3);
+    transition: opacity 0.15s;
+  }
+
+  .thank-you a:hover { opacity: 0.8; }
 
   /* ── Loading / Error states ── */
   .center-msg {
@@ -422,7 +502,6 @@ export default function Ticket() {
   const [justPaid, setJustPaid] = useState(false)
 
   // ── Fetch ticket data ──────────────────────────────────────────────────
-  // Queries orders directly (more reliable than the view with RLS)
   const fetchTicket = useCallback(async () => {
     const { data, error } = await supabase
       .from('orders')
@@ -458,7 +537,6 @@ export default function Ticket() {
       return null
     }
 
-    // Flatten for easier use in template
     const flat = {
       ...data,
       ticket_type: data.ticket_types?.name,
@@ -482,9 +560,6 @@ export default function Ticket() {
       setTicket(data)
       setLoading(false)
 
-      // If coming back from GCash and payment still pending → start polling
-      // NOTE: We do NOT manually set payment_status = 'paid' here.
-      // The PayMongo webhook (via Supabase Edge Function) is the source of truth.
       if (cameFromPayment && data.payment_status !== 'paid') {
         setPolling(true)
       }
@@ -540,8 +615,12 @@ export default function Ticket() {
       <style>{css}</style>
       <div className="ticket-page">
         <div className="bg" />
+        <div className="bg-grid" />
 
         <div className="content">
+
+          {/* Logo */}
+          <img src="/logo.png" alt="PUP REVO" className="ticket-logo" />
 
           {/* Loading */}
           {loading && (
@@ -568,12 +647,15 @@ export default function Ticket() {
               {/* Status */}
               <div className="status-banner">
                 {ticket.payment_status === 'paid' ? (
-                  <div className="status-paid">✓ Payment Confirmed</div>
+                  <div className="status-paid">
+                    <i className="fa-solid fa-circle-check" /> Payment Confirmed
+                  </div>
                 ) : (
-                  <div className="status-pending">⏳ Pending Payment</div>
+                  <div className="status-pending">
+                    <i className="fa-regular fa-clock" /> Pending Payment
+                  </div>
                 )}
 
-                {/* Polling indicator — only shown when waiting for GCash confirmation */}
                 {polling && (
                   <div className="polling-notice">
                     <div className="poll-dot" />
@@ -591,12 +673,12 @@ export default function Ticket() {
               <div className={`ticket-card ${justPaid ? 'paid-flash' : ''}`}>
                 <div className="ticket-top">
                   <div className="ticket-event">
-                    {ticket.event_name || 'PUPREVO Night 2026'}
+                    {ticket.event_name || 'PUP REVO 2026: SOUND AGAINST SILENCE'}
                   </div>
                   <div className="ticket-date">
                     {ticket.event_date
                       ? formatDate(ticket.event_date)
-                      : 'June 30, 2026 · 9:00 AM · PUP Manila'}
+                      : 'June 20, 2026 · 9:00 AM · PUP Main Campus Oval, Manila'}
                   </div>
                 </div>
 
@@ -637,17 +719,20 @@ export default function Ticket() {
                     </div>
                     <div className="detail">
                       <div className="detail-label">Ticket Type</div>
-                      <div className="detail-value">{ticket.ticket_type}</div>
+                      <div className="detail-value bebas">{ticket.ticket_type}</div>
                     </div>
                     <div className="detail">
                       <div className="detail-label">Payment</div>
-                      <div className="detail-value">
-                        {ticket.payment_method === 'walk-in' ? '🏫 Walk-in' : '📱 GCash'}
+                      <div className="detail-value bebas">
+                        {ticket.payment_method === 'walk-in'
+                          ? <><i className="fa-solid fa-school" style={{ marginRight: '0.4rem', fontSize: '0.95rem' }} />Walk-in</>
+                          : <><i className="fa-solid fa-mobile-screen-button" style={{ marginRight: '0.4rem', fontSize: '0.95rem' }} />GCash</>
+                        }
                       </div>
                     </div>
                     <div className="detail">
                       <div className="detail-label">Amount</div>
-                      <div className="detail-value">
+                      <div className="detail-value bebas">
                         ₱{ticket.amount_paid != null ? Number(ticket.amount_paid).toFixed(2) : '—'}
                       </div>
                     </div>
@@ -667,7 +752,10 @@ export default function Ticket() {
               {/* Walk-in notice */}
               {ticket.payment_method === 'walk-in' && ticket.payment_status !== 'paid' && (
                 <div className="walkin-notice">
-                  <strong>⚠️ Walk-in Payment Required</strong>
+                  <strong>
+                    <i className="fa-solid fa-triangle-exclamation" style={{ marginRight: '0.4rem' }} />
+                    Walk-in Payment Required
+                  </strong>
                   Please present this QR code at the registration table and pay{' '}
                   ₱{Number(ticket.price ?? ticket.amount_paid).toFixed(2)} cash on event day.
                   Your slot is reserved but <em>not confirmed</em> until payment is made.
@@ -677,21 +765,35 @@ export default function Ticket() {
               {/* Action buttons */}
               <div className="ticket-actions">
                 <button className="action-btn btn-screenshot" onClick={handleCopyLink}>
-                  🔗 Copy Link
+                  <i className="fa-solid fa-link" /> Copy Link
                 </button>
                 <button
                   className="action-btn btn-email"
                   onClick={() => window.print()}
                 >
-                  🖨️ Print / Save
+                  <i className="fa-solid fa-print" /> Print / Save
                 </button>
               </div>
 
-              {/* Email reminder */}
+              {/* Save hint */}
               <div className="save-hint">
-                📸 Screenshot this page to save your ticket.<br />
+                <i className="fa-solid fa-camera" style={{ marginRight: '0.4rem', color: 'var(--gold)' }} />
+                Screenshot this page to save your ticket. Save this link — this will be your first confirmed ticket and the final QR code for the event will appear here once confirmed.
+                <br /><br />
                 A copy has been sent to{' '}
                 <strong style={{ color: 'var(--cream)' }}>{ticket.email}</strong>
+              </div>
+
+              {/* Thank you message */}
+              <div className="thank-you">
+                <strong>Thank you for registering!</strong> Your support for <strong>PUP REVO 2026: Sound Against Silence — A Benefit Concert for Safer Kids</strong> means a lot in helping amplify voices that deserve to be heard.
+                <br /><br />
+                Please allow <strong>2–3 working days</strong> for your email confirmation and ticket pickup details. Kindly note that <strong>physical tickets are required for entry</strong>, so make sure to claim yours once details are sent.
+                <br /><br />
+                We look forward to seeing you! For more updates, stay connected with{' '}
+                <a href="https://www.facebook.com/share/1ErP5gDH6o/" target="_blank" rel="noopener noreferrer">
+                  PUP Communication Society
+                </a> 💛
               </div>
             </>
           )}
