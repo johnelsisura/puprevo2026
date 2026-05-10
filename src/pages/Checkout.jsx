@@ -803,7 +803,7 @@ export default function Checkout() {
           </button>
 
           <h1 className="form-title">Get Your Ticket</h1>
-          <p className="form-sub">Fill in your details to reserve your spot at PUPREVO Night 2026.</p>
+          <p className="form-sub">Fill in your details to reserve your spot at PUP REVO 2026: SOUND AGAINST SILENCE.</p>
 
           {/* Step indicator */}
           <div className="steps">
@@ -1055,7 +1055,8 @@ export default function Checkout() {
                   }}>
                     Send <strong style={{ color: 'var(--cream)' }}>₱{totalAmount.toFixed(2)}</strong> to{' '}
                     <strong style={{ color: 'var(--gold)' }}>
-                      {form.payment_method === 'gcash' ? '09XX XXX XXXX (PUPREVO COC)' : 'puprevo@maya.ph'}
+                      {form.payment_method === 'gcash' ? '09241031430 (J******* R***** T.
+E*******)' : 'puprevo.commsoc@gmail.com'}
                     </strong>
                     , then fill in the details below.
                   </div>
