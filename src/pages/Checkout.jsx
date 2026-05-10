@@ -577,7 +577,7 @@ const css = `
 `
 
 // ── Constants ──────────────────────────────────────────────────────────────
-const CONVENIENCE_FEE_RATE = 0.02 // 2%
+const CONVENIENCE_FEE_RATE = 0.06 // 6%
 
 const ATTENDEE_OPTS = [
   { value: 'pup_student', icon: '🎓', label: 'PUP Student' },
@@ -1025,7 +1025,7 @@ export default function Checkout() {
                       className={`payment-card ${form.payment_method === opt.key ? 'selected' : ''}`}
                       onClick={() => set('payment_method', opt.key)}
                     >
-                      {opt.hasFee && <div className="payment-card-fee">+2% fee</div>}
+                      {opt.hasFee && <div className="payment-card-fee">+6% fee</div>}
                       {!opt.hasFee && <div className="payment-card-free">No fee</div>}
                       <div className="payment-card-icon">{opt.icon}</div>
                       <div className="payment-card-name">{opt.name}</div>
@@ -1162,7 +1162,7 @@ export default function Checkout() {
             <div className="breakdown-row">
               <span className={convenienceFee > 0 ? 'breakdown-fee' : ''}>
                 Convenience fee
-                {hasFee && ` (2% ${form.payment_method === 'gcash' ? 'GCash' : 'Maya'})`}
+                {hasFee && ` (6% ${form.payment_method === 'gcash' ? 'GCash' : 'Maya'})`}
               </span>
               <span className={convenienceFee > 0 ? 'breakdown-fee' : ''}>
                 {convenienceFee > 0
