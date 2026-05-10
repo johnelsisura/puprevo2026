@@ -1,9 +1,19 @@
 // src/pages/admin/Dashboard.jsx
 // PUPREVO 2026 — Admin Dashboard (Updated)
+// Font Awesome needed in index.html:
+// <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 import { useEffect, useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
+
+// Inject Font Awesome if not already loaded
+if (!document.querySelector('link[href*="font-awesome"]')) {
+  const fa = document.createElement('link')
+  fa.rel = 'stylesheet'
+  fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css'
+  document.head.appendChild(fa)
+}
 
 const css = `
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -729,10 +739,10 @@ const css = `
 // ── Helper: attendee badge ────────────────────────────────────────────────
 function AttendeeBadge({ type }) {
   const map = {
-    pup_student: { cls: 'badge-student',  label: '🎓 Student' },
-    alumni:      { cls: 'badge-alumni',   label: '🏆 Alumni' },
-    faculty:     { cls: 'badge-faculty',  label: '👨‍🏫 Faculty' },
-    outsider:    { cls: 'badge-outsider', label: '🌐 Public' },
+    pup_student: { cls: 'badge-student',  label: <><i className="fa-solid fa-graduation-cap" style={{marginRight:'0.3rem'}}/> Student</> },
+    alumni:      { cls: 'badge-alumni',   label: <><i className="fa-solid fa-user-graduate" style={{marginRight:'0.3rem'}}/> Alumni</> },
+    faculty:     { cls: 'badge-faculty',  label: <><i className="fa-solid fa-chalkboard-user" style={{marginRight:'0.3rem'}}/> Faculty</> },
+    outsider:    { cls: 'badge-outsider', label: <><i className="fa-solid fa-globe" style={{marginRight:'0.3rem'}}/> Public</> },
   }
   const { cls, label } = map[type] || { cls: 'badge-outsider', label: type || '—' }
   return <span className={`badge ${cls}`}>{label}</span>
@@ -740,12 +750,12 @@ function AttendeeBadge({ type }) {
 
 // ── Helper: payment method label ──────────────────────────────────────────
 function PayMethod({ method }) {
-  if (method === 'gcash')   return <span className="pay-pill">💚 GCash</span>
-  if (method === 'maya')    return <span className="pay-pill">💙 Maya</span>
-  if (method === 'walk_in') return <span className="pay-pill">🏫 Walk-in</span>
+  if (method === 'gcash')   return <span className="pay-pill"><i className="fa-solid fa-mobile-screen-button" style={{marginRight:'0.3rem',color:'#4ade80'}}/> GCash</span>
+  if (method === 'maya')    return <span className="pay-pill"><i className="fa-solid fa-credit-card" style={{marginRight:'0.3rem',color:'#93c5fd'}}/> Maya</span>
+  if (method === 'walk_in') return <span className="pay-pill"><i className="fa-solid fa-school" style={{marginRight:'0.3rem',color:'var(--gold)'}}/> Walk-in</span>
   // legacy
-  if (method === 'walk-in') return <span className="pay-pill">🏫 Walk-in</span>
-  if (method === 'online')  return <span className="pay-pill">📱 GCash</span>
+  if (method === 'walk-in') return <span className="pay-pill"><i className="fa-solid fa-school" style={{marginRight:'0.3rem',color:'var(--gold)'}}/> Walk-in</span>
+  if (method === 'online')  return <span className="pay-pill"><i className="fa-solid fa-mobile-screen-button" style={{marginRight:'0.3rem',color:'#4ade80'}}/> GCash</span>
   return <span className="pay-pill">{method}</span>
 }
 
@@ -1024,18 +1034,18 @@ export default function Dashboard() {
 
           <div className="nav-label">Menu</div>
           <button className="nav-item active">
-            <span className="nav-icon">📊</span> Dashboard
+            <span className="nav-icon"><i className="fa-solid fa-chart-line" /></span> Dashboard
           </button>
           <button className="nav-item" onClick={() => navigate('/admin/scanner')}>
-            <span className="nav-icon">📷</span> Scanner
+            <span className="nav-icon"><i className="fa-solid fa-qrcode" /></span> Scanner
           </button>
           <button className="nav-item" onClick={() => { setEventForm(event || {}); setEditEvent(true) }}>
-            <span className="nav-icon">🎟️</span> Event Settings
+            <span className="nav-icon"><i className="fa-solid fa-ticket" /></span> Event Settings
           </button>
 
           <div className="sidebar-footer">
             <button className="signout-btn" onClick={handleSignOut}>
-              <span>🚪</span> Sign Out
+              <i className="fa-solid fa-right-from-bracket" /> Sign Out
             </button>
           </div>
         </aside>
@@ -1048,9 +1058,9 @@ export default function Dashboard() {
               <div className="page-sub">PUPREVO Night 2026 — Ticket Sales Overview</div>
             </div>
             <div className="header-actions">
-              <button className="btn-outline" onClick={fetchData}>🔄 Refresh</button>
+              <button className="btn-outline" onClick={fetchData}><i className="fa-solid fa-rotate-right" /> Refresh</button>
               <button className="btn-red" onClick={() => navigate('/admin/scanner')}>
-                📷 Open Scanner
+                <i className="fa-solid fa-qrcode" /> Open Scanner
               </button>
             </div>
           </div>
@@ -1060,7 +1070,7 @@ export default function Dashboard() {
               {/* ── Pending proof alert ── */}
               {pendingProof > 0 && (
                 <div className="pending-alert">
-                  ⚠️ <strong>{pendingProof} order{pendingProof > 1 ? 's' : ''}</strong> with uploaded payment proof waiting for verification.
+                  <i className="fa-solid fa-triangle-exclamation" style={{marginRight:'0.4rem'}} /> <strong>{pendingProof} order{pendingProof > 1 ? 's' : ''}</strong> with uploaded payment proof waiting for verification.
                   Click <strong>Verify</strong> on pending GCash/Maya orders below.
                 </div>
               )}
@@ -1072,8 +1082,8 @@ export default function Dashboard() {
                     <div className="stat-label">Event</div>
                     <div style={{ fontFamily: 'Bebas Neue', fontSize: '1.5rem', color: 'var(--cream)', marginBottom: '0.25rem' }}>{event.name}</div>
                     <div style={{ fontSize: '0.8rem', color: 'var(--muted)', lineHeight: 1.6 }}>
-                      📍 {event.venue}<br />
-                      🗓️ {new Date(event.event_date).toLocaleString('en-PH', { month: 'long', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                      <i className="fa-solid fa-location-dot" style={{marginRight:'0.4rem'}} />{event.venue}<br />
+                      <i className="fa-regular fa-calendar" style={{marginRight:'0.4rem'}} />{new Date(event.event_date).toLocaleString('en-PH', { month: 'long', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
                     </div>
                   </div>
                   <button
@@ -1145,7 +1155,7 @@ export default function Dashboard() {
                 <div className="table-header">
                   <div className="table-title">All Orders</div>
                   <div className="search-wrap">
-                    <span className="search-icon">🔍</span>
+                    <span className="search-icon"><i className="fa-solid fa-magnifying-glass" /></span>
                     <input
                       className="search-input"
                       placeholder="Search name, email, code, section..."
@@ -1230,7 +1240,7 @@ export default function Dashboard() {
                                     className="proof-link"
                                     onClick={() => openVerifyModal(order)}
                                   >
-                                    🖼 View Docs
+                                    <i className="fa-solid fa-folder-open" style={{marginRight:'0.3rem'}} /> View Docs
                                   </button>
                                 </div>
                               )}
@@ -1242,10 +1252,10 @@ export default function Dashboard() {
                                 order.payment_status === 'cancelled' ? 'badge-cancelled' :
                                 'badge-pending'
                               }`}>
-                                {order.is_checked_in      ? '✓ In' :
-                                 order.payment_status === 'paid'      ? '✓ Paid' :
-                                 order.payment_status === 'cancelled' ? '✗ Blocked' :
-                                 '⏳ Pending'}
+                                {order.is_checked_in      ? <><i className="fa-solid fa-circle-check" /> In</> :
+                                 order.payment_status === 'paid'      ? <><i className="fa-solid fa-circle-check" /> Paid</> :
+                                 order.payment_status === 'cancelled' ? <><i className="fa-solid fa-circle-xmark" /> Blocked</> :
+                                 <><i className="fa-regular fa-clock" /> Pending</>}
                               </span>
                             </td>
                             <td className="td-muted">{formatDate(order.created_at)}</td>
@@ -1253,7 +1263,7 @@ export default function Dashboard() {
                               <div className="row-actions">
                                 {order.is_checked_in && (
                                   <button className="action-btn undo-checkin" onClick={() => setModal({ type: 'undo_checkin', order })}>
-                                    ↩ Undo
+                                    <i className="fa-solid fa-rotate-left" /> Undo
                                   </button>
                                 )}
                                 {order.payment_status === 'pending' && !order.is_checked_in && (
@@ -1267,7 +1277,7 @@ export default function Dashboard() {
                                       }
                                     }}
                                   >
-                                    {['gcash','maya'].includes(order.payment_method) ? '🔍 Verify' : 'Confirm'}
+                                    {['gcash','maya'].includes(order.payment_method) ? <><i className="fa-solid fa-magnifying-glass" /> Verify</> : 'Confirm'}
                                   </button>
                                 )}
                                 {order.payment_status === 'cancelled' ? (
@@ -1308,19 +1318,25 @@ export default function Dashboard() {
         </main>
       </div>
 
-      {/* ── VERIFY PAYMENT MODAL (GCash/Maya with screenshot) ── */}
+      {/* ── VERIFY PAYMENT MODAL ── */}
       {modal?.type === 'verify' && (
         <div className="modal-overlay" onClick={() => setModal(null)}>
           <div className="modal" style={{ maxWidth: '500px' }} onClick={e => e.stopPropagation()}>
-            <div className="modal-title">Verify Payment</div>
-            <div className="modal-sub">
-              Review the payment proof before confirming.
-            </div>
+            <div className="modal-title">Review & Confirm</div>
+            <div className="modal-sub">Review the order details and uploaded documents before confirming.</div>
 
             <div className="modal-details">
               <div className="modal-detail-row">
                 <span className="modal-detail-label">Name</span>
                 <span className="modal-detail-value">{modal.order.full_name}</span>
+              </div>
+              <div className="modal-detail-row">
+                <span className="modal-detail-label">Email</span>
+                <span className="modal-detail-value">{modal.order.email}</span>
+              </div>
+              <div className="modal-detail-row">
+                <span className="modal-detail-label">Phone</span>
+                <span className="modal-detail-value">{modal.order.phone}</span>
               </div>
               <div className="modal-detail-row">
                 <span className="modal-detail-label">Code</span>
@@ -1329,23 +1345,13 @@ export default function Dashboard() {
                 </span>
               </div>
               <div className="modal-detail-row">
-                <span className="modal-detail-label">Method</span>
-                <span className="modal-detail-value">
-                  {modal.order.payment_method === 'gcash' ? '💚 GCash' : '💙 Maya'}
-                </span>
+                <span className="modal-detail-label">Ticket Type</span>
+                <span className="modal-detail-value">{modal.order.ticket_types?.name || '—'}</span>
               </div>
               <div className="modal-detail-row">
-                <span className="modal-detail-label">Amount</span>
-                <span className="modal-detail-value">₱{Number(modal.order.amount_paid).toFixed(2)}</span>
+                <span className="modal-detail-label">Attendee</span>
+                <span className="modal-detail-value"><AttendeeBadge type={modal.order.attendee_type} /></span>
               </div>
-              {modal.order.payment_reference && (
-                <div className="modal-detail-row">
-                  <span className="modal-detail-label">Reference No.</span>
-                  <span className="modal-detail-value" style={{ fontFamily: 'Bebas Neue', letterSpacing: '0.06em' }}>
-                    {modal.order.payment_reference}
-                  </span>
-                </div>
-              )}
               {modal.order.attendee_type === 'pup_student' && (
                 <>
                   <div className="modal-detail-row">
@@ -1360,6 +1366,37 @@ export default function Dashboard() {
                   </div>
                 </>
               )}
+              <div className="modal-detail-row">
+                <span className="modal-detail-label">Method</span>
+                <span className="modal-detail-value"><PayMethod method={modal.order.payment_method} /></span>
+              </div>
+              <div className="modal-detail-row">
+                <span className="modal-detail-label">Amount</span>
+                <span className="modal-detail-value" style={{ color: '#4ade80', fontWeight: 700 }}>
+                  ₱{Number(modal.order.amount_paid).toFixed(2)}
+                </span>
+              </div>
+              {modal.order.payment_reference && (
+                <div className="modal-detail-row">
+                  <span className="modal-detail-label">Reference No.</span>
+                  <span className="modal-detail-value" style={{ fontFamily: 'Bebas Neue', letterSpacing: '0.06em' }}>
+                    {modal.order.payment_reference}
+                  </span>
+                </div>
+              )}
+              <div className="modal-detail-row">
+                <span className="modal-detail-label">Status</span>
+                <span className="modal-detail-value">
+                  <span className={`badge ${
+                    modal.order.payment_status === 'paid' ? 'badge-paid' :
+                    modal.order.payment_status === 'cancelled' ? 'badge-cancelled' :
+                    'badge-pending'
+                  }`}>
+                    {modal.order.payment_status === 'paid' ? <><i className="fa-solid fa-circle-check" /> Paid</> :
+                     modal.order.payment_status === 'cancelled' ? <><i className="fa-solid fa-circle-xmark" /> Blocked</> : <><i className="fa-regular fa-clock" /> Pending</>}
+                  </span>
+                </span>
+              </div>
             </div>
 
             {/* Payment screenshot */}
@@ -1406,7 +1443,7 @@ export default function Dashboard() {
                       rel="noreferrer"
                       style={{ color: '#93c5fd', fontSize: '0.82rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
                     >
-                      📄 View / Download Waiver Form
+                      <i className="fa-solid fa-file-pdf" style={{marginRight:'0.4rem',color:'#ff8080'}} /> View / Download Waiver Form
                     </a>
                   ) : (
                     <div style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>Loading waiver...</div>
@@ -1422,14 +1459,14 @@ export default function Dashboard() {
                 onClick={() => setModal({ type: 'block', order: modal.order })}
                 disabled={actionLoading}
               >
-                ✗ Reject
+                <i className="fa-solid fa-xmark" /> Reject
               </button>
               <button
                 className="modal-confirm-btn green"
                 onClick={() => confirmPayment(modal.order)}
                 disabled={actionLoading}
               >
-                {actionLoading ? 'Saving...' : '✓ Confirm Paid'}
+                {actionLoading ? 'Saving...' : <><i className="fa-solid fa-check" /> Confirm Paid</>}
               </button>
             </div>
           </div>
@@ -1450,14 +1487,8 @@ export default function Dashboard() {
             <div className="modal-actions">
               <button className="modal-cancel" onClick={() => setModal(null)}>Cancel</button>
               <button className="modal-confirm-btn green" onClick={() => confirmPayment(modal.order)} disabled={actionLoading}>
-                {actionLoading ? 'Saving...' : '✓ Confirm Paid'}
+                {actionLoading ? 'Saving...' : <><i className="fa-solid fa-check" /> Confirm Paid</>}
               </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ── BLOCK MODAL ── */}
       {modal?.type === 'block' && (
         <div className="modal-overlay" onClick={() => setModal(null)}>
           <div className="modal" onClick={e => e.stopPropagation()}>
@@ -1470,7 +1501,7 @@ export default function Dashboard() {
             <div className="modal-actions">
               <button className="modal-cancel" onClick={() => setModal(null)}>Cancel</button>
               <button className="modal-confirm-btn danger" onClick={() => blockOrder(modal.order)} disabled={actionLoading}>
-                {actionLoading ? 'Saving...' : '✗ Block Ticket'}
+                {actionLoading ? 'Saving...' : <><i className="fa-solid fa-ban" /> Block Ticket</>}
               </button>
             </div>
           </div>
@@ -1510,7 +1541,7 @@ export default function Dashboard() {
             <div className="modal-actions">
               <button className="modal-cancel" onClick={() => setModal(null)}>Cancel</button>
               <button className="modal-confirm-btn gold" onClick={() => undoCheckIn(modal.order)} disabled={actionLoading}>
-                {actionLoading ? 'Saving...' : '↩ Undo Check-in'}
+                {actionLoading ? 'Saving...' : <><i className="fa-solid fa-rotate-left" /> Undo Check-in</>}
               </button>
             </div>
           </div>
@@ -1566,7 +1597,7 @@ export default function Dashboard() {
                 onClick={saveEvent}
                 disabled={eventLoading || !eventForm.name || !eventForm.venue || !eventForm.event_date}
               >
-                {eventLoading ? 'Saving...' : '✓ Save Changes'}
+                {eventLoading ? 'Saving...' : <><i className="fa-solid fa-floppy-disk" /> Save Changes</>}
               </button>
             </div>
           </div>
@@ -1597,7 +1628,7 @@ export default function Dashboard() {
                 onClick={saveSlots}
                 disabled={actionLoading || Number(newSlots) < Number(editSlots.sold_count)}
               >
-                {actionLoading ? 'Saving...' : '✓ Save Slots'}
+                {actionLoading ? 'Saving...' : <><i className="fa-solid fa-floppy-disk" /> Save Slots</>}
               </button>
             </div>
           </div>
