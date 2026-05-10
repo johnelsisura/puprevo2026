@@ -1224,13 +1224,13 @@ export default function Dashboard() {
                             <td>
                               <PayMethod method={order.payment_method} />
                               {/* Proof button for GCash/Maya orders */}
-                              {['gcash','maya'].includes(order.payment_method) && order.payment_screenshot_url && (
+                              {(order.payment_screenshot_url || order.cor_or_id_url || order.student_id_photo_url || order.waiver_url) && (
                                 <div>
                                   <button
                                     className="proof-link"
                                     onClick={() => openVerifyModal(order)}
                                   >
-                                    🖼 View Proof
+                                    🖼 View Docs
                                   </button>
                                 </div>
                               )}
@@ -1260,7 +1260,7 @@ export default function Dashboard() {
                                   <button
                                     className="action-btn confirm"
                                     onClick={() => {
-                                      if (['gcash','maya'].includes(order.payment_method) && order.payment_screenshot_url) {
+                                      if (order.payment_screenshot_url || order.cor_or_id_url || order.student_id_photo_url || order.waiver_url) {
                                         openVerifyModal(order)
                                       } else {
                                         setModal({ type: 'confirm', order })
