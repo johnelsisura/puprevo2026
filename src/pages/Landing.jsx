@@ -41,7 +41,7 @@ function useCountdown(targetDate) {
 
 const FAQ_ITEMS = [
   { q: 'What is PUPREVO 2026?', a: 'PUPREVO 2026 is an evening of music, advocacy, and PUP pride organized by the PUP Communication Society. It is a fundraising event where proceeds go to Bantay Bata 163 and World Vision Philippines.' },
-  { q: 'When and where is the event?', a: 'The event will be held on June 20, 2026, starting at 9:00 AM at the PUP Main Campus, Manila.' },
+  { q: 'When and where is the event?', a: 'The event will be held on June 20, 2026, starting at 9:00 AM at the PUP Main Campus Oval, Manila.' },
   { q: 'Who can attend?', a: 'The event is open to PUP students, alumni, and the general public. There are two ticket tiers: a discounted rate for PUP students and a regular rate for public/alumni attendees.' },
   { q: 'How do I get a ticket?', a: 'Click the "Get Your Ticket" button on this page or scroll down to the Tickets section. Choose your ticket type and complete the checkout process online.' },
   { q: 'Do I need to bring a physical ticket?', a: 'Your e-ticket or confirmation email is sufficient for entry. Showing it on your phone at the venue entrance will do — no need to print.' },
@@ -495,8 +495,7 @@ export default function Landing() {
           <div style={{
             fontFamily: "'DM Sans', sans-serif", fontSize: '0.95rem', lineHeight: '1.85',
             color: 'rgba(250,245,233,0.7)', maxWidth: '760px', marginBottom: '2.5rem',
-            borderLeft: '3px solid var(--gold)', paddingLeft: '1.5rem',
-            textAlign: 'left'
+            textAlign: 'center'
           }}>
             <p>The PUP Communication Society proudly presents <strong style={{ color: 'var(--cream)' }}>PUP REVO 2026: Sound Against Silence — A Benefit Concert for Safer Kids</strong>, a revived and reimagined flagship concert that brings together music, creative media, and social advocacy. More than just entertainment, the event serves as a platform to amplify voices, raise awareness, and inspire action against child abuse, exploitation, and trafficking.</p>
             <p style={{ marginTop: '1rem' }}>In partnership with ABS-CBN Bantay Bata 163 and World Vision Philippines, this benefit concert aims to mobilize the PUP community and beyond to turn sound into a force for change—because silence should never protect harm.</p>
@@ -516,7 +515,7 @@ export default function Landing() {
             <div className="detail-item">
               <div className="detail-icon"><i className="fa-solid fa-location-dot" /></div>
               <div className="detail-label">Venue</div>
-              <div className="detail-value">PUP Main Campus, Manila</div>
+              <div className="detail-value">PUP Main Campus Oval, Manila</div>
             </div>
             <div className="detail-item">
               <div className="detail-icon"><i className="fa-solid fa-microphone" /></div>
