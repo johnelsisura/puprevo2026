@@ -9,11 +9,12 @@ const css = `
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --red: #E4001B;
-    --gold: #F5C842;
+    --red: #FF3B30;
+    --gold: #FFD700;
+    --blue: #1A4FD6;
     --cream: #FAF5E9;
-    --dark: #0A0500;
-    --card: #110900;
+    --dark: #060D1F;
+    --card: #0D1530;
     --border: rgba(255,255,255,0.07);
     --muted: rgba(250,245,233,0.4);
   }
@@ -29,13 +30,33 @@ const css = `
     position: relative;
   }
 
+  /* Landing-style animated background */
   .bg {
     position: fixed; inset: 0;
     background:
-      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(228,0,27,0.1) 0%, transparent 70%),
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,59,48,0.16) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 80% 80%, rgba(255,215,0,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 35% at 10% 50%, rgba(26,79,214,0.14) 0%, transparent 60%),
+      radial-gradient(ellipse 35% 30% at 90% 30%, rgba(255,215,0,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 30% 25% at 50% 90%, rgba(26,79,214,0.08) 0%, transparent 60%),
       var(--dark);
     z-index: 0;
+    animation: bgPulse 8s ease-in-out infinite;
   }
+
+  @keyframes bgPulse { 0%,100%{opacity:1} 50%{opacity:0.75} }
+
+  .bg-grid {
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(26,79,214,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,79,214,0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+    animation: gridDrift 20s linear infinite;
+  }
+
+  @keyframes gridDrift { 0%{background-position:0 0} 100%{background-position:60px 60px} }
 
   .login-box {
     position: relative;
@@ -43,33 +64,32 @@ const css = `
     width: 100%;
     max-width: 400px;
     background: var(--card);
-    border: 1px solid rgba(228,0,27,0.2);
+    border: 1px solid rgba(255,59,48,0.2);
     border-radius: 16px;
     padding: 2.5rem;
     box-shadow: 0 24px 60px rgba(0,0,0,0.5);
   }
 
+  .login-logo {
+    display: block;
+    width: 80px;
+    margin: 0 auto 1.25rem auto;
+  }
+
   .login-badge {
-    display: inline-block;
+    display: block;
+    text-align: center;
     font-family: 'Syne', sans-serif;
     font-size: 0.6rem;
     font-weight: 700;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--gold);
-    border: 1px solid rgba(245,200,66,0.3);
-    background: rgba(245,200,66,0.06);
+    border: 1px solid rgba(255,215,0,0.3);
+    background: rgba(255,215,0,0.06);
     padding: 0.3rem 0.9rem;
     border-radius: 2rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .login-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.8rem;
-    line-height: 1;
-    color: var(--cream);
-    margin-bottom: 0.35rem;
+    margin-bottom: 1.75rem;
   }
 
   .login-sub {
@@ -77,6 +97,7 @@ const css = `
     color: var(--muted);
     margin-bottom: 2rem;
     line-height: 1.5;
+    text-align: center;
   }
 
   label {
@@ -106,22 +127,25 @@ const css = `
   }
 
   input:focus {
-    border-color: rgba(228,0,27,0.5);
-    background: rgba(228,0,27,0.04);
+    border-color: rgba(255,59,48,0.5);
+    background: rgba(255,59,48,0.04);
   }
 
   input.error { border-color: var(--red); }
   input::placeholder { color: rgba(250,245,233,0.2); }
 
   .error-msg {
-    background: rgba(228,0,27,0.1);
-    border: 1px solid rgba(228,0,27,0.3);
+    background: rgba(255,59,48,0.1);
+    border: 1px solid rgba(255,59,48,0.3);
     color: #ff8080;
     font-size: 0.8rem;
     padding: 0.75rem 1rem;
     border-radius: 6px;
     margin-bottom: 1.25rem;
     line-height: 1.5;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .login-btn {
@@ -139,7 +163,7 @@ const css = `
     cursor: pointer;
     margin-top: 0.5rem;
     transition: opacity 0.15s, transform 0.15s;
-    box-shadow: 0 4px 24px rgba(228,0,27,0.35);
+    box-shadow: 0 4px 24px rgba(255,59,48,0.35);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -225,12 +249,18 @@ export default function Login() {
       <style>{css}</style>
       <div className="login-page">
         <div className="bg" />
+        <div className="bg-grid" />
         <div className="login-box">
+          <img src="/logo.png" alt="PUP REVO 2026" className="login-logo" />
           <div className="login-badge">Admin Portal</div>
-          <h1 className="login-title">PUPREVO<br />2026</h1>
           <p className="login-sub">Sign in to manage tickets and check-in attendees.</p>
 
-          {error && <div className="error-msg">⚠️ {error}</div>}
+          {error && (
+            <div className="error-msg">
+              <i className="fa-solid fa-triangle-exclamation" />
+              {error}
+            </div>
+          )}
 
           <div className="field">
             <label>Email</label>
@@ -257,7 +287,10 @@ export default function Login() {
           </div>
 
           <button className="login-btn" onClick={handleLogin} disabled={loading}>
-            {loading ? <><div className="spinner" /> Signing in...</> : 'Sign In →'}
+            {loading
+              ? <><div className="spinner" /> Signing in...</>
+              : <><i className="fa-solid fa-right-to-bracket" /> Sign In</>
+            }
           </button>
 
           <div className="login-footer">

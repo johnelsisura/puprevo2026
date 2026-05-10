@@ -87,7 +87,7 @@ const css = `
   .sidebar-logo {
     display: block;
     width: 72px;
-    margin-bottom: 0.5rem;
+    margin: 0 auto 0.5rem auto;
   }
 
   .sidebar-sub {
@@ -98,6 +98,7 @@ const css = `
     text-transform: uppercase;
     color: var(--muted);
     margin-bottom: 2rem;
+    text-align: center;
   }
 
   .nav-label {
@@ -1227,22 +1228,22 @@ export default function Dashboard() {
 
               {/* ── Event Info ── */}
               {event && (
-                <div className="stat-card highlight" style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div>
-                    <div className="stat-label">Event</div>
-                    <div style={{ fontFamily: 'Bebas Neue', fontSize: '1.5rem', color: 'var(--cream)', marginBottom: '0.25rem' }}>{event.name}</div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--muted)', lineHeight: 1.6 }}>
-                      <i className="fa-solid fa-location-dot" style={{marginRight:'0.4rem'}} />{event.venue}<br />
-                      <i className="fa-regular fa-calendar" style={{marginRight:'0.4rem'}} />{new Date(event.event_date).toLocaleString('en-PH', { month: 'long', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
-                    </div>
+                <div className="stat-card highlight" style={{ marginBottom: '1.5rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', marginBottom: '0.4rem' }}>
+                    <div style={{ fontFamily: 'Bebas Neue', fontSize: '1.5rem', color: 'var(--cream)', lineHeight: 1 }}>{event.name}</div>
+                    <button
+                      className="btn-outline"
+                      style={{ whiteSpace: 'nowrap', flexShrink: 0 }}
+                      onClick={() => { setEventForm({ ...event, event_date: event.event_date?.slice(0, 16) }); setEditEvent(true) }}
+                    >
+                      <i className="fa-solid fa-pen" /> Edit
+                    </button>
                   </div>
-                  <button
-                    className="btn-outline"
-                    style={{ whiteSpace: 'nowrap', flexShrink: 0 }}
-                    onClick={() => { setEventForm({ ...event, event_date: event.event_date?.slice(0, 16) }); setEditEvent(true) }}
-                  >
-                    <i className="fa-solid fa-pen" /> Edit
-                  </button>
+                  <div className="stat-label" style={{ marginBottom: 0 }}>Event</div>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--muted)', lineHeight: 1.6, marginTop: '0.4rem' }}>
+                    <i className="fa-solid fa-location-dot" style={{marginRight:'0.4rem'}} />{event.venue}<br />
+                    <i className="fa-regular fa-calendar" style={{marginRight:'0.4rem'}} />{new Date(event.event_date).toLocaleString('en-PH', { month: 'long', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                  </div>
                 </div>
               )}
 
@@ -1289,7 +1290,10 @@ export default function Dashboard() {
               {/* ── Ticket type tiles ── */}
               {summary && summary.length > 0 && (
                 <div className="ticket-tiles">
-                  {summary.map(s => {
+                  {[...summary].sort((a, b) => {
+                    const order = { 'PUP Student': 0, 'Public': 1 }
+                    return (order[a.ticket_type] ?? 99) - (order[b.ticket_type] ?? 99)
+                  }).map(s => {
                     const pct = Math.min(100, (s.sold_count / s.total_slots) * 100)
                     const remaining = s.total_slots - s.sold_count
                     return (
