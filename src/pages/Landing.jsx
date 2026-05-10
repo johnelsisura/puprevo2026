@@ -128,8 +128,16 @@ export default function Landing() {
           background:
             radial-gradient(ellipse 80% 60% at 50% 0%, rgba(228,0,27,0.18) 0%, transparent 70%),
             radial-gradient(ellipse 50% 40% at 80% 80%, rgba(245,200,66,0.08) 0%, transparent 60%),
+            radial-gradient(ellipse 40% 35% at 10% 50%, rgba(228,0,27,0.07) 0%, transparent 60%),
+            radial-gradient(ellipse 35% 30% at 90% 30%, rgba(245,200,66,0.06) 0%, transparent 60%),
             var(--dark);
           z-index: 0;
+          animation: bgPulse 8s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.75; }
         }
 
         .hero-grid {
@@ -139,6 +147,36 @@ export default function Landing() {
             linear-gradient(90deg, rgba(228,0,27,0.06) 1px, transparent 1px);
           background-size: 60px 60px;
           z-index: 0;
+          animation: gridDrift 20s linear infinite;
+        }
+
+        @keyframes gridDrift {
+          0% { background-position: 0 0; }
+          100% { background-position: 60px 60px; }
+        }
+
+        /* ---- FLOATING DECO NOTES ---- */
+        .deco-note {
+          position: absolute;
+          font-size: 28px;
+          opacity: 0.15;
+          pointer-events: none;
+          animation: floatNote 5s ease-in-out infinite;
+          z-index: 0;
+          user-select: none;
+        }
+
+        .deco-note:nth-child(1) { top: 12%; left: 6%;  font-size: 32px; color: var(--red);  animation-duration: 4.5s; animation-delay: 0s;   }
+        .deco-note:nth-child(2) { top: 25%; right: 8%; font-size: 22px; color: var(--gold); animation-duration: 5.5s; animation-delay: 1s;   }
+        .deco-note:nth-child(3) { top: 55%; left: 4%;  font-size: 18px; color: var(--gold); animation-duration: 6s;   animation-delay: 2s;   }
+        .deco-note:nth-child(4) { top: 18%; right: 22%;font-size: 26px; color: var(--red);  animation-duration: 4s;   animation-delay: 0.5s; }
+        .deco-note:nth-child(5) { top: 68%; right: 7%; font-size: 20px; color: var(--cream);animation-duration: 5s;   animation-delay: 1.5s; }
+        .deco-note:nth-child(6) { top: 40%; left: 9%;  font-size: 16px; color: var(--red);  animation-duration: 7s;   animation-delay: 3s;   }
+        .deco-note:nth-child(7) { top: 78%; left: 20%; font-size: 24px; color: var(--gold); animation-duration: 4.8s; animation-delay: 2.5s; }
+
+        @keyframes floatNote {
+          0%,  100% { transform: translateY(0px)    rotate(-6deg); }
+          50%        { transform: translateY(-16px)  rotate(6deg);  }
         }
 
         .hero-content { position: relative; z-index: 1; max-width: 900px; }
@@ -508,6 +546,15 @@ export default function Landing() {
         <section className="hero">
           <div className="hero-bg" />
           <div className="hero-grid" />
+
+          {/* Floating music note decorations */}
+          <div className="deco-note">♪</div>
+          <div className="deco-note">♫</div>
+          <div className="deco-note">♩</div>
+          <div className="deco-note">♬</div>
+          <div className="deco-note">♭</div>
+          <div className="deco-note">♪</div>
+          <div className="deco-note">♫</div>
 
           <div className="hero-content">
             <img src="/pupxpupcommsoc.png" alt="PUP x PUP CommSoc" style={{ width: '200px', display: 'block', margin: '0 auto 1rem auto' }} />
