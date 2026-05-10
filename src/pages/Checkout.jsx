@@ -458,6 +458,24 @@ const css = `
   .payment-note strong { color: var(--cream); }
 `
 
+// ── File size display helper ──────────────────────────────────────────────
+function FileSizeHint({ file, maxMB = 10 }) {
+  if (!file) return null
+  const sizeMB = file.size / (1024 * 1024)
+  const ok = sizeMB <= maxMB
+  return (
+    <div style={{
+      fontSize: '0.75rem',
+      marginTop: '0.4rem',
+      color: ok ? '#4ade80' : '#ff6b6b',
+      display: 'flex', alignItems: 'center', gap: '0.35rem',
+    }}>
+      <i className={`fa-solid ${ok ? 'fa-circle-check' : 'fa-circle-xmark'}`} />
+      {file.name} — {sizeMB.toFixed(2)} MB {!ok && `(max ${maxMB}MB)`}
+    </div>
+  )
+}
+
 // ── Constants ──────────────────────────────────────────────────────────────
 const SERVICE_FEE_RATE = 0.06
 
@@ -506,13 +524,13 @@ function validateStep2(form) {
     if (!form.year_level) errors.year_level = 'Required'
     if (!form.block.trim()) errors.block = 'Required'
     if (!form.id_photo_file) errors.id_photo_file = 'COR upload is required'
-    else if (form.id_photo_file.size > 20 * 1024 * 1024) errors.id_photo_file = 'File too large. Max 20MB. Try a lower quality photo.'
+    else if (form.id_photo_file.size > 10 * 1024 * 1024) errors.id_photo_file = 'File too large. Max 10MB. Try a lower quality photo.'
     if (!form.waiver_file) errors.waiver_file = 'Consent/Waiver form is required'
-    else if (form.waiver_file.size > 20 * 1024 * 1024) errors.waiver_file = 'File too large. Max 20MB.'
+    else if (form.waiver_file.size > 10 * 1024 * 1024) errors.waiver_file = 'File too large. Max 10MB.'
   } else {
     if (!form.attendee_type) errors.attendee_type = 'Please select your classification'
     if (!form.valid_id_file) errors.valid_id_file = 'Valid ID is required'
-    else if (form.valid_id_file.size > 20 * 1024 * 1024) errors.valid_id_file = 'File too large. Max 20MB. Try a lower quality photo.'
+    else if (form.valid_id_file.size > 10 * 1024 * 1024) errors.valid_id_file = 'File too large. Max 10MB. Try a lower quality photo.'
     if (!form.waiver_file) errors.waiver_file = 'Consent/Waiver form is required'
   }
   return errors
@@ -525,7 +543,7 @@ function validateStep3(form) {
   if (form.payment_method === 'gcash') {
     if (!form.payment_reference.trim()) errors.payment_reference = 'Reference number is required'
     if (!form.payment_screenshot_file) errors.payment_screenshot_file = 'Payment screenshot is required'
-    else if (form.payment_screenshot_file.size > 20 * 1024 * 1024) errors.payment_screenshot_file = 'File too large. Max 20MB. Try a screenshot instead of a raw photo.'
+    else if (form.payment_screenshot_file.size > 10 * 1024 * 1024) errors.payment_screenshot_file = 'File too large. Max 10MB. Try a screenshot instead of a raw photo.'
   }
   return errors
 }
@@ -934,6 +952,7 @@ export default function Checkout() {
                       onChange={e => set('id_photo_file', e.target.files[0] || null)}
                     />
                     {errors.id_photo_file && <div className="field-error">{errors.id_photo_file}</div>}
+                    <FileSizeHint file={form.id_photo_file} maxMB={10} />
                     <div className="field-hint">
                       Upload a clear image or PDF copy of your COR for S.Y. 2025–2026, 2nd Semester. Screenshot is okay.
                     </div>
@@ -983,6 +1002,7 @@ export default function Checkout() {
                       onChange={e => set('valid_id_file', e.target.files[0] || null)}
                     />
                     {errors.valid_id_file && <div className="field-error">{errors.valid_id_file}</div>}
+                    <FileSizeHint file={form.valid_id_file} maxMB={10} />
                     <div className="field-hint">
                       Please present the same valid ID at the school entrance on event day.
                     </div>
@@ -1011,6 +1031,7 @@ export default function Checkout() {
                       onChange={e => set('waiver_file', e.target.files[0] || null)}
                     />
                     {errors.waiver_file && <div className="field-error">{errors.waiver_file}</div>}
+                    <FileSizeHint file={form.waiver_file} maxMB={10} />
                     <div className="field-hint">Only PDF file is accepted. Max 10 MB.</div>
                   </div>
                 </div>
