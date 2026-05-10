@@ -167,10 +167,10 @@ export default function Landing() {
 
         .hero-date-pill {
           display: inline-flex; align-items: center; gap: 0.5rem;
-          font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 700;
-          letter-spacing: 0.15em; text-transform: uppercase; color: var(--cream);
+          font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.2em;
+          text-transform: uppercase; color: var(--cream);
           border: 1px solid rgba(255,255,255,0.15);
-          padding: 0.4rem 1.2rem; border-radius: 2rem; margin-bottom: 3rem;
+          padding: 0.5rem 1.4rem; border-radius: 2rem; margin-bottom: 3rem;
           background: rgba(255,255,255,0.05);
         }
 
@@ -233,8 +233,8 @@ export default function Landing() {
           color: rgba(250,245,233,0.35); margin-bottom: 0.4rem;
         }
         .detail-value {
-          font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 600;
-          color: var(--cream); text-transform: uppercase; letter-spacing: 0.05em;
+          font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem;
+          color: var(--cream); text-transform: uppercase; letter-spacing: 0.08em;
         }
 
         /* ---- BENEFICIARIES ---- */
@@ -247,26 +247,34 @@ export default function Landing() {
         @media(max-width:600px){ .bene-grid{ grid-template-columns: 1fr; } }
         .bene-item {
           background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
-          border-radius: 10px; padding: 1.25rem;
-          display: flex; flex-direction: column; gap: 0.75rem;
+          border-radius: 10px; padding: 1.5rem;
+          display: flex; flex-direction: column; align-items: center; gap: 0.9rem;
+          text-align: center;
           transition: border-color 0.2s, transform 0.2s;
         }
         .bene-item:hover { border-color: rgba(255,215,0,0.3); transform: translateY(-2px); }
         .bene-logo {
-          height: 44px; object-fit: contain; object-position: left;
+          height: 52px; object-fit: contain; object-position: center;
           filter: brightness(0) invert(1); opacity: 0.85;
         }
+        .bene-title {
+          font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
+          letter-spacing: 0.08em; color: var(--cream);
+          line-height: 1.2;
+        }
         .bene-desc {
-          font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
-          color: rgba(250,245,233,0.55); line-height: 1.6;
+          font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+          color: rgba(250,245,233,0.55); line-height: 1.65;
         }
         .bene-link {
-          display: inline-flex; align-items: center; gap: 0.4rem;
+          display: inline-flex; align-items: center; gap: 0.5rem;
           font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
-          letter-spacing: 0.1em; text-transform: uppercase;
-          color: var(--gold); text-decoration: none; transition: opacity 0.15s;
+          letter-spacing: 0.15em; text-transform: uppercase;
+          color: var(--gold); text-decoration: none;
+          border: 1px solid rgba(255,215,0,0.35); padding: 0.4rem 1rem;
+          border-radius: 2rem; transition: background 0.15s, opacity 0.15s;
         }
-        .bene-link:hover { opacity: 0.75; }
+        .bene-link:hover { background: rgba(255,215,0,0.08); opacity: 0.85; }
 
         /* ---- TICKETS ---- */
         .tickets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
@@ -433,7 +441,7 @@ export default function Landing() {
             {/* Event title above REVO */}
             <p className="hero-event-title">PUP REVO 2026: SOUND AGAINST SILENCE</p>
 
-            <img src="/officialposter.png" alt="PUP Revo 2026 Poster" style={{ width: '100%', maxWidth: '500px', display: 'block', margin: '0 auto' }} />
+            <img src="/officialposter.png" alt="PUP Revo 2026 Poster" style={{ width: '100%', maxWidth: '500px', display: 'block', margin: '1.5rem auto 0 auto' }} />
 
             <p className="subtitle">An Evening of Music, Advocacy & PUP Pride</p>
 
@@ -475,6 +483,15 @@ export default function Landing() {
           <div className="section-label">About the Event</div>
           <h2 className="section-title">Event Details</h2>
 
+          <div style={{
+            fontFamily: "'DM Sans', sans-serif", fontSize: '0.95rem', lineHeight: '1.85',
+            color: 'rgba(250,245,233,0.7)', maxWidth: '760px', marginBottom: '2.5rem',
+            borderLeft: '3px solid var(--gold)', paddingLeft: '1.5rem'
+          }}>
+            <p>The PUP Communication Society proudly presents <strong style={{ color: 'var(--cream)' }}>PUP REVO 2026: Sound Against Silence — A Benefit Concert for Safer Kids</strong>, a revived and reimagined flagship concert that brings together music, creative media, and social advocacy. More than just entertainment, the event serves as a platform to amplify voices, raise awareness, and inspire action against child abuse, exploitation, and trafficking.</p>
+            <p style={{ marginTop: '1rem' }}>In partnership with ABS-CBN Bantay Bata 163 and World Vision Philippines, this benefit concert aims to mobilize the PUP community and beyond to turn sound into a force for change—because silence should never protect harm.</p>
+          </div>
+
           <div className="details-grid">
             <div className="detail-item">
               <div className="detail-icon"><i className="fa-regular fa-calendar" /></div>
@@ -504,20 +521,26 @@ export default function Landing() {
               <div className="bene-grid">
                 <div className="bene-item">
                   <img src="/BantayBata163.png" alt="Bantay Bata 163" className="bene-logo" />
+                  <div className="bene-title">
+                    Bantay Bata<br />ABS-CBN Foundation
+                  </div>
                   <p className="bene-desc">
-                    Bantay Bata (ABS-CBN Foundation) — Giving abused and vulnerable children a voice through rescue, protection, and safe spaces, so no child suffers in silence.
+                    Giving abused and vulnerable children a voice through rescue, protection, and safe spaces, so no child suffers in silence.
                   </p>
                   <a href="https://abs-cbncares.org/ways-to-give/programs/child-welfare" target="_blank" rel="noopener noreferrer" className="bene-link">
-                    Learn More &nbsp;<i className="fa-solid fa-arrow-up-right-from-square" />
+                    <i className="fa-solid fa-arrow-up-right-from-square" /> Learn More
                   </a>
                 </div>
                 <div className="bene-item">
                   <img src="/WorldVisionPH.png" alt="World Vision Philippines" className="bene-logo" />
+                  <div className="bene-title">
+                    World Vision<br />Philippines
+                  </div>
                   <p className="bene-desc">
-                    World Vision Philippines — Standing with children in the most vulnerable communities, protecting their rights and helping them build a future free from fear.
+                    Standing with children in the most vulnerable communities, protecting their rights and helping them build a future free from fear.
                   </p>
                   <a href="https://www.worldvision.org.ph/" target="_blank" rel="noopener noreferrer" className="bene-link">
-                    Learn More &nbsp;<i className="fa-solid fa-arrow-up-right-from-square" />
+                    <i className="fa-solid fa-arrow-up-right-from-square" /> Learn More
                   </a>
                 </div>
               </div>
