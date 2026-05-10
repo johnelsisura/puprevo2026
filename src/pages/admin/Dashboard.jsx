@@ -1489,6 +1489,12 @@ export default function Dashboard() {
               <button className="modal-confirm-btn green" onClick={() => confirmPayment(modal.order)} disabled={actionLoading}>
                 {actionLoading ? 'Saving...' : <><i className="fa-solid fa-check" /> Confirm Paid</>}
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── BLOCK MODAL ── */}
       {modal?.type === 'block' && (
         <div className="modal-overlay" onClick={() => setModal(null)}>
           <div className="modal" onClick={e => e.stopPropagation()}>
