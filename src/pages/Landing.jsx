@@ -60,12 +60,32 @@ export default function Landing() {
 
   useEffect(() => {
     async function fetchSlots() {
-      const { data } = await supabase
+      // Fetch ticket types
+      const { data: types } = await supabase
         .from('ticket_types')
-        .select('name, price, total_slots, sold_count')
-      if (data) {
-        const student = data.find(t => t.name === 'PUP Student')
-        const pub = data.find(t => t.name === 'Public')
+        .select('id, name, price, total_slots')
+
+      if (types) {
+        // Count non-cancelled orders per ticket type (pending + paid both hold a slot)
+        const { data: counts } = await supabase
+          .from('orders')
+          .select('ticket_type_id')
+          .neq('payment_status', 'cancelled')
+
+        const countMap = {}
+        if (counts) {
+          counts.forEach(o => {
+            countMap[o.ticket_type_id] = (countMap[o.ticket_type_id] || 0) + 1
+          })
+        }
+
+        const enriched = types.map(t => ({
+          ...t,
+          sold_count: countMap[t.id] || 0,
+        }))
+
+        const student = enriched.find(t => t.name === 'PUP Student')
+        const pub = enriched.find(t => t.name === 'Public')
         setSlots({ student, public: pub })
       }
       setLoading(false)
