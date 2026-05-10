@@ -1055,8 +1055,7 @@ export default function Checkout() {
                   }}>
                     Send <strong style={{ color: 'var(--cream)' }}>₱{totalAmount.toFixed(2)}</strong> to{' '}
                     <strong style={{ color: 'var(--gold)' }}>
-                      {form.payment_method === 'gcash' ? '09241031430 (J******* R***** T.
-E*******)' : 'puprevo.commsoc@gmail.com'}
+                      {form.payment_method === 'gcash' ? '09241031430 (J******* R***** T. E*******)' : 'puprevo.commsoc@gmail.com'}
                     </strong>
                     , then fill in the details below.
                   </div>
