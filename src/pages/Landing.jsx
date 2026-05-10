@@ -439,9 +439,9 @@ export default function Landing() {
             <div className="badge">✦ PUP Communication Society ✦</div>
 
             <h1 className="title">
-              REVO
-              <span>NIGHT</span>
-              2026
+              PUP REVO 2026
+              <span>SOUND AGAINST SILENCE</span>
+              BENEFIT CONCERT
             </h1>
 
             <p className="subtitle">
