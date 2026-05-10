@@ -19,12 +19,13 @@ const css = `
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --red: #E4001B;
-    --gold: #F5C842;
+    --red: #FF3B30;
+    --gold: #FFD700;
+    --blue: #1A4FD6;
     --cream: #FAF5E9;
-    --dark: #0A0500;
-    --card: #110900;
-    --sidebar: #0d0700;
+    --dark: #060D1F;
+    --card: #0D1530;
+    --sidebar: #080F25;
     --border: rgba(255,255,255,0.07);
     --muted: rgba(250,245,233,0.4);
   }
@@ -35,7 +36,35 @@ const css = `
     display: grid;
     grid-template-columns: 220px 1fr;
     min-height: 100vh;
+    position: relative;
   }
+
+  /* Landing-style animated background */
+  .admin-bg {
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,59,48,0.1) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 80% 80%, rgba(255,215,0,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 35% at 10% 50%, rgba(26,79,214,0.1) 0%, transparent 60%),
+      radial-gradient(ellipse 30% 25% at 90% 30%, rgba(255,215,0,0.04) 0%, transparent 60%),
+      var(--dark);
+    z-index: 0;
+    animation: bgPulse 8s ease-in-out infinite;
+  }
+  @keyframes bgPulse { 0%,100%{opacity:1} 50%{opacity:0.75} }
+
+  .admin-bg-grid {
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(26,79,214,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,79,214,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+    animation: gridDrift 20s linear infinite;
+  }
+  @keyframes gridDrift { 0%{background-position:0 0} 100%{background-position:60px 60px} }
+
+  .sidebar, .main { position: relative; z-index: 1; }
 
   @media (max-width: 768px) {
     .admin-wrap { grid-template-columns: 1fr; }
@@ -56,11 +85,9 @@ const css = `
   }
 
   .sidebar-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem;
-    color: var(--cream);
-    margin-bottom: 0.25rem;
-    line-height: 1;
+    display: block;
+    width: 72px;
+    margin-bottom: 0.5rem;
   }
 
   .sidebar-sub {
@@ -212,11 +239,65 @@ const css = `
   .btn-red:hover { opacity: 0.85; }
 
   /* ── Stat cards ── */
+  .stats-grid-revenue {
+    margin-bottom: 1rem;
+  }
+
+  .stat-card-revenue {
+    background: var(--card);
+    border: 1px solid rgba(255,215,0,0.3);
+    border-radius: 14px;
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    box-shadow: 0 0 40px rgba(255,215,0,0.05);
+  }
+
+  .stat-card-revenue .stat-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-card-revenue .stat-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--gold);
+  }
+
+  .stat-card-revenue .stat-sub {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  .revenue-icon {
+    font-size: 2.5rem;
+    color: rgba(255,215,0,0.15);
+  }
+
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     margin-bottom: 2rem;
+  }
+
+  @media (max-width: 900px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-card-revenue { padding: 1.5rem; }
+    .stat-card-revenue .stat-value { font-size: 2.5rem; }
   }
 
   .stat-card {
@@ -224,9 +305,12 @@ const css = `
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
   }
 
-  .stat-card.highlight { border-color: rgba(228,0,27,0.25); }
+  .stat-card.highlight { border-color: rgba(255,59,48,0.25); }
 
   .stat-label {
     font-family: 'Syne', sans-serif;
@@ -248,51 +332,110 @@ const css = `
   .stat-value.green { color: #4ade80; }
   .stat-value.gold { color: var(--gold); }
 
+  .stat-icon {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+  }
+
   .stat-sub {
     font-size: 0.72rem;
     color: var(--muted);
     margin-top: 0.35rem;
   }
 
-  /* ── Progress bar ── */
-  .progress-wrap { margin-bottom: 2rem; }
+  /* ── Ticket type tiles ── */
+  .ticket-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
 
-  .progress-header {
+  .ticket-tile {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .ticket-tile:hover { border-color: rgba(255,59,48,0.3); }
+
+  .ticket-tile-header {
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    gap: 0.5rem;
   }
 
-  .progress-label {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .progress-pct {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
+  .ticket-tile-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.06em;
     color: var(--cream);
+    line-height: 1;
   }
 
-  .progress-bar-bg {
-    height: 6px;
+  .ticket-tile-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gold);
+    background: rgba(255,215,0,0.08);
+    border: 1px solid rgba(255,215,0,0.2);
+    padding: 0.2rem 0.55rem;
+    border-radius: 2rem;
+    white-space: nowrap;
+  }
+
+  .ticket-tile-counts {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .ticket-tile-pct {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .tile-bar-bg {
+    height: 4px;
     background: rgba(255,255,255,0.06);
-    border-radius: 3px;
-    margin-bottom: 1rem;
+    border-radius: 2px;
+    margin-bottom: 0.75rem;
   }
 
-  .progress-bar-fill {
+  .tile-bar-fill {
     height: 100%;
-    border-radius: 3px;
+    border-radius: 2px;
     background: var(--red);
     transition: width 0.6s ease;
   }
+
+  .tile-edit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .tile-edit-btn:hover { border-color: rgba(255,255,255,0.2); color: var(--cream); }
 
   /* ── Table ── */
   .table-section {
@@ -368,7 +511,7 @@ const css = `
     -webkit-appearance: none;
   }
 
-  .filter-select option { background: #1a0a00; }
+  .filter-select option { background: #0D1530; }
 
   table {
     width: 100%;
@@ -539,7 +682,7 @@ const css = `
 
   .modal {
     background: var(--card);
-    border: 1px solid rgba(228,0,27,0.2);
+    border: 1px solid rgba(255,59,48,0.2);
     border-radius: 12px;
     padding: 2rem;
     max-width: 420px;
@@ -722,6 +865,11 @@ const css = `
   }
 
   @keyframes spin { to { transform: rotate(360deg); } }
+
+  @media (max-width: 768px) {
+    .admin-wrap { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+  }
 
   @media (max-width: 1100px) {
     th:nth-child(5), td:nth-child(5) { display: none; }
@@ -1027,9 +1175,11 @@ export default function Dashboard() {
       <style>{css}</style>
 
       <div className="admin-wrap">
+        <div className="admin-bg" />
+        <div className="admin-bg-grid" />
         {/* ── Sidebar ── */}
         <aside className="sidebar">
-          <div className="sidebar-logo">PUPREVO</div>
+          <img src="/logo.png" alt="PUP REVO" className="sidebar-logo" />
           <div className="sidebar-sub">Admin Portal</div>
 
           <div className="nav-label">Menu</div>
@@ -1091,64 +1241,81 @@ export default function Dashboard() {
                     style={{ whiteSpace: 'nowrap', flexShrink: 0 }}
                     onClick={() => { setEventForm({ ...event, event_date: event.event_date?.slice(0, 16) }); setEditEvent(true) }}
                   >
-                    ✏️ Edit
+                    <i className="fa-solid fa-pen" /> Edit
                   </button>
                 </div>
               )}
 
-              {/* ── Stats ── */}
-              <div className="stats-grid">
-                <div className="stat-card highlight">
-                  <div className="stat-label">Total Revenue</div>
-                  <div className="stat-value gold">₱{totalRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</div>
-                  <div className="stat-sub">Paid orders only</div>
+              {/* ── Revenue — big card ── */}
+              <div className="stats-grid-revenue" style={{ marginBottom: '1rem' }}>
+                <div className="stat-card-revenue">
+                  <div>
+                    <div className="stat-label">Total Revenue</div>
+                    <div className="stat-value">₱{totalRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</div>
+                    <div className="stat-sub">Paid orders only</div>
+                  </div>
+                  <div className="revenue-icon"><i className="fa-solid fa-peso-sign" /></div>
                 </div>
+              </div>
+
+              {/* ── 4 stat tiles ── */}
+              <div className="stats-grid">
                 <div className="stat-card">
+                  <div className="stat-icon" style={{ color: 'rgba(250,245,233,0.3)' }}><i className="fa-solid fa-ticket" /></div>
                   <div className="stat-label">Tickets Sold</div>
                   <div className="stat-value">{totalSold} <span style={{ fontSize: '1rem', color: 'var(--muted)' }}>/ {totalSlots}</span></div>
                   <div className="stat-sub">{totalSlots - totalSold} slots remaining</div>
                 </div>
                 <div className="stat-card">
+                  <div className="stat-icon" style={{ color: '#4ade80' }}><i className="fa-solid fa-circle-check" /></div>
                   <div className="stat-label">Paid</div>
                   <div className="stat-value green">{totalPaid}</div>
                   <div className="stat-sub">Confirmed payments</div>
                 </div>
                 <div className="stat-card">
+                  <div className="stat-icon" style={{ color: 'var(--gold)' }}><i className="fa-regular fa-clock" /></div>
                   <div className="stat-label">Pending</div>
                   <div className="stat-value gold">{totalPending}</div>
                   <div className="stat-sub">Awaiting verification</div>
                 </div>
                 <div className="stat-card">
+                  <div className="stat-icon" style={{ color: '#93c5fd' }}><i className="fa-solid fa-qrcode" /></div>
                   <div className="stat-label">Checked In</div>
                   <div className="stat-value" style={{ color: '#93c5fd' }}>{totalCheckedIn}</div>
                   <div className="stat-sub">Scanned at venue</div>
                 </div>
               </div>
 
-              {/* ── Progress bars ── */}
-              {summary?.map(s => {
-                const pct = Math.min(100, (s.sold_count / s.total_slots) * 100)
-                return (
-                  <div className="progress-wrap" key={s.ticket_type}>
-                    <div className="progress-header">
-                      <span className="progress-label">{s.ticket_type} — ₱{s.price}</span>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                        <span className="progress-pct">{s.sold_count} / {s.total_slots} ({Math.round(pct)}%)</span>
+              {/* ── Ticket type tiles ── */}
+              {summary && summary.length > 0 && (
+                <div className="ticket-tiles">
+                  {summary.map(s => {
+                    const pct = Math.min(100, (s.sold_count / s.total_slots) * 100)
+                    const remaining = s.total_slots - s.sold_count
+                    return (
+                      <div className="ticket-tile" key={s.ticket_type}>
+                        <div className="ticket-tile-header">
+                          <div className="ticket-tile-name">{s.ticket_type}</div>
+                          <span className="ticket-tile-price">₱{s.price}</span>
+                        </div>
+                        <div className="ticket-tile-counts">
+                          {s.sold_count} <span style={{ fontSize: '1.1rem', color: 'var(--muted)', fontFamily: 'DM Sans' }}>/ {s.total_slots}</span>
+                        </div>
+                        <div className="ticket-tile-pct">{Math.round(pct)}% sold · {remaining} remaining</div>
+                        <div className="tile-bar-bg">
+                          <div className="tile-bar-fill" style={{ width: `${pct}%` }} />
+                        </div>
                         <button
-                          className="action-btn"
-                          style={{ fontSize: '0.6rem', padding: '0.2rem 0.5rem' }}
+                          className="tile-edit-btn"
                           onClick={() => { setEditSlots(s); setNewSlots(String(s.total_slots)) }}
                         >
-                          ✏️ Edit Slots
+                          <i className="fa-solid fa-pen" /> Edit Slots
                         </button>
                       </div>
-                    </div>
-                    <div className="progress-bar-bg">
-                      <div className="progress-bar-fill" style={{ width: `${pct}%` }} />
-                    </div>
-                  </div>
-                )
-              })}
+                    )
+                  })}
+                </div>
+              )}
 
               {/* ── Orders table ── */}
               <div className="table-section">
