@@ -452,7 +452,7 @@ export default function Landing() {
 
             <img src="/officialposter.png" alt="PUP Revo 2026 Poster" style={{ width: '100%', maxWidth: '500px', display: 'block', margin: '1.5rem auto 0 auto' }} />
 
-            <p className="subtitle">An Evening of Music, Advocacy & PUP Pride</p>
+            <p className="subtitle">An Evening of Advocacy, OPM Music, & PUP Pride</p>
 
             <div className="hero-date-pill">
               <i className="fa-regular fa-calendar" />
@@ -682,7 +682,7 @@ export default function Landing() {
               <i className="fa-brands fa-tiktok" />
             </a>
           </div>
-          <p>© 2026 <strong>PUP REVO</strong> — PUP Communication Society. All rights reserved.</p>
+          <p>© 2026 PUP REVO — PUP Communication Society. All rights reserved.</p>
           <p style={{ marginTop: '0.5rem' }}>
             For concerns, email{' '}
             <a href="mailto:puprevo.commsoc@gmail.com" style={{ color: 'rgba(250,245,233,0.4)' }}>
@@ -699,7 +699,7 @@ export default function Landing() {
           <div className="modal-overlay" onClick={e => { if (e.target === e.currentTarget) setPrivacyOpen(false) }}>
             <div className="modal">
               <h2>Privacy Policy</h2>
-              <p className="modal-subtitle">PUP REVO 2026: Sound Against Silence — A Benefit Concert for Safer Kids</p>
+              <p className="modal-subtitle">PUP REVO 2026: Sound Against Silence - A Benefit Concert for Safer Kids</p>
               <p>The PUP Communication Society respects your right to privacy and is committed to protecting your personal data in accordance with the Data Privacy Act of 2012 (Republic Act No. 10173).</p>
 
               <h3>1. Information We Collect</h3>
