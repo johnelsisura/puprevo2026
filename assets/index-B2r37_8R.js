@@ -251,7 +251,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);
           display: flex; justify-content: space-between; align-items: flex-start;
         }
-        .ticket-type { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.06em; color: var(--cream); }
+        .ticket-type { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.06em; color: var(--cream); }
         .ticket-badge {
           font-family: 'Syne', sans-serif; font-size: 0.6rem; font-weight: 700;
           letter-spacing: 0.15em; text-transform: uppercase;
@@ -283,7 +283,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         /* ---- SPONSORS ---- */
         .sponsors-wrap { text-align: center; padding: 0.5rem 0; }
         .sponsors-img {
-          max-width: 700px; width: 100%; opacity: 0.85;
+          max-width: 100%; width: 100%; opacity: 0.85;
           transition: opacity 0.2s;
         }
         .sponsors-img:hover { opacity: 1; }
