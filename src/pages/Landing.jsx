@@ -439,9 +439,8 @@ export default function Landing() {
             <img src="/pupxpupcommsoc.png" alt="PUP x PUP CommSoc" style={{ width: '200px', display: 'block', margin: '0 auto 1rem auto' }} />
             <div className="badge">✦ PUP Communication Society ✦</div>
 
-            <img src="/poster.png" alt="PUP Revo 2026 Poster" style={{ width: '100%', maxWidth: '500px', display: 'block', margin: '0 auto' }} />
+            <img src="/officialposter.png" alt="PUP Revo 2026 Poster" style={{ width: '100%', maxWidth: '500px', display: 'block', margin: '0 auto' }} />
       
-
             <p className="subtitle">
               An Evening of Music, Advocacy & PUP Pride
             </p>
