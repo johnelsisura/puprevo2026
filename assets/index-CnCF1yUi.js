@@ -381,26 +381,51 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           .countdown { gap: 0.75rem; }
           .countdown-num { min-width: 60px; padding: 0.3rem 0.6rem; }
         }
-      `}),(0,Z.jsxs)(`div`,{className:`page`,children:[(0,Z.jsxs)(`section`,{className:`hero`,children:[(0,Z.jsx)(`div`,{className:`hero-bg`}),(0,Z.jsx)(`div`,{className:`hero-grid`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♪`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♫`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♩`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♬`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♭`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♪`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♫`}),(0,Z.jsxs)(`div`,{className:`hero-content`,children:[(0,Z.jsx)(`img`,{src:`/pupxpupcommsoc.png`,alt:`PUP x PUP CommSoc`,style:{width:`200px`,display:`block`,margin:`0 auto 1rem auto`}}),(0,Z.jsx)(`div`,{className:`badge`,children:`✦ PUP Communication Society ✦`}),(0,Z.jsx)(`p`,{className:`hero-event-title`,children:`PUP REVO 2026: SOUND AGAINST SILENCE`}),(0,Z.jsx)(`img`,{src:`/officialposter.png`,alt:`PUP Revo 2026 Poster`,style:{width:`100%`,maxWidth:`500px`,display:`block`,margin:`1.5rem auto 0 auto`}}),(0,Z.jsx)(`p`,{className:`subtitle`,children:`An Evening of Advocacy, OPM Music, & PUP Pride`}),(0,Z.jsxs)(`div`,{className:`hero-date-pill`,children:[(0,Z.jsx)(`i`,{className:`fa-regular fa-calendar`}),`JUNE 20, 2026`]}),(0,Z.jsx)(`div`,{className:`countdown`,children:[{val:t,label:`Days`},{val:n,label:`Hours`},{val:r,label:`Mins`},{val:i,label:`Secs`}].map(({val:e,label:t})=>(0,Z.jsxs)(`div`,{className:`countdown-unit`,children:[(0,Z.jsx)(`div`,{className:`countdown-num`,children:d(e)}),(0,Z.jsx)(`div`,{className:`countdown-label`,children:t})]},t))}),(0,Z.jsxs)(`div`,{className:`cta-group`,children:[(0,Z.jsx)(`button`,{className:`btn-primary`,onClick:()=>e(`/checkout`),children:`Get Your Ticket`}),(0,Z.jsx)(`button`,{className:`btn-secondary`,onClick:()=>document.getElementById(`details`).scrollIntoView({behavior:`smooth`}),children:`Event Details`})]})]})]}),(0,Z.jsx)(`hr`,{className:`divider`}),(0,Z.jsxs)(`section`,{className:`section`,id:`details`,children:[(0,Z.jsx)(`div`,{className:`section-label`,children:`About the Event`}),(0,Z.jsx)(`h2`,{className:`section-title`,children:`Event Details`}),(0,Z.jsxs)(`div`,{style:{fontFamily:`'DM Sans', sans-serif`,fontSize:`0.95rem`,lineHeight:`1.85`,color:`rgba(250,245,233,0.7)`,maxWidth:`760px`,marginBottom:`2.5rem`,textAlign:`center`,margin:`0 auto 2.5rem auto`},children:[(0,Z.jsxs)(`p`,{children:[`The PUP Communication Society proudly presents `,(0,Z.jsx)(`strong`,{style:{color:`var(--cream)`},children:`PUP REVO 2026: Sound Against Silence — A Benefit Concert for Safer Kids`}),`, a revived and reimagined flagship concert that brings together music, creative media, and social advocacy. More than just entertainment, the event serves as a platform to amplify voices, raise awareness, and inspire action against child abuse, exploitation, and trafficking.`]}),(0,Z.jsx)(`p`,{style:{marginTop:`1rem`},children:`In partnership with ABS-CBN Bantay Bata 163 and World Vision Philippines, this benefit concert aims to mobilize the PUP community and beyond to turn sound into a force for change—because silence should never protect harm.`})]}),(0,Z.jsxs)(`div`,{className:`details-grid`,children:[(0,Z.jsxs)(`div`,{className:`detail-item`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:(0,Z.jsx)(`i`,{className:`fa-regular fa-calendar`})}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Date`}),(0,Z.jsx)(`div`,{className:`detail-value`,children:`June 20, 2026`})]}),(0,Z.jsxs)(`div`,{className:`detail-item`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:(0,Z.jsx)(`i`,{className:`fa-regular fa-clock`})}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Time`}),(0,Z.jsx)(`div`,{className:`detail-value`,children:`9:00 AM Onwards`})]}),(0,Z.jsxs)(`div`,{className:`detail-item`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:(0,Z.jsx)(`i`,{className:`fa-solid fa-location-dot`})}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Venue`}),(0,Z.jsx)(`div`,{className:`detail-value`,children:`PUP Main Campus Oval, Manila`})]}),(0,Z.jsxs)(`div`,{className:`detail-item`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:(0,Z.jsx)(`i`,{className:`fa-solid fa-microphone`})}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Hosted By`}),(0,Z.jsx)(`div`,{className:`detail-value`,children:`PUP Communication Society`})]}),(0,Z.jsxs)(`div`,{className:`detail-item bene-card`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:(0,Z.jsx)(`i`,{className:`fa-solid fa-heart`})}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Beneficiaries`}),(0,Z.jsxs)(`div`,{className:`bene-grid`,children:[(0,Z.jsxs)(`div`,{className:`bene-item`,children:[(0,Z.jsx)(`img`,{src:`/BantayBata163.png`,alt:`Bantay Bata 163`,className:`bene-logo`}),(0,Z.jsx)(`div`,{className:`bene-title`,children:`ABS-CBN Foundation Bantay Bata 163`}),(0,Z.jsx)(`p`,{className:`bene-desc`,children:`Giving abused and vulnerable children a voice through rescue, protection, and safe spaces, so no child suffers in silence.`}),(0,Z.jsxs)(`a`,{href:`https://abs-cbncares.org/ways-to-give/programs/child-welfare`,target:`_blank`,rel:`noopener noreferrer`,className:`bene-link`,children:[(0,Z.jsx)(`i`,{className:`fa-solid fa-arrow-up-right-from-square`}),` Learn More`]})]}),(0,Z.jsxs)(`div`,{className:`bene-item`,children:[(0,Z.jsx)(`img`,{src:`/WorldVisionPH.png`,alt:`World Vision Philippines`,className:`bene-logo`}),(0,Z.jsx)(`div`,{className:`bene-title`,children:`World Vision Philippines`}),(0,Z.jsx)(`p`,{className:`bene-desc`,children:`Standing with children in the most vulnerable communities, protecting their rights and helping them build a future free from fear.`}),(0,Z.jsxs)(`a`,{href:`https://www.worldvision.org.ph/`,target:`_blank`,rel:`noopener noreferrer`,className:`bene-link`,children:[(0,Z.jsx)(`i`,{className:`fa-solid fa-arrow-up-right-from-square`}),` Learn More`]})]})]})]})]})]}),(0,Z.jsx)(`hr`,{className:`divider`}),(0,Z.jsxs)(`section`,{className:`section`,id:`tickets`,children:[(0,Z.jsx)(`div`,{className:`section-label`,children:`Buy Now`}),(0,Z.jsx)(`h2`,{className:`section-title`,children:`Get Your Ticket`}),s?(0,Z.jsx)(`p`,{style:{color:`rgba(250,245,233,0.4)`,fontFamily:`DM Sans`},children:`Loading ticket info...`}):(0,Z.jsxs)(`div`,{className:`tickets-grid`,children:[a.student&&(()=>{let t=a.student.total_slots-a.student.sold_count,n=a.student.sold_count/a.student.total_slots*100,r=t<=0;return(0,Z.jsxs)(`div`,{className:`ticket-card ${r?`sold-out`:``}`,children:[(0,Z.jsxs)(`div`,{className:`ticket-header`,children:[(0,Z.jsx)(`div`,{className:`ticket-type`,children:`PUPian`}),(0,Z.jsx)(`div`,{className:`ticket-badge`,children:`Student`})]}),(0,Z.jsx)(`div`,{className:`ticket-price`,children:(0,Z.jsxs)(`span`,{className:`price-amount`,children:[`₱`,a.student.price]})}),(0,Z.jsxs)(`div`,{className:`ticket-slots`,children:[(0,Z.jsx)(`div`,{className:`slot-bar-bg`,children:(0,Z.jsx)(`div`,{className:`slot-bar-fill`,style:{width:`${n}%`}})}),(0,Z.jsx)(`div`,{className:`slot-text`,children:r?`🔴 Sold Out`:`${t} slots remaining`})]}),(0,Z.jsxs)(`div`,{className:`ticket-desc`,children:[(0,Z.jsx)(`i`,{className:`fa-solid fa-circle-info`,style:{marginRight:`0.35rem`,color:`rgba(255,215,0,0.5)`}}),`Service fee may apply for online payments.`]}),(0,Z.jsx)(`div`,{className:`ticket-footer`,children:(0,Z.jsx)(`button`,{className:`ticket-btn`,disabled:r,onClick:()=>e(`/checkout?type=student`),children:r?`Sold Out`:`Buy PUPian Ticket`})})]})})(),a.public&&(()=>{let t=a.public.total_slots-a.public.sold_count,n=a.public.sold_count/a.public.total_slots*100,r=t<=0;return(0,Z.jsxs)(`div`,{className:`ticket-card featured ${r?`sold-out`:``}`,children:[(0,Z.jsxs)(`div`,{className:`ticket-header`,children:[(0,Z.jsx)(`div`,{className:`ticket-type`,children:`Non-PUPian / Alumni`}),(0,Z.jsx)(`div`,{className:`ticket-badge`,children:`Open`})]}),(0,Z.jsx)(`div`,{className:`ticket-price`,children:(0,Z.jsxs)(`span`,{className:`price-amount`,children:[`₱`,a.public.price]})}),(0,Z.jsxs)(`div`,{className:`ticket-slots`,children:[(0,Z.jsx)(`div`,{className:`slot-bar-bg`,children:(0,Z.jsx)(`div`,{className:`slot-bar-fill`,style:{width:`${n}%`}})}),(0,Z.jsx)(`div`,{className:`slot-text`,children:r?`🔴 Sold Out`:`${t} slots remaining`})]}),(0,Z.jsxs)(`div`,{className:`ticket-desc`,children:[(0,Z.jsx)(`i`,{className:`fa-solid fa-circle-info`,style:{marginRight:`0.35rem`,color:`rgba(255,215,0,0.5)`}}),`Service fee may apply for online payments.`]}),(0,Z.jsx)(`div`,{className:`ticket-footer`,children:(0,Z.jsx)(`button`,{className:`ticket-btn`,disabled:r,onClick:()=>e(`/checkout?type=public`),children:r?`Sold Out`:`Buy Non-PUPian Ticket`})})]})})()]})]}),(0,Z.jsx)(`hr`,{className:`divider`}),(0,Z.jsxs)(`section`,{className:`section`,id:`sponsors`,children:[(0,Z.jsx)(`div`,{className:`section-label`,children:`Our Partners`}),(0,Z.jsx)(`h2`,{className:`section-title`,children:`Sponsors`}),(0,Z.jsx)(`div`,{className:`sponsors-wrap`,children:(0,Z.jsx)(`img`,{src:`/sponsors.png`,alt:`Event Sponsors`,className:`sponsors-img`})})]}),(0,Z.jsx)(`hr`,{className:`divider`}),(0,Z.jsxs)(`section`,{className:`section`,id:`faq`,children:[(0,Z.jsx)(`div`,{className:`section-label`,children:`Got Questions?`}),(0,Z.jsx)(`h2`,{className:`section-title`,children:`Frequently Asked Questions`}),(0,Z.jsx)(`div`,{style:{display:`flex`,flexDirection:`column`,gap:`0.75rem`},children:$s.map(({q:e,a:t})=>(0,Z.jsxs)(`details`,{className:`faq-item`,children:[(0,Z.jsxs)(`summary`,{className:`faq-summary`,children:[e,` `,(0,Z.jsx)(`span`,{className:`faq-icon`,children:`+`})]}),(0,Z.jsx)(`div`,{className:`faq-body`,children:t})]},e))})]}),(0,Z.jsxs)(`footer`,{className:`footer`,children:[(0,Z.jsxs)(`div`,{className:`footer-socials`,children:[(0,Z.jsx)(`a`,{href:`https://www.facebook.com/pupcommsoc`,target:`_blank`,rel:`noopener noreferrer`,className:`footer-social-link`,"aria-label":`Facebook`,children:(0,Z.jsx)(`i`,{className:`fa-brands fa-facebook-f`})}),(0,Z.jsx)(`a`,{href:`https://www.instagram.com/pupcommsoc_/`,target:`_blank`,rel:`noopener noreferrer`,className:`footer-social-link`,"aria-label":`Instagram`,children:(0,Z.jsx)(`i`,{className:`fa-brands fa-instagram`})}),(0,Z.jsx)(`a`,{href:`https://x.com/pupcommsoc_`,target:`_blank`,rel:`noopener noreferrer`,className:`footer-social-link`,"aria-label":`X / Twitter`,children:(0,Z.jsx)(`i`,{className:`fa-brands fa-x-twitter`})}),(0,Z.jsx)(`a`,{href:`http://tiktok.com/@pup_commsoc`,target:`_blank`,rel:`noopener noreferrer`,className:`footer-social-link`,"aria-label":`TikTok`,children:(0,Z.jsx)(`i`,{className:`fa-brands fa-tiktok`})})]}),(0,Z.jsx)(`p`,{children:`© 2026 PUP REVO — PUP Communication Society. All rights reserved.`}),(0,Z.jsxs)(`p`,{style:{marginTop:`0.5rem`},children:[`For concerns, email`,` `,(0,Z.jsx)(`a`,{href:`mailto:puprevo.commsoc@gmail.com`,style:{color:`rgba(250,245,233,0.4)`},children:`puprevo.commsoc@gmail.com`})]}),(0,Z.jsx)(`button`,{className:`footer-privacy-btn`,onClick:()=>u(!0),children:`Privacy Policy`})]}),l&&(0,Z.jsx)(`div`,{className:`modal-overlay`,onClick:e=>{e.target===e.currentTarget&&u(!1)},children:(0,Z.jsxs)(`div`,{className:`modal`,children:[(0,Z.jsx)(`h2`,{children:`Privacy Policy`}),(0,Z.jsx)(`p`,{className:`modal-subtitle`,children:`PUP REVO 2026: Sound Against Silence - A Benefit Concert for Safer Kids`}),(0,Z.jsx)(`p`,{children:`The PUP Communication Society respects your right to privacy and is committed to protecting your personal data in accordance with the Data Privacy Act of 2012 (Republic Act No. 10173).`}),(0,Z.jsx)(`h3`,{children:`1. Information We Collect`}),(0,Z.jsx)(`p`,{children:`In the course of ticket registration and purchase, we may collect the following information:`}),(0,Z.jsxs)(`ul`,{children:[(0,Z.jsx)(`li`,{children:`Full Name`}),(0,Z.jsx)(`li`,{children:`Contact Number`}),(0,Z.jsx)(`li`,{children:`Email Address`}),(0,Z.jsx)(`li`,{children:`Course/School (if applicable)`}),(0,Z.jsx)(`li`,{children:`Proof of Payment and transaction details`}),(0,Z.jsx)(`li`,{children:`Other information necessary for ticket verification and event coordination`})]}),(0,Z.jsx)(`h3`,{children:`2. Purpose of Collection`}),(0,Z.jsx)(`p`,{children:`Your personal data is collected and processed solely for the following purposes:`}),(0,Z.jsxs)(`ul`,{children:[(0,Z.jsx)(`li`,{children:`Ticket registration and verification`}),(0,Z.jsx)(`li`,{children:`Payment confirmation and validation`}),(0,Z.jsx)(`li`,{children:`Event coordination and participant management`}),(0,Z.jsx)(`li`,{children:`Issuance of event updates and important announcements`}),(0,Z.jsx)(`li`,{children:`Security and safety management during the event`})]}),(0,Z.jsx)(`p`,{children:`Your information will not be used for purposes unrelated to PUP REVO 2026.`}),(0,Z.jsx)(`h3`,{children:`3. Data Protection and Security`}),(0,Z.jsx)(`p`,{children:`All collected information will be handled with strict confidentiality. Access to personal data is limited only to authorized members of the PUP Communication Society organizing team. We implement reasonable organizational and technical safeguards to protect your information against unauthorized access, disclosure, alteration, or misuse.`}),(0,Z.jsx)(`h3`,{children:`4. Data Sharing`}),(0,Z.jsx)(`p`,{children:`Personal information will not be shared with unauthorized third parties. Data may only be disclosed when required by law or when necessary for event security, safety, and compliance with university policies.`}),(0,Z.jsx)(`h3`,{children:`5. Data Retention`}),(0,Z.jsx)(`p`,{children:`Personal data will be retained only for as long as necessary for event implementation, documentation, and required post-event reporting. After such period, data will be securely deleted or disposed of.`}),(0,Z.jsx)(`h3`,{children:`6. Your Rights`}),(0,Z.jsx)(`p`,{children:`Under the Data Privacy Act of 2012, you have the right to:`}),(0,Z.jsxs)(`ul`,{children:[(0,Z.jsx)(`li`,{children:`Be informed about how your data is being processed`}),(0,Z.jsx)(`li`,{children:`Access the personal data we hold about you`}),(0,Z.jsx)(`li`,{children:`Request correction of inaccurate or incomplete data`}),(0,Z.jsx)(`li`,{children:`Withdraw consent when applicable, subject to legal and contractual limitations`})]}),(0,Z.jsx)(`h3`,{children:`7. Consent`}),(0,Z.jsx)(`p`,{children:`By registering and purchasing a ticket for PUP REVO 2026, you voluntarily consent to the collection, use, and processing of your personal data in accordance with this Privacy Policy. If you have questions or concerns regarding your personal data, you may contact the PUP Communication Society through its official communication channels.`}),(0,Z.jsx)(`button`,{className:`modal-close`,onClick:()=>u(!1),children:`Close`})]})})]})]})}var tc=`
+      `}),(0,Z.jsxs)(`div`,{className:`page`,children:[(0,Z.jsxs)(`section`,{className:`hero`,children:[(0,Z.jsx)(`div`,{className:`hero-bg`}),(0,Z.jsx)(`div`,{className:`hero-grid`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♪`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♫`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♩`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♬`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♭`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♪`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♫`}),(0,Z.jsxs)(`div`,{className:`hero-content`,children:[(0,Z.jsx)(`img`,{src:`/pupxpupcommsoc.png`,alt:`PUP x PUP CommSoc`,style:{width:`200px`,display:`block`,margin:`0 auto 1rem auto`}}),(0,Z.jsx)(`div`,{className:`badge`,children:`✦ PUP Communication Society ✦`}),(0,Z.jsx)(`p`,{className:`hero-event-title`,children:`PUP REVO 2026: SOUND AGAINST SILENCE`}),(0,Z.jsx)(`img`,{src:`/officialposter.png`,alt:`PUP Revo 2026 Poster`,style:{width:`100%`,maxWidth:`500px`,display:`block`,margin:`1.5rem auto 0 auto`}}),(0,Z.jsx)(`p`,{className:`subtitle`,children:`An Evening of Advocacy, OPM Music, & PUP Pride`}),(0,Z.jsxs)(`div`,{className:`hero-date-pill`,children:[(0,Z.jsx)(`i`,{className:`fa-regular fa-calendar`}),`JUNE 20, 2026`]}),(0,Z.jsx)(`div`,{className:`countdown`,children:[{val:t,label:`Days`},{val:n,label:`Hours`},{val:r,label:`Mins`},{val:i,label:`Secs`}].map(({val:e,label:t})=>(0,Z.jsxs)(`div`,{className:`countdown-unit`,children:[(0,Z.jsx)(`div`,{className:`countdown-num`,children:d(e)}),(0,Z.jsx)(`div`,{className:`countdown-label`,children:t})]},t))}),(0,Z.jsxs)(`div`,{className:`cta-group`,children:[(0,Z.jsx)(`button`,{className:`btn-primary`,onClick:()=>e(`/checkout`),children:`Get Your Ticket`}),(0,Z.jsx)(`button`,{className:`btn-secondary`,onClick:()=>document.getElementById(`details`).scrollIntoView({behavior:`smooth`}),children:`Event Details`})]})]})]}),(0,Z.jsx)(`hr`,{className:`divider`}),(0,Z.jsxs)(`section`,{className:`section`,id:`details`,children:[(0,Z.jsx)(`div`,{className:`section-label`,children:`About the Event`}),(0,Z.jsx)(`h2`,{className:`section-title`,children:`Event Details`}),(0,Z.jsxs)(`div`,{style:{fontFamily:`'DM Sans', sans-serif`,fontSize:`0.95rem`,lineHeight:`1.85`,color:`rgba(250,245,233,0.7)`,maxWidth:`760px`,marginBottom:`2.5rem`,textAlign:`center`,margin:`0 auto 2.5rem auto`},children:[(0,Z.jsxs)(`p`,{children:[`The PUP Communication Society proudly presents `,(0,Z.jsx)(`strong`,{style:{color:`var(--cream)`},children:`PUP REVO 2026: Sound Against Silence — A Benefit Concert for Safer Kids`}),`, a revived and reimagined flagship concert that brings together music, creative media, and social advocacy. More than just entertainment, the event serves as a platform to amplify voices, raise awareness, and inspire action against child abuse, exploitation, and trafficking.`]}),(0,Z.jsx)(`p`,{style:{marginTop:`1rem`},children:`In partnership with ABS-CBN Bantay Bata 163 and World Vision Philippines, this benefit concert aims to mobilize the PUP community and beyond to turn sound into a force for change—because silence should never protect harm.`})]}),(0,Z.jsxs)(`div`,{className:`details-grid`,children:[(0,Z.jsxs)(`div`,{className:`detail-item`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:(0,Z.jsx)(`i`,{className:`fa-regular fa-calendar`})}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Date`}),(0,Z.jsx)(`div`,{className:`detail-value`,children:`June 20, 2026`})]}),(0,Z.jsxs)(`div`,{className:`detail-item`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:(0,Z.jsx)(`i`,{className:`fa-regular fa-clock`})}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Time`}),(0,Z.jsx)(`div`,{className:`detail-value`,children:`9:00 AM Onwards`})]}),(0,Z.jsxs)(`div`,{className:`detail-item`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:(0,Z.jsx)(`i`,{className:`fa-solid fa-location-dot`})}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Venue`}),(0,Z.jsx)(`div`,{className:`detail-value`,children:`PUP Main Campus Oval, Manila`})]}),(0,Z.jsxs)(`div`,{className:`detail-item`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:(0,Z.jsx)(`i`,{className:`fa-solid fa-microphone`})}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Hosted By`}),(0,Z.jsx)(`div`,{className:`detail-value`,children:`PUP Communication Society`})]}),(0,Z.jsxs)(`div`,{className:`detail-item bene-card`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:(0,Z.jsx)(`i`,{className:`fa-solid fa-heart`})}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Beneficiaries`}),(0,Z.jsxs)(`div`,{className:`bene-grid`,children:[(0,Z.jsxs)(`div`,{className:`bene-item`,children:[(0,Z.jsx)(`img`,{src:`/BantayBata163.png`,alt:`Bantay Bata 163`,className:`bene-logo`}),(0,Z.jsx)(`div`,{className:`bene-title`,children:`ABS-CBN Foundation Bantay Bata 163`}),(0,Z.jsx)(`p`,{className:`bene-desc`,children:`Giving abused and vulnerable children a voice through rescue, protection, and safe spaces, so no child suffers in silence.`}),(0,Z.jsxs)(`a`,{href:`https://abs-cbncares.org/ways-to-give/programs/child-welfare`,target:`_blank`,rel:`noopener noreferrer`,className:`bene-link`,children:[(0,Z.jsx)(`i`,{className:`fa-solid fa-arrow-up-right-from-square`}),` Learn More`]})]}),(0,Z.jsxs)(`div`,{className:`bene-item`,children:[(0,Z.jsx)(`img`,{src:`/WorldVisionPH.png`,alt:`World Vision Philippines`,className:`bene-logo`}),(0,Z.jsx)(`div`,{className:`bene-title`,children:`World Vision Philippines`}),(0,Z.jsx)(`p`,{className:`bene-desc`,children:`Standing with children in the most vulnerable communities, protecting their rights and helping them build a future free from fear.`}),(0,Z.jsxs)(`a`,{href:`https://www.worldvision.org.ph/`,target:`_blank`,rel:`noopener noreferrer`,className:`bene-link`,children:[(0,Z.jsx)(`i`,{className:`fa-solid fa-arrow-up-right-from-square`}),` Learn More`]})]})]})]})]})]}),(0,Z.jsx)(`hr`,{className:`divider`}),(0,Z.jsxs)(`section`,{className:`section`,id:`tickets`,children:[(0,Z.jsx)(`div`,{className:`section-label`,children:`Buy Now`}),(0,Z.jsx)(`h2`,{className:`section-title`,children:`Get Your Ticket`}),s?(0,Z.jsx)(`p`,{style:{color:`rgba(250,245,233,0.4)`,fontFamily:`DM Sans`},children:`Loading ticket info...`}):(0,Z.jsxs)(`div`,{className:`tickets-grid`,children:[a.student&&(()=>{let t=a.student.total_slots-a.student.sold_count,n=a.student.sold_count/a.student.total_slots*100,r=t<=0;return(0,Z.jsxs)(`div`,{className:`ticket-card ${r?`sold-out`:``}`,children:[(0,Z.jsxs)(`div`,{className:`ticket-header`,children:[(0,Z.jsx)(`div`,{className:`ticket-type`,children:`PUPian`}),(0,Z.jsx)(`div`,{className:`ticket-badge`,children:`Student`})]}),(0,Z.jsx)(`div`,{className:`ticket-price`,children:(0,Z.jsxs)(`span`,{className:`price-amount`,children:[`₱`,a.student.price]})}),(0,Z.jsxs)(`div`,{className:`ticket-slots`,children:[(0,Z.jsx)(`div`,{className:`slot-bar-bg`,children:(0,Z.jsx)(`div`,{className:`slot-bar-fill`,style:{width:`${n}%`}})}),(0,Z.jsx)(`div`,{className:`slot-text`,children:r?`🔴 Sold Out`:`${t} slots remaining`})]}),(0,Z.jsxs)(`div`,{className:`ticket-desc`,children:[(0,Z.jsx)(`i`,{className:`fa-solid fa-circle-info`,style:{marginRight:`0.35rem`,color:`rgba(255,215,0,0.5)`}}),`Service fee may apply for online payments.`]}),(0,Z.jsx)(`div`,{className:`ticket-footer`,children:(0,Z.jsx)(`button`,{className:`ticket-btn`,disabled:r,onClick:()=>e(`/checkout?type=student`),children:r?`Sold Out`:`Buy PUPian Ticket`})})]})})(),a.public&&(()=>{let t=a.public.total_slots-a.public.sold_count,n=a.public.sold_count/a.public.total_slots*100,r=t<=0;return(0,Z.jsxs)(`div`,{className:`ticket-card featured ${r?`sold-out`:``}`,children:[(0,Z.jsxs)(`div`,{className:`ticket-header`,children:[(0,Z.jsx)(`div`,{className:`ticket-type`,children:`Non-PUPian / Alumni`}),(0,Z.jsx)(`div`,{className:`ticket-badge`,children:`Open`})]}),(0,Z.jsx)(`div`,{className:`ticket-price`,children:(0,Z.jsxs)(`span`,{className:`price-amount`,children:[`₱`,a.public.price]})}),(0,Z.jsxs)(`div`,{className:`ticket-slots`,children:[(0,Z.jsx)(`div`,{className:`slot-bar-bg`,children:(0,Z.jsx)(`div`,{className:`slot-bar-fill`,style:{width:`${n}%`}})}),(0,Z.jsx)(`div`,{className:`slot-text`,children:r?`🔴 Sold Out`:`${t} slots remaining`})]}),(0,Z.jsxs)(`div`,{className:`ticket-desc`,children:[(0,Z.jsx)(`i`,{className:`fa-solid fa-circle-info`,style:{marginRight:`0.35rem`,color:`rgba(255,215,0,0.5)`}}),`Service fee may apply for online payments.`]}),(0,Z.jsx)(`div`,{className:`ticket-footer`,children:(0,Z.jsx)(`button`,{className:`ticket-btn`,disabled:r,onClick:()=>e(`/checkout?type=public`),children:r?`Sold Out`:`Buy Non-PUPian Ticket`})})]})})()]})]}),(0,Z.jsx)(`hr`,{className:`divider`}),(0,Z.jsxs)(`section`,{className:`section`,id:`sponsors`,children:[(0,Z.jsx)(`div`,{className:`section-label`,children:`Our Partners`}),(0,Z.jsx)(`h2`,{className:`section-title`,children:`Sponsors`}),(0,Z.jsx)(`div`,{className:`sponsors-wrap`,children:(0,Z.jsx)(`img`,{src:`/sponsors.png`,alt:`Event Sponsors`,className:`sponsors-img`})})]}),(0,Z.jsx)(`hr`,{className:`divider`}),(0,Z.jsxs)(`section`,{className:`section`,id:`faq`,children:[(0,Z.jsx)(`div`,{className:`section-label`,children:`Got Questions?`}),(0,Z.jsx)(`h2`,{className:`section-title`,children:`Frequently Asked Questions`}),(0,Z.jsx)(`div`,{style:{display:`flex`,flexDirection:`column`,gap:`0.75rem`},children:$s.map(({q:e,a:t})=>(0,Z.jsxs)(`details`,{className:`faq-item`,children:[(0,Z.jsxs)(`summary`,{className:`faq-summary`,children:[e,` `,(0,Z.jsx)(`span`,{className:`faq-icon`,children:`+`})]}),(0,Z.jsx)(`div`,{className:`faq-body`,children:t})]},e))})]}),(0,Z.jsxs)(`footer`,{className:`footer`,children:[(0,Z.jsxs)(`div`,{className:`footer-socials`,children:[(0,Z.jsx)(`a`,{href:`https://www.facebook.com/pupcommsoc`,target:`_blank`,rel:`noopener noreferrer`,className:`footer-social-link`,"aria-label":`Facebook`,children:(0,Z.jsx)(`i`,{className:`fa-brands fa-facebook-f`})}),(0,Z.jsx)(`a`,{href:`https://www.instagram.com/pupcommsoc_/`,target:`_blank`,rel:`noopener noreferrer`,className:`footer-social-link`,"aria-label":`Instagram`,children:(0,Z.jsx)(`i`,{className:`fa-brands fa-instagram`})}),(0,Z.jsx)(`a`,{href:`https://x.com/pupcommsoc_`,target:`_blank`,rel:`noopener noreferrer`,className:`footer-social-link`,"aria-label":`X / Twitter`,children:(0,Z.jsx)(`i`,{className:`fa-brands fa-x-twitter`})}),(0,Z.jsx)(`a`,{href:`http://tiktok.com/@pup_commsoc`,target:`_blank`,rel:`noopener noreferrer`,className:`footer-social-link`,"aria-label":`TikTok`,children:(0,Z.jsx)(`i`,{className:`fa-brands fa-tiktok`})})]}),(0,Z.jsx)(`p`,{children:`© 2026 PUP REVO — PUP Communication Society. All rights reserved.`}),(0,Z.jsxs)(`p`,{style:{marginTop:`0.5rem`},children:[`For concerns, email`,` `,(0,Z.jsx)(`a`,{href:`mailto:puprevo.commsoc@gmail.com`,style:{color:`rgba(250,245,233,0.4)`},children:`puprevo.commsoc@gmail.com`})]}),(0,Z.jsx)(`button`,{className:`footer-privacy-btn`,onClick:()=>u(!0),children:`Privacy Policy`})]}),l&&(0,Z.jsx)(`div`,{className:`modal-overlay`,onClick:e=>{e.target===e.currentTarget&&u(!1)},children:(0,Z.jsxs)(`div`,{className:`modal`,children:[(0,Z.jsx)(`h2`,{children:`Privacy Policy`}),(0,Z.jsx)(`p`,{className:`modal-subtitle`,children:`PUP REVO 2026: Sound Against Silence - A Benefit Concert for Safer Kids`}),(0,Z.jsx)(`p`,{children:`The PUP Communication Society respects your right to privacy and is committed to protecting your personal data in accordance with the Data Privacy Act of 2012 (Republic Act No. 10173).`}),(0,Z.jsx)(`h3`,{children:`1. Information We Collect`}),(0,Z.jsx)(`p`,{children:`In the course of ticket registration and purchase, we may collect the following information:`}),(0,Z.jsxs)(`ul`,{children:[(0,Z.jsx)(`li`,{children:`Full Name`}),(0,Z.jsx)(`li`,{children:`Contact Number`}),(0,Z.jsx)(`li`,{children:`Email Address`}),(0,Z.jsx)(`li`,{children:`Course/School (if applicable)`}),(0,Z.jsx)(`li`,{children:`Proof of Payment and transaction details`}),(0,Z.jsx)(`li`,{children:`Other information necessary for ticket verification and event coordination`})]}),(0,Z.jsx)(`h3`,{children:`2. Purpose of Collection`}),(0,Z.jsx)(`p`,{children:`Your personal data is collected and processed solely for the following purposes:`}),(0,Z.jsxs)(`ul`,{children:[(0,Z.jsx)(`li`,{children:`Ticket registration and verification`}),(0,Z.jsx)(`li`,{children:`Payment confirmation and validation`}),(0,Z.jsx)(`li`,{children:`Event coordination and participant management`}),(0,Z.jsx)(`li`,{children:`Issuance of event updates and important announcements`}),(0,Z.jsx)(`li`,{children:`Security and safety management during the event`})]}),(0,Z.jsx)(`p`,{children:`Your information will not be used for purposes unrelated to PUP REVO 2026.`}),(0,Z.jsx)(`h3`,{children:`3. Data Protection and Security`}),(0,Z.jsx)(`p`,{children:`All collected information will be handled with strict confidentiality. Access to personal data is limited only to authorized members of the PUP Communication Society organizing team. We implement reasonable organizational and technical safeguards to protect your information against unauthorized access, disclosure, alteration, or misuse.`}),(0,Z.jsx)(`h3`,{children:`4. Data Sharing`}),(0,Z.jsx)(`p`,{children:`Personal information will not be shared with unauthorized third parties. Data may only be disclosed when required by law or when necessary for event security, safety, and compliance with university policies.`}),(0,Z.jsx)(`h3`,{children:`5. Data Retention`}),(0,Z.jsx)(`p`,{children:`Personal data will be retained only for as long as necessary for event implementation, documentation, and required post-event reporting. After such period, data will be securely deleted or disposed of.`}),(0,Z.jsx)(`h3`,{children:`6. Your Rights`}),(0,Z.jsx)(`p`,{children:`Under the Data Privacy Act of 2012, you have the right to:`}),(0,Z.jsxs)(`ul`,{children:[(0,Z.jsx)(`li`,{children:`Be informed about how your data is being processed`}),(0,Z.jsx)(`li`,{children:`Access the personal data we hold about you`}),(0,Z.jsx)(`li`,{children:`Request correction of inaccurate or incomplete data`}),(0,Z.jsx)(`li`,{children:`Withdraw consent when applicable, subject to legal and contractual limitations`})]}),(0,Z.jsx)(`h3`,{children:`7. Consent`}),(0,Z.jsx)(`p`,{children:`By registering and purchasing a ticket for PUP REVO 2026, you voluntarily consent to the collection, use, and processing of your personal data in accordance with this Privacy Policy. If you have questions or concerns regarding your personal data, you may contact the PUP Communication Society through its official communication channels.`}),(0,Z.jsx)(`button`,{className:`modal-close`,onClick:()=>u(!1),children:`Close`})]})})]})]})}if(!document.querySelector(`link[href*="font-awesome"]`)){let e=document.createElement(`link`);e.rel=`stylesheet`,e.href=`https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css`,document.head.appendChild(e)}var tc=`
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --red: #E4001B;
-    --gold: #F5C842;
+    --orange: #FF3B30;
+    --gold: #FFD700;
+    --blue: #1A4FD6;
     --cream: #FAF5E9;
-    --dark: #0A0500;
-    --card: #110900;
+    --dark: #060D1F;
+    --card-bg: #0D1530;
     --border: rgba(255,255,255,0.07);
     --muted: rgba(250,245,233,0.4);
   }
 
-  body { background: var(--dark); color: var(--cream); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
+  body {
+    background: var(--dark); color: var(--cream);
+    font-family: 'DM Sans', sans-serif; min-height: 100vh;
+  }
+
+  /* Landing-style background */
+  .checkout-bg {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,59,48,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 80% 80%, rgba(255,215,0,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 35% at 10% 50%, rgba(26,79,214,0.12) 0%, transparent 60%),
+      var(--dark);
+    animation: bgPulse 8s ease-in-out infinite;
+  }
+  .checkout-grid-overlay {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(26,79,214,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,79,214,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridDrift 20s linear infinite;
+  }
+  @keyframes bgPulse { 0%,100%{opacity:1} 50%{opacity:0.75} }
+  @keyframes gridDrift { 0%{background-position:0 0} 100%{background-position:60px 60px} }
 
   .checkout-wrap {
+    position: relative; z-index: 1;
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr 420px;
-    position: relative;
   }
 
   @media (max-width: 900px) {
@@ -410,545 +435,388 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
   .form-panel {
     padding: 3rem 4rem;
-    max-width: 640px;
+    max-width: 680px;
   }
 
   @media (max-width: 600px) { .form-panel { padding: 2rem 1.5rem; } }
 
   .back-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-bottom: 2.5rem;
-    transition: color 0.15s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; margin-bottom: 2.5rem; transition: color 0.15s;
   }
   .back-btn:hover { color: var(--cream); }
 
   .form-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
-    line-height: 1;
-    margin-bottom: 0.5rem;
+    line-height: 1; margin-bottom: 0.5rem;
   }
 
   .form-sub {
-    font-size: 0.85rem;
-    color: var(--muted);
-    margin-bottom: 2.5rem;
+    font-size: 0.85rem; color: var(--muted); margin-bottom: 2.5rem;
   }
 
   .steps {
-    display: flex;
-    gap: 0;
-    margin-bottom: 2.5rem;
+    display: flex; gap: 0; margin-bottom: 2.5rem;
     border-bottom: 1px solid var(--border);
   }
 
   .step {
-    padding: 0.75rem 0;
-    margin-right: 2rem;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
-    cursor: default;
+    padding: 0.75rem 0; margin-right: 2rem;
+    font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); border-bottom: 2px solid transparent;
+    margin-bottom: -1px; cursor: default;
   }
-
-  .step.active { color: var(--cream); border-bottom-color: var(--red); }
+  .step.active { color: var(--cream); border-bottom-color: var(--orange); }
   .step.done { color: var(--gold); }
 
   .field-group { margin-bottom: 1.5rem; }
 
   .field-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
   }
 
-  .field-row-3 {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
-  }
-
-  @media (max-width: 500px) {
-    .field-row { grid-template-columns: 1fr; }
-    .field-row-3 { grid-template-columns: 1fr 1fr; }
-  }
+  @media (max-width: 500px) { .field-row { grid-template-columns: 1fr; } }
 
   label {
-    display: block;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.5rem;
+    display: block; font-family: 'Syne', sans-serif;
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.5rem;
   }
 
   input, select, textarea {
     width: 100%;
     background: rgba(255,255,255,0.03);
     border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 0.85rem 1rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    color: var(--cream);
-    outline: none;
+    border-radius: 6px; padding: 0.85rem 1rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+    color: var(--cream); outline: none;
     transition: border-color 0.15s, background 0.15s;
     -webkit-appearance: none;
   }
-
   input:focus, select:focus {
-    border-color: rgba(228,0,27,0.5);
-    background: rgba(228,0,27,0.04);
+    border-color: rgba(255,59,48,0.5);
+    background: rgba(255,59,48,0.04);
   }
-
-  input.error, select.error { border-color: var(--red); }
+  input.error, select.error { border-color: var(--orange); }
   input::placeholder { color: rgba(250,245,233,0.2); }
-  select option { background: #1a0a00; color: var(--cream); }
+  select option { background: #0D1530; color: var(--cream); }
 
-  /* File input styling */
   input[type="file"] {
-    padding: 0.65rem 1rem;
-    cursor: pointer;
-    font-size: 0.82rem;
-    color: var(--muted);
+    padding: 0.65rem 1rem; cursor: pointer;
+    font-size: 0.82rem; color: var(--muted);
   }
-
   input[type="file"]::-webkit-file-upload-button {
-    background: rgba(228,0,27,0.15);
-    border: 1px solid rgba(228,0,27,0.3);
-    color: var(--cream);
-    font-family: 'Syne', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.4rem 0.85rem;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 0.75rem;
+    background: rgba(255,59,48,0.15);
+    border: 1px solid rgba(255,59,48,0.3);
+    color: var(--cream); font-family: 'Syne', sans-serif;
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.4rem 0.85rem; border-radius: 4px;
+    cursor: pointer; margin-right: 0.75rem;
   }
 
   .field-hint {
-    font-size: 0.75rem;
-    color: rgba(250,245,233,0.3);
-    margin-top: 0.4rem;
-    line-height: 1.5;
+    font-size: 0.75rem; color: rgba(250,245,233,0.3);
+    margin-top: 0.4rem; line-height: 1.5;
   }
 
   .field-error {
-    font-size: 0.75rem;
-    color: #ff6b6b;
-    margin-top: 0.4rem;
+    font-size: 0.75rem; color: #ff6b6b; margin-top: 0.4rem;
+  }
+
+  /* ── Privacy / Consent box ── */
+  .privacy-box {
+    background: rgba(255,59,48,0.04);
+    border: 1px solid rgba(255,59,48,0.2);
+    border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .privacy-box-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem; letter-spacing: 0.08em;
+    color: var(--orange); margin-bottom: 0.75rem;
+  }
+  .privacy-box-text {
+    font-size: 0.8rem; color: rgba(250,245,233,0.6);
+    line-height: 1.7; margin-bottom: 1rem;
+  }
+  .privacy-checkbox-row {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 8px; padding: 1rem;
+    cursor: pointer; transition: border-color 0.15s;
+  }
+  .privacy-checkbox-row:hover { border-color: rgba(255,59,48,0.3); }
+  .privacy-checkbox-row.checked { border-color: var(--orange); background: rgba(255,59,48,0.05); }
+  .privacy-checkbox {
+    width: 18px; height: 18px; flex-shrink: 0;
+    border: 2px solid rgba(255,255,255,0.2); border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px; transition: border-color 0.15s, background 0.15s;
+  }
+  .privacy-checkbox-row.checked .privacy-checkbox {
+    background: var(--orange); border-color: var(--orange);
+  }
+  .privacy-checkbox-label {
+    font-size: 0.82rem; color: var(--cream); line-height: 1.5;
+  }
+  .privacy-checkbox-label span {
+    font-weight: 700; color: var(--orange);
+  }
+
+  /* ── Consent & Waiver box ── */
+  .waiver-box {
+    background: rgba(255,215,0,0.04);
+    border: 1px solid rgba(255,215,0,0.2);
+    border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .waiver-box-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem; letter-spacing: 0.08em;
+    color: var(--gold); margin-bottom: 0.75rem;
+  }
+  .waiver-box-text {
+    font-size: 0.8rem; color: rgba(250,245,233,0.6);
+    line-height: 1.7; margin-bottom: 1rem;
+  }
+  .waiver-box-text strong { color: var(--cream); }
+  .waiver-box-text a { color: var(--gold); }
+  .waiver-steps {
+    font-size: 0.8rem; color: rgba(250,245,233,0.55);
+    line-height: 1.7; margin-bottom: 1rem; padding-left: 0.5rem;
+  }
+
+  /* ── Payment Agreement box ── */
+  .payment-agreement-box {
+    background: rgba(255,59,48,0.04);
+    border: 1px solid rgba(255,59,48,0.2);
+    border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .payment-agreement-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem; letter-spacing: 0.08em;
+    color: var(--orange); margin-bottom: 0.75rem;
+  }
+  .payment-agreement-text {
+    font-size: 0.78rem; color: rgba(250,245,233,0.55);
+    line-height: 1.75; margin-bottom: 1rem;
+  }
+  .payment-agreement-text strong { color: var(--cream); }
+  .no-refund-list {
+    background: rgba(255,59,48,0.06);
+    border: 1px solid rgba(255,59,48,0.15);
+    border-radius: 6px; padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.78rem; color: rgba(250,245,233,0.6);
+    line-height: 1.8;
+  }
+  .no-refund-list strong { color: var(--orange); }
+
+  /* ── Attendee classification ── */
+  .attendee-options {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem;
+  }
+  @media (max-width: 560px) { .attendee-options { grid-template-columns: 1fr 1fr; } }
+  .attendee-opt {
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 0.85rem 0.5rem; cursor: pointer; text-align: center;
+    transition: border-color 0.15s, background 0.15s;
+    background: rgba(255,255,255,0.02);
+  }
+  .attendee-opt:hover { border-color: rgba(255,255,255,0.15); }
+  .attendee-opt.selected { border-color: var(--orange); background: rgba(255,59,48,0.06); }
+  .attendee-opt-icon { font-size: 1.25rem; margin-bottom: 0.3rem; }
+  .attendee-opt-label {
+    font-family: 'Syne', sans-serif; font-size: 0.62rem;
+    font-weight: 700; letter-spacing: 0.05em; color: var(--cream);
+  }
+
+  /* ── Student / Public fields block ── */
+  .ticket-fields {
+    background: rgba(255,59,48,0.03);
+    border: 1px solid rgba(255,59,48,0.12);
+    border-radius: 10px; padding: 1.25rem; margin-top: 1rem;
+  }
+  .ticket-fields-title {
+    font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,59,48,0.7); margin-bottom: 1rem;
   }
 
   /* Section code preview */
   .section-preview {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(245,200,66,0.08);
-    border: 1px solid rgba(245,200,66,0.2);
-    border-radius: 4px;
-    padding: 0.35rem 0.75rem;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1rem;
-    letter-spacing: 0.1em;
-    color: var(--gold);
-    margin-top: 0.5rem;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,215,0,0.08); border: 1px solid rgba(255,215,0,0.2);
+    border-radius: 4px; padding: 0.35rem 0.75rem;
+    font-family: 'Bebas Neue', sans-serif; font-size: 1rem;
+    letter-spacing: 0.1em; color: var(--gold); margin-top: 0.5rem;
   }
 
-  .section-preview-label {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.58rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(245,200,66,0.5);
-  }
-
-  /* Attendee type selector */
-  .attendee-options {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.6rem;
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 560px) { .attendee-options { grid-template-columns: 1fr 1fr; } }
-
-  .attendee-opt {
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.85rem 0.5rem;
-    cursor: pointer;
-    text-align: center;
-    transition: border-color 0.15s, background 0.15s;
-    background: rgba(255,255,255,0.02);
-  }
-
-  .attendee-opt:hover { border-color: rgba(255,255,255,0.15); }
-
-  .attendee-opt.selected {
-    border-color: var(--red);
-    background: rgba(228,0,27,0.06);
-  }
-
-  .attendee-opt-icon { font-size: 1.25rem; margin-bottom: 0.3rem; }
-
-  .attendee-opt-label {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: var(--cream);
-  }
-
-  /* Student fields block */
-  .student-fields {
-    background: rgba(228,0,27,0.03);
-    border: 1px solid rgba(228,0,27,0.12);
-    border-radius: 10px;
-    padding: 1.25rem;
-    margin-top: 1rem;
-  }
-
-  .student-fields-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(228,0,27,0.7);
-    margin-bottom: 1rem;
-  }
-
-  /* Payment method cards */
+  /* ── Payment method cards ── */
   .payment-options {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.85rem;
-    margin-bottom: 1.5rem;
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem; margin-bottom: 1.5rem;
   }
-
   @media (max-width: 500px) { .payment-options { grid-template-columns: 1fr; } }
-
   .payment-card {
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.1rem 0.85rem;
-    cursor: pointer;
+    border: 1px solid var(--border); border-radius: 10px;
+    padding: 1.1rem 0.85rem; cursor: pointer;
     transition: border-color 0.15s, background 0.15s;
-    background: rgba(255,255,255,0.02);
-    position: relative;
-    text-align: center;
+    background: rgba(255,255,255,0.02); position: relative; text-align: center;
   }
-
   .payment-card:hover { border-color: rgba(255,255,255,0.15); }
-
-  .payment-card.selected {
-    border-color: var(--red);
-    background: rgba(228,0,27,0.06);
-  }
-
+  .payment-card.selected { border-color: var(--orange); background: rgba(255,59,48,0.06); }
   .payment-card-icon { font-size: 1.6rem; margin-bottom: 0.45rem; }
-
   .payment-card-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.85rem;
-    color: var(--cream);
-    margin-bottom: 0.2rem;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem;
+    color: var(--cream); margin-bottom: 0.2rem;
   }
-
-  .payment-card-desc {
-    font-size: 0.7rem;
-    color: var(--muted);
-    line-height: 1.4;
-  }
-
+  .payment-card-desc { font-size: 0.7rem; color: var(--muted); line-height: 1.4; }
   .payment-card-fee {
-    position: absolute;
-    top: 0.6rem;
-    right: 0.6rem;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.55rem;
-    font-weight: 700;
+    position: absolute; top: 0.6rem; right: 0.6rem;
+    font-family: 'Syne', sans-serif; font-size: 0.55rem; font-weight: 700;
     letter-spacing: 0.08em;
-    background: rgba(245,200,66,0.12);
-    color: var(--gold);
-    padding: 0.15rem 0.4rem;
-    border-radius: 2rem;
-    border: 1px solid rgba(245,200,66,0.25);
+    background: rgba(255,215,0,0.12); color: var(--gold);
+    padding: 0.15rem 0.4rem; border-radius: 2rem;
+    border: 1px solid rgba(255,215,0,0.25);
   }
-
   .payment-card-free {
-    position: absolute;
-    top: 0.6rem;
-    right: 0.6rem;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.55rem;
-    font-weight: 700;
+    position: absolute; top: 0.6rem; right: 0.6rem;
+    font-family: 'Syne', sans-serif; font-size: 0.55rem; font-weight: 700;
     letter-spacing: 0.08em;
-    background: rgba(34,197,94,0.1);
-    color: #4ade80;
-    padding: 0.15rem 0.4rem;
-    border-radius: 2rem;
+    background: rgba(34,197,94,0.1); color: #4ade80;
+    padding: 0.15rem 0.4rem; border-radius: 2rem;
     border: 1px solid rgba(34,197,94,0.2);
   }
 
-  /* Payment proof fields */
+  /* ── Payment proof fields ── */
   .payment-proof {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.25rem;
-    margin-top: -0.5rem;
-    margin-bottom: 1rem;
+    background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.25rem;
+    margin-top: -0.5rem; margin-bottom: 1rem;
   }
-
   .payment-proof-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1rem;
+    font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 1rem;
   }
 
   /* Walk-in info box */
   .walkin-info {
-    background: rgba(245,200,66,0.06);
-    border: 1px solid rgba(245,200,66,0.2);
-    border-radius: 8px;
-    padding: 1rem 1.25rem;
-    font-size: 0.82rem;
-    color: rgba(245,200,66,0.9);
-    line-height: 1.6;
-    margin-top: 0.5rem;
+    background: rgba(255,215,0,0.06); border: 1px solid rgba(255,215,0,0.2);
+    border-radius: 8px; padding: 1rem 1.25rem;
+    font-size: 0.82rem; color: rgba(255,215,0,0.9);
+    line-height: 1.6; margin-top: 0.5rem;
   }
 
   /* Step nav */
   .step-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2rem;
-    gap: 1rem;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 2rem; gap: 1rem;
   }
-
   .prev-btn {
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    font-size: 0.82rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: transparent;
-    color: var(--muted);
-    border: 1px solid var(--border);
-    padding: 0.85rem 1.5rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: color 0.15s, border-color 0.15s;
-    flex-shrink: 0;
+    font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.82rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    background: transparent; color: var(--muted);
+    border: 1px solid var(--border); padding: 0.85rem 1.5rem;
+    border-radius: 6px; cursor: pointer;
+    transition: color 0.15s, border-color 0.15s; flex-shrink: 0;
   }
-
   .prev-btn:hover { color: var(--cream); border-color: rgba(255,255,255,0.2); }
-
   .next-btn {
-    flex: 1;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.88rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    background: var(--red);
-    color: white;
-    border: none;
-    padding: 0.85rem 1.5rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: opacity 0.15s;
-    box-shadow: 0 4px 20px rgba(228,0,27,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+    flex: 1; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    background: var(--orange); color: white; border: none;
+    padding: 0.85rem 1.5rem; border-radius: 6px; cursor: pointer;
+    transition: opacity 0.15s; box-shadow: 0 4px 20px rgba(255,59,48,0.35);
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
   }
-
   .next-btn:hover:not(:disabled) { opacity: 0.88; }
   .next-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
   .spinner {
     width: 16px; height: 16px;
-    border: 2px solid rgba(255,255,255,0.3);
-    border-top-color: white;
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
+    border: 2px solid rgba(255,255,255,0.3); border-top-color: white;
+    border-radius: 50%; animation: spin 0.7s linear infinite;
   }
-
   @keyframes spin { to { transform: rotate(360deg); } }
 
   /* ── RIGHT SIDEBAR ── */
   .sidebar {
-    background: var(--card);
-    border-left: 1px solid var(--border);
-    padding: 3rem 2rem;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
+    background: rgba(13,21,48,0.85); backdrop-filter: blur(12px);
+    border-left: 1px solid var(--border); padding: 3rem 2rem;
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    display: flex; flex-direction: column;
   }
-
-  @media (max-width: 900px) {
-    .sidebar { position: static; height: auto; }
-  }
-
+  @media (max-width: 900px) { .sidebar { position: static; height: auto; } }
   .sidebar-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1.5rem;
+    font-family: 'Syne', sans-serif; font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 1.5rem;
   }
 
   .ticket-preview {
-    background: linear-gradient(135deg, #1a0800 0%, #0f0500 100%);
-    border: 1px solid rgba(228,0,27,0.2);
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 2rem;
+    background: linear-gradient(135deg, rgba(26,79,214,0.15) 0%, rgba(6,13,31,0.9) 100%);
+    border: 1px solid rgba(255,59,48,0.25);
+    border-radius: 12px; overflow: hidden; margin-bottom: 2rem;
   }
-
-  .ticket-preview-top {
-    background: var(--red);
-    padding: 1rem 1.25rem;
-  }
-
+  .ticket-preview-top { background: var(--orange); padding: 1rem 1.25rem; }
   .ticket-preview-event {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    color: white;
-    line-height: 1;
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: white; line-height: 1;
   }
-
   .ticket-preview-date {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    color: rgba(255,255,255,0.7);
-    text-transform: uppercase;
-    margin-top: 0.2rem;
+    font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.15em; color: rgba(255,255,255,0.75);
+    text-transform: uppercase; margin-top: 0.2rem;
   }
-
   .ticket-preview-body { padding: 1.25rem; }
-
   .ticket-preview-type {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.2rem;
+    font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.2rem;
   }
-
-  .ticket-preview-name {
-    font-size: 0.9rem;
-    color: var(--cream);
-    min-height: 1.2rem;
-  }
-
+  .ticket-preview-name { font-size: 0.9rem; color: var(--cream); min-height: 1.2rem; }
   .ticket-preview-section {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.1em;
-    color: rgba(245,200,66,0.6);
-    margin-top: 0.2rem;
+    font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem;
+    letter-spacing: 0.1em; color: rgba(255,215,0,0.6); margin-top: 0.2rem;
   }
-
   .ticket-preview-attendee {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 0.5rem;
+    font-family: 'Syne', sans-serif; font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 0.5rem;
   }
-
   .ticket-divider {
-    border: none;
-    border-top: 1px dashed rgba(255,255,255,0.1);
-    margin: 1rem 0;
+    border: none; border-top: 1px dashed rgba(255,255,255,0.1); margin: 1rem 0;
   }
 
   .breakdown { margin-bottom: 2rem; }
-
   .breakdown-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.6rem 0;
-    font-size: 0.88rem;
-    color: var(--muted);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.6rem 0; font-size: 0.88rem; color: var(--muted);
   }
-
   .breakdown-row.total {
-    border-top: 1px solid var(--border);
-    margin-top: 0.5rem;
-    padding-top: 1rem;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--cream);
+    border-top: 1px solid var(--border); margin-top: 0.5rem; padding-top: 1rem;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: var(--cream);
   }
-
   .breakdown-fee { color: var(--gold); }
-
   .breakdown-total-price {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    color: var(--cream);
-    line-height: 1;
+    font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--cream); line-height: 1;
   }
 
   .payment-note {
-    margin-top: auto;
-    padding: 1rem;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 0.75rem;
-    color: var(--muted);
-    line-height: 1.6;
+    margin-top: auto; padding: 1rem;
+    background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+    border-radius: 8px; font-size: 0.75rem; color: var(--muted); line-height: 1.6;
   }
-
   .payment-note strong { color: var(--cream); }
-`,nc=.06,rc=[{value:`pup_student`,icon:`🎓`,label:`PUP Student`},{value:`alumni`,icon:`🏆`,label:`Alumni`},{value:`faculty`,icon:`👨‍🏫`,label:`Faculty`},{value:`outsider`,icon:`🌐`,label:`Outsider`}],ic=[{key:`gcash`,icon:`💚`,name:`GCash`,desc:`Send to our GCash number and upload screenshot.`,hasFee:!0},{key:`maya`,icon:`💙`,name:`Maya`,desc:`Send to our Maya account and upload screenshot.`,hasFee:!0},{key:`walk_in`,icon:`🏫`,name:`Walk-in`,desc:`Pay cash at PUP COC Lagoon before event day.`,hasFee:!1}];function ac(e){let t={};return e.full_name.trim()||(t.full_name=`Required`),(!e.email.trim()||!/\S+@\S+\.\S+/.test(e.email))&&(t.email=`Valid email required`),(!e.phone.trim()||e.phone.replace(/\D/g,``).length<10)&&(t.phone=`Valid PH number required`),e.attendee_type||(t.attendee_type=`Please select your attendee type`),t}function oc(e){let t={};return e.ticket_type_id||(t.ticket_type_id=`Select a ticket type`),e.attendee_type===`pup_student`&&(e.student_id.trim()||(t.student_id=`Student ID is required`),e.college.trim()||(t.college=`Required`),e.department.trim()||(t.department=`Required`),e.year_level||(t.year_level=`Required`),e.block.trim()||(t.block=`Required`),e.id_photo_file||(t.id_photo_file=`PUP ID photo is required`)),t}function sc(e){let t={};return e.payment_method||(t.payment_method=`Select a payment method`),[`gcash`,`maya`].includes(e.payment_method)&&(e.payment_reference.trim()||(t.payment_reference=`Reference number is required`),e.payment_screenshot_file||(t.payment_screenshot_file=`Payment screenshot is required`)),t}function cc(){let[e]=Dn(),t=st(),[n,r]=(0,_.useState)(1),[i,a]=(0,_.useState)([]),[o,s]=(0,_.useState)(!1),[c,l]=(0,_.useState)({}),[u,d]=(0,_.useState)({full_name:``,email:``,phone:``,attendee_type:``,ticket_type_id:``,ticket_name:``,ticket_price:0,student_id:``,college:``,department:``,year_level:``,block:``,id_photo_file:null,payment_method:``,payment_reference:``,payment_screenshot_file:null}),f=(e,t)=>d(n=>({...n,[e]:t}));(0,_.useEffect)(()=>{async function t(){let{data:t}=await Ys.from(`ticket_types`).select(`id, name, price, total_slots, sold_count`);if(t){a(t);let n=e.get(`type`);if(n===`student`){let e=t.find(e=>e.name===`PUP Student`);e&&d(t=>({...t,ticket_type_id:e.id,ticket_name:e.name,ticket_price:e.price}))}else if(n===`public`){let e=t.find(e=>e.name===`Public`);e&&d(t=>({...t,ticket_type_id:e.id,ticket_name:e.name,ticket_price:e.price}))}}}t()},[]);let p=[`gcash`,`maya`].includes(u.payment_method),m=p?parseFloat((u.ticket_price*nc).toFixed(2)):0,h=u.ticket_price+m,g=u.attendee_type===`pup_student`?[u.college,u.department,u.year_level,u.block].filter(Boolean).join(`-`):``;function v(){let e={};n===1&&(e=ac(u)),n===2&&(e=oc(u)),l(e),Object.keys(e).length===0&&r(e=>e+1)}async function y(e,t){if(!t)return null;let n=t.name.split(`.`).pop(),r=`${Date.now()}-${Math.random().toString(36).slice(2)}.${n}`,{data:i,error:a}=await Ys.storage.from(e).upload(r,t);if(a)throw a;return i.path}async function b(){let e=sc(u);if(l(e),!(Object.keys(e).length>0)){s(!0);try{let[e,n]=await Promise.all([u.id_photo_file?y(`student-id-photos`,u.id_photo_file):null,u.payment_screenshot_file?y(`payment-screenshots`,u.payment_screenshot_file):null]),{data:i,error:a}=await Ys.from(`orders`).insert({ticket_type_id:u.ticket_type_id,full_name:u.full_name,email:u.email,phone:u.phone,attendee_type:u.attendee_type,student_id:u.student_id||null,college:u.college||null,department:u.department||null,year_level:u.year_level?parseInt(u.year_level):null,block:u.block||null,student_id_photo_url:e,payment_method:u.payment_method,payment_reference:u.payment_reference||null,payment_screenshot_url:n,payment_status:`pending`,amount_paid:h}).select().single();if(a){if(a.code===`23505`&&a.message.includes(`student_id`)){l({student_id:`This Student ID already has a ticket registered.`}),r(2),s(!1);return}throw a}t(`/ticket/${i.ticket_code}`)}catch(e){console.error(e),l({submit:`Something went wrong. Please try again.`}),s(!1)}}}return(0,Z.jsxs)(Z.Fragment,{children:[(0,Z.jsx)(`style`,{children:tc}),(0,Z.jsxs)(`div`,{className:`checkout-wrap`,children:[(0,Z.jsxs)(`div`,{className:`form-panel`,children:[(0,Z.jsx)(`button`,{className:`back-btn`,onClick:()=>t(`/`),children:`← Back to Event`}),(0,Z.jsx)(`h1`,{className:`form-title`,children:`Get Your Ticket`}),(0,Z.jsx)(`p`,{className:`form-sub`,children:`Fill in your details to reserve your spot at PUP REVO 2026: SOUND AGAINST SILENCE.`}),(0,Z.jsx)(`div`,{className:`steps`,children:[`Your Info`,`Ticket`,`Payment`].map((e,t)=>(0,Z.jsxs)(`div`,{className:`step ${n===t+1?`active`:n>t+1?`done`:``}`,children:[n>t+1?`✓ `:``,e]},e))}),n===1&&(0,Z.jsxs)(`div`,{children:[(0,Z.jsxs)(`div`,{className:`field-row`,children:[(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Full Name *`}),(0,Z.jsx)(`input`,{className:c.full_name?`error`:``,placeholder:`Juan Dela Cruz`,value:u.full_name,onChange:e=>f(`full_name`,e.target.value)}),c.full_name&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.full_name})]}),(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Phone Number *`}),(0,Z.jsx)(`input`,{className:c.phone?`error`:``,placeholder:`09XXXXXXXXX`,value:u.phone,onChange:e=>f(`phone`,e.target.value)}),c.phone&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.phone})]})]}),(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Email Address *`}),(0,Z.jsx)(`input`,{className:c.email?`error`:``,type:`email`,placeholder:`juan@email.com`,value:u.email,onChange:e=>f(`email`,e.target.value)}),c.email&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.email}),(0,Z.jsx)(`div`,{className:`field-hint`,children:`Your booking confirmation will be sent here.`})]}),(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`I am a *`}),(0,Z.jsx)(`div`,{className:`attendee-options`,children:rc.map(e=>(0,Z.jsxs)(`div`,{className:`attendee-opt ${u.attendee_type===e.value?`selected`:``}`,onClick:()=>f(`attendee_type`,e.value),children:[(0,Z.jsx)(`div`,{className:`attendee-opt-icon`,children:e.icon}),(0,Z.jsx)(`div`,{className:`attendee-opt-label`,children:e.label})]},e.value))}),c.attendee_type&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.attendee_type})]}),(0,Z.jsx)(`div`,{className:`step-nav`,children:(0,Z.jsx)(`button`,{className:`next-btn`,onClick:v,children:`Continue → Ticket Type`})})]}),n===2&&(0,Z.jsxs)(`div`,{children:[(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Ticket Type *`}),(0,Z.jsxs)(`select`,{className:c.ticket_type_id?`error`:``,value:u.ticket_type_id,onChange:e=>{let t=i.find(t=>t.id===e.target.value);t&&d(e=>({...e,ticket_type_id:t.id,ticket_name:t.name,ticket_price:t.price}))},children:[(0,Z.jsx)(`option`,{value:``,children:`— Select ticket type —`}),i.map(e=>{let t=e.total_slots-e.sold_count,n=t<=0;return(0,Z.jsxs)(`option`,{value:e.id,disabled:n,children:[e.name,` — ₱`,e.price,n?` (SOLD OUT)`:` (${t} left)`]},e.id)})]}),c.ticket_type_id&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.ticket_type_id}),u.attendee_type!==`pup_student`&&(0,Z.jsx)(`div`,{className:`field-hint`,children:`Note: If you're bringing PUP student companions, they need their own ticket and must register individually.`})]}),u.attendee_type===`pup_student`&&(0,Z.jsxs)(`div`,{className:`student-fields`,children:[(0,Z.jsx)(`div`,{className:`student-fields-title`,children:`🎓 PUP Student Details`}),(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Student ID Number *`}),(0,Z.jsx)(`input`,{className:c.student_id?`error`:``,placeholder:`YYYY-XXXXX-MN-0`,value:u.student_id,onChange:e=>f(`student_id`,e.target.value)}),c.student_id&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.student_id}),(0,Z.jsx)(`div`,{className:`field-hint`,children:`1 Student ID = 1 ticket only. Bring your physical ID on event day.`})]}),(0,Z.jsxs)(`div`,{className:`field-row`,children:[(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`College *`}),(0,Z.jsx)(`input`,{className:c.college?`error`:``,placeholder:`COC`,value:u.college,onChange:e=>f(`college`,e.target.value.toUpperCase())}),c.college&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.college})]}),(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Department *`}),(0,Z.jsx)(`input`,{className:c.department?`error`:``,placeholder:`DAPR`,value:u.department,onChange:e=>f(`department`,e.target.value.toUpperCase())}),c.department&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.department})]})]}),(0,Z.jsxs)(`div`,{className:`field-row`,children:[(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Year Level *`}),(0,Z.jsxs)(`select`,{className:c.year_level?`error`:``,value:u.year_level,onChange:e=>f(`year_level`,e.target.value),children:[(0,Z.jsx)(`option`,{value:``,children:`—`}),[1,2,3,4,5].map(e=>(0,Z.jsx)(`option`,{value:e,children:e},e))]}),c.year_level&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.year_level})]}),(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Block *`}),(0,Z.jsx)(`input`,{className:c.block?`error`:``,placeholder:`2D`,value:u.block,onChange:e=>f(`block`,e.target.value.toUpperCase())}),c.block&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.block})]})]}),g&&(0,Z.jsxs)(`div`,{style:{marginBottom:`1rem`},children:[(0,Z.jsx)(`div`,{style:{fontSize:`0.68rem`,fontFamily:`Syne`,fontWeight:700,letterSpacing:`0.15em`,textTransform:`uppercase`,color:`var(--muted)`,marginBottom:`0.35rem`},children:`Section Code Preview`}),(0,Z.jsx)(`div`,{className:`section-preview`,children:g})]}),(0,Z.jsxs)(`div`,{className:`field-group`,style:{marginBottom:0},children:[(0,Z.jsx)(`label`,{children:`PUP ID Photo *`}),(0,Z.jsx)(`input`,{type:`file`,accept:`image/*`,className:c.id_photo_file?`error`:``,onChange:e=>f(`id_photo_file`,e.target.files[0]||null)}),c.id_photo_file&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.id_photo_file}),(0,Z.jsx)(`div`,{className:`field-hint`,children:`Clear photo of your PUP ID card (front). Max 5MB. JPEG or PNG.`})]})]}),(0,Z.jsxs)(`div`,{className:`step-nav`,children:[(0,Z.jsx)(`button`,{className:`prev-btn`,onClick:()=>r(1),children:`← Back`}),(0,Z.jsx)(`button`,{className:`next-btn`,onClick:v,children:`Continue → Payment`})]})]}),n===3&&(0,Z.jsxs)(`div`,{children:[(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Payment Method *`}),(0,Z.jsx)(`div`,{className:`payment-options`,children:ic.map(e=>(0,Z.jsxs)(`div`,{className:`payment-card ${u.payment_method===e.key?`selected`:``}`,onClick:()=>f(`payment_method`,e.key),children:[e.hasFee&&(0,Z.jsx)(`div`,{className:`payment-card-fee`,children:`+6% fee`}),!e.hasFee&&(0,Z.jsx)(`div`,{className:`payment-card-free`,children:`No fee`}),(0,Z.jsx)(`div`,{className:`payment-card-icon`,children:e.icon}),(0,Z.jsx)(`div`,{className:`payment-card-name`,children:e.name}),(0,Z.jsx)(`div`,{className:`payment-card-desc`,children:e.desc})]},e.key))}),c.payment_method&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.payment_method})]}),[`gcash`,`maya`].includes(u.payment_method)&&(0,Z.jsxs)(`div`,{className:`payment-proof`,children:[(0,Z.jsxs)(`div`,{className:`payment-proof-title`,children:[u.payment_method===`gcash`?`💚 GCash`:`💙 Maya`,` — Payment Proof`]}),(0,Z.jsxs)(`div`,{style:{background:`rgba(255,255,255,0.02)`,border:`1px solid var(--border)`,borderRadius:`8px`,padding:`0.85rem 1rem`,fontSize:`0.8rem`,color:`var(--muted)`,lineHeight:1.6,marginBottom:`1rem`},children:[`Send `,(0,Z.jsxs)(`strong`,{style:{color:`var(--cream)`},children:[`₱`,h.toFixed(2)]}),` to`,` `,(0,Z.jsx)(`strong`,{style:{color:`var(--gold)`},children:u.payment_method===`gcash`?`09241031430 (J******* R***** T. E*******)`:`puprevo.commsoc@gmail.com`}),`, then fill in the details below.`]}),(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Reference Number *`}),(0,Z.jsx)(`input`,{className:c.payment_reference?`error`:``,placeholder:u.payment_method===`gcash`?`e.g. 1234567890`:`e.g. MYA-XXXXXXXX`,value:u.payment_reference,onChange:e=>f(`payment_reference`,e.target.value)}),c.payment_reference&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.payment_reference}),(0,Z.jsxs)(`div`,{className:`field-hint`,children:[`Found in your `,u.payment_method===`gcash`?`GCash`:`Maya`,` transaction history.`]})]}),(0,Z.jsxs)(`div`,{className:`field-group`,style:{marginBottom:0},children:[(0,Z.jsx)(`label`,{children:`Payment Screenshot *`}),(0,Z.jsx)(`input`,{type:`file`,accept:`image/*`,className:c.payment_screenshot_file?`error`:``,onChange:e=>f(`payment_screenshot_file`,e.target.files[0]||null)}),c.payment_screenshot_file&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.payment_screenshot_file}),(0,Z.jsx)(`div`,{className:`field-hint`,children:`Screenshot showing the amount, recipient, and reference number. Max 5MB.`})]})]}),u.payment_method===`walk_in`&&(0,Z.jsxs)(`div`,{className:`walkin-info`,children:[`🏫 `,(0,Z.jsx)(`strong`,{children:`Walk-in Payment:`}),` Pay cash at `,(0,Z.jsx)(`strong`,{children:`PUP COC Lagoon`}),` before the event day. Your slot is reserved — bring your booking reference code when you pay. Slot is NOT confirmed until cash is received.`]}),c.submit&&(0,Z.jsx)(`div`,{className:`field-error`,style:{marginTop:`1rem`},children:c.submit}),(0,Z.jsxs)(`div`,{className:`step-nav`,children:[(0,Z.jsx)(`button`,{className:`prev-btn`,onClick:()=>r(2),children:`← Back`}),(0,Z.jsx)(`button`,{className:`next-btn`,onClick:b,disabled:o||!u.payment_method,children:o?(0,Z.jsxs)(Z.Fragment,{children:[(0,Z.jsx)(`div`,{className:`spinner`}),` Processing...`]}):u.payment_method===`walk_in`?`Reserve My Slot →`:`Submit & Reserve — ₱${h.toFixed(2)} →`})]})]})]}),(0,Z.jsxs)(`div`,{className:`sidebar`,children:[(0,Z.jsx)(`div`,{className:`sidebar-title`,children:`Order Summary`}),(0,Z.jsxs)(`div`,{className:`ticket-preview`,children:[(0,Z.jsxs)(`div`,{className:`ticket-preview-top`,children:[(0,Z.jsx)(`div`,{className:`ticket-preview-event`,children:`PUP REVO 2026: SOUND AGAINST SILENCE`}),(0,Z.jsx)(`div`,{className:`ticket-preview-date`,children:`June 20, 2026 · 9:00 AM · PUP Sta. Mesa Manila`})]}),(0,Z.jsxs)(`div`,{className:`ticket-preview-body`,children:[(0,Z.jsx)(`div`,{className:`ticket-preview-type`,children:u.ticket_name||`— Select ticket type —`}),(0,Z.jsx)(`div`,{className:`ticket-preview-name`,children:u.full_name||(0,Z.jsx)(`span`,{style:{color:`rgba(250,245,233,0.2)`},children:`Your name here`})}),g&&(0,Z.jsx)(`div`,{className:`ticket-preview-section`,children:g}),u.attendee_type&&!g&&(0,Z.jsx)(`div`,{className:`ticket-preview-attendee`,children:rc.find(e=>e.value===u.attendee_type)?.label||``}),(0,Z.jsx)(`hr`,{className:`ticket-divider`}),(0,Z.jsx)(`div`,{style:{fontSize:`0.72rem`,color:`rgba(250,245,233,0.3)`,fontFamily:`Syne`,letterSpacing:`0.08em`},children:`Admin will verify payment before confirming`})]})]}),(0,Z.jsxs)(`div`,{className:`breakdown`,children:[(0,Z.jsxs)(`div`,{className:`breakdown-row`,children:[(0,Z.jsx)(`span`,{children:`Base ticket price`}),(0,Z.jsxs)(`span`,{children:[`₱`,u.ticket_price>0?u.ticket_price.toFixed(2):`0.00`]})]}),(0,Z.jsxs)(`div`,{className:`breakdown-row`,children:[(0,Z.jsxs)(`span`,{className:m>0?`breakdown-fee`:``,children:[`Convenience fee`,p&&` (6% ${u.payment_method===`gcash`?`GCash`:`Maya`})`]}),(0,Z.jsx)(`span`,{className:m>0?`breakdown-fee`:``,children:m>0?`+₱${m.toFixed(2)}`:u.payment_method===`walk_in`?`FREE`:`—`})]}),(0,Z.jsxs)(`div`,{className:`breakdown-row total`,children:[(0,Z.jsx)(`span`,{children:`Total`}),(0,Z.jsxs)(`span`,{className:`breakdown-total-price`,children:[`₱`,h>0?h.toFixed(2):`0.00`]})]})]}),(0,Z.jsxs)(`div`,{className:`payment-note`,children:[u.payment_method===`gcash`&&(0,Z.jsxs)(Z.Fragment,{children:[`💚 `,(0,Z.jsx)(`strong`,{children:`GCash`}),` — Upload your screenshot and reference number. Admin will verify and confirm your ticket within 24 hours.`]}),u.payment_method===`maya`&&(0,Z.jsxs)(Z.Fragment,{children:[`💙 `,(0,Z.jsx)(`strong`,{children:`Maya`}),` — Upload your screenshot and reference number. Admin will verify and confirm your ticket within 24 hours.`]}),u.payment_method===`walk_in`&&(0,Z.jsxs)(Z.Fragment,{children:[`🏫 `,(0,Z.jsx)(`strong`,{children:`Walk-in`}),` — Slot reserved. Pay cash at PUP COC Lagoon before event day. Present your booking reference.`]}),!u.payment_method&&(0,Z.jsx)(Z.Fragment,{children:`Select a payment method to continue.`})]})]})]})]})}var lc=Object.defineProperty,uc=Object.getOwnPropertySymbols,dc=Object.prototype.hasOwnProperty,fc=Object.prototype.propertyIsEnumerable,pc=(e,t,n)=>t in e?lc(e,t,{enumerable:!0,configurable:!0,writable:!0,value:n}):e[t]=n,mc=(e,t)=>{for(var n in t||={})dc.call(t,n)&&pc(e,n,t[n]);if(uc)for(var n of uc(t))fc.call(t,n)&&pc(e,n,t[n]);return e},hc=(e,t)=>{var n={};for(var r in e)dc.call(e,r)&&t.indexOf(r)<0&&(n[r]=e[r]);if(e!=null&&uc)for(var r of uc(e))t.indexOf(r)<0&&fc.call(e,r)&&(n[r]=e[r]);return n},gc;(e=>{let t=class t{constructor(e,n,r,a){if(this.version=e,this.errorCorrectionLevel=n,this.modules=[],this.isFunction=[],e<t.MIN_VERSION||e>t.MAX_VERSION)throw RangeError(`Version value out of range`);if(a<-1||a>7)throw RangeError(`Mask value out of range`);this.size=e*4+17;let o=[];for(let e=0;e<this.size;e++)o.push(!1);for(let e=0;e<this.size;e++)this.modules.push(o.slice()),this.isFunction.push(o.slice());this.drawFunctionPatterns();let s=this.addEccAndInterleave(r);if(this.drawCodewords(s),a==-1){let e=1e9;for(let t=0;t<8;t++){this.applyMask(t),this.drawFormatBits(t);let n=this.getPenaltyScore();n<e&&(a=t,e=n),this.applyMask(t)}}i(0<=a&&a<=7),this.mask=a,this.applyMask(a),this.drawFormatBits(a),this.isFunction=[]}static encodeText(n,r){let i=e.QrSegment.makeSegments(n);return t.encodeSegments(i,r)}static encodeBinary(n,r){let i=e.QrSegment.makeBytes(n);return t.encodeSegments([i],r)}static encodeSegments(e,r,a=1,s=40,c=-1,l=!0){if(!(t.MIN_VERSION<=a&&a<=s&&s<=t.MAX_VERSION)||c<-1||c>7)throw RangeError(`Invalid value`);let u,d;for(u=a;;u++){let n=t.getNumDataCodewords(u,r)*8,i=o.getTotalBits(e,u);if(i<=n){d=i;break}if(u>=s)throw RangeError(`Data too long`)}for(let e of[t.Ecc.MEDIUM,t.Ecc.QUARTILE,t.Ecc.HIGH])l&&d<=t.getNumDataCodewords(u,e)*8&&(r=e);let f=[];for(let t of e){n(t.mode.modeBits,4,f),n(t.numChars,t.mode.numCharCountBits(u),f);for(let e of t.getData())f.push(e)}i(f.length==d);let p=t.getNumDataCodewords(u,r)*8;i(f.length<=p),n(0,Math.min(4,p-f.length),f),n(0,(8-f.length%8)%8,f),i(f.length%8==0);for(let e=236;f.length<p;e^=253)n(e,8,f);let m=[];for(;m.length*8<f.length;)m.push(0);return f.forEach((e,t)=>m[t>>>3]|=e<<7-(t&7)),new t(u,r,m,c)}getModule(e,t){return 0<=e&&e<this.size&&0<=t&&t<this.size&&this.modules[t][e]}getModules(){return this.modules}drawFunctionPatterns(){for(let e=0;e<this.size;e++)this.setFunctionModule(6,e,e%2==0),this.setFunctionModule(e,6,e%2==0);this.drawFinderPattern(3,3),this.drawFinderPattern(this.size-4,3),this.drawFinderPattern(3,this.size-4);let e=this.getAlignmentPatternPositions(),t=e.length;for(let n=0;n<t;n++)for(let r=0;r<t;r++)n==0&&r==0||n==0&&r==t-1||n==t-1&&r==0||this.drawAlignmentPattern(e[n],e[r]);this.drawFormatBits(0),this.drawVersion()}drawFormatBits(e){let t=this.errorCorrectionLevel.formatBits<<3|e,n=t;for(let e=0;e<10;e++)n=n<<1^(n>>>9)*1335;let a=(t<<10|n)^21522;i(a>>>15==0);for(let e=0;e<=5;e++)this.setFunctionModule(8,e,r(a,e));this.setFunctionModule(8,7,r(a,6)),this.setFunctionModule(8,8,r(a,7)),this.setFunctionModule(7,8,r(a,8));for(let e=9;e<15;e++)this.setFunctionModule(14-e,8,r(a,e));for(let e=0;e<8;e++)this.setFunctionModule(this.size-1-e,8,r(a,e));for(let e=8;e<15;e++)this.setFunctionModule(8,this.size-15+e,r(a,e));this.setFunctionModule(8,this.size-8,!0)}drawVersion(){if(this.version<7)return;let e=this.version;for(let t=0;t<12;t++)e=e<<1^(e>>>11)*7973;let t=this.version<<12|e;i(t>>>18==0);for(let e=0;e<18;e++){let n=r(t,e),i=this.size-11+e%3,a=Math.floor(e/3);this.setFunctionModule(i,a,n),this.setFunctionModule(a,i,n)}}drawFinderPattern(e,t){for(let n=-4;n<=4;n++)for(let r=-4;r<=4;r++){let i=Math.max(Math.abs(r),Math.abs(n)),a=e+r,o=t+n;0<=a&&a<this.size&&0<=o&&o<this.size&&this.setFunctionModule(a,o,i!=2&&i!=4)}}drawAlignmentPattern(e,t){for(let n=-2;n<=2;n++)for(let r=-2;r<=2;r++)this.setFunctionModule(e+r,t+n,Math.max(Math.abs(r),Math.abs(n))!=1)}setFunctionModule(e,t,n){this.modules[t][e]=n,this.isFunction[t][e]=!0}addEccAndInterleave(e){let n=this.version,r=this.errorCorrectionLevel;if(e.length!=t.getNumDataCodewords(n,r))throw RangeError(`Invalid argument`);let a=t.NUM_ERROR_CORRECTION_BLOCKS[r.ordinal][n],o=t.ECC_CODEWORDS_PER_BLOCK[r.ordinal][n],s=Math.floor(t.getNumRawDataModules(n)/8),c=a-s%a,l=Math.floor(s/a),u=[],d=t.reedSolomonComputeDivisor(o);for(let n=0,r=0;n<a;n++){let i=e.slice(r,r+l-o+(n<c?0:1));r+=i.length;let a=t.reedSolomonComputeRemainder(i,d);n<c&&i.push(0),u.push(i.concat(a))}let f=[];for(let e=0;e<u[0].length;e++)u.forEach((t,n)=>{(e!=l-o||n>=c)&&f.push(t[e])});return i(f.length==s),f}drawCodewords(e){if(e.length!=Math.floor(t.getNumRawDataModules(this.version)/8))throw RangeError(`Invalid argument`);let n=0;for(let t=this.size-1;t>=1;t-=2){t==6&&(t=5);for(let i=0;i<this.size;i++)for(let a=0;a<2;a++){let o=t-a,s=t+1&2?i:this.size-1-i;!this.isFunction[s][o]&&n<e.length*8&&(this.modules[s][o]=r(e[n>>>3],7-(n&7)),n++)}}i(n==e.length*8)}applyMask(e){if(e<0||e>7)throw RangeError(`Mask value out of range`);for(let t=0;t<this.size;t++)for(let n=0;n<this.size;n++){let r;switch(e){case 0:r=(n+t)%2==0;break;case 1:r=t%2==0;break;case 2:r=n%3==0;break;case 3:r=(n+t)%3==0;break;case 4:r=(Math.floor(n/3)+Math.floor(t/2))%2==0;break;case 5:r=n*t%2+n*t%3==0;break;case 6:r=(n*t%2+n*t%3)%2==0;break;case 7:r=((n+t)%2+n*t%3)%2==0;break;default:throw Error(`Unreachable`)}!this.isFunction[t][n]&&r&&(this.modules[t][n]=!this.modules[t][n])}}getPenaltyScore(){let e=0;for(let n=0;n<this.size;n++){let r=!1,i=0,a=[0,0,0,0,0,0,0];for(let o=0;o<this.size;o++)this.modules[n][o]==r?(i++,i==5?e+=t.PENALTY_N1:i>5&&e++):(this.finderPenaltyAddHistory(i,a),r||(e+=this.finderPenaltyCountPatterns(a)*t.PENALTY_N3),r=this.modules[n][o],i=1);e+=this.finderPenaltyTerminateAndCount(r,i,a)*t.PENALTY_N3}for(let n=0;n<this.size;n++){let r=!1,i=0,a=[0,0,0,0,0,0,0];for(let o=0;o<this.size;o++)this.modules[o][n]==r?(i++,i==5?e+=t.PENALTY_N1:i>5&&e++):(this.finderPenaltyAddHistory(i,a),r||(e+=this.finderPenaltyCountPatterns(a)*t.PENALTY_N3),r=this.modules[o][n],i=1);e+=this.finderPenaltyTerminateAndCount(r,i,a)*t.PENALTY_N3}for(let n=0;n<this.size-1;n++)for(let r=0;r<this.size-1;r++){let i=this.modules[n][r];i==this.modules[n][r+1]&&i==this.modules[n+1][r]&&i==this.modules[n+1][r+1]&&(e+=t.PENALTY_N2)}let n=0;for(let e of this.modules)n=e.reduce((e,t)=>e+ +!!t,n);let r=this.size*this.size,a=Math.ceil(Math.abs(n*20-r*10)/r)-1;return i(0<=a&&a<=9),e+=a*t.PENALTY_N4,i(0<=e&&e<=2568888),e}getAlignmentPatternPositions(){if(this.version==1)return[];{let e=Math.floor(this.version/7)+2,t=this.version==32?26:Math.ceil((this.version*4+4)/(e*2-2))*2,n=[6];for(let r=this.size-7;n.length<e;r-=t)n.splice(1,0,r);return n}}static getNumRawDataModules(e){if(e<t.MIN_VERSION||e>t.MAX_VERSION)throw RangeError(`Version number out of range`);let n=(16*e+128)*e+64;if(e>=2){let t=Math.floor(e/7)+2;n-=(25*t-10)*t-55,e>=7&&(n-=36)}return i(208<=n&&n<=29648),n}static getNumDataCodewords(e,n){return Math.floor(t.getNumRawDataModules(e)/8)-t.ECC_CODEWORDS_PER_BLOCK[n.ordinal][e]*t.NUM_ERROR_CORRECTION_BLOCKS[n.ordinal][e]}static reedSolomonComputeDivisor(e){if(e<1||e>255)throw RangeError(`Degree out of range`);let n=[];for(let t=0;t<e-1;t++)n.push(0);n.push(1);let r=1;for(let i=0;i<e;i++){for(let e=0;e<n.length;e++)n[e]=t.reedSolomonMultiply(n[e],r),e+1<n.length&&(n[e]^=n[e+1]);r=t.reedSolomonMultiply(r,2)}return n}static reedSolomonComputeRemainder(e,n){let r=n.map(e=>0);for(let i of e){let e=i^r.shift();r.push(0),n.forEach((n,i)=>r[i]^=t.reedSolomonMultiply(n,e))}return r}static reedSolomonMultiply(e,t){if(e>>>8||t>>>8)throw RangeError(`Byte out of range`);let n=0;for(let r=7;r>=0;r--)n=n<<1^(n>>>7)*285,n^=(t>>>r&1)*e;return i(n>>>8==0),n}finderPenaltyCountPatterns(e){let t=e[1];i(t<=this.size*3);let n=t>0&&e[2]==t&&e[3]==t*3&&e[4]==t&&e[5]==t;return(n&&e[0]>=t*4&&e[6]>=t?1:0)+(n&&e[6]>=t*4&&e[0]>=t?1:0)}finderPenaltyTerminateAndCount(e,t,n){return e&&(this.finderPenaltyAddHistory(t,n),t=0),t+=this.size,this.finderPenaltyAddHistory(t,n),this.finderPenaltyCountPatterns(n)}finderPenaltyAddHistory(e,t){t[0]==0&&(e+=this.size),t.pop(),t.unshift(e)}};t.MIN_VERSION=1,t.MAX_VERSION=40,t.PENALTY_N1=3,t.PENALTY_N2=3,t.PENALTY_N3=40,t.PENALTY_N4=10,t.ECC_CODEWORDS_PER_BLOCK=[[-1,7,10,15,20,26,18,20,24,30,18,20,24,26,30,22,24,28,30,28,28,28,28,30,30,26,28,30,30,30,30,30,30,30,30,30,30,30,30,30,30],[-1,10,16,26,18,24,16,18,22,22,26,30,22,22,24,24,28,28,26,26,26,26,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28],[-1,13,22,18,26,18,24,18,22,20,24,28,26,24,20,30,24,28,28,26,30,28,30,30,30,30,28,30,30,30,30,30,30,30,30,30,30,30,30,30,30],[-1,17,28,22,16,22,28,26,26,24,28,24,28,22,24,24,30,28,28,26,28,30,24,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30]],t.NUM_ERROR_CORRECTION_BLOCKS=[[-1,1,1,1,1,1,2,2,2,2,4,4,4,4,4,6,6,6,6,7,8,8,9,9,10,12,12,12,13,14,15,16,17,18,19,19,20,21,22,24,25],[-1,1,1,1,2,2,4,4,4,5,5,5,8,9,9,10,10,11,13,14,16,17,17,18,20,21,23,25,26,28,29,31,33,35,37,38,40,43,45,47,49],[-1,1,1,2,2,4,4,6,6,8,8,8,10,12,16,12,17,16,18,21,20,23,23,25,27,29,34,34,35,38,40,43,45,48,51,53,56,59,62,65,68],[-1,1,1,2,4,4,4,5,6,8,8,11,11,16,16,18,16,19,21,25,25,25,34,30,32,35,37,40,42,45,48,51,54,57,60,63,66,70,74,77,81]],e.QrCode=t;function n(e,t,n){if(t<0||t>31||e>>>t)throw RangeError(`Value out of range`);for(let r=t-1;r>=0;r--)n.push(e>>>r&1)}function r(e,t){return(e>>>t&1)!=0}function i(e){if(!e)throw Error(`Assertion error`)}let a=class e{constructor(e,t,n){if(this.mode=e,this.numChars=t,this.bitData=n,t<0)throw RangeError(`Invalid argument`);this.bitData=n.slice()}static makeBytes(t){let r=[];for(let e of t)n(e,8,r);return new e(e.Mode.BYTE,t.length,r)}static makeNumeric(t){if(!e.isNumeric(t))throw RangeError(`String contains non-numeric characters`);let r=[];for(let e=0;e<t.length;){let i=Math.min(t.length-e,3);n(parseInt(t.substring(e,e+i),10),i*3+1,r),e+=i}return new e(e.Mode.NUMERIC,t.length,r)}static makeAlphanumeric(t){if(!e.isAlphanumeric(t))throw RangeError(`String contains unencodable characters in alphanumeric mode`);let r=[],i;for(i=0;i+2<=t.length;i+=2){let a=e.ALPHANUMERIC_CHARSET.indexOf(t.charAt(i))*45;a+=e.ALPHANUMERIC_CHARSET.indexOf(t.charAt(i+1)),n(a,11,r)}return i<t.length&&n(e.ALPHANUMERIC_CHARSET.indexOf(t.charAt(i)),6,r),new e(e.Mode.ALPHANUMERIC,t.length,r)}static makeSegments(t){return t==``?[]:e.isNumeric(t)?[e.makeNumeric(t)]:e.isAlphanumeric(t)?[e.makeAlphanumeric(t)]:[e.makeBytes(e.toUtf8ByteArray(t))]}static makeEci(t){let r=[];if(t<0)throw RangeError(`ECI assignment value out of range`);if(t<128)n(t,8,r);else if(t<16384)n(2,2,r),n(t,14,r);else if(t<1e6)n(6,3,r),n(t,21,r);else throw RangeError(`ECI assignment value out of range`);return new e(e.Mode.ECI,0,r)}static isNumeric(t){return e.NUMERIC_REGEX.test(t)}static isAlphanumeric(t){return e.ALPHANUMERIC_REGEX.test(t)}getData(){return this.bitData.slice()}static getTotalBits(e,t){let n=0;for(let r of e){let e=r.mode.numCharCountBits(t);if(r.numChars>=1<<e)return 1/0;n+=4+e+r.bitData.length}return n}static toUtf8ByteArray(e){e=encodeURI(e);let t=[];for(let n=0;n<e.length;n++)e.charAt(n)==`%`?(t.push(parseInt(e.substring(n+1,n+3),16)),n+=2):t.push(e.charCodeAt(n));return t}};a.NUMERIC_REGEX=/^[0-9]*$/,a.ALPHANUMERIC_REGEX=/^[A-Z0-9 $%*+.\/:-]*$/,a.ALPHANUMERIC_CHARSET=`0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:`;let o=a;e.QrSegment=a})(gc||={}),(e=>{(e=>{let t=class{constructor(e,t){this.ordinal=e,this.formatBits=t}};t.LOW=new t(0,1),t.MEDIUM=new t(1,0),t.QUARTILE=new t(2,3),t.HIGH=new t(3,2),e.Ecc=t})(e.QrCode||={})})(gc||={}),(e=>{(e=>{let t=class{constructor(e,t){this.modeBits=e,this.numBitsCharCount=t}numCharCountBits(e){return this.numBitsCharCount[Math.floor((e+7)/17)]}};t.NUMERIC=new t(1,[10,12,14]),t.ALPHANUMERIC=new t(2,[9,11,13]),t.BYTE=new t(4,[8,16,16]),t.KANJI=new t(8,[8,10,12]),t.ECI=new t(7,[0,0,0]),e.Mode=t})(e.QrSegment||={})})(gc||={});var _c=gc,vc={L:_c.QrCode.Ecc.LOW,M:_c.QrCode.Ecc.MEDIUM,Q:_c.QrCode.Ecc.QUARTILE,H:_c.QrCode.Ecc.HIGH},yc=128,bc=`L`,xc=`#FFFFFF`,Sc=`#000000`,Cc=!1,wc=1,Tc=4,Ec=0,Dc=.1;function Oc(e,t=0){let n=[];return e.forEach(function(e,r){let i=null;e.forEach(function(a,o){if(!a&&i!==null){n.push(`M${i+t} ${r+t}h${o-i}v1H${i+t}z`),i=null;return}if(o===e.length-1){if(!a)return;i===null?n.push(`M${o+t},${r+t} h1v1H${o+t}z`):n.push(`M${i+t},${r+t} h${o+1-i}v1H${i+t}z`);return}a&&i===null&&(i=o)})}),n.join(``)}function kc(e,t){return e.slice().map((e,n)=>n<t.y||n>=t.y+t.h?e:e.map((e,n)=>n<t.x||n>=t.x+t.w?e:!1))}function Ac(e,t,n,r){if(r==null)return null;let i=e.length+n*2,a=Math.floor(t*Dc),o=i/t,s=(r.width||a)*o,c=(r.height||a)*o,l=r.x==null?e.length/2-s/2:r.x*o,u=r.y==null?e.length/2-c/2:r.y*o,d=r.opacity==null?1:r.opacity,f=null;if(r.excavate){let e=Math.floor(l),t=Math.floor(u);f={x:e,y:t,w:Math.ceil(s+l-e),h:Math.ceil(c+u-t)}}let p=r.crossOrigin;return{x:l,y:u,h:c,w:s,excavation:f,opacity:d,crossOrigin:p}}function jc(e,t){return t==null?e?Tc:Ec:Math.max(Math.floor(t),0)}function Mc({value:e,level:t,minVersion:n,includeMargin:r,marginSize:i,imageSettings:a,size:o,boostLevel:s}){let c=_.useMemo(()=>{let r=(Array.isArray(e)?e:[e]).reduce((e,t)=>(e.push(..._c.QrSegment.makeSegments(t)),e),[]);return _c.QrCode.encodeSegments(r,vc[t],n,void 0,void 0,s)},[e,t,n,s]),{cells:l,margin:u,numCells:d,calculatedImageSettings:f}=_.useMemo(()=>{let e=c.getModules(),t=jc(r,i);return{cells:e,margin:t,numCells:e.length+t*2,calculatedImageSettings:Ac(e,o,t,a)}},[c,o,a,r,i]);return{qrcode:c,margin:u,cells:l,numCells:d,calculatedImageSettings:f}}var Nc=function(){try{new Path2D().addPath(new Path2D)}catch{return!1}return!0}(),Pc=_.forwardRef(function(e,t){let n=e,{value:r,size:i=yc,level:a=bc,bgColor:o=xc,fgColor:s=Sc,includeMargin:c=Cc,minVersion:l=wc,boostLevel:u,marginSize:d,imageSettings:f}=n,p=hc(n,[`value`,`size`,`level`,`bgColor`,`fgColor`,`includeMargin`,`minVersion`,`boostLevel`,`marginSize`,`imageSettings`]),{style:m}=p,h=hc(p,[`style`]),g=f?.src,v=_.useRef(null),y=_.useRef(null),b=_.useCallback(e=>{v.current=e,typeof t==`function`?t(e):t&&(t.current=e)},[t]),[x,S]=_.useState(!1),{margin:C,cells:w,numCells:ee,calculatedImageSettings:T}=Mc({value:r,level:a,minVersion:l,boostLevel:u,includeMargin:c,marginSize:d,imageSettings:f,size:i});_.useEffect(()=>{if(v.current!=null){let e=v.current,t=e.getContext(`2d`);if(!t)return;let n=w,r=y.current,a=T!=null&&r!==null&&r.complete&&r.naturalHeight!==0&&r.naturalWidth!==0;a&&T.excavation!=null&&(n=kc(w,T.excavation));let c=window.devicePixelRatio||1;e.height=e.width=i*c;let l=i/ee*c;t.scale(l,l),t.fillStyle=o,t.fillRect(0,0,ee,ee),t.fillStyle=s,Nc?t.fill(new Path2D(Oc(n,C))):w.forEach(function(e,n){e.forEach(function(e,r){e&&t.fillRect(r+C,n+C,1,1)})}),T&&(t.globalAlpha=T.opacity),a&&t.drawImage(r,T.x+C,T.y+C,T.w,T.h)}}),_.useEffect(()=>{S(!1)},[g]);let E=mc({height:i,width:i},m),D=null;return g!=null&&(D=_.createElement(`img`,{src:g,key:g,style:{display:`none`},onLoad:()=>{S(!0)},ref:y,crossOrigin:T?.crossOrigin})),_.createElement(_.Fragment,null,_.createElement(`canvas`,mc({style:E,height:i,width:i,ref:b,role:`img`},h)),D)});Pc.displayName=`QRCodeCanvas`;var Fc=_.forwardRef(function(e,t){let n=e,{value:r,size:i=yc,level:a=bc,bgColor:o=xc,fgColor:s=Sc,includeMargin:c=Cc,minVersion:l=wc,boostLevel:u,title:d,marginSize:f,imageSettings:p}=n,m=hc(n,[`value`,`size`,`level`,`bgColor`,`fgColor`,`includeMargin`,`minVersion`,`boostLevel`,`title`,`marginSize`,`imageSettings`]),{margin:h,cells:g,numCells:v,calculatedImageSettings:y}=Mc({value:r,level:a,minVersion:l,boostLevel:u,includeMargin:c,marginSize:f,imageSettings:p,size:i}),b=g,x=null;p!=null&&y!=null&&(y.excavation!=null&&(b=kc(g,y.excavation)),x=_.createElement(`image`,{href:p.src,height:y.h,width:y.w,x:y.x+h,y:y.y+h,preserveAspectRatio:`none`,opacity:y.opacity,crossOrigin:y.crossOrigin}));let S=Oc(b,h);return _.createElement(`svg`,mc({height:i,width:i,viewBox:`0 0 ${v} ${v}`,ref:t,role:`img`},m),!!d&&_.createElement(`title`,null,d),_.createElement(`path`,{fill:o,d:`M0,0 h${v}v${v}H0z`,shapeRendering:`crispEdges`}),_.createElement(`path`,{fill:s,d:S,shapeRendering:`crispEdges`}),x)});Fc.displayName=`QRCodeSVG`;var Ic=`
+`,nc=.06,rc=[{value:`alumni`,icon:`🏆`,label:`Alumni`},{value:`faculty`,icon:`👨‍🏫`,label:`Faculty`},{value:`outsider`,icon:`🌐`,label:`Outsider`}],ic=[{key:`gcash`,icon:`💚`,name:`GCash`,desc:`Send to our GCash number and upload screenshot.`,hasFee:!0},{key:`walk_in`,icon:`🏫`,name:`Walk-in`,desc:`Pay cash at PUP Lagoon before the event day.`,hasFee:!1}];function ac(e){let t={};return e.full_name.trim()||(t.full_name=`Required`),(!e.email.trim()||!/\S+@\S+\.\S+/.test(e.email))&&(t.email=`Valid email required`),(!e.phone.trim()||e.phone.replace(/\D/g,``).length<10)&&(t.phone=`Valid PH number required`),e.school_affiliation.trim()||(t.school_affiliation=`Required`),e.privacy_consent||(t.privacy_consent=`You must agree to the Data Privacy Notice to continue`),t}function oc(e){let t={};return e.ticket_type_id||(t.ticket_type_id=`Select a ticket type`),e.ticket_name===`PUP Student`?(e.student_id.trim()||(t.student_id=`Student Number is required`),e.department.trim()||(t.department=`Required`),e.year_level||(t.year_level=`Required`),e.block.trim()||(t.block=`Required`),e.id_photo_file||(t.id_photo_file=`COR upload is required`),e.waiver_file||(t.waiver_file=`Consent/Waiver form is required`)):(e.attendee_type||(t.attendee_type=`Please select your classification`),e.valid_id_file||(t.valid_id_file=`Valid ID is required`),e.waiver_file||(t.waiver_file=`Consent/Waiver form is required`)),t}function sc(e){let t={};return e.payment_method||(t.payment_method=`Select a payment method`),e.payment_agreement||(t.payment_agreement=`You must agree to the payment terms`),e.payment_method===`gcash`&&(e.payment_reference.trim()||(t.payment_reference=`Reference number is required`),e.payment_screenshot_file||(t.payment_screenshot_file=`Payment screenshot is required`)),t}function cc(){let[e]=Dn(),t=st(),[n,r]=(0,_.useState)(1),[i,a]=(0,_.useState)([]),[o,s]=(0,_.useState)(!1),[c,l]=(0,_.useState)({}),[u,d]=(0,_.useState)({full_name:``,email:``,phone:``,school_affiliation:``,privacy_consent:!1,ticket_type_id:``,ticket_name:``,ticket_price:0,student_id:``,department:``,year_level:``,block:``,id_photo_file:null,waiver_file:null,attendee_type:``,id_number:``,valid_id_file:null,payment_method:``,payment_agreement:!1,payment_reference:``,payment_screenshot_file:null}),f=(e,t)=>d(n=>({...n,[e]:t})),p=u.ticket_name===`PUP Student`;(0,_.useEffect)(()=>{async function t(){let{data:t}=await Ys.from(`ticket_types`).select(`id, name, price, total_slots, sold_count`);if(t){a(t);let n=e.get(`type`);if(n===`student`){let e=t.find(e=>e.name===`PUP Student`);e&&d(t=>({...t,ticket_type_id:e.id,ticket_name:e.name,ticket_price:e.price}))}else if(n===`public`){let e=t.find(e=>e.name===`Public`);e&&d(t=>({...t,ticket_type_id:e.id,ticket_name:e.name,ticket_price:e.price}))}}}t()},[]);let m=u.payment_method===`gcash`,h=m?parseFloat((u.ticket_price*nc).toFixed(2)):0,g=u.ticket_price+h,v=p?[u.department,u.year_level,u.block].filter(Boolean).join(`-`):``;function y(){let e={};n===1&&(e=ac(u)),n===2&&(e=oc(u)),l(e),Object.keys(e).length===0&&r(e=>e+1)}async function b(e,t){if(!t)return null;let n=t.name.split(`.`).pop(),r=`${Date.now()}-${Math.random().toString(36).slice(2)}.${n}`,{data:i,error:a}=await Ys.storage.from(e).upload(r,t);if(a)throw a;return i.path}async function x(){let e=sc(u);if(l(e),!(Object.keys(e).length>0)){s(!0);try{let[e,n,i]=await Promise.all([u.id_photo_file?b(`student-id-photos`,u.id_photo_file):null,u.payment_screenshot_file?b(`payment-screenshots`,u.payment_screenshot_file):null,u.waiver_file?b(`waiver-forms`,u.waiver_file):null]),{data:a,error:o}=await Ys.from(`orders`).insert({ticket_type_id:u.ticket_type_id,full_name:u.full_name,email:u.email,phone:u.phone,school_affiliation:u.school_affiliation,attendee_type:p?`pup_student`:u.attendee_type,student_id:u.student_id||null,department:u.department||null,year_level:u.year_level?parseInt(u.year_level):null,block:u.block||null,id_number:u.id_number||null,cor_or_id_url:e,waiver_url:i,payment_method:u.payment_method,payment_reference:u.payment_reference||null,payment_screenshot_url:n,payment_status:`pending`,amount_paid:g}).select().single();if(o){if(o.code===`23505`&&o.message.includes(`student_id`)){l({student_id:`This Student Number already has a ticket registered.`}),r(2),s(!1);return}throw o}t(`/ticket/${a.ticket_code}`)}catch(e){console.error(e),l({submit:`Something went wrong. Please try again.`}),s(!1)}}}return(0,Z.jsxs)(Z.Fragment,{children:[(0,Z.jsx)(`style`,{children:tc}),(0,Z.jsx)(`div`,{className:`checkout-bg`}),(0,Z.jsx)(`div`,{className:`checkout-grid-overlay`}),(0,Z.jsxs)(`div`,{className:`checkout-wrap`,children:[(0,Z.jsxs)(`div`,{className:`form-panel`,children:[(0,Z.jsx)(`button`,{className:`back-btn`,onClick:()=>t(`/`),children:`← Back to Event`}),(0,Z.jsx)(`h1`,{className:`form-title`,children:`Get Your Ticket`}),(0,Z.jsx)(`p`,{className:`form-sub`,children:`Fill in your details to reserve your spot at PUP REVO 2026: SOUND AGAINST SILENCE.`}),(0,Z.jsx)(`div`,{className:`steps`,children:[`Your Info`,`Ticket`,`Payment`].map((e,t)=>(0,Z.jsxs)(`div`,{className:`step ${n===t+1?`active`:n>t+1?`done`:``}`,children:[n>t+1?`✓ `:``,e]},e))}),n===1&&(0,Z.jsxs)(`div`,{children:[(0,Z.jsxs)(`div`,{className:`field-row`,children:[(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Full Name (Given Name, M.I., Last Name) *`}),(0,Z.jsx)(`input`,{className:c.full_name?`error`:``,placeholder:`Ex. Juan L. Dela Cruz`,value:u.full_name,onChange:e=>f(`full_name`,e.target.value)}),c.full_name&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.full_name})]}),(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Phone Number *`}),(0,Z.jsx)(`input`,{className:c.phone?`error`:``,placeholder:`09XXXXXXXXX`,value:u.phone,onChange:e=>f(`phone`,e.target.value)}),c.phone&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.phone})]})]}),(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Email Address *`}),(0,Z.jsx)(`input`,{className:c.email?`error`:``,type:`email`,placeholder:`juan@email.com`,value:u.email,onChange:e=>f(`email`,e.target.value)}),c.email&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.email}),(0,Z.jsx)(`div`,{className:`field-hint`,children:`Your booking confirmation will be sent here.`})]}),(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`School / Affiliation * (Required — No N/A)`}),(0,Z.jsx)(`input`,{className:c.school_affiliation?`error`:``,placeholder:`Ex. Polytechnic University of the Philippines | PUP`,value:u.school_affiliation,onChange:e=>f(`school_affiliation`,e.target.value)}),c.school_affiliation&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.school_affiliation}),(0,Z.jsxs)(`div`,{className:`field-hint`,children:[`Full Name | Abbreviation — e.g. ABC Marketing Solutions Inc. | AMSI`,(0,Z.jsx)(`br`,{}),`If not a student, indicate your workplace or organization.`]})]}),(0,Z.jsxs)(`div`,{className:`privacy-box`,children:[(0,Z.jsx)(`div`,{className:`privacy-box-title`,children:`Data Privacy Consent`}),(0,Z.jsxs)(`div`,{className:`privacy-box-text`,children:[`In line with the Data Privacy Act of 2012, all information collected through this form will be used exclusively for the organization, coordination, and implementation of `,(0,Z.jsx)(`strong`,{children:`PUP REVO 2026: Sound Against Silence — A Benefit Concert for Safer Kids.`}),(0,Z.jsx)(`br`,{}),(0,Z.jsx)(`br`,{}),`Your personal data will be handled with utmost confidentiality and will only be accessed by authorized members of the organizing team for purposes directly related to PUP REVO 2026. It will not be shared with any unauthorized third parties.`,(0,Z.jsx)(`br`,{}),(0,Z.jsx)(`br`,{}),`By accomplishing this form, you voluntarily give your consent to the collection and use of your information in support of this event.`]}),(0,Z.jsxs)(`div`,{className:`privacy-checkbox-row ${u.privacy_consent?`checked`:``}`,onClick:()=>f(`privacy_consent`,!u.privacy_consent),children:[(0,Z.jsx)(`div`,{className:`privacy-checkbox`,children:u.privacy_consent&&(0,Z.jsx)(`span`,{style:{color:`white`,fontSize:`0.75rem`,fontWeight:700},children:`✓`})}),(0,Z.jsxs)(`div`,{className:`privacy-checkbox-label`,children:[`I have read and understand the Data Privacy Notice and `,(0,Z.jsx)(`span`,{children:`consent to the collection and use of my information`}),` for this event *`]})]}),c.privacy_consent&&(0,Z.jsx)(`div`,{className:`field-error`,style:{marginTop:`0.5rem`},children:c.privacy_consent})]}),(0,Z.jsx)(`div`,{className:`step-nav`,children:(0,Z.jsx)(`button`,{className:`next-btn`,onClick:y,children:`Continue → Ticket Type`})})]}),n===2&&(0,Z.jsxs)(`div`,{children:[(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Ticket Type *`}),(0,Z.jsxs)(`select`,{className:c.ticket_type_id?`error`:``,value:u.ticket_type_id,onChange:e=>{let t=i.find(t=>t.id===e.target.value);t&&d(e=>({...e,ticket_type_id:t.id,ticket_name:t.name,ticket_price:t.price}))},children:[(0,Z.jsx)(`option`,{value:``,children:`— Select ticket type —`}),i.map(e=>{let t=e.total_slots-e.sold_count,n=t<=0;return(0,Z.jsxs)(`option`,{value:e.id,disabled:n,children:[e.name,` — ₱`,e.price,n?` (SOLD OUT)`:` (${t} left)`]},e.id)})]}),c.ticket_type_id&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.ticket_type_id})]}),p&&(0,Z.jsxs)(`div`,{className:`ticket-fields`,children:[(0,Z.jsx)(`div`,{className:`ticket-fields-title`,children:`🎓 PUP Student Details`}),(0,Z.jsx)(`div`,{className:`field-hint`,style:{marginBottom:`1rem`,color:`rgba(250,245,233,0.45)`},children:`PUP students enrolled in other campuses aside from the Main Campus may still identify as PUPians.`}),(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Student Number *`}),(0,Z.jsx)(`input`,{className:c.student_id?`error`:``,placeholder:`Ex. 2023-00000-MN-0`,value:u.student_id,onChange:e=>f(`student_id`,e.target.value)}),c.student_id&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.student_id}),(0,Z.jsx)(`div`,{className:`field-hint`,children:`1 Student Number = 1 ticket only.`})]}),(0,Z.jsxs)(`div`,{className:`field-row`,children:[(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Program *`}),(0,Z.jsx)(`input`,{className:c.department?`error`:``,placeholder:`Ex. BAPR`,value:u.department,onChange:e=>f(`department`,e.target.value.toUpperCase())}),c.department&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.department})]}),(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Block *`}),(0,Z.jsx)(`input`,{className:c.block?`error`:``,placeholder:`Ex. 2D`,value:u.block,onChange:e=>f(`block`,e.target.value.toUpperCase())}),c.block&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.block})]})]}),(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Year Level *`}),(0,Z.jsxs)(`select`,{className:c.year_level?`error`:``,value:u.year_level,onChange:e=>f(`year_level`,e.target.value),children:[(0,Z.jsx)(`option`,{value:``,children:`—`}),[1,2,3,4,5].map(e=>(0,Z.jsx)(`option`,{value:e,children:e},e))]}),c.year_level&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.year_level})]}),v&&(0,Z.jsxs)(`div`,{style:{marginBottom:`1rem`},children:[(0,Z.jsx)(`div`,{style:{fontSize:`0.68rem`,fontFamily:`Syne`,fontWeight:700,letterSpacing:`0.15em`,textTransform:`uppercase`,color:`var(--muted)`,marginBottom:`0.35rem`},children:`Section Code Preview`}),(0,Z.jsx)(`div`,{className:`section-preview`,children:v})]}),(0,Z.jsxs)(`div`,{className:`field-group`,style:{marginBottom:0},children:[(0,Z.jsx)(`label`,{children:`Upload COR (Certificate of Registration) *`}),(0,Z.jsx)(`input`,{type:`file`,accept:`image/*,.pdf`,className:c.id_photo_file?`error`:``,onChange:e=>f(`id_photo_file`,e.target.files[0]||null)}),c.id_photo_file&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.id_photo_file}),(0,Z.jsx)(`div`,{className:`field-hint`,children:`Upload a clear image or PDF copy of your COR for S.Y. 2025–2026, 2nd Semester. Screenshot is okay.`})]})]}),!p&&u.ticket_type_id&&(0,Z.jsxs)(`div`,{className:`ticket-fields`,children:[(0,Z.jsx)(`div`,{className:`ticket-fields-title`,children:`👤 Non-PUPian / Public Details`}),(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Classification *`}),(0,Z.jsx)(`div`,{className:`attendee-options`,children:rc.map(e=>(0,Z.jsxs)(`div`,{className:`attendee-opt ${u.attendee_type===e.value?`selected`:``}`,onClick:()=>f(`attendee_type`,e.value),children:[(0,Z.jsx)(`div`,{className:`attendee-opt-icon`,children:e.icon}),(0,Z.jsx)(`div`,{className:`attendee-opt-label`,children:e.label})]},e.value))}),c.attendee_type&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.attendee_type})]}),(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`ID Number *`}),(0,Z.jsx)(`input`,{className:c.id_number?`error`:``,placeholder:`Your ID number`,value:u.id_number,onChange:e=>f(`id_number`,e.target.value)}),c.id_number&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.id_number})]}),(0,Z.jsxs)(`div`,{className:`field-group`,style:{marginBottom:0},children:[(0,Z.jsx)(`label`,{children:`Upload Valid ID *`}),(0,Z.jsx)(`input`,{type:`file`,accept:`image/*,.pdf`,className:c.valid_id_file?`error`:``,onChange:e=>f(`valid_id_file`,e.target.files[0]||null)}),c.valid_id_file&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.valid_id_file}),(0,Z.jsx)(`div`,{className:`field-hint`,children:`Please present the same valid ID at the school entrance on event day.`})]})]}),u.ticket_type_id&&(0,Z.jsxs)(`div`,{className:`waiver-box`,style:{marginTop:`1.5rem`},children:[(0,Z.jsx)(`div`,{className:`waiver-box-title`,children:`Consent and Waiver`}),(0,Z.jsxs)(`div`,{className:`waiver-box-text`,children:[`Please carefully read and complete the `,(0,Z.jsx)(`strong`,{children:`consent, waiver,`}),` and `,(0,Z.jsx)(`strong`,{children:`payment form`}),` before proceeding. `,(0,Z.jsx)(`strong`,{children:`All information provided`}),` must be HONEST and COMPLETE, as `,(0,Z.jsx)(`strong`,{children:`failure to comply may result`}),` in the FORFEITURE OF YOUR REGISTRATION, even if payment has already been made, and `,(0,Z.jsx)(`strong`,{children:`NO REFUND WILL BE ISSUED.`}),(0,Z.jsx)(`br`,{}),(0,Z.jsx)(`br`,{}),`🔗 `,(0,Z.jsx)(`a`,{href:`https://docs.google.com/document/d/1GDeKp0xexvj3g53Zhp-7PI9wgvMOcbZ67LCflV2AWX8/edit?usp=sharing`,target:`_blank`,rel:`noopener noreferrer`,children:`Consent Form and Waiver Form`})]}),(0,Z.jsx)(`div`,{className:`waiver-steps`,children:`➡️ Make a copy of the document, insert your signature with printed name, and upload the completed file below.`}),(0,Z.jsxs)(`div`,{className:`field-group`,style:{marginBottom:0},children:[(0,Z.jsx)(`label`,{children:`Upload Consent / Waiver Form *`}),(0,Z.jsx)(`input`,{type:`file`,accept:`.pdf`,className:c.waiver_file?`error`:``,onChange:e=>f(`waiver_file`,e.target.files[0]||null)}),c.waiver_file&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.waiver_file}),(0,Z.jsx)(`div`,{className:`field-hint`,children:`Only PDF file is accepted. Max 10 MB.`})]})]}),(0,Z.jsxs)(`div`,{className:`step-nav`,children:[(0,Z.jsx)(`button`,{className:`prev-btn`,onClick:()=>r(1),children:`← Back`}),(0,Z.jsx)(`button`,{className:`next-btn`,onClick:y,children:`Continue → Payment`})]})]}),n===3&&(0,Z.jsxs)(`div`,{children:[(0,Z.jsxs)(`div`,{className:`payment-agreement-box`,children:[(0,Z.jsx)(`div`,{className:`payment-agreement-title`,children:`Payment Agreement *`}),(0,Z.jsxs)(`div`,{className:`payment-agreement-text`,children:[`I acknowledge and agree to the payment requirements associated with my participation in the event `,(0,Z.jsx)(`strong`,{children:`"PUP Revo 2026: Sound Against Silence — A Benefit Concert for Safer Kids."`}),` I understand that I am given only `,(0,Z.jsx)(`strong`,{children:`twenty-four (24) hours`}),` from registration to complete my payment.`,(0,Z.jsx)(`br`,{}),(0,Z.jsx)(`br`,{}),`I agree to upload a clear screenshot or proof of payment through the official channel designated by the organizers within the given time frame. Failure to submit proof of payment may result in my registration being considered incomplete and may lead to the forfeiture of my reserved slot.`,(0,Z.jsx)(`br`,{}),(0,Z.jsx)(`br`,{}),`I further understand that all payments made are `,(0,Z.jsx)(`strong`,{children:`strictly non-refundable`}),`, except under circumstances expressly approved by the Communication Society. I also acknowledge that the organizers will not be held liable for any fraudulent transactions made outside the official payment channels.`,(0,Z.jsx)(`br`,{}),(0,Z.jsx)(`br`,{}),`I agree to comply with all payment guidelines, procedures, and instructions set by the organizers.`]}),(0,Z.jsxs)(`div`,{className:`no-refund-list`,children:[(0,Z.jsx)(`strong`,{children:`Strictly NO REFUND and NO TICKET if:`}),(0,Z.jsx)(`br`,{}),`• Incorrect amount`,(0,Z.jsx)(`br`,{}),`• Invalid reference number`,(0,Z.jsx)(`br`,{}),`• Invalid proof of being a PUPian`,(0,Z.jsx)(`br`,{}),`• Invalid or unclear screenshot`]}),(0,Z.jsxs)(`div`,{className:`privacy-checkbox-row ${u.payment_agreement?`checked`:``}`,onClick:()=>f(`payment_agreement`,!u.payment_agreement),children:[(0,Z.jsx)(`div`,{className:`privacy-checkbox`,children:u.payment_agreement&&(0,Z.jsx)(`span`,{style:{color:`white`,fontSize:`0.75rem`,fontWeight:700},children:`✓`})}),(0,Z.jsxs)(`div`,{className:`privacy-checkbox-label`,children:[`I agree to the payment requirements, guidelines, and strict `,(0,Z.jsx)(`span`,{children:`no refund / no ticket policy`})]})]}),c.payment_agreement&&(0,Z.jsx)(`div`,{className:`field-error`,style:{marginTop:`0.5rem`},children:c.payment_agreement})]}),(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Payment Method *`}),(0,Z.jsx)(`div`,{className:`payment-options`,children:ic.map(e=>(0,Z.jsxs)(`div`,{className:`payment-card ${u.payment_method===e.key?`selected`:``}`,onClick:()=>f(`payment_method`,e.key),children:[e.hasFee&&(0,Z.jsx)(`div`,{className:`payment-card-fee`,children:`+6% service fee`}),!e.hasFee&&(0,Z.jsx)(`div`,{className:`payment-card-free`,children:`No fee`}),(0,Z.jsx)(`div`,{className:`payment-card-icon`,children:e.icon}),(0,Z.jsx)(`div`,{className:`payment-card-name`,children:e.name}),(0,Z.jsx)(`div`,{className:`payment-card-desc`,children:e.desc})]},e.key))}),c.payment_method&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.payment_method})]}),u.payment_method===`gcash`&&(0,Z.jsxs)(`div`,{className:`payment-proof`,children:[(0,Z.jsx)(`div`,{className:`payment-proof-title`,children:`💚 GCash — Payment Proof`}),(0,Z.jsxs)(`div`,{style:{background:`rgba(255,255,255,0.02)`,border:`1px solid var(--border)`,borderRadius:`8px`,padding:`0.85rem 1rem`,fontSize:`0.8rem`,color:`var(--muted)`,lineHeight:1.6,marginBottom:`1rem`},children:[`Send `,(0,Z.jsxs)(`strong`,{style:{color:`var(--cream)`},children:[`₱`,g.toFixed(2)]}),` to`,` `,(0,Z.jsx)(`strong`,{style:{color:`var(--gold)`},children:`0924 103 1430 (Julliana Rashida E.)`}),`, then fill in the details below.`,(0,Z.jsx)(`br`,{}),(0,Z.jsx)(`span`,{style:{color:`rgba(250,245,233,0.35)`,fontSize:`0.75rem`},children:`💚 Upload your screenshot and reference number. Admin will verify and confirm your ticket within 24–48 hours.`})]}),(0,Z.jsxs)(`div`,{className:`field-group`,children:[(0,Z.jsx)(`label`,{children:`Reference Number *`}),(0,Z.jsx)(`input`,{className:c.payment_reference?`error`:``,placeholder:`e.g. 1234567890`,value:u.payment_reference,onChange:e=>f(`payment_reference`,e.target.value)}),c.payment_reference&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.payment_reference}),(0,Z.jsx)(`div`,{className:`field-hint`,children:`Found in your GCash transaction history.`})]}),(0,Z.jsxs)(`div`,{className:`field-group`,style:{marginBottom:0},children:[(0,Z.jsx)(`label`,{children:`Payment Screenshot *`}),(0,Z.jsx)(`input`,{type:`file`,accept:`image/*`,className:c.payment_screenshot_file?`error`:``,onChange:e=>f(`payment_screenshot_file`,e.target.files[0]||null)}),c.payment_screenshot_file&&(0,Z.jsx)(`div`,{className:`field-error`,children:c.payment_screenshot_file}),(0,Z.jsx)(`div`,{className:`field-hint`,children:`Screenshot showing the amount, recipient, and reference number. Max 5MB.`})]})]}),u.payment_method===`walk_in`&&(0,Z.jsxs)(`div`,{className:`walkin-info`,children:[`🏫 `,(0,Z.jsx)(`strong`,{children:`Walk-in Payment:`}),` Pay cash at `,(0,Z.jsx)(`strong`,{children:`PUP Lagoon`}),` before the event day. Your slot is reserved — bring your booking reference code when you pay. Slot is NOT confirmed until cash is received and confirmed.`]}),c.submit&&(0,Z.jsx)(`div`,{className:`field-error`,style:{marginTop:`1rem`},children:c.submit}),(0,Z.jsxs)(`div`,{className:`step-nav`,children:[(0,Z.jsx)(`button`,{className:`prev-btn`,onClick:()=>r(2),children:`← Back`}),(0,Z.jsx)(`button`,{className:`next-btn`,onClick:x,disabled:o||!u.payment_method||!u.payment_agreement,children:o?(0,Z.jsxs)(Z.Fragment,{children:[(0,Z.jsx)(`div`,{className:`spinner`}),` Processing...`]}):u.payment_method===`walk_in`?`Reserve My Slot →`:`Submit & Reserve — ₱${g.toFixed(2)} →`})]})]})]}),(0,Z.jsxs)(`div`,{className:`sidebar`,children:[(0,Z.jsx)(`div`,{className:`sidebar-title`,children:`Order Summary`}),(0,Z.jsxs)(`div`,{className:`ticket-preview`,children:[(0,Z.jsxs)(`div`,{className:`ticket-preview-top`,children:[(0,Z.jsx)(`div`,{className:`ticket-preview-event`,children:`PUP REVO 2026: SOUND AGAINST SILENCE`}),(0,Z.jsx)(`div`,{className:`ticket-preview-date`,children:`June 20, 2026 · 9:00 AM · PUP Main Campus Oval, Manila`})]}),(0,Z.jsxs)(`div`,{className:`ticket-preview-body`,children:[(0,Z.jsx)(`div`,{className:`ticket-preview-type`,children:u.ticket_name||`— Select ticket type —`}),(0,Z.jsx)(`div`,{className:`ticket-preview-name`,children:u.full_name||(0,Z.jsx)(`span`,{style:{color:`rgba(250,245,233,0.2)`},children:`Your name here`})}),v&&(0,Z.jsx)(`div`,{className:`ticket-preview-section`,children:v}),!p&&u.attendee_type&&(0,Z.jsx)(`div`,{className:`ticket-preview-attendee`,children:rc.find(e=>e.value===u.attendee_type)?.label||``}),(0,Z.jsx)(`hr`,{className:`ticket-divider`}),(0,Z.jsx)(`div`,{style:{fontSize:`0.72rem`,color:`rgba(250,245,233,0.3)`,fontFamily:`Syne`,letterSpacing:`0.08em`},children:`Admin will verify payment before confirming`})]})]}),(0,Z.jsxs)(`div`,{className:`breakdown`,children:[(0,Z.jsxs)(`div`,{className:`breakdown-row`,children:[(0,Z.jsx)(`span`,{children:`Base ticket price`}),(0,Z.jsxs)(`span`,{children:[`₱`,u.ticket_price>0?u.ticket_price.toFixed(2):`0.00`]})]}),(0,Z.jsxs)(`div`,{className:`breakdown-row`,children:[(0,Z.jsxs)(`span`,{className:h>0?`breakdown-fee`:``,children:[`Service fee`,m&&` (6% GCash)`]}),(0,Z.jsx)(`span`,{className:h>0?`breakdown-fee`:``,children:h>0?`+₱${h.toFixed(2)}`:u.payment_method===`walk_in`?`FREE`:`—`})]}),(0,Z.jsxs)(`div`,{className:`breakdown-row total`,children:[(0,Z.jsx)(`span`,{children:`Total`}),(0,Z.jsxs)(`span`,{className:`breakdown-total-price`,children:[`₱`,g>0?g.toFixed(2):`0.00`]})]})]}),(0,Z.jsxs)(`div`,{className:`payment-note`,children:[u.payment_method===`gcash`&&(0,Z.jsxs)(Z.Fragment,{children:[`💚 `,(0,Z.jsx)(`strong`,{children:`GCash`}),` — Upload your screenshot and reference number. Admin will verify and confirm your ticket within 24–48 hours.`]}),u.payment_method===`walk_in`&&(0,Z.jsxs)(Z.Fragment,{children:[`🏫 `,(0,Z.jsx)(`strong`,{children:`Walk-in`}),` — Slot reserved. Pay cash at PUP Lagoon before event day. Present your booking reference.`]}),!u.payment_method&&(0,Z.jsx)(Z.Fragment,{children:`Select a payment method to continue.`})]})]})]})]})}var lc=Object.defineProperty,uc=Object.getOwnPropertySymbols,dc=Object.prototype.hasOwnProperty,fc=Object.prototype.propertyIsEnumerable,pc=(e,t,n)=>t in e?lc(e,t,{enumerable:!0,configurable:!0,writable:!0,value:n}):e[t]=n,mc=(e,t)=>{for(var n in t||={})dc.call(t,n)&&pc(e,n,t[n]);if(uc)for(var n of uc(t))fc.call(t,n)&&pc(e,n,t[n]);return e},hc=(e,t)=>{var n={};for(var r in e)dc.call(e,r)&&t.indexOf(r)<0&&(n[r]=e[r]);if(e!=null&&uc)for(var r of uc(e))t.indexOf(r)<0&&fc.call(e,r)&&(n[r]=e[r]);return n},gc;(e=>{let t=class t{constructor(e,n,r,a){if(this.version=e,this.errorCorrectionLevel=n,this.modules=[],this.isFunction=[],e<t.MIN_VERSION||e>t.MAX_VERSION)throw RangeError(`Version value out of range`);if(a<-1||a>7)throw RangeError(`Mask value out of range`);this.size=e*4+17;let o=[];for(let e=0;e<this.size;e++)o.push(!1);for(let e=0;e<this.size;e++)this.modules.push(o.slice()),this.isFunction.push(o.slice());this.drawFunctionPatterns();let s=this.addEccAndInterleave(r);if(this.drawCodewords(s),a==-1){let e=1e9;for(let t=0;t<8;t++){this.applyMask(t),this.drawFormatBits(t);let n=this.getPenaltyScore();n<e&&(a=t,e=n),this.applyMask(t)}}i(0<=a&&a<=7),this.mask=a,this.applyMask(a),this.drawFormatBits(a),this.isFunction=[]}static encodeText(n,r){let i=e.QrSegment.makeSegments(n);return t.encodeSegments(i,r)}static encodeBinary(n,r){let i=e.QrSegment.makeBytes(n);return t.encodeSegments([i],r)}static encodeSegments(e,r,a=1,s=40,c=-1,l=!0){if(!(t.MIN_VERSION<=a&&a<=s&&s<=t.MAX_VERSION)||c<-1||c>7)throw RangeError(`Invalid value`);let u,d;for(u=a;;u++){let n=t.getNumDataCodewords(u,r)*8,i=o.getTotalBits(e,u);if(i<=n){d=i;break}if(u>=s)throw RangeError(`Data too long`)}for(let e of[t.Ecc.MEDIUM,t.Ecc.QUARTILE,t.Ecc.HIGH])l&&d<=t.getNumDataCodewords(u,e)*8&&(r=e);let f=[];for(let t of e){n(t.mode.modeBits,4,f),n(t.numChars,t.mode.numCharCountBits(u),f);for(let e of t.getData())f.push(e)}i(f.length==d);let p=t.getNumDataCodewords(u,r)*8;i(f.length<=p),n(0,Math.min(4,p-f.length),f),n(0,(8-f.length%8)%8,f),i(f.length%8==0);for(let e=236;f.length<p;e^=253)n(e,8,f);let m=[];for(;m.length*8<f.length;)m.push(0);return f.forEach((e,t)=>m[t>>>3]|=e<<7-(t&7)),new t(u,r,m,c)}getModule(e,t){return 0<=e&&e<this.size&&0<=t&&t<this.size&&this.modules[t][e]}getModules(){return this.modules}drawFunctionPatterns(){for(let e=0;e<this.size;e++)this.setFunctionModule(6,e,e%2==0),this.setFunctionModule(e,6,e%2==0);this.drawFinderPattern(3,3),this.drawFinderPattern(this.size-4,3),this.drawFinderPattern(3,this.size-4);let e=this.getAlignmentPatternPositions(),t=e.length;for(let n=0;n<t;n++)for(let r=0;r<t;r++)n==0&&r==0||n==0&&r==t-1||n==t-1&&r==0||this.drawAlignmentPattern(e[n],e[r]);this.drawFormatBits(0),this.drawVersion()}drawFormatBits(e){let t=this.errorCorrectionLevel.formatBits<<3|e,n=t;for(let e=0;e<10;e++)n=n<<1^(n>>>9)*1335;let a=(t<<10|n)^21522;i(a>>>15==0);for(let e=0;e<=5;e++)this.setFunctionModule(8,e,r(a,e));this.setFunctionModule(8,7,r(a,6)),this.setFunctionModule(8,8,r(a,7)),this.setFunctionModule(7,8,r(a,8));for(let e=9;e<15;e++)this.setFunctionModule(14-e,8,r(a,e));for(let e=0;e<8;e++)this.setFunctionModule(this.size-1-e,8,r(a,e));for(let e=8;e<15;e++)this.setFunctionModule(8,this.size-15+e,r(a,e));this.setFunctionModule(8,this.size-8,!0)}drawVersion(){if(this.version<7)return;let e=this.version;for(let t=0;t<12;t++)e=e<<1^(e>>>11)*7973;let t=this.version<<12|e;i(t>>>18==0);for(let e=0;e<18;e++){let n=r(t,e),i=this.size-11+e%3,a=Math.floor(e/3);this.setFunctionModule(i,a,n),this.setFunctionModule(a,i,n)}}drawFinderPattern(e,t){for(let n=-4;n<=4;n++)for(let r=-4;r<=4;r++){let i=Math.max(Math.abs(r),Math.abs(n)),a=e+r,o=t+n;0<=a&&a<this.size&&0<=o&&o<this.size&&this.setFunctionModule(a,o,i!=2&&i!=4)}}drawAlignmentPattern(e,t){for(let n=-2;n<=2;n++)for(let r=-2;r<=2;r++)this.setFunctionModule(e+r,t+n,Math.max(Math.abs(r),Math.abs(n))!=1)}setFunctionModule(e,t,n){this.modules[t][e]=n,this.isFunction[t][e]=!0}addEccAndInterleave(e){let n=this.version,r=this.errorCorrectionLevel;if(e.length!=t.getNumDataCodewords(n,r))throw RangeError(`Invalid argument`);let a=t.NUM_ERROR_CORRECTION_BLOCKS[r.ordinal][n],o=t.ECC_CODEWORDS_PER_BLOCK[r.ordinal][n],s=Math.floor(t.getNumRawDataModules(n)/8),c=a-s%a,l=Math.floor(s/a),u=[],d=t.reedSolomonComputeDivisor(o);for(let n=0,r=0;n<a;n++){let i=e.slice(r,r+l-o+(n<c?0:1));r+=i.length;let a=t.reedSolomonComputeRemainder(i,d);n<c&&i.push(0),u.push(i.concat(a))}let f=[];for(let e=0;e<u[0].length;e++)u.forEach((t,n)=>{(e!=l-o||n>=c)&&f.push(t[e])});return i(f.length==s),f}drawCodewords(e){if(e.length!=Math.floor(t.getNumRawDataModules(this.version)/8))throw RangeError(`Invalid argument`);let n=0;for(let t=this.size-1;t>=1;t-=2){t==6&&(t=5);for(let i=0;i<this.size;i++)for(let a=0;a<2;a++){let o=t-a,s=t+1&2?i:this.size-1-i;!this.isFunction[s][o]&&n<e.length*8&&(this.modules[s][o]=r(e[n>>>3],7-(n&7)),n++)}}i(n==e.length*8)}applyMask(e){if(e<0||e>7)throw RangeError(`Mask value out of range`);for(let t=0;t<this.size;t++)for(let n=0;n<this.size;n++){let r;switch(e){case 0:r=(n+t)%2==0;break;case 1:r=t%2==0;break;case 2:r=n%3==0;break;case 3:r=(n+t)%3==0;break;case 4:r=(Math.floor(n/3)+Math.floor(t/2))%2==0;break;case 5:r=n*t%2+n*t%3==0;break;case 6:r=(n*t%2+n*t%3)%2==0;break;case 7:r=((n+t)%2+n*t%3)%2==0;break;default:throw Error(`Unreachable`)}!this.isFunction[t][n]&&r&&(this.modules[t][n]=!this.modules[t][n])}}getPenaltyScore(){let e=0;for(let n=0;n<this.size;n++){let r=!1,i=0,a=[0,0,0,0,0,0,0];for(let o=0;o<this.size;o++)this.modules[n][o]==r?(i++,i==5?e+=t.PENALTY_N1:i>5&&e++):(this.finderPenaltyAddHistory(i,a),r||(e+=this.finderPenaltyCountPatterns(a)*t.PENALTY_N3),r=this.modules[n][o],i=1);e+=this.finderPenaltyTerminateAndCount(r,i,a)*t.PENALTY_N3}for(let n=0;n<this.size;n++){let r=!1,i=0,a=[0,0,0,0,0,0,0];for(let o=0;o<this.size;o++)this.modules[o][n]==r?(i++,i==5?e+=t.PENALTY_N1:i>5&&e++):(this.finderPenaltyAddHistory(i,a),r||(e+=this.finderPenaltyCountPatterns(a)*t.PENALTY_N3),r=this.modules[o][n],i=1);e+=this.finderPenaltyTerminateAndCount(r,i,a)*t.PENALTY_N3}for(let n=0;n<this.size-1;n++)for(let r=0;r<this.size-1;r++){let i=this.modules[n][r];i==this.modules[n][r+1]&&i==this.modules[n+1][r]&&i==this.modules[n+1][r+1]&&(e+=t.PENALTY_N2)}let n=0;for(let e of this.modules)n=e.reduce((e,t)=>e+ +!!t,n);let r=this.size*this.size,a=Math.ceil(Math.abs(n*20-r*10)/r)-1;return i(0<=a&&a<=9),e+=a*t.PENALTY_N4,i(0<=e&&e<=2568888),e}getAlignmentPatternPositions(){if(this.version==1)return[];{let e=Math.floor(this.version/7)+2,t=this.version==32?26:Math.ceil((this.version*4+4)/(e*2-2))*2,n=[6];for(let r=this.size-7;n.length<e;r-=t)n.splice(1,0,r);return n}}static getNumRawDataModules(e){if(e<t.MIN_VERSION||e>t.MAX_VERSION)throw RangeError(`Version number out of range`);let n=(16*e+128)*e+64;if(e>=2){let t=Math.floor(e/7)+2;n-=(25*t-10)*t-55,e>=7&&(n-=36)}return i(208<=n&&n<=29648),n}static getNumDataCodewords(e,n){return Math.floor(t.getNumRawDataModules(e)/8)-t.ECC_CODEWORDS_PER_BLOCK[n.ordinal][e]*t.NUM_ERROR_CORRECTION_BLOCKS[n.ordinal][e]}static reedSolomonComputeDivisor(e){if(e<1||e>255)throw RangeError(`Degree out of range`);let n=[];for(let t=0;t<e-1;t++)n.push(0);n.push(1);let r=1;for(let i=0;i<e;i++){for(let e=0;e<n.length;e++)n[e]=t.reedSolomonMultiply(n[e],r),e+1<n.length&&(n[e]^=n[e+1]);r=t.reedSolomonMultiply(r,2)}return n}static reedSolomonComputeRemainder(e,n){let r=n.map(e=>0);for(let i of e){let e=i^r.shift();r.push(0),n.forEach((n,i)=>r[i]^=t.reedSolomonMultiply(n,e))}return r}static reedSolomonMultiply(e,t){if(e>>>8||t>>>8)throw RangeError(`Byte out of range`);let n=0;for(let r=7;r>=0;r--)n=n<<1^(n>>>7)*285,n^=(t>>>r&1)*e;return i(n>>>8==0),n}finderPenaltyCountPatterns(e){let t=e[1];i(t<=this.size*3);let n=t>0&&e[2]==t&&e[3]==t*3&&e[4]==t&&e[5]==t;return(n&&e[0]>=t*4&&e[6]>=t?1:0)+(n&&e[6]>=t*4&&e[0]>=t?1:0)}finderPenaltyTerminateAndCount(e,t,n){return e&&(this.finderPenaltyAddHistory(t,n),t=0),t+=this.size,this.finderPenaltyAddHistory(t,n),this.finderPenaltyCountPatterns(n)}finderPenaltyAddHistory(e,t){t[0]==0&&(e+=this.size),t.pop(),t.unshift(e)}};t.MIN_VERSION=1,t.MAX_VERSION=40,t.PENALTY_N1=3,t.PENALTY_N2=3,t.PENALTY_N3=40,t.PENALTY_N4=10,t.ECC_CODEWORDS_PER_BLOCK=[[-1,7,10,15,20,26,18,20,24,30,18,20,24,26,30,22,24,28,30,28,28,28,28,30,30,26,28,30,30,30,30,30,30,30,30,30,30,30,30,30,30],[-1,10,16,26,18,24,16,18,22,22,26,30,22,22,24,24,28,28,26,26,26,26,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28],[-1,13,22,18,26,18,24,18,22,20,24,28,26,24,20,30,24,28,28,26,30,28,30,30,30,30,28,30,30,30,30,30,30,30,30,30,30,30,30,30,30],[-1,17,28,22,16,22,28,26,26,24,28,24,28,22,24,24,30,28,28,26,28,30,24,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30]],t.NUM_ERROR_CORRECTION_BLOCKS=[[-1,1,1,1,1,1,2,2,2,2,4,4,4,4,4,6,6,6,6,7,8,8,9,9,10,12,12,12,13,14,15,16,17,18,19,19,20,21,22,24,25],[-1,1,1,1,2,2,4,4,4,5,5,5,8,9,9,10,10,11,13,14,16,17,17,18,20,21,23,25,26,28,29,31,33,35,37,38,40,43,45,47,49],[-1,1,1,2,2,4,4,6,6,8,8,8,10,12,16,12,17,16,18,21,20,23,23,25,27,29,34,34,35,38,40,43,45,48,51,53,56,59,62,65,68],[-1,1,1,2,4,4,4,5,6,8,8,11,11,16,16,18,16,19,21,25,25,25,34,30,32,35,37,40,42,45,48,51,54,57,60,63,66,70,74,77,81]],e.QrCode=t;function n(e,t,n){if(t<0||t>31||e>>>t)throw RangeError(`Value out of range`);for(let r=t-1;r>=0;r--)n.push(e>>>r&1)}function r(e,t){return(e>>>t&1)!=0}function i(e){if(!e)throw Error(`Assertion error`)}let a=class e{constructor(e,t,n){if(this.mode=e,this.numChars=t,this.bitData=n,t<0)throw RangeError(`Invalid argument`);this.bitData=n.slice()}static makeBytes(t){let r=[];for(let e of t)n(e,8,r);return new e(e.Mode.BYTE,t.length,r)}static makeNumeric(t){if(!e.isNumeric(t))throw RangeError(`String contains non-numeric characters`);let r=[];for(let e=0;e<t.length;){let i=Math.min(t.length-e,3);n(parseInt(t.substring(e,e+i),10),i*3+1,r),e+=i}return new e(e.Mode.NUMERIC,t.length,r)}static makeAlphanumeric(t){if(!e.isAlphanumeric(t))throw RangeError(`String contains unencodable characters in alphanumeric mode`);let r=[],i;for(i=0;i+2<=t.length;i+=2){let a=e.ALPHANUMERIC_CHARSET.indexOf(t.charAt(i))*45;a+=e.ALPHANUMERIC_CHARSET.indexOf(t.charAt(i+1)),n(a,11,r)}return i<t.length&&n(e.ALPHANUMERIC_CHARSET.indexOf(t.charAt(i)),6,r),new e(e.Mode.ALPHANUMERIC,t.length,r)}static makeSegments(t){return t==``?[]:e.isNumeric(t)?[e.makeNumeric(t)]:e.isAlphanumeric(t)?[e.makeAlphanumeric(t)]:[e.makeBytes(e.toUtf8ByteArray(t))]}static makeEci(t){let r=[];if(t<0)throw RangeError(`ECI assignment value out of range`);if(t<128)n(t,8,r);else if(t<16384)n(2,2,r),n(t,14,r);else if(t<1e6)n(6,3,r),n(t,21,r);else throw RangeError(`ECI assignment value out of range`);return new e(e.Mode.ECI,0,r)}static isNumeric(t){return e.NUMERIC_REGEX.test(t)}static isAlphanumeric(t){return e.ALPHANUMERIC_REGEX.test(t)}getData(){return this.bitData.slice()}static getTotalBits(e,t){let n=0;for(let r of e){let e=r.mode.numCharCountBits(t);if(r.numChars>=1<<e)return 1/0;n+=4+e+r.bitData.length}return n}static toUtf8ByteArray(e){e=encodeURI(e);let t=[];for(let n=0;n<e.length;n++)e.charAt(n)==`%`?(t.push(parseInt(e.substring(n+1,n+3),16)),n+=2):t.push(e.charCodeAt(n));return t}};a.NUMERIC_REGEX=/^[0-9]*$/,a.ALPHANUMERIC_REGEX=/^[A-Z0-9 $%*+.\/:-]*$/,a.ALPHANUMERIC_CHARSET=`0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:`;let o=a;e.QrSegment=a})(gc||={}),(e=>{(e=>{let t=class{constructor(e,t){this.ordinal=e,this.formatBits=t}};t.LOW=new t(0,1),t.MEDIUM=new t(1,0),t.QUARTILE=new t(2,3),t.HIGH=new t(3,2),e.Ecc=t})(e.QrCode||={})})(gc||={}),(e=>{(e=>{let t=class{constructor(e,t){this.modeBits=e,this.numBitsCharCount=t}numCharCountBits(e){return this.numBitsCharCount[Math.floor((e+7)/17)]}};t.NUMERIC=new t(1,[10,12,14]),t.ALPHANUMERIC=new t(2,[9,11,13]),t.BYTE=new t(4,[8,16,16]),t.KANJI=new t(8,[8,10,12]),t.ECI=new t(7,[0,0,0]),e.Mode=t})(e.QrSegment||={})})(gc||={});var _c=gc,vc={L:_c.QrCode.Ecc.LOW,M:_c.QrCode.Ecc.MEDIUM,Q:_c.QrCode.Ecc.QUARTILE,H:_c.QrCode.Ecc.HIGH},yc=128,bc=`L`,xc=`#FFFFFF`,Sc=`#000000`,Cc=!1,wc=1,Tc=4,Ec=0,Dc=.1;function Oc(e,t=0){let n=[];return e.forEach(function(e,r){let i=null;e.forEach(function(a,o){if(!a&&i!==null){n.push(`M${i+t} ${r+t}h${o-i}v1H${i+t}z`),i=null;return}if(o===e.length-1){if(!a)return;i===null?n.push(`M${o+t},${r+t} h1v1H${o+t}z`):n.push(`M${i+t},${r+t} h${o+1-i}v1H${i+t}z`);return}a&&i===null&&(i=o)})}),n.join(``)}function kc(e,t){return e.slice().map((e,n)=>n<t.y||n>=t.y+t.h?e:e.map((e,n)=>n<t.x||n>=t.x+t.w?e:!1))}function Ac(e,t,n,r){if(r==null)return null;let i=e.length+n*2,a=Math.floor(t*Dc),o=i/t,s=(r.width||a)*o,c=(r.height||a)*o,l=r.x==null?e.length/2-s/2:r.x*o,u=r.y==null?e.length/2-c/2:r.y*o,d=r.opacity==null?1:r.opacity,f=null;if(r.excavate){let e=Math.floor(l),t=Math.floor(u);f={x:e,y:t,w:Math.ceil(s+l-e),h:Math.ceil(c+u-t)}}let p=r.crossOrigin;return{x:l,y:u,h:c,w:s,excavation:f,opacity:d,crossOrigin:p}}function jc(e,t){return t==null?e?Tc:Ec:Math.max(Math.floor(t),0)}function Mc({value:e,level:t,minVersion:n,includeMargin:r,marginSize:i,imageSettings:a,size:o,boostLevel:s}){let c=_.useMemo(()=>{let r=(Array.isArray(e)?e:[e]).reduce((e,t)=>(e.push(..._c.QrSegment.makeSegments(t)),e),[]);return _c.QrCode.encodeSegments(r,vc[t],n,void 0,void 0,s)},[e,t,n,s]),{cells:l,margin:u,numCells:d,calculatedImageSettings:f}=_.useMemo(()=>{let e=c.getModules(),t=jc(r,i);return{cells:e,margin:t,numCells:e.length+t*2,calculatedImageSettings:Ac(e,o,t,a)}},[c,o,a,r,i]);return{qrcode:c,margin:u,cells:l,numCells:d,calculatedImageSettings:f}}var Nc=function(){try{new Path2D().addPath(new Path2D)}catch{return!1}return!0}(),Pc=_.forwardRef(function(e,t){let n=e,{value:r,size:i=yc,level:a=bc,bgColor:o=xc,fgColor:s=Sc,includeMargin:c=Cc,minVersion:l=wc,boostLevel:u,marginSize:d,imageSettings:f}=n,p=hc(n,[`value`,`size`,`level`,`bgColor`,`fgColor`,`includeMargin`,`minVersion`,`boostLevel`,`marginSize`,`imageSettings`]),{style:m}=p,h=hc(p,[`style`]),g=f?.src,v=_.useRef(null),y=_.useRef(null),b=_.useCallback(e=>{v.current=e,typeof t==`function`?t(e):t&&(t.current=e)},[t]),[x,S]=_.useState(!1),{margin:C,cells:w,numCells:ee,calculatedImageSettings:T}=Mc({value:r,level:a,minVersion:l,boostLevel:u,includeMargin:c,marginSize:d,imageSettings:f,size:i});_.useEffect(()=>{if(v.current!=null){let e=v.current,t=e.getContext(`2d`);if(!t)return;let n=w,r=y.current,a=T!=null&&r!==null&&r.complete&&r.naturalHeight!==0&&r.naturalWidth!==0;a&&T.excavation!=null&&(n=kc(w,T.excavation));let c=window.devicePixelRatio||1;e.height=e.width=i*c;let l=i/ee*c;t.scale(l,l),t.fillStyle=o,t.fillRect(0,0,ee,ee),t.fillStyle=s,Nc?t.fill(new Path2D(Oc(n,C))):w.forEach(function(e,n){e.forEach(function(e,r){e&&t.fillRect(r+C,n+C,1,1)})}),T&&(t.globalAlpha=T.opacity),a&&t.drawImage(r,T.x+C,T.y+C,T.w,T.h)}}),_.useEffect(()=>{S(!1)},[g]);let E=mc({height:i,width:i},m),D=null;return g!=null&&(D=_.createElement(`img`,{src:g,key:g,style:{display:`none`},onLoad:()=>{S(!0)},ref:y,crossOrigin:T?.crossOrigin})),_.createElement(_.Fragment,null,_.createElement(`canvas`,mc({style:E,height:i,width:i,ref:b,role:`img`},h)),D)});Pc.displayName=`QRCodeCanvas`;var Fc=_.forwardRef(function(e,t){let n=e,{value:r,size:i=yc,level:a=bc,bgColor:o=xc,fgColor:s=Sc,includeMargin:c=Cc,minVersion:l=wc,boostLevel:u,title:d,marginSize:f,imageSettings:p}=n,m=hc(n,[`value`,`size`,`level`,`bgColor`,`fgColor`,`includeMargin`,`minVersion`,`boostLevel`,`title`,`marginSize`,`imageSettings`]),{margin:h,cells:g,numCells:v,calculatedImageSettings:y}=Mc({value:r,level:a,minVersion:l,boostLevel:u,includeMargin:c,marginSize:f,imageSettings:p,size:i}),b=g,x=null;p!=null&&y!=null&&(y.excavation!=null&&(b=kc(g,y.excavation)),x=_.createElement(`image`,{href:p.src,height:y.h,width:y.w,x:y.x+h,y:y.y+h,preserveAspectRatio:`none`,opacity:y.opacity,crossOrigin:y.crossOrigin}));let S=Oc(b,h);return _.createElement(`svg`,mc({height:i,width:i,viewBox:`0 0 ${v} ${v}`,ref:t,role:`img`},m),!!d&&_.createElement(`title`,null,d),_.createElement(`path`,{fill:o,d:`M0,0 h${v}v${v}H0z`,shapeRendering:`crispEdges`}),_.createElement(`path`,{fill:s,d:S,shapeRendering:`crispEdges`}),x)});Fc.displayName=`QRCodeSVG`;var Ic=`
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
