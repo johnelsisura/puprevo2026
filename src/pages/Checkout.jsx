@@ -503,10 +503,13 @@ function validateStep2(form) {
     if (!form.year_level) errors.year_level = 'Required'
     if (!form.block.trim()) errors.block = 'Required'
     if (!form.id_photo_file) errors.id_photo_file = 'COR upload is required'
+    else if (form.id_photo_file.size > 20 * 1024 * 1024) errors.id_photo_file = 'File too large. Max 20MB. Try a lower quality photo.'
     if (!form.waiver_file) errors.waiver_file = 'Consent/Waiver form is required'
+    else if (form.waiver_file.size > 20 * 1024 * 1024) errors.waiver_file = 'File too large. Max 20MB.'
   } else {
     if (!form.attendee_type) errors.attendee_type = 'Please select your classification'
     if (!form.valid_id_file) errors.valid_id_file = 'Valid ID is required'
+    else if (form.valid_id_file.size > 20 * 1024 * 1024) errors.valid_id_file = 'File too large. Max 20MB. Try a lower quality photo.'
     if (!form.waiver_file) errors.waiver_file = 'Consent/Waiver form is required'
   }
   return errors
@@ -519,6 +522,7 @@ function validateStep3(form) {
   if (form.payment_method === 'gcash') {
     if (!form.payment_reference.trim()) errors.payment_reference = 'Reference number is required'
     if (!form.payment_screenshot_file) errors.payment_screenshot_file = 'Payment screenshot is required'
+    else if (form.payment_screenshot_file.size > 20 * 1024 * 1024) errors.payment_screenshot_file = 'File too large. Max 20MB. Try a screenshot instead of a raw photo.'
   }
   return errors
 }
@@ -607,14 +611,51 @@ export default function Checkout() {
     if (Object.keys(errs).length === 0) setStep(s => s + 1)
   }
 
+  // ── Image compressor ────────────────────────────────────────────────────
+  async function compressImage(file, maxSizeMB = 2) {
+    if (!file.type.startsWith('image/')) return file
+    return new Promise((resolve) => {
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        const img = new Image()
+        img.onload = () => {
+          const canvas = document.createElement('canvas')
+          let { width, height } = img
+          const MAX_DIM = 1600
+          if (width > MAX_DIM || height > MAX_DIM) {
+            const ratio = Math.min(MAX_DIM / width, MAX_DIM / height)
+            width = Math.round(width * ratio)
+            height = Math.round(height * ratio)
+          }
+          canvas.width = width
+          canvas.height = height
+          canvas.getContext('2d').drawImage(img, 0, 0, width, height)
+          canvas.toBlob(async (blob85) => {
+            let finalBlob = blob85
+            if (blob85.size > maxSizeMB * 1024 * 1024) {
+              await new Promise(res => canvas.toBlob(b => { finalBlob = b; res() }, 'image/jpeg', 0.7))
+            }
+            resolve(new File([finalBlob], file.name.replace(/\.[^.]+$/, '.jpg'), { type: 'image/jpeg' }))
+          }, 'image/jpeg', 0.85)
+        }
+        img.src = e.target.result
+      }
+      reader.readAsDataURL(file)
+    })
+  }
+
   async function uploadFile(bucket, file) {
     if (!file) return null
-    const ext = file.name.split('.').pop()
+    const fileToUpload = await compressImage(file)
+    if (fileToUpload.size > 5 * 1024 * 1024) {
+      throw new Error(`File too large. Please use a smaller or lower-resolution image (max 5MB).`)
+    }
+    const ext = fileToUpload.name.split('.').pop()
     const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
-    const { data, error } = await supabase.storage.from(bucket).upload(path, file)
+    const { data, error } = await supabase.storage.from(bucket).upload(path, fileToUpload)
     if (error) {
-    console.error('UPLOAD ERROR — bucket:', bucket, '| error:', error)
-    throw error
+      console.error('UPLOAD ERROR — bucket:', bucket, '| error:', error)
+      throw error
     }
     return data.path
   }
@@ -670,7 +711,7 @@ export default function Checkout() {
       navigate(`/ticket/${order.ticket_code}`)
     } catch (err) {
       console.error(err)
-      setErrors({ submit: 'Something went wrong. Please try again.' })
+      setErrors({ submit: err.message || 'Something went wrong. Please try again.' })
       setLoading(false)
     }
   }
@@ -1090,7 +1131,7 @@ export default function Checkout() {
                       onChange={e => set('payment_screenshot_file', e.target.files[0] || null)}
                     />
                     {errors.payment_screenshot_file && <div className="field-error">{errors.payment_screenshot_file}</div>}
-                    <div className="field-hint">Screenshot showing the amount, recipient, and reference number. Max 5MB.</div>
+                    <div className="field-hint">Screenshot showing the amount, recipient, and reference number. Images are auto-compressed — most phones work fine.</div>
                   </div>
                 </div>
               )}
