@@ -9,6 +9,14 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 
+// Inject Font Awesome if not already loaded
+if (!document.querySelector('link[href*="font-awesome"]')) {
+  const fa = document.createElement('link')
+  fa.rel = 'stylesheet'
+  fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css'
+  document.head.appendChild(fa)
+}
+
 const EVENT_DATE = new Date('2026-06-20T09:00:00+08:00')
 
 function useCountdown(targetDate) {
@@ -258,9 +266,9 @@ export default function Landing() {
           filter: brightness(0) invert(1); opacity: 0.85;
         }
         .bene-title {
-          font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
-          letter-spacing: 0.08em; color: var(--cream);
-          line-height: 1.2;
+          font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem;
+          letter-spacing: 0.1em; color: var(--cream);
+          line-height: 1.2; white-space: nowrap;
         }
         .bene-desc {
           font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
@@ -289,7 +297,7 @@ export default function Landing() {
           padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);
           display: flex; justify-content: space-between; align-items: flex-start;
         }
-        .ticket-type { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: var(--cream); }
+        .ticket-type { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.06em; color: var(--cream); }
         .ticket-badge {
           font-family: 'Syne', sans-serif; font-size: 0.6rem; font-weight: 700;
           letter-spacing: 0.15em; text-transform: uppercase;
@@ -344,7 +352,7 @@ export default function Landing() {
         .faq-body {
           padding: 0.8rem 1.5rem 1.2rem; border-top: 1px solid rgba(255,255,255,0.05);
           font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
-          color: rgba(250,245,233,0.65); line-height: 1.7;
+          color: rgba(250,245,233,0.65); line-height: 1.7; text-align: left;
         }
 
         /* ---- DIVIDER ---- */
@@ -385,6 +393,7 @@ export default function Landing() {
           background: #0D1530; border: 1px solid rgba(255,255,255,0.1);
           border-radius: 16px; max-width: 680px; width: 100%;
           max-height: 80vh; overflow-y: auto; padding: 2rem;
+          text-align: left;
         }
         .modal h2 {
           font-family: 'Bebas Neue', sans-serif; font-size: 2rem;
@@ -486,7 +495,8 @@ export default function Landing() {
           <div style={{
             fontFamily: "'DM Sans', sans-serif", fontSize: '0.95rem', lineHeight: '1.85',
             color: 'rgba(250,245,233,0.7)', maxWidth: '760px', marginBottom: '2.5rem',
-            borderLeft: '3px solid var(--gold)', paddingLeft: '1.5rem'
+            borderLeft: '3px solid var(--gold)', paddingLeft: '1.5rem',
+            textAlign: 'left'
           }}>
             <p>The PUP Communication Society proudly presents <strong style={{ color: 'var(--cream)' }}>PUP REVO 2026: Sound Against Silence — A Benefit Concert for Safer Kids</strong>, a revived and reimagined flagship concert that brings together music, creative media, and social advocacy. More than just entertainment, the event serves as a platform to amplify voices, raise awareness, and inspire action against child abuse, exploitation, and trafficking.</p>
             <p style={{ marginTop: '1rem' }}>In partnership with ABS-CBN Bantay Bata 163 and World Vision Philippines, this benefit concert aims to mobilize the PUP community and beyond to turn sound into a force for change—because silence should never protect harm.</p>
@@ -521,9 +531,7 @@ export default function Landing() {
               <div className="bene-grid">
                 <div className="bene-item">
                   <img src="/BantayBata163.png" alt="Bantay Bata 163" className="bene-logo" />
-                  <div className="bene-title">
-                    Bantay Bata<br />ABS-CBN Foundation
-                  </div>
+                  <div className="bene-title">ABS-CBN Foundation Bantay Bata 163</div>
                   <p className="bene-desc">
                     Giving abused and vulnerable children a voice through rescue, protection, and safe spaces, so no child suffers in silence.
                   </p>
@@ -533,9 +541,7 @@ export default function Landing() {
                 </div>
                 <div className="bene-item">
                   <img src="/WorldVisionPH.png" alt="World Vision Philippines" className="bene-logo" />
-                  <div className="bene-title">
-                    World Vision<br />Philippines
-                  </div>
+                  <div className="bene-title">World Vision Philippines</div>
                   <p className="bene-desc">
                     Standing with children in the most vulnerable communities, protecting their rights and helping them build a future free from fear.
                   </p>
