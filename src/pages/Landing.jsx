@@ -326,6 +326,8 @@ export default function Landing() {
         }
         .ticket-price { padding: 1.5rem; }
         .price-amount { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; line-height: 1; color: var(--cream); }
+        .price-original { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: rgba(250,245,233,0.3); text-decoration: line-through; margin-left: 0.5rem; }
+        .price-discount-badge { display: inline-block; font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(74,222,128,0.12); color: #4ade80; border: 1px solid rgba(74,222,128,0.25); padding: 0.2rem 0.55rem; border-radius: 2rem; margin-left: 0.5rem; vertical-align: middle; }
         .ticket-slots { padding: 0 1.5rem 0.5rem; }
         .slot-bar-bg { background: rgba(255,255,255,0.06); border-radius: 2px; height: 4px; margin-bottom: 0.5rem; }
         .slot-bar-fill { height: 100%; border-radius: 2px; background: var(--red); transition: width 0.5s ease; }
@@ -597,6 +599,8 @@ export default function Landing() {
                     </div>
                     <div className="ticket-price">
                       <span className="price-amount">₱{slots.student.price}</span>
+                      <span className="price-original">₱{slots.public?.price ?? 350}</span>
+                      <span className="price-discount-badge">-₱{(slots.public?.price ?? 350) - slots.student.price} off</span>
                     </div>
                     <div className="ticket-slots">
                       <div className="slot-bar-bg">
