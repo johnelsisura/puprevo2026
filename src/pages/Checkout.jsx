@@ -1128,8 +1128,8 @@ export default function Checkout() {
           {/* Ticket preview */}
           <div className="ticket-preview">
             <div className="ticket-preview-top">
-              <div className="ticket-preview-event">PUPREVO NIGHT 2026</div>
-              <div className="ticket-preview-date">December 31, 2026 · 6:00 PM · PUP Manila</div>
+              <div className="ticket-preview-event">{PUP REVO 2026: SOUND AGAINST SILENCE}</div>
+              <div className="ticket-preview-date">June 20, 2026 · 9:00 AM · PUP Manila</div>
             </div>
             <div className="ticket-preview-body">
               <div className="ticket-preview-type">
