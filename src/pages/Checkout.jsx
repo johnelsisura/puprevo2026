@@ -1004,7 +1004,7 @@ export default function Checkout() {
                     {errors.valid_id_file && <div className="field-error">{errors.valid_id_file}</div>}
                     <FileSizeHint file={form.valid_id_file} maxMB={10} />
                     <div className="field-hint">
-                      Please present the same valid ID at the school entrance on event day.
+                      Upload a clear photo of your valid ID (front only, ID number visible). Present the same ID at the entrance on event day.
                     </div>
                   </div>
                 </div>
