@@ -35,11 +35,12 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-          --red: #E4001B;
-          --gold: #F5C842;
+          --red: #FF3B30;
+          --gold: #FFD700;
+          --blue: #1A4FD6;
           --cream: #FAF5E9;
-          --dark: #0A0500;
-          --card-bg: #110900;
+          --dark: #060D1F;
+          --card-bg: #0D1530;
         }
 
         body { background: var(--dark); color: var(--cream); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
@@ -62,10 +63,11 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         .hero-bg {
           position: absolute; inset: 0;
           background:
-            radial-gradient(ellipse 80% 60% at 50% 0%, rgba(228,0,27,0.18) 0%, transparent 70%),
-            radial-gradient(ellipse 50% 40% at 80% 80%, rgba(245,200,66,0.08) 0%, transparent 60%),
-            radial-gradient(ellipse 40% 35% at 10% 50%, rgba(228,0,27,0.07) 0%, transparent 60%),
-            radial-gradient(ellipse 35% 30% at 90% 30%, rgba(245,200,66,0.06) 0%, transparent 60%),
+            radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,59,48,0.16) 0%, transparent 70%),
+            radial-gradient(ellipse 50% 40% at 80% 80%, rgba(255,215,0,0.08) 0%, transparent 60%),
+            radial-gradient(ellipse 40% 35% at 10% 50%, rgba(26,79,214,0.14) 0%, transparent 60%),
+            radial-gradient(ellipse 35% 30% at 90% 30%, rgba(255,215,0,0.06) 0%, transparent 60%),
+            radial-gradient(ellipse 30% 25% at 50% 90%, rgba(26,79,214,0.08) 0%, transparent 60%),
             var(--dark);
           z-index: 0;
           animation: bgPulse 8s ease-in-out infinite;
@@ -79,8 +81,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         .hero-grid {
           position: absolute; inset: 0;
           background-image:
-            linear-gradient(rgba(228,0,27,0.06) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(228,0,27,0.06) 1px, transparent 1px);
+            linear-gradient(rgba(26,79,214,0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(26,79,214,0.08) 1px, transparent 1px);
           background-size: 60px 60px;
           z-index: 0;
           animation: gridDrift 20s linear infinite;
@@ -104,9 +106,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
         .deco-note:nth-child(1) { top: 12%; left: 6%;  font-size: 32px; color: var(--red);  animation-duration: 4.5s; animation-delay: 0s;   }
         .deco-note:nth-child(2) { top: 25%; right: 8%; font-size: 22px; color: var(--gold); animation-duration: 5.5s; animation-delay: 1s;   }
-        .deco-note:nth-child(3) { top: 55%; left: 4%;  font-size: 18px; color: var(--gold); animation-duration: 6s;   animation-delay: 2s;   }
-        .deco-note:nth-child(4) { top: 18%; right: 22%;font-size: 26px; color: var(--red);  animation-duration: 4s;   animation-delay: 0.5s; }
-        .deco-note:nth-child(5) { top: 68%; right: 7%; font-size: 20px; color: var(--cream);animation-duration: 5s;   animation-delay: 1.5s; }
+        .deco-note:nth-child(3) { top: 55%; left: 4%;  font-size: 18px; color: var(--blue); animation-duration: 6s;   animation-delay: 2s;   }
+        .deco-note:nth-child(4) { top: 18%; right: 22%;font-size: 26px; color: var(--gold); animation-duration: 4s;   animation-delay: 0.5s; }
+        .deco-note:nth-child(5) { top: 68%; right: 7%; font-size: 20px; color: var(--blue); animation-duration: 5s;   animation-delay: 1.5s; }
         .deco-note:nth-child(6) { top: 40%; left: 9%;  font-size: 16px; color: var(--red);  animation-duration: 7s;   animation-delay: 3s;   }
         .deco-note:nth-child(7) { top: 78%; left: 20%; font-size: 24px; color: var(--gold); animation-duration: 4.8s; animation-delay: 2.5s; }
 
@@ -119,7 +121,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
         .badge {
           display: inline-block;
-          border: 1px solid rgba(245,200,66,0.4);
+          border: 1px solid rgba(255,215,0,0.4);
           color: var(--gold);
           font-family: 'Syne', sans-serif;
           font-size: 0.7rem;
@@ -129,7 +131,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           padding: 0.4rem 1.2rem;
           border-radius: 2rem;
           margin-bottom: 2rem;
-          background: rgba(245,200,66,0.06);
+          background: rgba(255,215,0,0.06);
         }
 
         .title {
@@ -215,12 +217,12 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           border-radius: 4px;
           cursor: pointer;
           transition: transform 0.15s, box-shadow 0.15s;
-          box-shadow: 0 4px 30px rgba(228,0,27,0.4);
+          box-shadow: 0 4px 30px rgba(255,59,48,0.4);
         }
 
         .btn-primary:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 40px rgba(228,0,27,0.6);
+          box-shadow: 0 8px 40px rgba(255,59,48,0.6);
         }
 
         .btn-secondary {
@@ -281,9 +283,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           transition: transform 0.2s, border-color 0.2s;
         }
 
-        .ticket-card:hover { transform: translateY(-4px); border-color: rgba(228,0,27,0.4); }
+        .ticket-card:hover { transform: translateY(-4px); border-color: rgba(255,59,48,0.4); }
 
-        .ticket-card.featured { border-color: rgba(245,200,66,0.3); }
+        .ticket-card.featured { border-color: rgba(255,215,0,0.3); }
 
         .ticket-header {
           padding: 1.5rem;
@@ -306,11 +308,11 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           font-weight: 700;
           letter-spacing: 0.15em;
           text-transform: uppercase;
-          background: rgba(245,200,66,0.15);
+          background: rgba(255,215,0,0.15);
           color: var(--gold);
           padding: 0.25rem 0.6rem;
           border-radius: 2rem;
-          border: 1px solid rgba(245,200,66,0.3);
+          border: 1px solid rgba(255,215,0,0.3);
         }
 
         .ticket-price { padding: 1.5rem; }
@@ -414,7 +416,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           transition: border-color 0.2s;
         }
 
-        details.faq-item[open] { border-color: rgba(228,0,27,0.35); }
+        details.faq-item[open] { border-color: rgba(255,59,48,0.35); }
 
         summary.faq-summary {
           font-family: 'Syne', sans-serif;
@@ -475,7 +477,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           .countdown { gap: 0.75rem; }
           .countdown-num { min-width: 60px; padding: 0.3rem 0.6rem; }
         }
-      `}),(0,Z.jsxs)(`div`,{className:`page`,children:[(0,Z.jsxs)(`section`,{className:`hero`,children:[(0,Z.jsx)(`div`,{className:`hero-bg`}),(0,Z.jsx)(`div`,{className:`hero-grid`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♪`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♫`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♩`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♬`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♭`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♪`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♫`}),(0,Z.jsxs)(`div`,{className:`hero-content`,children:[(0,Z.jsx)(`img`,{src:`/pupxpupcommsoc.png`,alt:`PUP x PUP CommSoc`,style:{width:`200px`,display:`block`,margin:`0 auto 1rem auto`}}),(0,Z.jsx)(`div`,{className:`badge`,children:`✦ PUP Communication Society ✦`}),(0,Z.jsx)(`img`,{src:`/officialposter.png`,alt:`PUP Revo 2026 Poster`,style:{width:`100%`,maxWidth:`500px`,display:`block`,margin:`0 auto`}}),(0,Z.jsx)(`p`,{className:`subtitle`,children:`An Evening of Music, Advocacy & PUP Pride`}),(0,Z.jsx)(`div`,{className:`countdown`,children:[{val:t,label:`Days`},{val:n,label:`Hours`},{val:r,label:`Mins`},{val:i,label:`Secs`}].map(({val:e,label:t})=>(0,Z.jsxs)(`div`,{className:`countdown-unit`,children:[(0,Z.jsx)(`div`,{className:`countdown-num`,children:l(e)}),(0,Z.jsx)(`div`,{className:`countdown-label`,children:t})]},t))}),(0,Z.jsxs)(`div`,{className:`cta-group`,children:[(0,Z.jsx)(`button`,{className:`btn-primary`,onClick:()=>e(`/checkout`),children:`Get Your Ticket`}),(0,Z.jsx)(`button`,{className:`btn-secondary`,onClick:()=>document.getElementById(`details`).scrollIntoView({behavior:`smooth`}),children:`Event Details`})]})]})]}),(0,Z.jsx)(`hr`,{className:`divider`}),(0,Z.jsxs)(`section`,{className:`section`,id:`details`,children:[(0,Z.jsx)(`div`,{className:`section-label`,children:`About the Event`}),(0,Z.jsx)(`h2`,{className:`section-title`,children:`Event Details`}),(0,Z.jsxs)(`div`,{className:`details-grid`,children:[(0,Z.jsxs)(`div`,{className:`detail-item`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:`📅`}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Date`}),(0,Z.jsx)(`div`,{className:`detail-value`,children:`June 20, 2026`})]}),(0,Z.jsxs)(`div`,{className:`detail-item`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:`🕕`}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Time`}),(0,Z.jsx)(`div`,{className:`detail-value`,children:`9:00 AM onwards`})]}),(0,Z.jsxs)(`div`,{className:`detail-item`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:`📍`}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Venue`}),(0,Z.jsx)(`div`,{className:`detail-value`,children:`PUP Main Campus, Manila`})]}),(0,Z.jsxs)(`div`,{className:`detail-item`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:`🎤`}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Hosted by`}),(0,Z.jsx)(`div`,{className:`detail-value`,children:`PUP Communication Society`})]}),(0,Z.jsxs)(`div`,{className:`detail-item`,style:{background:`rgba(228,0,27,0.06)`,border:`1px solid rgba(228,0,27,0.2)`,gridColumn:`1 / -1`},children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:`❤️`}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Beneficiaries`}),(0,Z.jsx)(`img`,{src:`/beneficiary-revo.png`,alt:`Bantay Bata 163 and World Vision Philippines`,style:{marginTop:`0.75rem`,maxWidth:`320px`,width:`100%`,display:`block`}}),(0,Z.jsx)(`p`,{style:{marginTop:`0.6rem`,fontFamily:`'DM Sans', sans-serif`,fontSize:`0.78rem`,color:`rgba(250,245,233,0.4)`},children:`A portion of proceeds from ticket sales will go to these organizations.`})]})]})]}),(0,Z.jsx)(`hr`,{className:`divider`}),(0,Z.jsxs)(`section`,{className:`section`,id:`tickets`,children:[(0,Z.jsx)(`div`,{className:`section-label`,children:`Buy Now`}),(0,Z.jsx)(`h2`,{className:`section-title`,children:`Get Your Ticket`}),s?(0,Z.jsx)(`p`,{style:{color:`rgba(250,245,233,0.4)`,fontFamily:`DM Sans`},children:`Loading ticket info...`}):(0,Z.jsxs)(`div`,{className:`tickets-grid`,children:[a.student&&(()=>{let t=a.student.total_slots-a.student.sold_count,n=a.student.sold_count/a.student.total_slots*100,r=t<=0;return(0,Z.jsxs)(`div`,{className:`ticket-card ${r?`sold-out`:``}`,children:[(0,Z.jsxs)(`div`,{className:`ticket-header`,children:[(0,Z.jsx)(`div`,{className:`ticket-type`,children:`PUP Student`}),(0,Z.jsx)(`div`,{className:`ticket-badge`,children:`Student`})]}),(0,Z.jsx)(`div`,{className:`ticket-price`,children:(0,Z.jsxs)(`span`,{className:`price-amount`,children:[`₱`,a.student.price]})}),(0,Z.jsxs)(`div`,{className:`ticket-slots`,children:[(0,Z.jsx)(`div`,{className:`slot-bar-bg`,children:(0,Z.jsx)(`div`,{className:`slot-bar-fill`,style:{width:`${n}%`}})}),(0,Z.jsx)(`div`,{className:`slot-text`,children:r?`🔴 Sold Out`:`${t} slots remaining`})]}),(0,Z.jsx)(`div`,{className:`ticket-footer`,children:(0,Z.jsx)(`button`,{className:`ticket-btn`,disabled:r,onClick:()=>e(`/checkout?type=student`),children:r?`Sold Out`:`Buy Student Ticket`})})]})})(),a.public&&(()=>{let t=a.public.total_slots-a.public.sold_count,n=a.public.sold_count/a.public.total_slots*100,r=t<=0;return(0,Z.jsxs)(`div`,{className:`ticket-card featured ${r?`sold-out`:``}`,children:[(0,Z.jsxs)(`div`,{className:`ticket-header`,children:[(0,Z.jsx)(`div`,{className:`ticket-type`,children:`Public / Alumni`}),(0,Z.jsx)(`div`,{className:`ticket-badge`,children:`Open`})]}),(0,Z.jsx)(`div`,{className:`ticket-price`,children:(0,Z.jsxs)(`span`,{className:`price-amount`,children:[`₱`,a.public.price]})}),(0,Z.jsxs)(`div`,{className:`ticket-slots`,children:[(0,Z.jsx)(`div`,{className:`slot-bar-bg`,children:(0,Z.jsx)(`div`,{className:`slot-bar-fill`,style:{width:`${n}%`}})}),(0,Z.jsx)(`div`,{className:`slot-text`,children:r?`🔴 Sold Out`:`${t} slots remaining`})]}),(0,Z.jsx)(`div`,{className:`ticket-footer`,children:(0,Z.jsx)(`button`,{className:`ticket-btn`,disabled:r,onClick:()=>e(`/checkout?type=public`),children:r?`Sold Out`:`Buy Public Ticket`})})]})})()]})]}),(0,Z.jsx)(`hr`,{className:`divider`}),(0,Z.jsxs)(`section`,{className:`section`,id:`faq`,children:[(0,Z.jsx)(`div`,{className:`section-label`,children:`Got Questions?`}),(0,Z.jsx)(`h2`,{className:`section-title`,children:`Frequently Asked Questions`}),(0,Z.jsx)(`div`,{style:{display:`flex`,flexDirection:`column`,gap:`0.75rem`},children:$s.map(({q:e,a:t})=>(0,Z.jsxs)(`details`,{className:`faq-item`,children:[(0,Z.jsxs)(`summary`,{className:`faq-summary`,children:[e,` `,(0,Z.jsx)(`span`,{className:`faq-icon`,children:`+`})]}),(0,Z.jsx)(`div`,{className:`faq-body`,children:t})]},e))})]}),(0,Z.jsxs)(`footer`,{className:`footer`,children:[(0,Z.jsxs)(`p`,{children:[`© 2026 `,(0,Z.jsx)(`strong`,{children:`PUPREVO`}),` — PUP Communication Society. All rights reserved.`]}),(0,Z.jsxs)(`p`,{style:{marginTop:`0.5rem`},children:[`For concerns, email`,` `,(0,Z.jsx)(`a`,{href:`mailto:puprevo@pup.edu.ph`,style:{color:`rgba(250,245,233,0.4)`},children:`puprevo@pup.edu.ph`})]})]})]})]})}var tc=`
+      `}),(0,Z.jsxs)(`div`,{className:`page`,children:[(0,Z.jsxs)(`section`,{className:`hero`,children:[(0,Z.jsx)(`div`,{className:`hero-bg`}),(0,Z.jsx)(`div`,{className:`hero-grid`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♪`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♫`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♩`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♬`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♭`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♪`}),(0,Z.jsx)(`div`,{className:`deco-note`,children:`♫`}),(0,Z.jsxs)(`div`,{className:`hero-content`,children:[(0,Z.jsx)(`img`,{src:`/pupxpupcommsoc.png`,alt:`PUP x PUP CommSoc`,style:{width:`200px`,display:`block`,margin:`0 auto 1rem auto`}}),(0,Z.jsx)(`div`,{className:`badge`,children:`✦ PUP Communication Society ✦`}),(0,Z.jsx)(`img`,{src:`/officialposter.png`,alt:`PUP Revo 2026 Poster`,style:{width:`100%`,maxWidth:`500px`,display:`block`,margin:`0 auto`}}),(0,Z.jsx)(`p`,{className:`subtitle`,children:`An Evening of Music, Advocacy & PUP Pride`}),(0,Z.jsx)(`div`,{className:`countdown`,children:[{val:t,label:`Days`},{val:n,label:`Hours`},{val:r,label:`Mins`},{val:i,label:`Secs`}].map(({val:e,label:t})=>(0,Z.jsxs)(`div`,{className:`countdown-unit`,children:[(0,Z.jsx)(`div`,{className:`countdown-num`,children:l(e)}),(0,Z.jsx)(`div`,{className:`countdown-label`,children:t})]},t))}),(0,Z.jsxs)(`div`,{className:`cta-group`,children:[(0,Z.jsx)(`button`,{className:`btn-primary`,onClick:()=>e(`/checkout`),children:`Get Your Ticket`}),(0,Z.jsx)(`button`,{className:`btn-secondary`,onClick:()=>document.getElementById(`details`).scrollIntoView({behavior:`smooth`}),children:`Event Details`})]})]})]}),(0,Z.jsx)(`hr`,{className:`divider`}),(0,Z.jsxs)(`section`,{className:`section`,id:`details`,children:[(0,Z.jsx)(`div`,{className:`section-label`,children:`About the Event`}),(0,Z.jsx)(`h2`,{className:`section-title`,children:`Event Details`}),(0,Z.jsxs)(`div`,{className:`details-grid`,children:[(0,Z.jsxs)(`div`,{className:`detail-item`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:`📅`}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Date`}),(0,Z.jsx)(`div`,{className:`detail-value`,children:`June 20, 2026`})]}),(0,Z.jsxs)(`div`,{className:`detail-item`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:`🕕`}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Time`}),(0,Z.jsx)(`div`,{className:`detail-value`,children:`9:00 AM onwards`})]}),(0,Z.jsxs)(`div`,{className:`detail-item`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:`📍`}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Venue`}),(0,Z.jsx)(`div`,{className:`detail-value`,children:`PUP Main Campus, Manila`})]}),(0,Z.jsxs)(`div`,{className:`detail-item`,children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:`🎤`}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Hosted by`}),(0,Z.jsx)(`div`,{className:`detail-value`,children:`PUP Communication Society`})]}),(0,Z.jsxs)(`div`,{className:`detail-item`,style:{background:`rgba(26,79,214,0.06)`,border:`1px solid rgba(26,79,214,0.2)`,gridColumn:`1 / -1`},children:[(0,Z.jsx)(`div`,{className:`detail-icon`,children:`❤️`}),(0,Z.jsx)(`div`,{className:`detail-label`,children:`Beneficiaries`}),(0,Z.jsx)(`img`,{src:`/beneficiary-revo.png`,alt:`Bantay Bata 163 and World Vision Philippines`,style:{marginTop:`0.75rem`,maxWidth:`320px`,width:`100%`,display:`block`}}),(0,Z.jsx)(`p`,{style:{marginTop:`0.6rem`,fontFamily:`'DM Sans', sans-serif`,fontSize:`0.78rem`,color:`rgba(250,245,233,0.4)`},children:`A portion of proceeds from ticket sales will go to these organizations.`})]})]})]}),(0,Z.jsx)(`hr`,{className:`divider`}),(0,Z.jsxs)(`section`,{className:`section`,id:`tickets`,children:[(0,Z.jsx)(`div`,{className:`section-label`,children:`Buy Now`}),(0,Z.jsx)(`h2`,{className:`section-title`,children:`Get Your Ticket`}),s?(0,Z.jsx)(`p`,{style:{color:`rgba(250,245,233,0.4)`,fontFamily:`DM Sans`},children:`Loading ticket info...`}):(0,Z.jsxs)(`div`,{className:`tickets-grid`,children:[a.student&&(()=>{let t=a.student.total_slots-a.student.sold_count,n=a.student.sold_count/a.student.total_slots*100,r=t<=0;return(0,Z.jsxs)(`div`,{className:`ticket-card ${r?`sold-out`:``}`,children:[(0,Z.jsxs)(`div`,{className:`ticket-header`,children:[(0,Z.jsx)(`div`,{className:`ticket-type`,children:`PUP Student`}),(0,Z.jsx)(`div`,{className:`ticket-badge`,children:`Student`})]}),(0,Z.jsx)(`div`,{className:`ticket-price`,children:(0,Z.jsxs)(`span`,{className:`price-amount`,children:[`₱`,a.student.price]})}),(0,Z.jsxs)(`div`,{className:`ticket-slots`,children:[(0,Z.jsx)(`div`,{className:`slot-bar-bg`,children:(0,Z.jsx)(`div`,{className:`slot-bar-fill`,style:{width:`${n}%`}})}),(0,Z.jsx)(`div`,{className:`slot-text`,children:r?`🔴 Sold Out`:`${t} slots remaining`})]}),(0,Z.jsx)(`div`,{className:`ticket-footer`,children:(0,Z.jsx)(`button`,{className:`ticket-btn`,disabled:r,onClick:()=>e(`/checkout?type=student`),children:r?`Sold Out`:`Buy Student Ticket`})})]})})(),a.public&&(()=>{let t=a.public.total_slots-a.public.sold_count,n=a.public.sold_count/a.public.total_slots*100,r=t<=0;return(0,Z.jsxs)(`div`,{className:`ticket-card featured ${r?`sold-out`:``}`,children:[(0,Z.jsxs)(`div`,{className:`ticket-header`,children:[(0,Z.jsx)(`div`,{className:`ticket-type`,children:`Public / Alumni`}),(0,Z.jsx)(`div`,{className:`ticket-badge`,children:`Open`})]}),(0,Z.jsx)(`div`,{className:`ticket-price`,children:(0,Z.jsxs)(`span`,{className:`price-amount`,children:[`₱`,a.public.price]})}),(0,Z.jsxs)(`div`,{className:`ticket-slots`,children:[(0,Z.jsx)(`div`,{className:`slot-bar-bg`,children:(0,Z.jsx)(`div`,{className:`slot-bar-fill`,style:{width:`${n}%`}})}),(0,Z.jsx)(`div`,{className:`slot-text`,children:r?`🔴 Sold Out`:`${t} slots remaining`})]}),(0,Z.jsx)(`div`,{className:`ticket-footer`,children:(0,Z.jsx)(`button`,{className:`ticket-btn`,disabled:r,onClick:()=>e(`/checkout?type=public`),children:r?`Sold Out`:`Buy Public Ticket`})})]})})()]})]}),(0,Z.jsx)(`hr`,{className:`divider`}),(0,Z.jsxs)(`section`,{className:`section`,id:`faq`,children:[(0,Z.jsx)(`div`,{className:`section-label`,children:`Got Questions?`}),(0,Z.jsx)(`h2`,{className:`section-title`,children:`Frequently Asked Questions`}),(0,Z.jsx)(`div`,{style:{display:`flex`,flexDirection:`column`,gap:`0.75rem`},children:$s.map(({q:e,a:t})=>(0,Z.jsxs)(`details`,{className:`faq-item`,children:[(0,Z.jsxs)(`summary`,{className:`faq-summary`,children:[e,` `,(0,Z.jsx)(`span`,{className:`faq-icon`,children:`+`})]}),(0,Z.jsx)(`div`,{className:`faq-body`,children:t})]},e))})]}),(0,Z.jsxs)(`footer`,{className:`footer`,children:[(0,Z.jsxs)(`p`,{children:[`© 2026 `,(0,Z.jsx)(`strong`,{children:`PUPREVO`}),` — PUP Communication Society. All rights reserved.`]}),(0,Z.jsxs)(`p`,{style:{marginTop:`0.5rem`},children:[`For concerns, email`,` `,(0,Z.jsx)(`a`,{href:`mailto:puprevo@pup.edu.ph`,style:{color:`rgba(250,245,233,0.4)`},children:`puprevo@pup.edu.ph`})]})]})]})]})}var tc=`
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
