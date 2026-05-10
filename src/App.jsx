@@ -1,0 +1,24 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Landing from './pages/Landing'
+import Checkout from './pages/Checkout'
+import Ticket from './pages/Ticket'
+import AdminLogin from './pages/admin/Login'
+import Dashboard from './pages/admin/Dashboard'
+import Scanner from './pages/admin/Scanner'
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/ticket/:code" element={<Ticket />} />
+        <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route path="/admin/scanner" element={<Scanner />} />
+      </Routes>
+    </BrowserRouter>
+  )
+}
+
+export default App
