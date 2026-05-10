@@ -772,9 +772,9 @@ export default function Scanner() {
     processingRef.current = true
 
     // Extract ticket code from URL or use raw text
-    // Supports: https://puprevo2026.me/ticket/XXXXXXXX or just XXXXXXXX
+    // Supports: https://puprevo2026.me/ticket/XXXXXXXX, /ticket/REVO-XXXX, or raw XXXXXXXX
     let code = decodedText.trim()
-    const urlMatch = code.match(/\/ticket\/([A-Z0-9]+)$/i)
+    const urlMatch = code.match(/\/ticket\/([A-Z0-9-]+)$/i)
     if (urlMatch) code = urlMatch[1].toUpperCase()
 
     await lookupTicket(code)
@@ -782,23 +782,32 @@ export default function Scanner() {
   }
 
   // ── Lookup ticket ───────────────────────────────────────────────────────
-  async function lookupTicket(code) {
-    if (!code) return
+  async function lookupTicket(rawCode) {
+    if (!rawCode) return
 
-    const { data, error } = await supabase
-      .from('orders')
-      .select(`
-        id, ticket_code, full_name, email, phone,
-        payment_method, payment_status, amount_paid,
-        is_checked_in, checked_in_at,
-        ticket_types ( name, price )
-      `)
-      .eq('ticket_code', code.toUpperCase())
-      .single()
+    // Build list of codes to try: original + strip any "PREFIX-" prefix
+    const codes = [rawCode.toUpperCase()]
+    const dashMatch = rawCode.match(/^[A-Z]+-([A-Z0-9]+)$/i)
+    if (dashMatch) codes.push(dashMatch[1].toUpperCase())
 
-    if (error || !data) {
-      setModal({ state: 'invalid', code })
-      addLog('error', code, 'Ticket not found')
+    let data = null
+    for (const code of codes) {
+      const { data: row } = await supabase
+        .from('orders')
+        .select(`
+          id, ticket_code, full_name, email, phone,
+          payment_method, payment_status, amount_paid,
+          is_checked_in, checked_in_at,
+          ticket_types ( name, price )
+        `)
+        .eq('ticket_code', code)
+        .single()
+      if (row) { data = row; break }
+    }
+
+    if (!data) {
+      setModal({ state: 'invalid', code: rawCode })
+      addLog('error', rawCode, 'Ticket not found')
       return
     }
 
@@ -882,20 +891,20 @@ export default function Scanner() {
       <div className="admin-wrap">
         {/* Sidebar */}
         <aside className="sidebar">
-          <div className="sidebar-logo">PUPREVO</div>
+          <img src="/logo.png" alt="PUP REVO" className="sidebar-logo" />
           <div className="sidebar-sub">Admin Portal</div>
           <div className="nav-label">Menu</div>
           {userRole === 'superadmin' && (
             <button className="nav-item" onClick={() => navigate('/admin/dashboard')}>
-              <span>📊</span> Dashboard
+              <span className="nav-icon"><i className="fa-solid fa-chart-line" /></span> Dashboard
             </button>
           )}
           <button className="nav-item active">
-            <span>📷</span> Scanner
+            <span className="nav-icon"><i className="fa-solid fa-qrcode" /></span> Scanner
           </button>
           <div className="sidebar-footer">
             <button className="signout-btn" onClick={handleSignOut}>
-              <span>🚪</span> Sign Out
+              <i className="fa-solid fa-right-from-bracket" /> Sign Out
             </button>
           </div>
         </aside>
