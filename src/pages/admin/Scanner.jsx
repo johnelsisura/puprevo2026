@@ -961,11 +961,11 @@ export default function Scanner() {
             <div className="manual-row">
               <input
                 className="manual-input"
-                placeholder="e.g. 125C853F"
+                placeholder="e.g. REVO-4264EF9B"
                 value={manualCode}
                 onChange={e => setManualCode(e.target.value.toUpperCase())}
                 onKeyDown={e => e.key === 'Enter' && handleManualSearch()}
-                maxLength={10}
+                maxLength={16}
               />
               <button
                 className="manual-btn"
