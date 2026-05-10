@@ -954,7 +954,7 @@ export default function Checkout() {
                     {errors.id_photo_file && <div className="field-error">{errors.id_photo_file}</div>}
                     <FileSizeHint file={form.id_photo_file} maxMB={10} />
                     <div className="field-hint">
-                      Upload a clear image or PDF copy of your COR for S.Y. 2025–2026, 2nd Semester. Screenshot is okay.
+                      Upload a clear photo of your COR for S.Y. 2025–2026, 2nd Semester. Photo format only.
                     </div>
                   </div>
                 </div>
