@@ -31,6 +31,45 @@ function useCountdown(targetDate) {
   return timeLeft
 }
 
+const FAQ_ITEMS = [
+  {
+    q: 'What is PUPREVO 2026?',
+    a: 'PUPREVO 2026 is an evening of music, advocacy, and PUP pride organized by the PUP Communication Society. It is a fundraising event where proceeds go to Bantay Bata 163 and World Vision Philippines.',
+  },
+  {
+    q: 'When and where is the event?',
+    a: 'The event will be held on June 20, 2026, starting at 9:00 AM at the PUP Main Campus, Manila.',
+  },
+  {
+    q: 'Who can attend?',
+    a: 'The event is open to PUP students, alumni, and the general public. There are two ticket tiers: a discounted rate for PUP students and a regular rate for public/alumni attendees.',
+  },
+  {
+    q: 'How do I get a ticket?',
+    a: 'Click the "Get Your Ticket" button on this page or scroll down to the Tickets section. Choose your ticket type and complete the checkout process online.',
+  },
+  {
+    q: 'Do I need to bring a physical ticket?',
+    a: 'Your e-ticket or confirmation email is sufficient for entry. Showing it on your phone at the venue entrance will do — no need to print.',
+  },
+  {
+    q: 'Is there a deadline for purchasing tickets?',
+    a: 'Tickets are available while slots last. We encourage you to purchase early as slots are limited and may sell out before the event date.',
+  },
+  {
+    q: 'Are tickets refundable?',
+    a: 'All ticket sales are final and non-refundable. For special concerns, please reach out to us at puprevo@pup.edu.ph.',
+  },
+  {
+    q: 'Who are the beneficiaries of this event?',
+    a: 'A portion of ticket sales will be donated to Bantay Bata 163 and World Vision Philippines — two organizations dedicated to the welfare and development of children and communities in need.',
+  },
+  {
+    q: 'How can I contact the organizers?',
+    a: 'For any questions or concerns, email us at puprevo@pup.edu.ph. You can also reach us through the official PUP Communication Society social media pages.',
+  },
+]
+
 export default function Landing() {
   const navigate = useNavigate()
   const { d, h, m, s } = useCountdown(EVENT_DATE)
@@ -58,7 +97,7 @@ export default function Landing() {
     <>
       <style>{`
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        
+
         :root {
           --red: #E4001B;
           --gold: #F5C842;
@@ -227,7 +266,7 @@ export default function Landing() {
 
         .btn-secondary:hover { border-color: rgba(250,245,233,0.5); background: rgba(255,255,255,0.04); }
 
-        /* ---- TICKET SECTION ---- */
+        /* ---- SECTIONS ---- */
         .section {
           padding: 6rem 2rem;
           max-width: 1100px;
@@ -252,6 +291,7 @@ export default function Landing() {
           margin-bottom: 3rem;
         }
 
+        /* ---- TICKETS ---- */
         .tickets-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -299,9 +339,7 @@ export default function Landing() {
           border: 1px solid rgba(245,200,66,0.3);
         }
 
-        .ticket-price {
-          padding: 1.5rem;
-        }
+        .ticket-price { padding: 1.5rem; }
 
         .price-amount {
           font-family: 'Bebas Neue', sans-serif;
@@ -310,16 +348,7 @@ export default function Landing() {
           color: var(--cream);
         }
 
-        .price-currency {
-          font-family: 'Syne', sans-serif;
-          font-size: 1rem;
-          color: rgba(250,245,233,0.4);
-          margin-left: 4px;
-        }
-
-        .ticket-slots {
-          padding: 0 1.5rem 1.5rem;
-        }
+        .ticket-slots { padding: 0 1.5rem 1.5rem; }
 
         .slot-bar-bg {
           background: rgba(255,255,255,0.06);
@@ -402,6 +431,51 @@ export default function Landing() {
           color: var(--cream);
         }
 
+        /* ---- FAQ ---- */
+        details.faq-item {
+          background: var(--card-bg);
+          border: 1px solid rgba(255,255,255,0.07);
+          border-radius: 10px;
+          overflow: hidden;
+          transition: border-color 0.2s;
+        }
+
+        details.faq-item[open] { border-color: rgba(228,0,27,0.35); }
+
+        summary.faq-summary {
+          font-family: 'Syne', sans-serif;
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: var(--cream);
+          padding: 1.2rem 1.5rem;
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 1rem;
+          list-style: none;
+        }
+
+        summary.faq-summary::-webkit-details-marker { display: none; }
+
+        .faq-icon {
+          color: var(--red);
+          flex-shrink: 0;
+          font-size: 1.2rem;
+          transition: transform 0.2s;
+        }
+
+        details.faq-item[open] .faq-icon { transform: rotate(45deg); }
+
+        .faq-body {
+          padding: 0.8rem 1.5rem 1.2rem;
+          border-top: 1px solid rgba(255,255,255,0.05);
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.88rem;
+          color: rgba(250,245,233,0.65);
+          line-height: 1.7;
+        }
+
         /* ---- DIVIDER ---- */
         .divider {
           border: none;
@@ -440,7 +514,7 @@ export default function Landing() {
             <div className="badge">✦ PUP Communication Society ✦</div>
 
             <img src="/officialposter.png" alt="PUP Revo 2026 Poster" style={{ width: '100%', maxWidth: '500px', display: 'block', margin: '0 auto' }} />
-      
+
             <p className="subtitle">
               An Evening of Music, Advocacy & PUP Pride
             </p>
@@ -504,6 +578,29 @@ export default function Landing() {
               <div className="detail-icon">🎤</div>
               <div className="detail-label">Hosted by</div>
               <div className="detail-value">PUP Communication Society</div>
+            </div>
+
+            {/* BENEFICIARIES */}
+            <div className="detail-item" style={{
+              background: 'rgba(228,0,27,0.06)',
+              border: '1px solid rgba(228,0,27,0.2)',
+              gridColumn: '1 / -1',
+            }}>
+              <div className="detail-icon">❤️</div>
+              <div className="detail-label">Beneficiaries</div>
+              <img
+                src="/beneficiary-revo.png"
+                alt="Bantay Bata 163 and World Vision Philippines"
+                style={{
+                  marginTop: '0.75rem',
+                  maxWidth: '320px',
+                  width: '100%',
+                  display: 'block',
+                }}
+              />
+              <p style={{ marginTop: '0.6rem', fontFamily: "'DM Sans', sans-serif", fontSize: '0.78rem', color: 'rgba(250,245,233,0.4)' }}>
+                A portion of proceeds from ticket sales will go to these organizations.
+              </p>
             </div>
           </div>
         </section>
@@ -592,6 +689,25 @@ export default function Landing() {
               })()}
             </div>
           )}
+        </section>
+
+        <hr className="divider" />
+
+        {/* FAQ */}
+        <section className="section" id="faq">
+          <div className="section-label">Got Questions?</div>
+          <h2 className="section-title">Frequently Asked Questions</h2>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            {FAQ_ITEMS.map(({ q, a }) => (
+              <details key={q} className="faq-item">
+                <summary className="faq-summary">
+                  {q} <span className="faq-icon">+</span>
+                </summary>
+                <div className="faq-body">{a}</div>
+              </details>
+            ))}
+          </div>
         </section>
 
         {/* FOOTER */}
