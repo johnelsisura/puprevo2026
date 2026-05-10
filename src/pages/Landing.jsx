@@ -438,12 +438,8 @@ export default function Landing() {
           <div className="hero-content">
             <div className="badge">✦ PUP Communication Society ✦</div>
 
-            <h1 className="title">
-              PUP REVO 2026
-              <span>SOUND AGAINST SILENCE</span>
-              BENEFIT CONCERT
-            </h1>
-
+            <img src="/poster.png" alt="PUP Revo 2026 Poster" style={{ width: '100%', maxWidth: '500px', display: 'block', margin: '0 auto' }} />
+      
             <p className="subtitle">
               An Evening of Music, Culture & PUP Pride
             </p>
