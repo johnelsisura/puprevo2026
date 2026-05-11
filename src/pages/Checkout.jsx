@@ -520,6 +520,7 @@ function validateStep2(form) {
 
   if (form.ticket_name === 'PUP Student') {
     if (!form.student_id.trim()) errors.student_id = 'Student Number is required'
+    if (!form.campus?.trim()) errors.campus = 'Campus is required'
     if (!form.department.trim()) errors.department = 'Required'
     if (!form.year_level) errors.year_level = 'Required'
     if (!form.block.trim()) errors.block = 'Required'
@@ -574,6 +575,7 @@ export default function Checkout() {
     department: '',
     year_level: '',
     block: '',
+    campus: '',
     id_photo_file: null,  // COR
     waiver_file: null,
     // Public fields
@@ -754,8 +756,9 @@ export default function Checkout() {
           attendee_type:        isPUPian ? 'pup_student' : form.attendee_type,
           student_id:           form.student_id || null,
           department:           form.department || null,
-          year_level:           form.year_level ? parseInt(form.year_level) : null,
+          year_level:           form.year_level || null,
           block:                form.block || null,
+          campus:               form.campus || null,
           id_number:            form.id_number || null,
           cor_or_id_url,
           waiver_url,
@@ -803,6 +806,15 @@ export default function Checkout() {
 
           <h1 className="form-title">Get Your Ticket</h1>
           <p className="form-sub">Fill in your details to reserve your spot at PUP REVO 2026: SOUND AGAINST SILENCE.</p>
+          <div style={{
+            background: 'rgba(255,215,0,0.07)', border: '1px solid rgba(255,215,0,0.25)',
+            borderRadius: '8px', padding: '0.75rem 1rem',
+            fontSize: '0.78rem', color: 'rgba(255,215,0,0.9)', lineHeight: 1.6,
+            marginBottom: '1.5rem', display: 'flex', alignItems: 'flex-start', gap: '0.6rem',
+          }}>
+            <i className="fa-solid fa-triangle-exclamation" style={{ marginTop: '0.15rem', flexShrink: 0 }} />
+            <span><strong>Do not refresh or close this page</strong> while filling out the form — all entered information will be lost and you will need to start over.</span>
+          </div>
 
           <div className="steps">
             {['Your Info', 'Ticket', 'Payment'].map((label, i) => (
@@ -884,7 +896,7 @@ export default function Checkout() {
                     {form.privacy_consent && <span style={{ color: 'white', fontSize: '0.75rem', fontWeight: 700 }}>✓</span>}
                   </div>
                   <div className="privacy-checkbox-label">
-                    I have read and understand the Data Privacy Notice and <span>consent to the collection and use of my information</span> for this event *
+                    I have read and understand the Data Privacy Notice and <span>consent to the collection and use of my information</span> for this event
                   </div>
                 </div>
                 {errors.privacy_consent && <div className="field-error" style={{ marginTop: '0.5rem' }}>{errors.privacy_consent}</div>}
@@ -940,9 +952,22 @@ export default function Checkout() {
                       placeholder="Ex. 2023-00000-MN-0"
                       value={form.student_id}
                       onChange={e => set('student_id', e.target.value)}
+                      maxLength={16}
                     />
                     {errors.student_id && <div className="field-error">{errors.student_id}</div>}
-                    <div className="field-hint">1 Student Number = 1 ticket only.</div>
+                    <div className="field-hint">1 Student Number = 1 ticket only. Must be exactly 12 characters (excluding dashes).</div>
+                  </div>
+
+                  <div className="field-group">
+                    <label>Campus *</label>
+                    <input
+                      className={errors.campus ? 'error' : ''}
+                      placeholder="Ex. Main Campus, Sta. Mesa"
+                      value={form.campus || ''}
+                      onChange={e => set('campus', e.target.value)}
+                    />
+                    {errors.campus && <div className="field-error">{errors.campus}</div>}
+                    <div className="field-hint">State your PUP campus only (e.g. Main Campus, Lopez, Quezon City, etc.)</div>
                   </div>
 
                   <div className="field-row">
@@ -970,16 +995,12 @@ export default function Checkout() {
 
                   <div className="field-group">
                     <label>Year Level *</label>
-                    <select
+                    <input
                       className={errors.year_level ? 'error' : ''}
+                      placeholder="Ex. 1st Year, 2nd Year, 1st Year (Graduate)"
                       value={form.year_level}
                       onChange={e => set('year_level', e.target.value)}
-                    >
-                      <option value="">—</option>
-                      {[1,2,3,4,5].map(y => (
-                        <option key={y} value={y}>{y}</option>
-                      ))}
-                    </select>
+                    />
                     {errors.year_level && <div className="field-error">{errors.year_level}</div>}
                   </div>
 
@@ -993,17 +1014,19 @@ export default function Checkout() {
                   )}
 
                   <div className="field-group" style={{ marginBottom: 0 }}>
-                    <label>Upload COR (Certificate of Registration) *</label>
+                    <label>Upload Certificate of Registration (COR) *</label>
                     <input
                       type="file"
-                      accept="image/*,.pdf"
+                      accept="image/png,image/jpeg,image/jpg,image/webp"
                       className={errors.id_photo_file ? 'error' : ''}
+                      key={form.id_photo_file ? 'has-file' : 'empty'}
                       onChange={e => set('id_photo_file', e.target.files[0] || null)}
                     />
                     {errors.id_photo_file && <div className="field-error">{errors.id_photo_file}</div>}
                     <FileSizeHint file={form.id_photo_file} maxMB={10} />
                     <div className="field-hint">
-                      Upload a clear photo of your COR for S.Y. 2025–2026, 2nd Semester. Photo format only.
+                      Accepted: .png, .jpg, .jpeg, .webp only — no PDF. Max 10 MB. 1 file only.<br />
+                      Upload a clear photo of your COR for S.Y. 2025–2026, 2nd Semester.
                     </div>
                   </div>
                 </div>
@@ -1046,13 +1069,15 @@ export default function Checkout() {
                     <label>Upload Valid ID *</label>
                     <input
                       type="file"
-                      accept="image/*,.pdf"
+                      accept="image/png,image/jpeg,image/jpg,image/webp"
                       className={errors.valid_id_file ? 'error' : ''}
+                      key={form.valid_id_file ? 'has-id' : 'empty-id'}
                       onChange={e => set('valid_id_file', e.target.files[0] || null)}
                     />
                     {errors.valid_id_file && <div className="field-error">{errors.valid_id_file}</div>}
                     <FileSizeHint file={form.valid_id_file} maxMB={10} />
                     <div className="field-hint">
+                      Accepted: .png, .jpg, .jpeg, .webp only — no PDF. Max 10 MB. 1 file only.<br />
                       Upload a clear photo of your valid ID (front only, ID number visible). Present the same ID at the entrance on event day.
                     </div>
                   </div>
@@ -1075,13 +1100,14 @@ export default function Checkout() {
                     <label>Upload Consent / Waiver Form *</label>
                     <input
                       type="file"
-                      accept=".pdf"
+                      accept=".pdf,application/pdf"
                       className={errors.waiver_file ? 'error' : ''}
+                      key={form.waiver_file ? 'has-waiver' : 'empty-waiver'}
                       onChange={e => set('waiver_file', e.target.files[0] || null)}
                     />
                     {errors.waiver_file && <div className="field-error">{errors.waiver_file}</div>}
                     <FileSizeHint file={form.waiver_file} maxMB={10} />
-                    <div className="field-hint">Only PDF file is accepted. Max 10 MB.</div>
+                    <div className="field-hint">Accepted: .pdf only. Max 10 MB. 1 file only.</div>
                   </div>
                 </div>
               )}
@@ -1098,13 +1124,13 @@ export default function Checkout() {
             <div>
               {/* Payment Agreement */}
               <div className="payment-agreement-box">
-                <div className="payment-agreement-title">Payment Agreement *</div>
+                <div className="payment-agreement-title">Payment Agreement</div>
                 <div className="payment-agreement-text">
                   I acknowledge and agree to the payment requirements associated with my participation in the event <strong>"PUP Revo 2026: Sound Against Silence — A Benefit Concert for Safer Kids."</strong> I understand that I am given only <strong>twenty-four (24) hours</strong> from registration to complete my payment.
                   <br /><br />
-                  I agree to upload a clear screenshot or proof of payment through the official channel designated by the organizers within the given time frame. Failure to submit proof of payment may result in my registration being considered incomplete and may lead to the forfeiture of my reserved slot.
+                  I agree to upload a clear screenshot or proof of payment through the official channel designated by the organizers within the given time frame. <strong>Failure to submit proof of payment</strong> may result in my registration being considered incomplete and may <strong>lead to the forfeiture of my reserved slot.</strong>
                   <br /><br />
-                  I further understand that all payments made are <strong>strictly non-refundable</strong>, except under circumstances expressly approved by the Communication Society. I also acknowledge that the organizers will not be held liable for any fraudulent transactions made outside the official payment channels.
+                  I further understand that <strong>ALL payments</strong> made are <strong>strictly non-refundable</strong>, except under circumstances expressly approved by the PUP Communication Society. I also acknowledge that the <strong>organizers will not be held liable for any fraudulent transactions</strong> made outside the official payment channels by the PUP Communication Society.
                   <br /><br />
                   I agree to comply with all payment guidelines, procedures, and instructions set by the organizers.
                 </div>
@@ -1157,7 +1183,7 @@ export default function Checkout() {
                   <div style={{
                     background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border)',
                     borderRadius: '8px', padding: '0.85rem 1rem', fontSize: '0.8rem',
-                    color: 'var(--muted)', lineHeight: 1.6, marginBottom: '1rem',
+                    color: 'var(--muted)', lineHeight: 1.6, marginBottom: '0.75rem',
                   }}>
                     Send <strong style={{ color: 'var(--cream)' }}>₱{totalAmount.toFixed(2)}</strong> to{' '}
                     <strong style={{ color: 'var(--gold)' }}>0924 103 1430 (Julliana Rashida E.)</strong>
@@ -1166,6 +1192,18 @@ export default function Checkout() {
                     <span style={{ color: 'rgba(250,245,233,0.35)', fontSize: '0.75rem' }}>
                       <i className="fa-solid fa-circle-info" style={{ marginRight: '0.3rem' }} />Upload your screenshot and reference number. Admin will verify and confirm your ticket within 24–48 hours.
                     </span>
+                  </div>
+
+                  <div style={{
+                    background: 'rgba(255,215,0,0.05)', border: '1px solid rgba(255,215,0,0.2)',
+                    borderRadius: '8px', padding: '0.85rem 1rem', fontSize: '0.78rem',
+                    color: 'rgba(255,215,0,0.85)', lineHeight: 1.7, marginBottom: '1rem',
+                  }}>
+                    <div style={{ marginBottom: '0.3rem' }}><i className="fa-solid fa-circle-exclamation" style={{ marginRight: '0.4rem' }} /><strong>Please ensure that the reference number is clearly visible.</strong> Only image file submissions will be accepted.</div>
+                    <div style={{ marginBottom: '0.3rem' }}><i className="fa-solid fa-file-signature" style={{ marginRight: '0.4rem' }} />Please rename your file using the format: <strong>PAYMENT_Last Name, First Name</strong></div>
+                    <div style={{ color: 'rgba(255,215,0,0.65)', fontSize: '0.74rem', marginTop: '0.4rem', borderTop: '1px solid rgba(255,215,0,0.15)', paddingTop: '0.5rem' }}>
+                      <i className="fa-solid fa-circle-info" style={{ marginRight: '0.4rem' }} />Note: The ticket price for online selling remains at Php 250. The additional 6% service fee serves as the fee for web services and convenience fee charged by GCash for online transactions.
+                    </div>
                   </div>
 
                   <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
@@ -1199,12 +1237,14 @@ export default function Checkout() {
                     <label>Payment Screenshot *</label>
                     <input
                       type="file"
-                      accept="image/*"
+                      accept="image/png,image/jpeg,image/jpg,image/webp"
                       className={errors.payment_screenshot_file ? 'error' : ''}
+                      key={form.payment_screenshot_file ? `ss-${form.payment_screenshot_file.name}` : 'ss-empty'}
                       onChange={e => set('payment_screenshot_file', e.target.files[0] || null)}
                     />
                     {errors.payment_screenshot_file && <div className="field-error">{errors.payment_screenshot_file}</div>}
-                    <div className="field-hint">Screenshot showing the amount, recipient, and reference number. Images are auto-compressed — most phones work fine.</div>
+                    <FileSizeHint file={form.payment_screenshot_file} maxMB={10} />
+                    <div className="field-hint">Accepted: .png, .jpg, .jpeg, .webp only. Max 10 MB. 1 file only. Reference number must be clearly visible.</div>
                   </div>
                 </div>
               )}
@@ -1212,7 +1252,29 @@ export default function Checkout() {
               {/* Walk-in instructions */}
               {form.payment_method === 'walk_in' && (
                 <div className="walkin-info">
-                  <i className="fa-solid fa-school" style={{ marginRight: '0.5rem' }} /><strong>Walk-in Payment:</strong> Pay cash at <strong>PUP Lagoon</strong> before the event day. Your slot is reserved — bring your booking reference code when you pay. Slot is NOT confirmed until cash is received and confirmed.
+                  <div style={{ marginBottom: '0.6rem' }}>
+                    <i className="fa-solid fa-school" style={{ marginRight: '0.5rem' }} /><strong>Walk-in Payment:</strong> Pay cash at the <strong>PUP REVO ticket booth</strong> before the event day. Your slot is reserved — bring your booking reference code when you pay. Slot is <strong>NOT confirmed</strong> until cash is received and confirmed. Payment must be settled within the <strong>SAME WEEK</strong> you selected this option; otherwise, your registration slot will be forfeited.
+                  </div>
+                  <div style={{ borderTop: '1px solid rgba(255,215,0,0.2)', paddingTop: '0.75rem', marginTop: '0.25rem' }}>
+                    <div style={{ fontFamily: 'Syne, sans-serif', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.5rem', color: 'rgba(255,215,0,0.7)' }}>
+                      Onsite Ticket Selling Schedule
+                    </div>
+                    {[
+                      { date: 'May 6, 2026',  time: '10 AM – 5 PM', venue: 'Lagoon' },
+                      { date: 'May 8, 2026',  time: '10 AM – 5 PM', venue: 'Lagoon' },
+                      { date: 'May 9, 2026',  time: '10 AM – 5 PM', venue: 'Lagoon' },
+                      { date: 'May 13, 2026', time: '10 AM – 5 PM', venue: 'Lagoon' },
+                      { date: 'May 16, 2026', time: '10 AM – 5 PM', venue: 'Lagoon' },
+                      { date: 'May 19, 2026', time: '10 AM – 5 PM', venue: 'Lunan' },
+                      { date: 'May 30, 2026', time: '10 AM – 5 PM', venue: 'Lunan' },
+                      { date: 'June 2, 2026', time: '10 AM – 5 PM', venue: 'Lunan' },
+                    ].map(({ date, time, venue }) => (
+                      <div key={date} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', padding: '0.2rem 0', borderBottom: '1px solid rgba(255,215,0,0.08)' }}>
+                        <span style={{ fontWeight: 600 }}>{date}</span>
+                        <span style={{ color: 'rgba(255,215,0,0.6)' }}>{time} @ {venue}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
 
@@ -1300,7 +1362,7 @@ export default function Checkout() {
               <><i className="fa-solid fa-mobile-screen-button" style={{ marginRight: '0.4rem', color: '#4ade80' }} /><strong>GCash</strong> — Upload your screenshot and reference number. Admin will verify and confirm your ticket within 24–48 hours.</>
             )}
             {form.payment_method === 'walk_in' && (
-              <><i className="fa-solid fa-school" style={{ marginRight: '0.4rem', color: 'var(--gold)' }} /><strong>Walk-in</strong> — Slot reserved. Pay cash at PUP Lagoon before event day. Present your booking reference.</>
+              <><i className="fa-solid fa-school" style={{ marginRight: '0.4rem', color: 'var(--gold)' }} /><strong>Walk-in</strong> — Slot reserved. Pay cash at the PUP REVO ticket booth before event day. Present your booking reference. Slot is NOT confirmed until payment is received.</>
             )}
             {!form.payment_method && (
               <>Select a payment method to continue.</>
