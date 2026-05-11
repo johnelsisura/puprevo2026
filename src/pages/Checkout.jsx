@@ -993,7 +993,7 @@ export default function Checkout() {
                     <label>Year Level *</label>
                     <input
                       className={errors.year_level ? 'error' : ''}
-                      placeholder="Ex. 1st Year, 2nd Year, 1st Year (Graduate)"
+                      placeholder="Ex. 1, 2, 3, 4 (Number only)"
                       value={form.year_level}
                       onChange={e => set('year_level', e.target.value)}
                     />
