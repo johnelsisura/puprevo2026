@@ -239,51 +239,127 @@ const css = `
 
   .btn-red:hover { opacity: 0.85; }
 
-  /* ── Stat cards ── */
-  .stats-grid-revenue {
+  /* ── Stats overview grid ── */
+  .stats-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
     margin-bottom: 1rem;
   }
 
-  .stat-card-revenue {
-    background: var(--card);
-    border: 1px solid rgba(255,215,0,0.3);
-    border-radius: 14px;
-    padding: 2rem 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    box-shadow: 0 0 40px rgba(255,215,0,0.05);
+  @media (max-width: 900px) {
+    .stats-overview { grid-template-columns: 1fr; }
   }
 
-  .stat-card-revenue .stat-label {
+  /* Big revenue card — left column */
+  .stat-card-revenue {
+    background: var(--card);
+    border: 1px solid rgba(255,215,0,0.25);
+    border-radius: 14px;
+    padding: 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    box-shadow: 0 0 40px rgba(255,215,0,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card-revenue::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,215,0,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .stat-card-revenue .rev-label {
     font-family: 'Syne', sans-serif;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-card-revenue .rev-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.8rem;
+    line-height: 1;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+
+  .stat-card-revenue .rev-sub {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+
+  .rev-icon {
+    font-size: 2rem;
+    color: rgba(255,215,0,0.1);
+    position: absolute;
+    bottom: 1.25rem;
+    right: 1.5rem;
+  }
+
+  /* 2×2 mini stats grid — right column */
+  .stats-mini-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stat-mini {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    transition: border-color 0.2s;
+  }
+
+  .stat-mini:hover { border-color: rgba(255,255,255,0.14); }
+  .stat-mini.gcash  { border-color: rgba(74,222,128,0.2); }
+  .stat-mini.walkin { border-color: rgba(255,215,0,0.2); }
+  .stat-mini.pupian { border-color: rgba(255,59,48,0.2); }
+  .stat-mini.nonpup { border-color: rgba(96,165,250,0.2); }
+
+  .stat-mini-icon {
+    font-size: 0.85rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .stat-mini-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.56rem;
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 0.4rem;
+    line-height: 1.4;
   }
 
-  .stat-card-revenue .stat-value {
+  .stat-mini-value {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 3.5rem;
+    font-size: 1.9rem;
     line-height: 1;
-    color: var(--gold);
+    margin-top: 0.2rem;
   }
 
-  .stat-card-revenue .stat-sub {
-    font-size: 0.75rem;
-    color: var(--muted);
-    margin-top: 0.3rem;
-  }
+  .stat-mini-value.green  { color: #4ade80; }
+  .stat-mini-value.gold   { color: var(--gold); }
+  .stat-mini-value.red    { color: #ff8080; }
+  .stat-mini-value.blue   { color: #93c5fd; }
 
-  .revenue-icon {
-    font-size: 2.5rem;
-    color: rgba(255,215,0,0.15);
-  }
-
+  /* Bottom row: 4 small stat tiles */
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -297,8 +373,8 @@ const css = `
 
   @media (max-width: 600px) {
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .stat-card-revenue { padding: 1.5rem; }
-    .stat-card-revenue .stat-value { font-size: 2.5rem; }
+    .stats-mini-grid { grid-template-columns: 1fr 1fr; }
+    .stat-card-revenue .rev-value { font-size: 2.8rem; }
   }
 
   .stat-card {
@@ -1255,52 +1331,43 @@ export default function Dashboard() {
                 </div>
               )}
 
-              {/* ── Revenue — big card ── */}
-              <div className="stats-grid-revenue" style={{ marginBottom: '1rem' }}>
-                <div className="stat-card-revenue" style={{ flexWrap: 'wrap', gap: '1.5rem' }}>
+              {/* ── Revenue overview: 2-column grid ── */}
+              <div className="stats-overview" style={{ marginBottom: '1rem' }}>
+
+                {/* LEFT — big total revenue card */}
+                <div className="stat-card-revenue">
                   <div>
-                    <div className="stat-label">Total Revenue</div>
-                    <div className="stat-value">₱{totalRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</div>
-                    <div className="stat-sub">Paid orders only</div>
+                    <div className="rev-label">Total Revenue</div>
+                    <div className="rev-value">₱{totalRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</div>
+                    <div className="rev-sub">Paid orders only</div>
                   </div>
-                  <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', flex: 1, justifyContent: 'flex-end' }}>
-                    {/* Payment method breakdown */}
-                    <div style={{ background: 'rgba(74,222,128,0.06)', border: '1px solid rgba(74,222,128,0.18)', borderRadius: '10px', padding: '0.85rem 1.1rem', minWidth: '150px' }}>
-                      <div style={{ fontFamily: 'Syne', fontSize: '0.58rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(74,222,128,0.6)', marginBottom: '0.35rem' }}>
-                        <i className="fa-solid fa-mobile-screen-button" style={{ marginRight: '0.35rem' }} />Total GCash Payments
-                      </div>
-                      <div style={{ fontFamily: 'Bebas Neue', fontSize: '1.5rem', color: '#4ade80', lineHeight: 1 }}>
-                        ₱{gcashRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}
-                      </div>
-                    </div>
-                    <div style={{ background: 'rgba(255,215,0,0.06)', border: '1px solid rgba(255,215,0,0.18)', borderRadius: '10px', padding: '0.85rem 1.1rem', minWidth: '150px' }}>
-                      <div style={{ fontFamily: 'Syne', fontSize: '0.58rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,215,0,0.6)', marginBottom: '0.35rem' }}>
-                        <i className="fa-solid fa-school" style={{ marginRight: '0.35rem' }} />Total Walk-in Payments
-                      </div>
-                      <div style={{ fontFamily: 'Bebas Neue', fontSize: '1.5rem', color: 'var(--gold)', lineHeight: 1 }}>
-                        ₱{walkinRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}
-                      </div>
-                    </div>
-                    {/* Attendee type breakdown */}
-                    <div style={{ background: 'rgba(255,59,48,0.06)', border: '1px solid rgba(255,59,48,0.18)', borderRadius: '10px', padding: '0.85rem 1.1rem', minWidth: '130px' }}>
-                      <div style={{ fontFamily: 'Syne', fontSize: '0.58rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,130,128,0.7)', marginBottom: '0.35rem' }}>
-                        <i className="fa-solid fa-graduation-cap" style={{ marginRight: '0.35rem' }} />PUPians Registered
-                      </div>
-                      <div style={{ fontFamily: 'Bebas Neue', fontSize: '1.5rem', color: '#ff8080', lineHeight: 1 }}>
-                        {totalPupians}
-                      </div>
-                    </div>
-                    <div style={{ background: 'rgba(96,165,250,0.06)', border: '1px solid rgba(96,165,250,0.18)', borderRadius: '10px', padding: '0.85rem 1.1rem', minWidth: '130px' }}>
-                      <div style={{ fontFamily: 'Syne', fontSize: '0.58rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(96,165,250,0.7)', marginBottom: '0.35rem' }}>
-                        <i className="fa-solid fa-globe" style={{ marginRight: '0.35rem' }} />Non-PUPians Registered
-                      </div>
-                      <div style={{ fontFamily: 'Bebas Neue', fontSize: '1.5rem', color: '#93c5fd', lineHeight: 1 }}>
-                        {totalNonPupians}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="revenue-icon"><i className="fa-solid fa-peso-sign" /></div>
+                  <div className="rev-icon"><i className="fa-solid fa-peso-sign" /></div>
                 </div>
+
+                {/* RIGHT — 2×2 mini stat grid */}
+                <div className="stats-mini-grid">
+                  <div className="stat-mini gcash">
+                    <div className="stat-mini-icon" style={{ color: '#4ade80' }}><i className="fa-solid fa-mobile-screen-button" /></div>
+                    <div className="stat-mini-label">GCash / Maya Payments</div>
+                    <div className="stat-mini-value green">₱{gcashRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</div>
+                  </div>
+                  <div className="stat-mini walkin">
+                    <div className="stat-mini-icon" style={{ color: 'var(--gold)' }}><i className="fa-solid fa-school" /></div>
+                    <div className="stat-mini-label">Walk-in Payments</div>
+                    <div className="stat-mini-value gold">₱{walkinRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</div>
+                  </div>
+                  <div className="stat-mini pupian">
+                    <div className="stat-mini-icon" style={{ color: '#ff8080' }}><i className="fa-solid fa-graduation-cap" /></div>
+                    <div className="stat-mini-label">PUPians Registered</div>
+                    <div className="stat-mini-value red">{totalPupians}</div>
+                  </div>
+                  <div className="stat-mini nonpup">
+                    <div className="stat-mini-icon" style={{ color: '#93c5fd' }}><i className="fa-solid fa-globe" /></div>
+                    <div className="stat-mini-label">Non-PUPians Registered</div>
+                    <div className="stat-mini-value blue">{totalNonPupians}</div>
+                  </div>
+                </div>
+
               </div>
 
               {/* ── 4 stat tiles ── */}
