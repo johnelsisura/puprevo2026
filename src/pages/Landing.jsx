@@ -40,15 +40,26 @@ function useCountdown(targetDate) {
 }
 
 const FAQ_ITEMS = [
-  { q: 'What is PUPREVO 2026?', a: 'PUPREVO 2026 is an evening of music, advocacy, and PUP pride organized by the PUP Communication Society. It is a fundraising event where proceeds go to Bantay Bata 163 and World Vision Philippines.' },
+  { q: 'What is PUP REVO 2026?', a: 'PUP REVO 2026: Sound Against Silence is a day of OPM music, advocacy, and PUP pride organized by the PUP Communication Society. It is a fundraising event where proceeds go to ABS-CBN Foundation - Bantay Bata 163 and World Vision Philippines.' },
   { q: 'When and where is the event?', a: 'The event will be held on June 20, 2026, starting at 9:00 AM at the PUP Main Campus Oval, Manila.' },
   { q: 'Who can attend?', a: 'The event is open to PUP students, alumni, and the general public. There are two ticket tiers: a discounted rate for PUP students and a regular rate for public/alumni attendees.' },
   { q: 'How do I get a ticket?', a: 'Click the "Get Your Ticket" button on this page or scroll down to the Tickets section. Choose your ticket type and complete the checkout process online.' },
-  { q: 'Do I need to bring a physical ticket?', a: 'Your e-ticket or confirmation email is sufficient for entry. Showing it on your phone at the venue entrance will do — no need to print.' },
+  { q: 'Do I need to bring a physical ticket?', a: 'Your e-ticket or confirmation email serves as proof of purchase. However, a physical ticket is still required for event entry. You must claim your physical ticket at any of our designated onsite ticket selling/claiming booths prior to entering the venue. Please present your e-ticket (digital or printed) upon claiming.' },
   { q: 'Is there a deadline for purchasing tickets?', a: 'Tickets are available while slots last. We encourage you to purchase early as slots are limited and may sell out before the event date.' },
-  { q: 'Are tickets refundable?', a: 'All ticket sales are final and non-refundable. For special concerns, please reach out to us at puprevo.commsoc@gmail.com.' },
+  { q: 'Are tickets refundable?', a: 'All ticket sales are final and non-refundable. For special concerns, please reach out to us on Facebook or via email at puprevo.commsoc@gmail.com.' },
   { q: 'Who are the beneficiaries of this event?', a: 'A portion of ticket sales will be donated to Bantay Bata 163 and World Vision Philippines — two organizations dedicated to the welfare and development of children and communities in need.' },
   { q: 'How can I contact the organizers?', a: 'For any questions or concerns, email us at puprevo.commsoc@gmail.com. You can also reach us through the official PUP Communication Society social media pages.' },
+  { q: 'Where can I stay updated about announcements and performer reveals?', a: 'Official announcements, performer lineups, ticket updates, and event reminders will be posted through the official PUP Communication Society social media pages.' },
+  { q: 'What time do gates open?', a: 'Gates open at 8:00 AM for the fall-in line. Early attendees will have the opportunity to witness the live soundcheck. We encourage everyone to arrive early to avoid long lines and enjoy the full REVO experience.' },
+  { q: 'Can I leave and re-enter the venue?', a: 'Re-entry policies will be announced closer to the event date. Please stay updated through the official PUP Communication Society social media pages for guidelines.' },
+  { q: 'Are outside food and drinks allowed?', a: 'Outside food and drinks may be subject to venue regulations and security policies. Official announcements regarding allowed and prohibited items will be posted before the event.' },
+  { q: 'Is there a dress code?', a: 'There is no strict dress code, but attendees are encouraged to wear comfortable and event-appropriate clothing. Come dressed for a full-day concert experience!' },
+  { q: 'Will there be food booths and concessionaires?', a: 'Yes! Food and beverage booths, partner booths, and sponsor activations will be available during the event for attendees to enjoy.' },
+  { q: 'Will there be security and medical personnel on-site?', a: 'Yes. Security personnel, event marshals, and medical responders will be present throughout the event to help ensure everyone\'s safety and well-being.' },
+  { q: 'What should I do if I lose something during the event?', a: 'A designated help desk/lost and found area will be available at the venue. Announcements may also be made during the event for recovered items.' },
+  { q: 'Is this event only for music performances?', a: 'No. PUP REVO 2026 is more than a concert — it is an advocacy-driven fundraising event that combines music, community, and collective action in support of safer spaces for kids.' },
+  { q: 'What happens if it rains?', a: 'PUP REVO 2026 will continue rain or shine unless safety concerns require further announcements from the organizers. Attendees are encouraged to prepare accordingly.' },
+  { q: 'Will merchandise be available during the event?', a: 'Official PUP REVO 2026 merchandise are available through pre-orders. Stay tuned for official announcements regarding merch releases and claiming schedules.' },
 ]
 
 export default function Landing() {
@@ -57,6 +68,7 @@ export default function Landing() {
   const [slots, setSlots] = useState({ student: null, public: null })
   const [loading, setLoading] = useState(true)
   const [privacyOpen, setPrivacyOpen] = useState(false)
+  const [faqSearch, setFaqSearch] = useState('')
 
   useEffect(() => {
     async function fetchSlots() {
@@ -366,7 +378,7 @@ export default function Landing() {
           font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700;
           color: var(--cream); padding: 1.2rem 1.5rem; cursor: pointer;
           display: flex; justify-content: space-between; align-items: center;
-          gap: 1rem; list-style: none;
+          gap: 1rem; list-style: none; text-align: left;
         }
         summary.faq-summary::-webkit-details-marker { display: none; }
         .faq-icon { color: var(--red); flex-shrink: 0; font-size: 1.2rem; transition: transform 0.2s; }
@@ -375,6 +387,28 @@ export default function Landing() {
           padding: 0.8rem 1.5rem 1.2rem; border-top: 1px solid rgba(255,255,255,0.05);
           font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
           color: rgba(250,245,233,0.65); line-height: 1.7; text-align: left;
+        }
+        .faq-search-wrap {
+          position: relative; margin-bottom: 1.5rem;
+        }
+        .faq-search-icon {
+          position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+          color: rgba(250,245,233,0.3); font-size: 0.9rem; pointer-events: none;
+        }
+        .faq-search-input {
+          width: 100%; background: rgba(255,255,255,0.03);
+          border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+          padding: 0.85rem 1rem 0.85rem 2.6rem;
+          font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+          color: var(--cream); outline: none;
+          transition: border-color 0.15s;
+        }
+        .faq-search-input::placeholder { color: rgba(250,245,233,0.25); }
+        .faq-search-input:focus { border-color: rgba(255,59,48,0.45); }
+        .faq-no-results {
+          text-align: left; padding: 2rem 0;
+          font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+          color: rgba(250,245,233,0.35);
         }
 
         /* ---- DIVIDER ---- */
@@ -676,17 +710,38 @@ export default function Landing() {
 
         {/* FAQ */}
         <section className="section" id="faq">
-          <div className="section-label">Got Questions?</div>
-          <h2 className="section-title">Frequently Asked Questions</h2>
+          <div className="section-label" style={{ textAlign: 'left' }}>Got Questions?</div>
+          <h2 className="section-title" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Frequently Asked Questions</h2>
+          <div className="faq-search-wrap">
+            <i className="fa-solid fa-magnifying-glass faq-search-icon" />
+            <input
+              className="faq-search-input"
+              type="text"
+              placeholder="Search questions..."
+              value={faqSearch}
+              onChange={e => setFaqSearch(e.target.value)}
+            />
+          </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            {FAQ_ITEMS.map(({ q, a }) => (
-              <details key={q} className="faq-item">
-                <summary className="faq-summary">
-                  {q} <span className="faq-icon">+</span>
-                </summary>
-                <div className="faq-body">{a}</div>
-              </details>
-            ))}
+            {(() => {
+              const q = faqSearch.trim().toLowerCase()
+              const results = q
+                ? FAQ_ITEMS.filter(item =>
+                    item.q.toLowerCase().includes(q) || item.a.toLowerCase().includes(q)
+                  )
+                : FAQ_ITEMS
+              if (results.length === 0) return (
+                <div className="faq-no-results">No results found for "{faqSearch}".</div>
+              )
+              return results.map(({ q, a }) => (
+                <details key={q} className="faq-item">
+                  <summary className="faq-summary">
+                    {q} <span className="faq-icon">+</span>
+                  </summary>
+                  <div className="faq-body">{a}</div>
+                </details>
+              ))
+            })()}
           </div>
         </section>
 
