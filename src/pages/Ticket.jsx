@@ -683,17 +683,11 @@ export default function Ticket() {
                 </div>
 
                 <div className="ticket-body">
-                  {/* Save hint + thank you — above QR */}
-                  <div className="save-hint" style={{ marginTop: 0, marginBottom: '1.5rem' }}>
-                    <i className="fa-solid fa-camera" style={{ marginRight: '0.4rem', color: 'var(--gold)' }} />
-                    Screenshot this page to save your ticket. Save this link — this will be your first confirmed ticket and the final QR code for the event will appear here once confirmed.
+                  {/* Thank you — blue container above QR */}
+                  <div className="thank-you" style={{ marginBottom: '1.5rem' }}>
+                    <strong>Thank you for registering!</strong> Your support for <strong>PUP REVO 2026: Sound Against Silence — A Benefit Concert for Safer Kids</strong> means a lot in helping amplify voices that deserve to be heard.
                     <br /><br />
-                    A copy has been sent to{' '}
-                    <strong style={{ color: 'var(--cream)' }}>{ticket.email}</strong>
-                    <br /><br />
-                    <strong style={{ color: 'var(--cream)' }}>Thank you for registering!</strong> Your support for <strong style={{ color: 'var(--cream)' }}>PUP REVO 2026: Sound Against Silence — A Benefit Concert for Safer Kids</strong> means a lot in helping amplify voices that deserve to be heard.
-                    <br /><br />
-                    Please allow <strong style={{ color: 'var(--cream)' }}>2–3 working days</strong> for your email confirmation and ticket pickup details. Kindly note that <strong style={{ color: 'var(--cream)' }}>physical tickets are required for entry</strong>, so make sure to claim yours once details are sent.
+                    Please allow <strong>2–3 working days</strong> for your email confirmation and ticket pickup details. Kindly note that <strong>physical tickets are required for entry</strong>, so make sure to claim yours once details are sent.
                     <br /><br />
                     We look forward to seeing you! For more updates, stay connected with{' '}
                     <a href="https://www.facebook.com/share/1ErP5gDH6o/" target="_blank" rel="noopener noreferrer">
@@ -791,6 +785,15 @@ export default function Ticket() {
                 >
                   <i className="fa-solid fa-print" /> Print / Save
                 </button>
+              </div>
+
+              {/* Save hint — after buttons */}
+              <div className="save-hint">
+                <i className="fa-solid fa-camera" style={{ marginRight: '0.4rem', color: 'var(--gold)' }} />
+                Screenshot this page to save your ticket. Save this link — this will be your first confirmed ticket and the final QR code for the event will appear here once confirmed.
+                <br /><br />
+                A copy has been sent to{' '}
+                <strong style={{ color: 'var(--cream)' }}>{ticket.email}</strong>
               </div>
 
               {/* Presented by */}
