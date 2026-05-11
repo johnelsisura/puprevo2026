@@ -288,7 +288,7 @@ export default function Landing() {
         .bene-title {
           font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem;
           letter-spacing: 0.1em; color: var(--cream);
-          line-height: 1.2; white-space: nowrap;
+          line-height: 1.2;
         }
         .bene-desc {
           font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
@@ -497,7 +497,7 @@ export default function Landing() {
             </div>
 
             <div className="cta-group">
-              <button className="btn-primary" onClick={() => navigate('/checkout')}>
+              <button className="btn-primary" onClick={() => document.getElementById('tickets').scrollIntoView({ behavior: 'smooth' })}>
                 Get Your Ticket
               </button>
               <button className="btn-secondary" onClick={() => document.getElementById('details').scrollIntoView({ behavior: 'smooth' })}>
@@ -566,7 +566,7 @@ export default function Landing() {
                   <p className="bene-desc">
                     Standing with children in the most vulnerable communities, protecting their rights and helping them build a future free from fear.
                   </p>
-                  <a href="https://www.worldvision.org.ph/" target="_blank" rel="noopener noreferrer" className="bene-link">
+                  <a href="https://joytogive.worldvision.org.ph/donate/details/18/childhood-rescue-survive-recover-and-build-a-future" target="_blank" rel="noopener noreferrer" className="bene-link">
                     <i className="fa-solid fa-arrow-up-right-from-square" /> Learn More
                   </a>
                 </div>
