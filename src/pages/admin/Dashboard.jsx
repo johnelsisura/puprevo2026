@@ -1115,7 +1115,7 @@ export default function Dashboard() {
       .select(`
         id, ticket_code, full_name, email, phone,
         attendee_type, college, department, year_level, block,
-        student_id, student_id_photo_url, cor_or_id_url, valid_id_url,
+        student_id, id_number, student_id_photo_url, cor_or_id_url, valid_id_url,
         payment_method, payment_status, payment_reference,
         payment_screenshot_url, amount_paid,
         waiver_url, is_checked_in, created_at,
@@ -1709,10 +1709,10 @@ export default function Dashboard() {
                     </span>
                   </div>
                 </>
-              ) : modal.order.student_id ? (
+              ) : modal.order.id_number ? (
                 <div className="modal-detail-row">
                   <span className="modal-detail-label">ID Number</span>
-                  <span className="modal-detail-value">{modal.order.student_id}</span>
+                  <span className="modal-detail-value">{modal.order.id_number}</span>
                 </div>
               ) : null}
               <div className="modal-detail-row">
