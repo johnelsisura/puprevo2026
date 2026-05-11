@@ -520,7 +520,6 @@ function validateStep2(form) {
 
   if (form.ticket_name === 'PUP Student') {
     if (!form.student_id.trim()) errors.student_id = 'Student Number is required'
-    if (!form.campus?.trim()) errors.campus = 'Campus is required'
     if (!form.department.trim()) errors.department = 'Required'
     if (!form.year_level) errors.year_level = 'Required'
     if (!form.block.trim()) errors.block = 'Required'
@@ -864,17 +863,19 @@ export default function Checkout() {
               </div>
 
               <div className="field-group">
-                <label>School / Affiliation * (Required — No N/A)</label>
+                <label>{isPUPian ? 'Campus * (Required — No N/A)' : 'School / Affiliation * (Required — No N/A)'}</label>
                 <input
                   className={errors.school_affiliation ? 'error' : ''}
-                  placeholder="Ex. Polytechnic University of the Philippines | PUP"
+                  placeholder={isPUPian ? 'Ex. Main Campus, Sta. Mesa' : 'Ex. Polytechnic University of the Philippines | PUP'}
                   value={form.school_affiliation}
                   onChange={e => set('school_affiliation', e.target.value)}
                 />
                 {errors.school_affiliation && <div className="field-error">{errors.school_affiliation}</div>}
                 <div className="field-hint">
-                  Full Name | Abbreviation — e.g. ABC Marketing Solutions Inc. | AMSI<br />
-                  If not a student, indicate your workplace or organization.
+                  {isPUPian
+                    ? 'State your PUP campus only (e.g. Main Campus, Lopez, Quezon City, etc.)'
+                    : <>Full Name | Abbreviation — e.g. ABC Marketing Solutions Inc. | AMSI<br />If not a student, indicate your workplace or organization.</>
+                  }
                 </div>
               </div>
 
@@ -956,18 +957,6 @@ export default function Checkout() {
                     />
                     {errors.student_id && <div className="field-error">{errors.student_id}</div>}
                     <div className="field-hint">1 Student Number = 1 ticket only. Must be exactly 12 characters (excluding dashes).</div>
-                  </div>
-
-                  <div className="field-group">
-                    <label>Campus *</label>
-                    <input
-                      className={errors.campus ? 'error' : ''}
-                      placeholder="Ex. Main Campus, Sta. Mesa"
-                      value={form.campus || ''}
-                      onChange={e => set('campus', e.target.value)}
-                    />
-                    {errors.campus && <div className="field-error">{errors.campus}</div>}
-                    <div className="field-hint">State your PUP campus only (e.g. Main Campus, Lopez, Quezon City, etc.)</div>
                   </div>
 
                   <div className="field-row">
@@ -1202,7 +1191,7 @@ export default function Checkout() {
                     <div style={{ marginBottom: '0.3rem' }}><i className="fa-solid fa-circle-exclamation" style={{ marginRight: '0.4rem' }} /><strong>Please ensure that the reference number is clearly visible.</strong> Only image file submissions will be accepted.</div>
                     <div style={{ marginBottom: '0.3rem' }}><i className="fa-solid fa-file-signature" style={{ marginRight: '0.4rem' }} />Please rename your file using the format: <strong>PAYMENT_Last Name, First Name</strong></div>
                     <div style={{ color: 'rgba(255,215,0,0.65)', fontSize: '0.74rem', marginTop: '0.4rem', borderTop: '1px solid rgba(255,215,0,0.15)', paddingTop: '0.5rem' }}>
-                      <i className="fa-solid fa-circle-info" style={{ marginRight: '0.4rem' }} />Note: The ticket price for online selling remains at Php 250. The additional 6% service fee serves as the fee for web services and convenience fee charged by GCash for online transactions.
+                      <i className="fa-solid fa-circle-info" style={{ marginRight: '0.4rem' }} />Note: The ticket price for online selling remains at {isPUPian ? 'Php 250' : 'Php 350'}. The additional 6% service fee serves as the fee for web services and convenience fee charged by GCash for online transactions.
                     </div>
                   </div>
 
