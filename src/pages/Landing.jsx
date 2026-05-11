@@ -710,8 +710,8 @@ export default function Landing() {
 
         {/* FAQ */}
         <section className="section" id="faq">
-          <div className="section-label" style={{ textAlign: 'left' }}>Got Questions?</div>
-          <h2 className="section-title" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Frequently Asked Questions</h2>
+          <div className="section-label">Got Questions?</div>
+          <h2 className="section-title">Frequently Asked Questions</h2>
           <div className="faq-search-wrap">
             <i className="fa-solid fa-magnifying-glass faq-search-icon" />
             <input
