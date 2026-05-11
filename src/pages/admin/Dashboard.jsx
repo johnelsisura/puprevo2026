@@ -1183,46 +1183,27 @@ export default function Dashboard() {
     return null
   }
 
-  // Open verify modal and load screenshot
+  // Open verify modal and load all files in parallel
   async function openVerifyModal(order) {
     setModal({ type: 'verify', order, screenshotUrl: null, idPhotoUrl: null, waiverUrl: null })
 
-    // Load screenshot
-    if (order.payment_screenshot_url) {
-      const url = await getSignedUrl(
-        'payment-screenshots',
-        order.payment_screenshot_url,
-        screenshotUrls,
-        setScreenshotUrls,
-        order.id
-      )
-      setModal(prev => prev ? { ...prev, screenshotUrl: url } : prev)
-    }
-
-    // Load student ID / COR photo (support both column names)
     const idPhotoPath = order.student_id_photo_url || order.cor_or_id_url
-    if (idPhotoPath) {
-      const url = await getSignedUrl(
-        'student-id-photos',
-        idPhotoPath,
-        idPhotoUrls,
-        setIdPhotoUrls,
-        `id_${order.id}`
-      )
-      setModal(prev => prev ? { ...prev, idPhotoUrl: url } : prev)
-    }
 
-    // Load waiver
-    if (order.waiver_url) {
-      const url = await getSignedUrl(
-        'waiver-forms',
-        order.waiver_url,
-        waiverUrls,
-        setWaiverUrls,
-        `waiver_${order.id}`
-      )
-      setModal(prev => prev ? { ...prev, waiverUrl: url } : prev)
-    }
+    // Fetch all signed URLs in parallel to avoid race conditions from sequential setModal calls
+    const [screenshotUrl, idPhotoUrl, waiverUrl] = await Promise.all([
+      order.payment_screenshot_url
+        ? supabase.storage.from('payment-screenshots').createSignedUrl(order.payment_screenshot_url, 3600).then(r => r.data?.signedUrl || null)
+        : Promise.resolve(null),
+      idPhotoPath
+        ? supabase.storage.from('student-id-photos').createSignedUrl(idPhotoPath, 3600).then(r => r.data?.signedUrl || null)
+        : Promise.resolve(null),
+      order.waiver_url
+        ? supabase.storage.from('waiver-forms').createSignedUrl(order.waiver_url, 3600).then(r => r.data?.signedUrl || null)
+        : Promise.resolve(null),
+    ])
+
+    // Single setModal call — no race conditions, all URLs arrive together
+    setModal(prev => prev ? { ...prev, screenshotUrl, idPhotoUrl, waiverUrl } : prev)
   }
 
   // ── Actions ─────────────────────────────────────────────────────────────
@@ -1812,15 +1793,7 @@ export default function Dashboard() {
                       <i className="fa-solid fa-file-pdf" style={{marginRight:'0.4rem',color:'#ff8080'}} /> Open Waiver PDF
                     </a>
                   ) : (
-                    <button
-                      style={{ background: 'none', border: 'none', color: '#93c5fd', fontSize: '0.82rem', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: 0 }}
-                      onClick={async () => {
-                        const url = await getSignedUrl('waiver-forms', modal.order.waiver_url, waiverUrls, setWaiverUrls, `waiver_${modal.order.id}`)
-                        if (url) window.open(url, '_blank')
-                      }}
-                    >
-                      <i className="fa-solid fa-file-pdf" style={{marginRight:'0.4rem',color:'#ff8080'}} /> Click to Open Waiver PDF
-                    </button>
+                    <div style={{ color: 'var(--muted)', fontSize: '0.82rem' }}>Loading waiver...</div>
                   )}
                 </div>
               </div>
