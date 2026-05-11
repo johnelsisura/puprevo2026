@@ -897,7 +897,7 @@ export default function Checkout() {
                     {form.privacy_consent && <span style={{ color: 'white', fontSize: '0.75rem', fontWeight: 700 }}>✓</span>}
                   </div>
                   <div className="privacy-checkbox-label">
-                    I have read and understand the Data Privacy Notice and <span>consent to the collection and use of my information</span> for this event
+                    I have read and understand the Data Privacy Notice and <span>consent to the collection and use of my information</span> for this event.
                   </div>
                 </div>
                 {errors.privacy_consent && <div className="field-error" style={{ marginTop: '0.5rem' }}>{errors.privacy_consent}</div>}

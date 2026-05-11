@@ -87,7 +87,7 @@ const css = `
   /* ── Logo ── */
   .ticket-logo {
     display: block;
-    width: 80px;
+    width: 140px;
     margin: 0 auto 1.25rem auto;
   }
 
@@ -683,6 +683,24 @@ export default function Ticket() {
                 </div>
 
                 <div className="ticket-body">
+                  {/* Save hint + thank you — above QR */}
+                  <div className="save-hint" style={{ marginTop: 0, marginBottom: '1.5rem' }}>
+                    <i className="fa-solid fa-camera" style={{ marginRight: '0.4rem', color: 'var(--gold)' }} />
+                    Screenshot this page to save your ticket. Save this link — this will be your first confirmed ticket and the final QR code for the event will appear here once confirmed.
+                    <br /><br />
+                    A copy has been sent to{' '}
+                    <strong style={{ color: 'var(--cream)' }}>{ticket.email}</strong>
+                    <br /><br />
+                    <strong style={{ color: 'var(--cream)' }}>Thank you for registering!</strong> Your support for <strong style={{ color: 'var(--cream)' }}>PUP REVO 2026: Sound Against Silence — A Benefit Concert for Safer Kids</strong> means a lot in helping amplify voices that deserve to be heard.
+                    <br /><br />
+                    Please allow <strong style={{ color: 'var(--cream)' }}>2–3 working days</strong> for your email confirmation and ticket pickup details. Kindly note that <strong style={{ color: 'var(--cream)' }}>physical tickets are required for entry</strong>, so make sure to claim yours once details are sent.
+                    <br /><br />
+                    We look forward to seeing you! For more updates, stay connected with{' '}
+                    <a href="https://www.facebook.com/share/1ErP5gDH6o/" target="_blank" rel="noopener noreferrer">
+                      PUP Communication Society
+                    </a> 💛
+                  </div>
+
                   {/* QR Code — only fully visible when paid */}
                   <div className="qr-wrap">
                     <div className="qr-inner" style={{
@@ -775,25 +793,52 @@ export default function Ticket() {
                 </button>
               </div>
 
-              {/* Save hint */}
-              <div className="save-hint">
-                <i className="fa-solid fa-camera" style={{ marginRight: '0.4rem', color: 'var(--gold)' }} />
-                Screenshot this page to save your ticket. Save this link — this will be your first confirmed ticket and the final QR code for the event will appear here once confirmed.
-                <br /><br />
-                A copy has been sent to{' '}
-                <strong style={{ color: 'var(--cream)' }}>{ticket.email}</strong>
+              {/* Presented by */}
+              <div style={{ marginTop: '2.5rem', textAlign: 'center' }}>
+                <p style={{ margin: '0 0 12px', fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(250,245,233,0.35)' }}>Presented by</p>
+                <img src="/pupxpupcommsoc.png" alt="PUP x PUP CommSoc" style={{ width: '200px', display: 'block', margin: '0 auto' }} />
               </div>
 
-              {/* Thank you message */}
-              <div className="thank-you">
-                <strong>Thank you for registering!</strong> Your support for <strong>PUP REVO 2026: Sound Against Silence — A Benefit Concert for Safer Kids</strong> means a lot in helping amplify voices that deserve to be heard.
-                <br /><br />
-                Please allow <strong>2–3 working days</strong> for your email confirmation and ticket pickup details. Kindly note that <strong>physical tickets are required for entry</strong>, so make sure to claim yours once details are sent.
-                <br /><br />
-                We look forward to seeing you! For more updates, stay connected with{' '}
-                <a href="https://www.facebook.com/share/1ErP5gDH6o/" target="_blank" rel="noopener noreferrer">
-                  PUP Communication Society
-                </a> 💛
+              {/* For the Benefit of */}
+              <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+                <p style={{ margin: '0 0 12px', fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(250,245,233,0.35)' }}>For the Benefit of</p>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem' }}>
+                  <img src="/BantayBata163.png" alt="Bantay Bata 163" style={{ width: '120px', filter: 'brightness(0) invert(1)', opacity: 0.85 }} />
+                  <img src="/WorldVisionPH.png" alt="World Vision PH" style={{ width: '120px', filter: 'brightness(0) invert(1)', opacity: 0.85 }} />
+                </div>
+              </div>
+
+              {/* Sponsors */}
+              <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+                <p style={{ margin: '0 0 12px', fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(250,245,233,0.35)' }}>Our Sponsors & Partners</p>
+                <img src="/sponsors.png" alt="Sponsors" style={{ width: '100%', maxWidth: '520px', display: 'block', margin: '0 auto', opacity: 0.85 }} />
+              </div>
+
+              {/* Footer */}
+              <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
+                <p style={{ margin: '0 0 12px', fontSize: '12px', color: 'rgba(250,245,233,0.5)', lineHeight: 1.7 }}>Follow us on our official social media accounts for updates.</p>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginBottom: '12px' }}>
+                  {[
+                    { href: 'https://www.facebook.com/pupcommsoc', label: 'f' },
+                    { href: 'https://www.instagram.com/pupcommsoc_/', label: 'ig' },
+                    { href: 'https://x.com/pupcommsoc_', label: 'x' },
+                    { href: 'http://tiktok.com/@pup_commsoc', label: 'tt' },
+                  ].map(({ href, label }) => (
+                    <a key={label} href={href} target="_blank" rel="noopener noreferrer" style={{
+                      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                      width: '32px', height: '32px', background: '#1a2340', borderRadius: '50%',
+                      textDecoration: 'none', fontSize: '12px', color: '#FAF5E9', fontFamily: 'Syne, sans-serif', fontWeight: 700,
+                    }}>{label}</a>
+                  ))}
+                </div>
+                <p style={{ margin: '0 0 4px', fontSize: '11px', color: 'rgba(250,245,233,0.3)' }}>© 2026 PUP REVO — PUP Communication Society. All rights reserved.</p>
+                <p style={{ margin: '0 0 4px', fontSize: '11px', color: 'rgba(250,245,233,0.3)' }}>
+                  For concerns, email{' '}
+                  <a href="mailto:puprevo.commsoc@gmail.com" style={{ color: 'rgba(250,245,233,0.4)' }}>puprevo.commsoc@gmail.com</a>
+                </p>
+                <p style={{ margin: '0 0 2rem', fontSize: '11px', color: 'rgba(250,245,233,0.3)' }}>
+                  Website: <a href="https://puprevo2026.me" style={{ color: '#FFD700' }}>puprevo2026.me</a>
+                </p>
               </div>
             </>
           )}
