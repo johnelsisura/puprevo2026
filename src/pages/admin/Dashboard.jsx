@@ -1115,7 +1115,7 @@ export default function Dashboard() {
       .select(`
         id, ticket_code, full_name, email, phone,
         attendee_type, college, department, year_level, block,
-        student_id, student_id_photo_url, cor_or_id_url,
+        student_id, student_id_photo_url, cor_or_id_url, valid_id_url,
         payment_method, payment_status, payment_reference,
         payment_screenshot_url, amount_paid,
         waiver_url, is_checked_in, created_at,
@@ -1185,7 +1185,10 @@ export default function Dashboard() {
 
   // Open verify modal — buckets are PUBLIC so use getPublicUrl (no async needed)
   function openVerifyModal(order) {
-    const idPhotoPath = order.student_id_photo_url || order.cor_or_id_url
+    const isPupian = order.attendee_type === 'pup_student'
+    const idPhotoPath = isPupian
+      ? (order.student_id_photo_url || order.cor_or_id_url)
+      : (order.valid_id_url || order.cor_or_id_url)
 
     const getPublic = (bucket, path) => {
       if (!path) return null
@@ -1762,7 +1765,10 @@ export default function Dashboard() {
             )}
 
             {/* Student ID / COR / Valid ID photo */}
-            {(modal.order.student_id_photo_url || modal.order.cor_or_id_url) && (
+            {(modal.order.attendee_type === 'pup_student'
+              ? (modal.order.student_id_photo_url || modal.order.cor_or_id_url)
+              : (modal.order.valid_id_url || modal.order.cor_or_id_url)
+            ) && (
               <div style={{ marginTop: '1rem' }}>
                 <div className="screenshot-label">
                   {modal.order.attendee_type === 'pup_student' ? 'Certificate of Registration (COR)' : 'Valid ID'}
