@@ -669,6 +669,18 @@ export default function Ticket() {
                 )}
               </div>
 
+              {/* Thank you — above ticket card */}
+              <div className="thank-you">
+                <strong>Thank you for registering!</strong> Your support for <strong>PUP REVO 2026: Sound Against Silence — A Benefit Concert for Safer Kids</strong> means a lot in helping amplify voices that deserve to be heard.
+                <br /><br />
+                Please allow <strong>2–3 working days</strong> for your email confirmation and ticket pickup details. Kindly note that <strong>physical tickets are required for entry</strong>, so make sure to claim yours once details are sent.
+                <br /><br />
+                We look forward to seeing you! For more updates, stay connected with{' '}
+                <a href="https://www.facebook.com/share/1ErP5gDH6o/" target="_blank" rel="noopener noreferrer">
+                  PUP Communication Society
+                </a> 💛
+              </div>
+
               {/* Ticket card */}
               <div className={`ticket-card ${justPaid ? 'paid-flash' : ''}`}>
                 <div className="ticket-top">
@@ -683,18 +695,6 @@ export default function Ticket() {
                 </div>
 
                 <div className="ticket-body">
-                  {/* Thank you — blue container above QR */}
-                  <div className="thank-you" style={{ marginBottom: '1.5rem' }}>
-                    <strong>Thank you for registering!</strong> Your support for <strong>PUP REVO 2026: Sound Against Silence — A Benefit Concert for Safer Kids</strong> means a lot in helping amplify voices that deserve to be heard.
-                    <br /><br />
-                    Please allow <strong>2–3 working days</strong> for your email confirmation and ticket pickup details. Kindly note that <strong>physical tickets are required for entry</strong>, so make sure to claim yours once details are sent.
-                    <br /><br />
-                    We look forward to seeing you! For more updates, stay connected with{' '}
-                    <a href="https://www.facebook.com/share/1ErP5gDH6o/" target="_blank" rel="noopener noreferrer">
-                      PUP Communication Society
-                    </a> 💛
-                  </div>
-
                   {/* QR Code — only fully visible when paid */}
                   <div className="qr-wrap">
                     <div className="qr-inner" style={{
