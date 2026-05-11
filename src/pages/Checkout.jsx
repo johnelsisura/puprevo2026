@@ -1085,7 +1085,7 @@ export default function Checkout() {
                 <div className="waiver-box" style={{ marginTop: '1.5rem' }}>
                   <div className="waiver-box-title">Consent and Waiver</div>
                   <div className="waiver-box-text">
-                    Please carefully read and complete the <strong>consent, waiver,</strong> and <strong>payment form</strong> before proceeding. <strong>All information provided</strong> must be HONEST and COMPLETE, as <strong>failure to comply may result</strong> in the FORFEITURE OF YOUR REGISTRATION, even if payment has already been made, and <strong>NO REFUND WILL BE ISSUED.</strong>
+                    Please carefully read and complete the <strong>consent, waiver,</strong> and <strong>payment form</strong> before proceeding. <strong>All information provided</strong> must be <strong>HONEST</strong> and <strong>COMPLETE</strong>, as <strong>failure to comply may result</strong> in the <strong>FORFEITURE OF YOUR REGISTRATION,</strong> even if payment has already been made, and <strong>NO REFUND WILL BE ISSUED.</strong>
                     <br /><br />
                     <i className="fa-solid fa-link" style={{ marginRight: '0.35rem' }} /><a href="https://docs.google.com/document/d/1GDeKp0xexvj3g53Zhp-7PI9wgvMOcbZ67LCflV2AWX8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Consent Form and Waiver Form</a>
                   </div>
@@ -1093,7 +1093,7 @@ export default function Checkout() {
                     <i className="fa-solid fa-arrow-right" style={{ marginRight: '0.4rem', color: 'var(--gold)' }} />Make a copy of the document, insert your signature with printed name, and upload the completed file below.
                   </div>
                   <div className="field-group" style={{ marginBottom: 0 }}>
-                    <label>Upload Consent / Waiver Form *</label>
+                    <label>Upload Consent & Waiver Form *</label>
                     <input
                       type="file"
                       accept=".pdf,application/pdf"

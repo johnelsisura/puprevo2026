@@ -520,7 +520,7 @@ export default function Landing() {
             textAlign: 'center', margin: '0 auto 2.5rem auto'
           }}>
             <p>The PUP Communication Society proudly presents <strong style={{ color: 'var(--cream)' }}>PUP REVO 2026: Sound Against Silence — A Benefit Concert for Safer Kids</strong>, a revived and reimagined flagship concert that brings together music, creative media, and social advocacy. More than just entertainment, the event serves as a platform to amplify voices, raise awareness, and inspire action against child abuse, exploitation, and trafficking.</p>
-            <p style={{ marginTop: '1rem' }}>In partnership with ABS-CBN Bantay Bata 163 and World Vision Philippines, this benefit concert aims to mobilize the PUP community and beyond to turn sound into a force for change—because silence should never protect harm.</p>
+            <p style={{ marginTop: '1rem' }}>In partnership with ABS-CBN Foundation - Bantay Bata 163 and World Vision Philippines, this benefit concert aims to mobilize the PUP community and beyond to turn sound into a force for change—because silence should never protect harm.</p>
           </div>
 
           <div className="details-grid">
@@ -552,7 +552,7 @@ export default function Landing() {
               <div className="bene-grid">
                 <div className="bene-item">
                   <img src="/BantayBata163.png" alt="Bantay Bata 163" className="bene-logo" />
-                  <div className="bene-title">ABS-CBN Foundation Bantay Bata 163</div>
+                  <div className="bene-title">ABS-CBN Foundation - Bantay Bata 163</div>
                   <p className="bene-desc">
                     Giving abused and vulnerable children a voice through rescue, protection, and safe spaces, so no child suffers in silence.
                   </p>
