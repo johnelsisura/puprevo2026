@@ -474,7 +474,7 @@ export default function Landing() {
 
             <img src="/officialposter.png" alt="PUP Revo 2026 Poster" style={{ width: '100%', maxWidth: '500px', display: 'block', margin: '1.5rem auto 0 auto' }} />
 
-            <p className="subtitle">An Evening of Advocacy, OPM Music, & PUP Pride</p>
+            <p className="subtitle">A Day of Advocacy, OPM Music, & PUP Pride</p>
 
             <div className="hero-date-pill">
               <i className="fa-regular fa-calendar" />

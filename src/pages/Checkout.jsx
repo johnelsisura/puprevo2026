@@ -532,6 +532,7 @@ function validateStep2(form) {
     if (!form.valid_id_file) errors.valid_id_file = 'Valid ID is required'
     else if (form.valid_id_file.size > 10 * 1024 * 1024) errors.valid_id_file = 'File too large. Max 10MB. Try a lower quality photo.'
     if (!form.waiver_file) errors.waiver_file = 'Consent/Waiver form is required'
+    else if (form.waiver_file.size > 10 * 1024 * 1024) errors.waiver_file = 'File too large. Max 10MB.'
   }
   return errors
 }
@@ -580,7 +581,7 @@ export default function Checkout() {
     // Public fields
     attendee_type: '',    // alumni | faculty | outsider
     id_number: '',
-    valid_id_file: null,
+    valid_id_file: null,  // ← non-PUPian valid ID
 
     // Step 3
     payment_method: '',
@@ -596,7 +597,7 @@ export default function Checkout() {
   // Pre-select ticket type from URL param
   useEffect(() => {
     async function fetchTickets() {
-      // FIX 3: Use cache if fresh (within 60s) — avoids re-fetching on every page open
+      // Use cache if fresh (within 60s) — avoids re-fetching on every page open
       try {
         const raw = sessionStorage.getItem('ticket_types_cache')
         if (raw) {
@@ -621,7 +622,7 @@ export default function Checkout() {
         .select('id, name, price, total_slots')
 
       if (types) {
-        // FIX 1: Count orders in DB directly (much faster than fetching all rows)
+        // Count orders in DB directly (much faster than fetching all rows)
         const { data: counts } = await supabase
           .from('orders')
           .select('ticket_type_id')
@@ -639,7 +640,7 @@ export default function Checkout() {
           sold_count: countMap[t.id] || 0,
         }))
 
-        // FIX 3: Cache ticket types so re-opening page doesn't re-fetch
+        // Cache ticket types so re-opening page doesn't re-fetch
         sessionStorage.setItem('ticket_types_cache', JSON.stringify({
           data: enriched,
           ts: Date.now(),
@@ -728,8 +729,9 @@ export default function Checkout() {
     return data.path
   }
 
+  // ── FIX: handleSubmit now uploads valid_id_file for non-PUPians ────────
   async function handleSubmit() {
-    // FIX 2: Prevent double-submit
+    // Prevent double-submit
     if (loading) return
 
     const errs = validateStep3(form)
@@ -738,34 +740,39 @@ export default function Checkout() {
 
     setLoading(true)
     try {
-      const [cor_or_id_url, payment_screenshot_url, waiver_url] = await Promise.all([
-        form.id_photo_file ? uploadFile('student-id-photos', form.id_photo_file) : null,
-        form.payment_screenshot_file ? uploadFile('payment-screenshots', form.payment_screenshot_file) : null,
-        form.waiver_file ? uploadFile('waiver-forms', form.waiver_file) : null,
+      // Upload all files in parallel
+      // - PUPians:     id_photo_file (COR) → cor_or_id_url
+      // - Non-PUPians: valid_id_file (Valid ID) → valid_id_url   ← FIX
+      const [cor_or_id_url, valid_id_url, payment_screenshot_url, waiver_url] = await Promise.all([
+        form.id_photo_file          ? uploadFile('student-id-photos',    form.id_photo_file)          : null,
+        form.valid_id_file          ? uploadFile('student-id-photos',    form.valid_id_file)          : null,
+        form.payment_screenshot_file? uploadFile('payment-screenshots',  form.payment_screenshot_file): null,
+        form.waiver_file            ? uploadFile('waiver-forms',         form.waiver_file)            : null,
       ])
 
       const { data: order, error } = await supabase
         .from('orders')
         .insert({
-          ticket_type_id:       form.ticket_type_id,
-          full_name:            form.full_name,
-          email:                form.email,
-          phone:                form.phone,
-          school_affiliation:   form.school_affiliation,
-          attendee_type:        isPUPian ? 'pup_student' : form.attendee_type,
-          student_id:           form.student_id || null,
-          department:           form.department || null,
-          year_level:           form.year_level || null,
-          block:                form.block || null,
-          campus:               form.campus || null,
-          id_number:            form.id_number || null,
-          cor_or_id_url,
+          ticket_type_id:        form.ticket_type_id,
+          full_name:             form.full_name,
+          email:                 form.email,
+          phone:                 form.phone,
+          school_affiliation:    form.school_affiliation,
+          attendee_type:         isPUPian ? 'pup_student' : form.attendee_type,
+          student_id:            form.student_id   || null,
+          department:            form.department   || null,
+          year_level:            form.year_level   || null,
+          block:                 form.block        || null,
+          campus:                form.campus       || null,   // ← requires ALTER TABLE orders ADD COLUMN campus TEXT;
+          id_number:             form.id_number    || null,
+          cor_or_id_url,                                      // PUPian COR
+          valid_id_url,                                       // ← FIX: non-PUPian valid ID; requires ALTER TABLE orders ADD COLUMN valid_id_url TEXT;
           waiver_url,
-          payment_method:       form.payment_method,
-          payment_reference:    form.payment_reference || null,
+          payment_method:        form.payment_method,
+          payment_reference:     form.payment_reference      || null,
           payment_screenshot_url,
-          payment_status:       'pending',
-          amount_paid:          totalAmount,
+          payment_status:        'pending',
+          amount_paid:           totalAmount,
         })
         .select()
         .single()
