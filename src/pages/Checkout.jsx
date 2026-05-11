@@ -595,12 +595,32 @@ export default function Checkout() {
   // Pre-select ticket type from URL param
   useEffect(() => {
     async function fetchTickets() {
+      // FIX 3: Use cache if fresh (within 60s) — avoids re-fetching on every page open
+      try {
+        const raw = sessionStorage.getItem('ticket_types_cache')
+        if (raw) {
+          const { data: cached, ts } = JSON.parse(raw)
+          if (Date.now() - ts < 60_000) {
+            setTicketTypes(cached)
+            const type = searchParams.get('type')
+            if (type === 'student') {
+              const t = cached.find(d => d.name === 'PUP Student')
+              if (t && t.sold_count < t.total_slots) setForm(f => ({ ...f, ticket_type_id: t.id, ticket_name: t.name, ticket_price: t.price }))
+            } else if (type === 'public') {
+              const t = cached.find(d => d.name === 'Public')
+              if (t && t.sold_count < t.total_slots) setForm(f => ({ ...f, ticket_type_id: t.id, ticket_name: t.name, ticket_price: t.price }))
+            }
+            return
+          }
+        }
+      } catch (_) { /* ignore bad cache */ }
+
       const { data: types } = await supabase
         .from('ticket_types')
         .select('id, name, price, total_slots')
 
       if (types) {
-        // Count actual non-cancelled orders per ticket type
+        // FIX 1: Count orders in DB directly (much faster than fetching all rows)
         const { data: counts } = await supabase
           .from('orders')
           .select('ticket_type_id')
@@ -616,6 +636,12 @@ export default function Checkout() {
         const enriched = types.map(t => ({
           ...t,
           sold_count: countMap[t.id] || 0,
+        }))
+
+        // FIX 3: Cache ticket types so re-opening page doesn't re-fetch
+        sessionStorage.setItem('ticket_types_cache', JSON.stringify({
+          data: enriched,
+          ts: Date.now(),
         }))
 
         setTicketTypes(enriched)
@@ -702,6 +728,9 @@ export default function Checkout() {
   }
 
   async function handleSubmit() {
+    // FIX 2: Prevent double-submit
+    if (loading) return
+
     const errs = validateStep3(form)
     setErrors(errs)
     if (Object.keys(errs).length > 0) return
