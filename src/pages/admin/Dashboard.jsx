@@ -1162,6 +1162,14 @@ export default function Dashboard() {
     o.payment_screenshot_url
   ).length
 
+  // Payment method breakdown (paid only)
+  const gcashRevenue   = orders.filter(o => o.payment_status === 'paid' && ['gcash','maya','online'].includes(o.payment_method)).reduce((a, o) => a + Number(o.amount_paid || 0), 0)
+  const walkinRevenue  = orders.filter(o => o.payment_status === 'paid' && ['walk_in','walk-in'].includes(o.payment_method)).reduce((a, o) => a + Number(o.amount_paid || 0), 0)
+
+  // Attendee type breakdown (all non-cancelled)
+  const totalPupians    = orders.filter(o => o.payment_status !== 'cancelled' && o.attendee_type === 'pup_student').length
+  const totalNonPupians = orders.filter(o => o.payment_status !== 'cancelled' && o.attendee_type !== 'pup_student').length
+
   function formatDate(iso) {
     if (!iso) return '—'
     return new Date(iso).toLocaleString('en-PH', {
@@ -1249,11 +1257,47 @@ export default function Dashboard() {
 
               {/* ── Revenue — big card ── */}
               <div className="stats-grid-revenue" style={{ marginBottom: '1rem' }}>
-                <div className="stat-card-revenue">
+                <div className="stat-card-revenue" style={{ flexWrap: 'wrap', gap: '1.5rem' }}>
                   <div>
                     <div className="stat-label">Total Revenue</div>
                     <div className="stat-value">₱{totalRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</div>
                     <div className="stat-sub">Paid orders only</div>
+                  </div>
+                  <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', flex: 1, justifyContent: 'flex-end' }}>
+                    {/* Payment method breakdown */}
+                    <div style={{ background: 'rgba(74,222,128,0.06)', border: '1px solid rgba(74,222,128,0.18)', borderRadius: '10px', padding: '0.85rem 1.1rem', minWidth: '150px' }}>
+                      <div style={{ fontFamily: 'Syne', fontSize: '0.58rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(74,222,128,0.6)', marginBottom: '0.35rem' }}>
+                        <i className="fa-solid fa-mobile-screen-button" style={{ marginRight: '0.35rem' }} />Total GCash Payments
+                      </div>
+                      <div style={{ fontFamily: 'Bebas Neue', fontSize: '1.5rem', color: '#4ade80', lineHeight: 1 }}>
+                        ₱{gcashRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}
+                      </div>
+                    </div>
+                    <div style={{ background: 'rgba(255,215,0,0.06)', border: '1px solid rgba(255,215,0,0.18)', borderRadius: '10px', padding: '0.85rem 1.1rem', minWidth: '150px' }}>
+                      <div style={{ fontFamily: 'Syne', fontSize: '0.58rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,215,0,0.6)', marginBottom: '0.35rem' }}>
+                        <i className="fa-solid fa-school" style={{ marginRight: '0.35rem' }} />Total Walk-in Payments
+                      </div>
+                      <div style={{ fontFamily: 'Bebas Neue', fontSize: '1.5rem', color: 'var(--gold)', lineHeight: 1 }}>
+                        ₱{walkinRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}
+                      </div>
+                    </div>
+                    {/* Attendee type breakdown */}
+                    <div style={{ background: 'rgba(255,59,48,0.06)', border: '1px solid rgba(255,59,48,0.18)', borderRadius: '10px', padding: '0.85rem 1.1rem', minWidth: '130px' }}>
+                      <div style={{ fontFamily: 'Syne', fontSize: '0.58rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,130,128,0.7)', marginBottom: '0.35rem' }}>
+                        <i className="fa-solid fa-graduation-cap" style={{ marginRight: '0.35rem' }} />PUPians Registered
+                      </div>
+                      <div style={{ fontFamily: 'Bebas Neue', fontSize: '1.5rem', color: '#ff8080', lineHeight: 1 }}>
+                        {totalPupians}
+                      </div>
+                    </div>
+                    <div style={{ background: 'rgba(96,165,250,0.06)', border: '1px solid rgba(96,165,250,0.18)', borderRadius: '10px', padding: '0.85rem 1.1rem', minWidth: '130px' }}>
+                      <div style={{ fontFamily: 'Syne', fontSize: '0.58rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(96,165,250,0.7)', marginBottom: '0.35rem' }}>
+                        <i className="fa-solid fa-globe" style={{ marginRight: '0.35rem' }} />Non-PUPians Registered
+                      </div>
+                      <div style={{ fontFamily: 'Bebas Neue', fontSize: '1.5rem', color: '#93c5fd', lineHeight: 1 }}>
+                        {totalNonPupians}
+                      </div>
+                    </div>
                   </div>
                   <div className="revenue-icon"><i className="fa-solid fa-peso-sign" /></div>
                 </div>
@@ -1586,16 +1630,18 @@ export default function Dashboard() {
               </div>
             )}
 
-            {/* Student ID / COR photo */}
+            {/* Student ID / COR / Valid ID photo */}
             {(modal.order.student_id_photo_url || modal.order.cor_or_id_url) && (
               <div style={{ marginTop: '1rem' }}>
-                <div className="screenshot-label">Student ID / COR Photo</div>
+                <div className="screenshot-label">
+                  {modal.order.attendee_type === 'pup_student' ? 'Certificate of Registration (COR)' : 'Valid ID'}
+                </div>
                 <div className="screenshot-viewer">
                   {modal.idPhotoUrl ? (
-                    <img src={modal.idPhotoUrl} alt="Student ID / COR" />
+                    <img src={modal.idPhotoUrl} alt="ID / COR" />
                   ) : (
                     <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--muted)', fontSize: '0.82rem' }}>
-                      Loading ID photo...
+                      Loading photo...
                     </div>
                   )}
                 </div>
@@ -1614,10 +1660,18 @@ export default function Dashboard() {
                       rel="noreferrer"
                       style={{ color: '#93c5fd', fontSize: '0.82rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
                     >
-                      <i className="fa-solid fa-file-pdf" style={{marginRight:'0.4rem',color:'#ff8080'}} /> View / Download Waiver Form
+                      <i className="fa-solid fa-file-pdf" style={{marginRight:'0.4rem',color:'#ff8080'}} /> Open Waiver PDF
                     </a>
                   ) : (
-                    <div style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>Loading waiver...</div>
+                    <button
+                      style={{ background: 'none', border: 'none', color: '#93c5fd', fontSize: '0.82rem', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: 0 }}
+                      onClick={async () => {
+                        const url = await getSignedUrl('waiver-forms', modal.order.waiver_url, waiverUrls, setWaiverUrls, `waiver_${modal.order.id}`)
+                        if (url) window.open(url, '_blank')
+                      }}
+                    >
+                      <i className="fa-solid fa-file-pdf" style={{marginRight:'0.4rem',color:'#ff8080'}} /> Click to Open Waiver PDF
+                    </button>
                   )}
                 </div>
               </div>
