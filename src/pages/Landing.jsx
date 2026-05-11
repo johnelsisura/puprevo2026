@@ -665,8 +665,8 @@ export default function Landing() {
 
         {/* SPONSORS */}
         <section className="section" id="sponsors">
-          <div className="section-label">Our Partners</div>
-          <h2 className="section-title">Sponsors</h2>
+          <div className="section-label">SUPPORTED BY OUR</div>
+          <h2 className="section-title">Sponsors & Partners</h2>
           <div className="sponsors-wrap">
             <img src="/sponsors.png" alt="Event Sponsors" className="sponsors-img" />
           </div>
