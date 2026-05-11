@@ -1183,27 +1183,23 @@ export default function Dashboard() {
     return null
   }
 
-  // Open verify modal and load all files in parallel
-  async function openVerifyModal(order) {
-    setModal({ type: 'verify', order, screenshotUrl: null, idPhotoUrl: null, waiverUrl: null })
-
+  // Open verify modal — buckets are PUBLIC so use getPublicUrl (no async needed)
+  function openVerifyModal(order) {
     const idPhotoPath = order.student_id_photo_url || order.cor_or_id_url
 
-    // Fetch all signed URLs in parallel to avoid race conditions from sequential setModal calls
-    const [screenshotUrl, idPhotoUrl, waiverUrl] = await Promise.all([
-      order.payment_screenshot_url
-        ? supabase.storage.from('payment-screenshots').createSignedUrl(order.payment_screenshot_url, 3600).then(r => r.data?.signedUrl || null)
-        : Promise.resolve(null),
-      idPhotoPath
-        ? supabase.storage.from('student-id-photos').createSignedUrl(idPhotoPath, 3600).then(r => r.data?.signedUrl || null)
-        : Promise.resolve(null),
-      order.waiver_url
-        ? supabase.storage.from('waiver-forms').createSignedUrl(order.waiver_url, 3600).then(r => r.data?.signedUrl || null)
-        : Promise.resolve(null),
-    ])
+    const getPublic = (bucket, path) => {
+      if (!path) return null
+      const { data } = supabase.storage.from(bucket).getPublicUrl(path)
+      return data?.publicUrl || null
+    }
 
-    // Single setModal call — no race conditions, all URLs arrive together
-    setModal(prev => prev ? { ...prev, screenshotUrl, idPhotoUrl, waiverUrl } : prev)
+    setModal({
+      type: 'verify',
+      order,
+      screenshotUrl: getPublic('payment-screenshots', order.payment_screenshot_url),
+      idPhotoUrl:    getPublic('student-id-photos', idPhotoPath),
+      waiverUrl:     getPublic('waiver-forms', order.waiver_url),
+    })
   }
 
   // ── Actions ─────────────────────────────────────────────────────────────
