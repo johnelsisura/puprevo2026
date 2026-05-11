@@ -1693,7 +1693,7 @@ export default function Dashboard() {
                 <span className="modal-detail-label">Attendee</span>
                 <span className="modal-detail-value"><AttendeeBadge type={modal.order.attendee_type} /></span>
               </div>
-              {modal.order.attendee_type === 'pup_student' && (
+              {modal.order.attendee_type === 'pup_student' ? (
                 <>
                   <div className="modal-detail-row">
                     <span className="modal-detail-label">Student ID</span>
@@ -1706,7 +1706,12 @@ export default function Dashboard() {
                     </span>
                   </div>
                 </>
-              )}
+              ) : modal.order.student_id ? (
+                <div className="modal-detail-row">
+                  <span className="modal-detail-label">ID Number</span>
+                  <span className="modal-detail-value">{modal.order.student_id}</span>
+                </div>
+              ) : null}
               <div className="modal-detail-row">
                 <span className="modal-detail-label">Method</span>
                 <span className="modal-detail-value"><PayMethod method={modal.order.payment_method} /></span>
