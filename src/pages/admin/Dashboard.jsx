@@ -239,44 +239,38 @@ const css = `
 
   .btn-red:hover { opacity: 0.85; }
 
-  /* ── Stats overview grid ── */
-  .stats-overview {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  @media (max-width: 900px) {
-    .stats-overview { grid-template-columns: 1fr; }
-  }
-
-  /* Big revenue card — left column */
-  .stat-card-revenue {
+  /* ── Big revenue panel (contains everything inside) ── */
+  .revenue-panel {
     background: var(--card);
-    border: 1px solid rgba(255,215,0,0.25);
-    border-radius: 14px;
-    padding: 2rem 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 1rem;
-    box-shadow: 0 0 40px rgba(255,215,0,0.04);
+    border: 1px solid rgba(255,215,0,0.22);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 1rem;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 0 60px rgba(255,215,0,0.04);
   }
 
-  .stat-card-revenue::before {
+  .revenue-panel::before {
     content: '';
     position: absolute;
-    top: -30px; right: -30px;
-    width: 120px; height: 120px;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,215,0,0.07) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255,215,0,0.06) 0%, transparent 70%);
     pointer-events: none;
   }
 
-  .stat-card-revenue .rev-label {
+  .revenue-panel-top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .rev-label {
     font-family: 'Syne', sans-serif;
     font-size: 0.6rem;
     font-weight: 700;
@@ -286,78 +280,82 @@ const css = `
     margin-bottom: 0.25rem;
   }
 
-  .stat-card-revenue .rev-value {
+  .rev-value {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 3.8rem;
+    font-size: 4rem;
     line-height: 1;
     color: var(--gold);
     letter-spacing: 0.02em;
   }
 
-  .stat-card-revenue .rev-sub {
+  .rev-sub {
     font-size: 0.72rem;
     color: var(--muted);
-    margin-top: 0.2rem;
+    margin-top: 0.25rem;
   }
 
-  .rev-icon {
-    font-size: 2rem;
-    color: rgba(255,215,0,0.1);
-    position: absolute;
-    bottom: 1.25rem;
-    right: 1.5rem;
+  .rev-icon-bg {
+    font-size: 3.5rem;
+    color: rgba(255,215,0,0.07);
+    line-height: 1;
   }
 
-  /* 2×2 mini stats grid — right column */
-  .stats-mini-grid {
+  /* divider inside panel */
+  .revenue-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+    margin-bottom: 1.25rem;
+  }
+
+  /* 4 breakdown boxes inside the panel */
+  .revenue-boxes {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.85rem;
   }
 
-  .stat-mini {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.1rem 1.25rem;
+  @media (max-width: 900px) {
+    .revenue-boxes { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 500px) {
+    .revenue-boxes { grid-template-columns: repeat(2, 1fr); }
+    .rev-value { font-size: 2.8rem; }
+  }
+
+  .rev-box {
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
-    transition: border-color 0.2s;
+    gap: 0.3rem;
   }
 
-  .stat-mini:hover { border-color: rgba(255,255,255,0.14); }
-  .stat-mini.gcash  { border-color: rgba(74,222,128,0.2); }
-  .stat-mini.walkin { border-color: rgba(255,215,0,0.2); }
-  .stat-mini.pupian { border-color: rgba(255,59,48,0.2); }
-  .stat-mini.nonpup { border-color: rgba(96,165,250,0.2); }
+  .rev-box.gcash  { background: rgba(74,222,128,0.06);  border: 1px solid rgba(74,222,128,0.18); }
+  .rev-box.walkin { background: rgba(255,215,0,0.06);   border: 1px solid rgba(255,215,0,0.18); }
+  .rev-box.pupian { background: rgba(255,59,48,0.06);   border: 1px solid rgba(255,59,48,0.18); }
+  .rev-box.nonpup { background: rgba(96,165,250,0.06);  border: 1px solid rgba(96,165,250,0.18); }
 
-  .stat-mini-icon {
-    font-size: 0.85rem;
-    margin-bottom: 0.45rem;
-  }
-
-  .stat-mini-label {
+  .rev-box-icon { font-size: 0.9rem; margin-bottom: 0.35rem; }
+  .rev-box-label {
     font-family: 'Syne', sans-serif;
-    font-size: 0.56rem;
+    font-size: 0.54rem;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--muted);
     line-height: 1.4;
   }
-
-  .stat-mini-value {
+  .rev-box-value {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.9rem;
+    font-size: 1.75rem;
     line-height: 1;
-    margin-top: 0.2rem;
+    margin-top: 0.1rem;
   }
-
-  .stat-mini-value.green  { color: #4ade80; }
-  .stat-mini-value.gold   { color: var(--gold); }
-  .stat-mini-value.red    { color: #ff8080; }
-  .stat-mini-value.blue   { color: #93c5fd; }
+  .rev-box-value.green { color: #4ade80; }
+  .rev-box-value.gold  { color: var(--gold); }
+  .rev-box-value.red   { color: #ff8080; }
+  .rev-box-value.blue  { color: #93c5fd; }
 
   /* Bottom row: 4 small stat tiles */
   .stats-grid {
@@ -373,8 +371,6 @@ const css = `
 
   @media (max-width: 600px) {
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .stats-mini-grid { grid-template-columns: 1fr 1fr; }
-    .stat-card-revenue .rev-value { font-size: 2.8rem; }
   }
 
   .stat-card {
