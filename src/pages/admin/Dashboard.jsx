@@ -357,6 +357,90 @@ const css = `
   .rev-box-value.red   { color: #ff8080; }
   .rev-box-value.blue  { color: #93c5fd; }
 
+  /* ── Stats overview: single panel ── */
+  .stats-overview {
+    background: var(--card);
+    border: 1px solid rgba(255,215,0,0.22);
+    border-radius: 16px;
+    padding: 1.75rem 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(255,215,0,0.04);
+  }
+
+  .stats-overview::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,215,0,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .stats-overview-top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .stats-overview-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+    margin-bottom: 1.25rem;
+  }
+
+  .stats-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.85rem;
+  }
+
+  @media (max-width: 900px) {
+    .stats-mini-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 500px) {
+    .stats-mini-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .stat-mini {
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .stat-mini.gcash  { background: rgba(74,222,128,0.06);  border: 1px solid rgba(74,222,128,0.18); }
+  .stat-mini.walkin { background: rgba(255,215,0,0.06);   border: 1px solid rgba(255,215,0,0.18); }
+  .stat-mini.pupian { background: rgba(255,59,48,0.06);   border: 1px solid rgba(255,59,48,0.18); }
+  .stat-mini.nonpup { background: rgba(96,165,250,0.06);  border: 1px solid rgba(96,165,250,0.18); }
+
+  .stat-mini-icon { font-size: 0.9rem; margin-bottom: 0.35rem; }
+  .stat-mini-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.54rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .stat-mini-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.75rem;
+    line-height: 1;
+    margin-top: 0.1rem;
+  }
+  .stat-mini-value.green { color: #4ade80; }
+  .stat-mini-value.gold  { color: var(--gold); }
+  .stat-mini-value.red   { color: #ff8080; }
+  .stat-mini-value.blue  { color: #93c5fd; }
+
   /* Bottom row: 4 small stat tiles */
   .stats-grid {
     display: grid;
@@ -1327,20 +1411,22 @@ export default function Dashboard() {
                 </div>
               )}
 
-              {/* ── Revenue overview: 2-column grid ── */}
+              {/* ── Revenue overview: single panel ── */}
               <div className="stats-overview" style={{ marginBottom: '1rem' }}>
 
-                {/* LEFT — big total revenue card */}
-                <div className="stat-card-revenue">
+                {/* Top: Total Revenue header */}
+                <div className="stats-overview-top">
                   <div>
                     <div className="rev-label">Total Revenue</div>
                     <div className="rev-value">₱{totalRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</div>
                     <div className="rev-sub">Paid orders only</div>
                   </div>
-                  <div className="rev-icon"><i className="fa-solid fa-peso-sign" /></div>
+                  <div className="rev-icon-bg"><i className="fa-solid fa-peso-sign" /></div>
                 </div>
 
-                {/* RIGHT — 2×2 mini stat grid */}
+                <div className="stats-overview-divider" />
+
+                {/* Bottom: 4 breakdown boxes inside the same panel */}
                 <div className="stats-mini-grid">
                   <div className="stat-mini gcash">
                     <div className="stat-mini-icon" style={{ color: '#4ade80' }}><i className="fa-solid fa-mobile-screen-button" /></div>
