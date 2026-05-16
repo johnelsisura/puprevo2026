@@ -62,6 +62,50 @@ const FAQ_ITEMS = [
   { q: 'Will merchandise be available during the event?', a: 'Official PUP REVO 2026 merchandise are available through pre-orders. Stay tuned for official announcements regarding merch releases and claiming schedules.' },
 ]
 
+function ArtistCard({ artist }) {
+  const [imgFailed, setImgFailed] = useState(false)
+  const showTba = !artist.image || imgFailed
+
+  return (
+    <div className="artist-card">
+      {showTba ? (
+        <div className="artist-tba">
+          <div className="artist-tba-icon"><i className="fa-solid fa-music" /></div>
+          <div className="artist-tba-text">Coming Soon</div>
+        </div>
+      ) : (
+        <>
+          <img
+            src={artist.image}
+            alt={artist.name}
+            className="artist-img"
+            onError={() => setImgFailed(true)}
+          />
+          <div className="artist-overlay">
+            <div className="artist-name">{artist.name}</div>
+            {artist.tag && <div className="artist-tag">{artist.tag}</div>}
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
+
+// Artists lineup — update name & tag per artist when ready for reveal
+const ARTISTS = [
+  { name: 'Artist Name', tag: 'Performing Live', image: '/artist1.png' },
+  { name: 'Artist Name', tag: 'Performing Live', image: '/artist2.png' },
+  { name: 'Artist Name', tag: 'Performing Live', image: '/artist3.png' },
+  { name: 'Artist Name', tag: 'Performing Live', image: '/artist4.png' },
+  { name: 'Artist Name', tag: 'Performing Live', image: '/artist5.png' },
+  { name: 'Artist Name', tag: 'Performing Live', image: '/artist6.png' },
+  { name: 'Artist Name', tag: 'Performing Live', image: '/artist7.png' },
+  { name: 'Artist Name', tag: 'Performing Live', image: '/artist8.png' },
+  { name: 'Artist Name', tag: 'Performing Live', image: '/artist9.png' },
+  { name: 'Artist Name', tag: 'Performing Live', image: '/artist10.png' },
+  { name: 'Artist Name', tag: 'Performing Live', image: '/artist11.png' },
+]
+
 export default function Landing() {
   const navigate = useNavigate()
   const { d, h, m, s } = useCountdown(EVENT_DATE)
@@ -411,6 +455,60 @@ export default function Landing() {
           color: rgba(250,245,233,0.35);
         }
 
+        /* ---- ARTISTS ---- */
+        .artists-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 1.5rem;
+          margin-top: 0.5rem;
+        }
+        .artist-card {
+          position: relative; border-radius: 12px; overflow: hidden;
+          aspect-ratio: 3/4;
+          background: var(--card-bg);
+          border: 1px solid rgba(255,255,255,0.07);
+          transition: transform 0.25s, border-color 0.25s;
+          cursor: default;
+        }
+        .artist-card:hover { transform: translateY(-6px) scale(1.01); border-color: rgba(255,215,0,0.35); }
+        .artist-card:hover .artist-overlay { opacity: 1; }
+        .artist-card:hover .artist-img { transform: scale(1.06); }
+        .artist-img {
+          width: 100%; height: 100%; object-fit: cover; object-position: top center;
+          display: block; transition: transform 0.4s ease;
+        }
+        .artist-overlay {
+          position: absolute; inset: 0;
+          background: linear-gradient(to top, rgba(6,13,31,0.95) 0%, rgba(6,13,31,0.4) 55%, transparent 100%);
+          opacity: 0.85;
+          transition: opacity 0.3s;
+          display: flex; flex-direction: column; justify-content: flex-end;
+          padding: 1.25rem 1rem 1rem;
+        }
+        .artist-name {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 1.4rem; letter-spacing: 0.06em;
+          color: var(--cream); line-height: 1.1; margin-bottom: 0.25rem;
+        }
+        .artist-tag {
+          font-family: 'Syne', sans-serif; font-size: 0.6rem; font-weight: 700;
+          letter-spacing: 0.2em; text-transform: uppercase;
+          color: var(--gold); opacity: 0.85;
+        }
+        .artist-tba {
+          display: flex; flex-direction: column; align-items: center;
+          justify-content: center; height: 100%;
+          gap: 0.75rem;
+        }
+        .artist-tba-icon {
+          font-size: 2.5rem; color: rgba(255,215,0,0.2);
+        }
+        .artist-tba-text {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 1.1rem; letter-spacing: 0.2em;
+          color: rgba(250,245,233,0.2); text-transform: uppercase;
+        }
+
         /* ---- DIVIDER ---- */
         .divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0; }
 
@@ -693,6 +791,19 @@ export default function Landing() {
               })()}
             </div>
           )}
+        </section>
+
+        <hr className="divider" />
+
+        {/* ARTISTS */}
+        <section className="section" id="artists">
+          <div className="section-label">Performing Live</div>
+          <h2 className="section-title">Artists & Lineup</h2>
+          <div className="artists-grid">
+            {ARTISTS.map((artist, i) => (
+              <ArtistCard key={i} artist={artist} />
+            ))}
+          </div>
         </section>
 
         <hr className="divider" />
