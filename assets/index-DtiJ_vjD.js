@@ -336,9 +336,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         /* ---- ARTISTS ---- */
         .artists-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-          gap: 1.5rem;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0.75rem;
           margin-top: 0.5rem;
+        }
+        @media(min-width: 640px) {
+          .artists-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+          }
         }
         .artist-card {
           position: relative; border-radius: 12px; overflow: hidden;
