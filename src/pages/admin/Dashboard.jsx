@@ -1309,6 +1309,7 @@ export default function Dashboard() {
   function formatDate(iso) {
     if (!iso) return '—'
     return new Date(iso).toLocaleString('en-PH', {
+      timeZone: 'Asia/Manila',
       month: 'short', day: 'numeric',
       hour: '2-digit', minute: '2-digit',
     })
@@ -1386,7 +1387,7 @@ export default function Dashboard() {
                   <div className="stat-label" style={{ marginBottom: 0, textAlign: 'left' }}>Event</div>
                   <div style={{ fontSize: '0.8rem', color: 'var(--muted)', lineHeight: 1.6, marginTop: '0.4rem', textAlign: 'left' }}>
                     <i className="fa-solid fa-location-dot" style={{marginRight:'0.4rem'}} />{event.venue}<br />
-                    <i className="fa-regular fa-calendar" style={{marginRight:'0.4rem'}} />{new Date(event.event_date).toLocaleString('en-PH', { month: 'long', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                    <i className="fa-regular fa-calendar" style={{marginRight:'0.4rem'}} />{new Date(event.event_date).toLocaleString('en-PH', { timeZone: 'Asia/Manila', month: 'long', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
                   </div>
                 </div>
               )}
