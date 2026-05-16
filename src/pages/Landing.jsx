@@ -489,17 +489,24 @@ export default function Landing() {
           opacity: 0.85;
           transition: opacity 0.3s;
           display: flex; flex-direction: column; justify-content: flex-end;
-          padding: 1.25rem 1rem 1rem;
+          padding: 0.5rem 0.5rem 0.5rem;
+        }
+        @media(min-width: 640px) {
+          .artist-overlay { padding: 1.25rem 1rem 1rem; }
         }
         .artist-name {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 1.4rem; letter-spacing: 0.06em;
-          color: var(--cream); line-height: 1.1; margin-bottom: 0.25rem;
+          font-size: 0.85rem; letter-spacing: 0.04em;
+          color: var(--cream); line-height: 1.1; margin-bottom: 0.15rem;
         }
         .artist-tag {
-          font-family: 'Syne', sans-serif; font-size: 0.6rem; font-weight: 700;
-          letter-spacing: 0.2em; text-transform: uppercase;
+          font-family: 'Syne', sans-serif; font-size: 0.45rem; font-weight: 700;
+          letter-spacing: 0.15em; text-transform: uppercase;
           color: var(--gold); opacity: 0.85;
+        }
+        @media(min-width: 640px) {
+          .artist-name { font-size: 1.4rem; letter-spacing: 0.06em; margin-bottom: 0.25rem; }
+          .artist-tag { font-size: 0.6rem; letter-spacing: 0.2em; }
         }
         .artist-tba {
           display: flex; flex-direction: column; align-items: center;
@@ -507,11 +514,14 @@ export default function Landing() {
           gap: 0.75rem;
         }
         .artist-tba-icon {
-          font-size: 2.5rem; color: rgba(255,215,0,0.2);
+          font-size: 1.5rem; color: rgba(255,215,0,0.2);
+        }
+        @media(min-width: 640px) {
+          .artist-tba-icon { font-size: 2.5rem; }
         }
         .artist-tba-text {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 1.1rem; letter-spacing: 0.2em;
+          font-size: 0.65rem; letter-spacing: 0.15em;
           color: rgba(250,245,233,0.2); text-transform: uppercase;
         }
 
