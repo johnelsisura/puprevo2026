@@ -93,7 +93,7 @@ function ArtistCard({ artist }) {
 
 // Artists lineup — update name & tag per artist when ready for reveal
 const ARTISTS = [
-  { name: 'Artist Name', tag: 'Performing Live', image: '/artist1.png' },
+  { name: 'MAYONNAISE', tag: 'Performing Live', image: '/artist1.png' },
   { name: 'Artist Name', tag: 'Performing Live', image: '/artist2.png' },
   { name: 'Artist Name', tag: 'Performing Live', image: '/artist3.png' },
   { name: 'Artist Name', tag: 'Performing Live', image: '/artist4.png' },
