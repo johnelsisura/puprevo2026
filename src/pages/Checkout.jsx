@@ -461,19 +461,22 @@ const css = `
 // ── File preview + format validation helper ───────────────────────────────
 const ALLOWED_IMAGE_TYPES = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp']
 
-function FilePreview({ file, maxMB = 10, fieldLabel = 'file' }) {
+function FilePreview({ file, maxMB = 10, fieldLabel = 'file', acceptPdf = false }) {
   if (!file) return null
   const sizeMB = file.size / (1024 * 1024)
-  const wrongFormat = !ALLOWED_IMAGE_TYPES.includes(file.type)
+  const isPdf = file.type === 'application/pdf'
+  const wrongFormat = acceptPdf ? !isPdf : !ALLOWED_IMAGE_TYPES.includes(file.type)
   const tooBig = sizeMB > maxMB
   const ok = !wrongFormat && !tooBig
 
   let errorMsg = null
   if (wrongFormat) {
     const ext = file.name.split('.').pop().toUpperCase()
-    errorMsg = `${ext} files are not accepted. Please upload a photo of your ${fieldLabel} (.jpg, .png, or .webp).`
+    errorMsg = acceptPdf
+      ? `${ext} files are not accepted. Please upload a PDF of your ${fieldLabel}.`
+      : `${ext} files are not accepted. Please upload a photo of your ${fieldLabel} (.jpg, .png, or .webp).`
   } else if (tooBig) {
-    errorMsg = `File is too large (${sizeMB.toFixed(1)} MB). Max allowed is ${maxMB} MB. Try a lower-resolution photo.`
+    errorMsg = `File is too large (${sizeMB.toFixed(1)} MB). Max allowed is ${maxMB} MB. ${acceptPdf ? 'Try compressing the PDF.' : 'Try a lower-resolution photo.'}`
   }
 
   return (
@@ -541,7 +544,9 @@ function validateStep1(form) {
 }
 
 const ALLOWED_IMG = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp']
-function badFormat(file) { return file && !ALLOWED_IMG.includes(file.type) }
+const ALLOWED_PDF = ['application/pdf']
+function badImgFormat(file) { return file && !ALLOWED_IMG.includes(file.type) }
+function badPdfFormat(file) { return file && !ALLOWED_PDF.includes(file.type) }
 
 function validateStep2(form) {
   const errors = {}
@@ -553,18 +558,18 @@ function validateStep2(form) {
     if (!form.year_level) errors.year_level = 'Required'
     if (!form.block.trim()) errors.block = 'Required'
     if (!form.id_photo_file) errors.id_photo_file = 'COR upload is required'
-    else if (badFormat(form.id_photo_file)) errors.id_photo_file = 'Invalid file type. Please upload a .jpg, .png, or .webp photo of your COR — PDF is not accepted.'
+    else if (badImgFormat(form.id_photo_file)) errors.id_photo_file = 'Invalid file type. Please upload a .jpg, .png, or .webp photo of your COR — PDF is not accepted.'
     else if (form.id_photo_file.size > 10 * 1024 * 1024) errors.id_photo_file = 'File too large. Max 10MB. Try a lower quality photo.'
     if (!form.waiver_file) errors.waiver_file = 'Consent/Waiver form is required'
-    else if (badFormat(form.waiver_file)) errors.waiver_file = 'Invalid file type. Please upload a .jpg, .png, or .webp photo of the form — PDF is not accepted.'
+    else if (badPdfFormat(form.waiver_file)) errors.waiver_file = 'Invalid file type. Please upload a .pdf of the completed form — image files are not accepted.'
     else if (form.waiver_file.size > 10 * 1024 * 1024) errors.waiver_file = 'File too large. Max 10MB.'
   } else {
     if (!form.attendee_type) errors.attendee_type = 'Please select your classification'
     if (!form.valid_id_file) errors.valid_id_file = 'Valid ID is required'
-    else if (badFormat(form.valid_id_file)) errors.valid_id_file = 'Invalid file type. Please upload a .jpg, .png, or .webp photo of your ID — PDF is not accepted.'
+    else if (badImgFormat(form.valid_id_file)) errors.valid_id_file = 'Invalid file type. Please upload a .jpg, .png, or .webp photo of your ID — PDF is not accepted.'
     else if (form.valid_id_file.size > 10 * 1024 * 1024) errors.valid_id_file = 'File too large. Max 10MB. Try a lower quality photo.'
     if (!form.waiver_file) errors.waiver_file = 'Consent/Waiver form is required'
-    else if (badFormat(form.waiver_file)) errors.waiver_file = 'Invalid file type. Please upload a .jpg, .png, or .webp photo of the form — PDF is not accepted.'
+    else if (badPdfFormat(form.waiver_file)) errors.waiver_file = 'Invalid file type. Please upload a .pdf of the completed form — image files are not accepted.'
     else if (form.waiver_file.size > 10 * 1024 * 1024) errors.waiver_file = 'File too large. Max 10MB.'
   }
   return errors
@@ -748,9 +753,12 @@ export default function Checkout() {
 
   async function uploadFile(bucket, file) {
     if (!file) return null
-    const fileToUpload = await compressImage(file)
-    if (fileToUpload.size > 5 * 1024 * 1024) {
-      throw new Error(`File too large. Please use a smaller or lower-resolution image (max 5MB).`)
+    const isPdf = file.type === 'application/pdf'
+    const fileToUpload = isPdf ? file : await compressImage(file)
+    const maxSize = isPdf ? 10 * 1024 * 1024 : 5 * 1024 * 1024
+    const maxLabel = isPdf ? '10MB' : '5MB'
+    if (fileToUpload.size > maxSize) {
+      throw new Error(`File too large. Please use a smaller file (max ${maxLabel}).`)
     }
     const ext = fileToUpload.name.split('.').pop()
     const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
@@ -1135,7 +1143,7 @@ export default function Checkout() {
                       onChange={e => set('waiver_file', e.target.files[0] || null)}
                     />
                     {errors.waiver_file && <div className="field-error">{errors.waiver_file}</div>}
-                    <FilePreview file={form.waiver_file} maxMB={10} fieldLabel="Consent/Waiver form" />
+                    <FilePreview file={form.waiver_file} maxMB={10} fieldLabel="Consent/Waiver form" acceptPdf={true} />
                     <div className="field-hint">Accepted: .pdf only. Max 10 MB. 1 file only.</div>
                   </div>
                 </div>
