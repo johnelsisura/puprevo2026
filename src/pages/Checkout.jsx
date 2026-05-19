@@ -458,20 +458,46 @@ const css = `
   .payment-note strong { color: var(--cream); }
 `
 
-// ── File size display helper ──────────────────────────────────────────────
-function FileSizeHint({ file, maxMB = 10 }) {
+// ── File preview + format validation helper ───────────────────────────────
+const ALLOWED_IMAGE_TYPES = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp']
+
+function FilePreview({ file, maxMB = 10, fieldLabel = 'file' }) {
   if (!file) return null
   const sizeMB = file.size / (1024 * 1024)
-  const ok = sizeMB <= maxMB
+  const wrongFormat = !ALLOWED_IMAGE_TYPES.includes(file.type)
+  const tooBig = sizeMB > maxMB
+  const ok = !wrongFormat && !tooBig
+
+  let errorMsg = null
+  if (wrongFormat) {
+    const ext = file.name.split('.').pop().toUpperCase()
+    errorMsg = `${ext} files are not accepted. Please upload a photo of your ${fieldLabel} (.jpg, .png, or .webp).`
+  } else if (tooBig) {
+    errorMsg = `File is too large (${sizeMB.toFixed(1)} MB). Max allowed is ${maxMB} MB. Try a lower-resolution photo.`
+  }
+
   return (
-    <div style={{
-      fontSize: '0.75rem',
-      marginTop: '0.4rem',
-      color: ok ? '#4ade80' : '#ff6b6b',
-      display: 'flex', alignItems: 'center', gap: '0.35rem',
-    }}>
-      <i className={`fa-solid ${ok ? 'fa-circle-check' : 'fa-circle-xmark'}`} />
-      {file.name} — {sizeMB.toFixed(2)} MB {!ok && `(max ${maxMB}MB)`}
+    <div style={{ marginTop: '0.5rem' }}>
+      <div style={{
+        display: 'flex', alignItems: 'center', gap: '0.5rem',
+        background: ok ? 'rgba(74,222,128,0.06)' : 'rgba(255,107,107,0.08)',
+        border: `1px solid ${ok ? 'rgba(74,222,128,0.25)' : 'rgba(255,107,107,0.35)'}`,
+        borderRadius: '6px', padding: '0.5rem 0.75rem',
+        fontSize: '0.78rem',
+        color: ok ? '#4ade80' : '#ff6b6b',
+      }}>
+        <i className={`fa-solid ${ok ? 'fa-circle-check' : 'fa-circle-xmark'}`} style={{ flexShrink: 0 }} />
+        <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1 }}>
+          {file.name}
+        </span>
+        <span style={{ flexShrink: 0, opacity: 0.7 }}>{sizeMB.toFixed(2)} MB</span>
+      </div>
+      {errorMsg && (
+        <div style={{ fontSize: '0.75rem', color: '#ff6b6b', marginTop: '0.35rem', lineHeight: 1.5 }}>
+          <i className="fa-solid fa-triangle-exclamation" style={{ marginRight: '0.35rem' }} />
+          {errorMsg}
+        </div>
+      )}
     </div>
   )
 }
@@ -514,6 +540,9 @@ function validateStep1(form) {
   return errors
 }
 
+const ALLOWED_IMG = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp']
+function badFormat(file) { return file && !ALLOWED_IMG.includes(file.type) }
+
 function validateStep2(form) {
   const errors = {}
   if (!form.ticket_type_id) errors.ticket_type_id = 'Select a ticket type'
@@ -524,14 +553,18 @@ function validateStep2(form) {
     if (!form.year_level) errors.year_level = 'Required'
     if (!form.block.trim()) errors.block = 'Required'
     if (!form.id_photo_file) errors.id_photo_file = 'COR upload is required'
+    else if (badFormat(form.id_photo_file)) errors.id_photo_file = 'Invalid file type. Please upload a .jpg, .png, or .webp photo of your COR — PDF is not accepted.'
     else if (form.id_photo_file.size > 10 * 1024 * 1024) errors.id_photo_file = 'File too large. Max 10MB. Try a lower quality photo.'
     if (!form.waiver_file) errors.waiver_file = 'Consent/Waiver form is required'
+    else if (badFormat(form.waiver_file)) errors.waiver_file = 'Invalid file type. Please upload a .jpg, .png, or .webp photo of the form — PDF is not accepted.'
     else if (form.waiver_file.size > 10 * 1024 * 1024) errors.waiver_file = 'File too large. Max 10MB.'
   } else {
     if (!form.attendee_type) errors.attendee_type = 'Please select your classification'
     if (!form.valid_id_file) errors.valid_id_file = 'Valid ID is required'
+    else if (badFormat(form.valid_id_file)) errors.valid_id_file = 'Invalid file type. Please upload a .jpg, .png, or .webp photo of your ID — PDF is not accepted.'
     else if (form.valid_id_file.size > 10 * 1024 * 1024) errors.valid_id_file = 'File too large. Max 10MB. Try a lower quality photo.'
     if (!form.waiver_file) errors.waiver_file = 'Consent/Waiver form is required'
+    else if (badFormat(form.waiver_file)) errors.waiver_file = 'Invalid file type. Please upload a .jpg, .png, or .webp photo of the form — PDF is not accepted.'
     else if (form.waiver_file.size > 10 * 1024 * 1024) errors.waiver_file = 'File too large. Max 10MB.'
   }
   return errors
@@ -1019,7 +1052,7 @@ export default function Checkout() {
                       onChange={e => set('id_photo_file', e.target.files[0] || null)}
                     />
                     {errors.id_photo_file && <div className="field-error">{errors.id_photo_file}</div>}
-                    <FileSizeHint file={form.id_photo_file} maxMB={10} />
+                    <FilePreview file={form.id_photo_file} maxMB={10} fieldLabel="COR" />
                     <div className="field-hint">
                       Accepted: .png, .jpg, .jpeg, .webp only — no PDF. Max 10 MB. 1 file only.<br />
                       Upload a clear photo of your COR for S.Y. 2025–2026, 2nd Semester.
@@ -1071,7 +1104,7 @@ export default function Checkout() {
                       onChange={e => set('valid_id_file', e.target.files[0] || null)}
                     />
                     {errors.valid_id_file && <div className="field-error">{errors.valid_id_file}</div>}
-                    <FileSizeHint file={form.valid_id_file} maxMB={10} />
+                    <FilePreview file={form.valid_id_file} maxMB={10} fieldLabel="Valid ID" />
                     <div className="field-hint">
                       Accepted: .png, .jpg, .jpeg, .webp only — no PDF. Max 10 MB. 1 file only.<br />
                       Upload a clear photo of your valid ID (front only, ID number visible). Present the same ID at the entrance on event day.
@@ -1102,7 +1135,7 @@ export default function Checkout() {
                       onChange={e => set('waiver_file', e.target.files[0] || null)}
                     />
                     {errors.waiver_file && <div className="field-error">{errors.waiver_file}</div>}
-                    <FileSizeHint file={form.waiver_file} maxMB={10} />
+                    <FilePreview file={form.waiver_file} maxMB={10} fieldLabel="Consent/Waiver form" />
                     <div className="field-hint">Accepted: .pdf only. Max 10 MB. 1 file only.</div>
                   </div>
                 </div>
@@ -1239,7 +1272,7 @@ export default function Checkout() {
                       onChange={e => set('payment_screenshot_file', e.target.files[0] || null)}
                     />
                     {errors.payment_screenshot_file && <div className="field-error">{errors.payment_screenshot_file}</div>}
-                    <FileSizeHint file={form.payment_screenshot_file} maxMB={10} />
+                    <FilePreview file={form.payment_screenshot_file} maxMB={10} fieldLabel="payment screenshot" />
                     <div className="field-hint">Accepted: .png, .jpg, .jpeg, .webp only. Max 10 MB. 1 file only. Reference number must be clearly visible.</div>
                   </div>
                 </div>
