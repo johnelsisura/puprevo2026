@@ -1256,20 +1256,19 @@ export default function Checkout() {
                       Onsite Ticket Selling Schedule
                     </div>
                     {[
-                      { date: 'May 6, 2026',  time: '10 AM – 5 PM', venue: 'Lagoon' },
-                      { date: 'May 8, 2026',  time: '10 AM – 5 PM', venue: 'Lagoon' },
-                      { date: 'May 9, 2026',  time: '10 AM – 5 PM', venue: 'Lagoon' },
-                      { date: 'May 13, 2026', time: '10 AM – 5 PM', venue: 'Lagoon' },
-                      { date: 'May 16, 2026', time: '10 AM – 5 PM', venue: 'Lagoon' },
-                      { date: 'May 19, 2026', time: '10 AM – 5 PM', venue: 'Lunan' },
-                      { date: 'May 30, 2026', time: '10 AM – 5 PM', venue: 'Lunan' },
-                      { date: 'June 2, 2026', time: '10 AM – 5 PM', venue: 'Lunan' },
+                      { date: 'May 20, 2026', time: '10 AM – 5 PM', venue: 'Lagoon' },
+                      { date: 'May 23, 2026', time: '10 AM – 5 PM', venue: 'Lunan' },
+                      { date: 'May 25, 2026', time: '10 AM – 5 PM', venue: 'Lagoon' },
+                      { date: 'May 29, 2026', time: '10 AM – 5 PM', venue: 'Lunan' },
                     ].map(({ date, time, venue }) => (
                       <div key={date} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', padding: '0.2rem 0', borderBottom: '1px solid rgba(255,215,0,0.08)' }}>
                         <span style={{ fontWeight: 600 }}>{date}</span>
                         <span style={{ color: 'rgba(255,215,0,0.6)' }}>{time} @ {venue}</span>
                       </div>
                     ))}
+                    <div style={{ fontSize: '0.72rem', color: 'rgba(255,215,0,0.4)', fontStyle: 'italic', paddingTop: '0.4rem' }}>
+                      More dates coming soon for June 2026.
+                    </div>
                   </div>
                 </div>
               )}

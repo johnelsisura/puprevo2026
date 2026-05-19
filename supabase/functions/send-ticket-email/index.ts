@@ -50,6 +50,18 @@ serve(async (req) => {
     const representativeSection = !isPUPian ? `
       <tr>
         <td style="padding-bottom:20px;">
+          <div style="background:#1a2340;border-radius:8px;padding:16px 20px;">
+            <p style="margin:0 0 12px;font-size:13px;font-weight:700;color:#FAF5E9;">&#128197; Ticket Claiming Schedule</p>
+            <table cellpadding="0" cellspacing="0" width="100%">
+              <tr><td style="padding:5px 8px;font-size:12px;color:rgba(250,245,233,0.8);border-bottom:1px solid rgba(255,255,255,0.06);">May 23, 2026</td><td style="padding:5px 8px;font-size:12px;color:rgba(250,245,233,0.8);border-bottom:1px solid rgba(255,255,255,0.06);">10 AM – 5 PM</td><td style="padding:5px 8px;font-size:12px;font-weight:700;color:#FFD700;border-bottom:1px solid rgba(255,255,255,0.06);">@ Lunan</td></tr>
+              <tr><td style="padding:5px 8px;font-size:12px;color:rgba(250,245,233,0.8);">May 29, 2026</td><td style="padding:5px 8px;font-size:12px;color:rgba(250,245,233,0.8);">10 AM – 5 PM</td><td style="padding:5px 8px;font-size:12px;font-weight:700;color:#FFD700;">@ Lunan</td></tr>
+            </table>
+            <p style="margin:10px 0 0;font-size:11px;color:rgba(250,245,233,0.4);line-height:1.6;">More dates coming soon for June 2026.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding-bottom:20px;">
           <p style="margin:0 0 10px;font-size:13px;font-weight:700;color:#FAF5E9;">If you cannot claim on the scheduled date:</p>
           <table cellpadding="0" cellspacing="0">
             <tr><td style="padding:4px 0;font-size:13px;color:rgba(250,245,233,0.8);line-height:1.6;">&#8226;&nbsp;<strong style="color:#FAF5E9;">Representative:</strong> Prepare the receipt of payment, proof of consent for pick-up, and this confirmation email.</td></tr>
@@ -72,7 +84,7 @@ serve(async (req) => {
 
     <!-- Logo -->
     <tr><td align="center" style="padding-bottom:20px;">
-      <img src="https://puprevo2026.me/logo.png" alt="PUP REVO" width="72" style="display:block;" />
+      <img src="https://puprevo2026.me/logo.png" alt="PUP REVO" width="140" style="display:block;" />
     </td></tr>
 
     <!-- Badge -->
@@ -170,11 +182,27 @@ serve(async (req) => {
             </table>
           </td></tr>
 
-          <!-- Representative/courier (non-PUPian) -->
+          <!-- Non-PUPian: schedule + representative/courier -->
           ${representativeSection}
 
           <!-- Divider -->
           <tr><td style="border-top:1px dashed rgba(255,255,255,0.1);padding-bottom:20px;"></td></tr>
+
+          <!-- Onsite schedule (PUPians only) -->
+${isPUPian ? `
+<tr><td style="padding-bottom:20px;">
+  <div style="background:#1a2340;border-radius:8px;padding:16px 20px;">
+    <p style="margin:0 0 12px;font-size:13px;font-weight:700;color:#FAF5E9;">&#128197; Onsite Ticket Selling Schedule</p>
+    <table cellpadding="0" cellspacing="0" width="100%">
+      <tr><td style="padding:5px 8px;font-size:12px;color:rgba(250,245,233,0.8);border-bottom:1px solid rgba(255,255,255,0.06);">May 20, 2026</td><td style="padding:5px 8px;font-size:12px;color:rgba(250,245,233,0.8);border-bottom:1px solid rgba(255,255,255,0.06);">10 AM – 5 PM</td><td style="padding:5px 8px;font-size:12px;font-weight:700;color:#FFD700;border-bottom:1px solid rgba(255,255,255,0.06);">@ Lagoon</td></tr>
+      <tr><td style="padding:5px 8px;font-size:12px;color:rgba(250,245,233,0.8);border-bottom:1px solid rgba(255,255,255,0.06);">May 23, 2026</td><td style="padding:5px 8px;font-size:12px;color:rgba(250,245,233,0.8);border-bottom:1px solid rgba(255,255,255,0.06);">10 AM – 5 PM</td><td style="padding:5px 8px;font-size:12px;font-weight:700;color:#FFD700;border-bottom:1px solid rgba(255,255,255,0.06);">@ Lunan</td></tr>
+      <tr><td style="padding:5px 8px;font-size:12px;color:rgba(250,245,233,0.8);border-bottom:1px solid rgba(255,255,255,0.06);">May 25, 2026</td><td style="padding:5px 8px;font-size:12px;color:rgba(250,245,233,0.8);border-bottom:1px solid rgba(255,255,255,0.06);">10 AM – 5 PM</td><td style="padding:5px 8px;font-size:12px;font-weight:700;color:#FFD700;border-bottom:1px solid rgba(255,255,255,0.06);">@ Lagoon</td></tr>
+      <tr><td style="padding:5px 8px;font-size:12px;color:rgba(250,245,233,0.8);border-bottom:1px solid rgba(255,255,255,0.06);">May 29, 2026</td><td style="padding:5px 8px;font-size:12px;color:rgba(250,245,233,0.8);border-bottom:1px solid rgba(255,255,255,0.06);">10 AM – 5 PM</td><td style="padding:5px 8px;font-size:12px;font-weight:700;color:#FFD700;border-bottom:1px solid rgba(255,255,255,0.06);">@ Lunan</td></tr>
+      <tr><td style="padding:5px 8px;font-size:12px;color:rgba(250,245,233,0.55);font-style:italic;" colspan="3">More dates coming soon for June 2026.</td></tr>
+    </table>
+  </div>
+</td></tr>
+` : ''}
 
           <!-- Laking National perk -->
           <tr><td style="padding-bottom:20px;">
