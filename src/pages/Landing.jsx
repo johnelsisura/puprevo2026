@@ -113,6 +113,7 @@ export default function Landing() {
   const [loading, setLoading] = useState(true)
   const [privacyOpen, setPrivacyOpen] = useState(false)
   const [faqSearch, setFaqSearch] = useState('')
+  const [openFaq, setOpenFaq] = useState(null)
 
   useEffect(() => {
     async function fetchSlots() {
@@ -413,20 +414,19 @@ export default function Landing() {
         .sponsors-img:hover { opacity: 1; }
 
         /* ---- FAQ ---- */
-        details.faq-item {
+        .faq-item {
           background: var(--card-bg); border: 1px solid rgba(255,255,255,0.07);
           border-radius: 10px; overflow: hidden; transition: border-color 0.2s;
+          cursor: pointer;
         }
-        details.faq-item[open] { border-color: rgba(255,59,48,0.35); }
-        summary.faq-summary {
+        .faq-item.faq-open { border-color: rgba(255,59,48,0.35); }
+        .faq-summary {
           font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700;
-          color: var(--cream); padding: 1.2rem 1.5rem; cursor: pointer;
+          color: var(--cream); padding: 1.2rem 1.5rem;
           display: flex; justify-content: space-between; align-items: center;
-          gap: 1rem; list-style: none; text-align: left;
+          gap: 1rem; text-align: left; user-select: none;
         }
-        summary.faq-summary::-webkit-details-marker { display: none; }
-        .faq-icon { color: var(--red); flex-shrink: 0; font-size: 1.2rem; transition: transform 0.2s; }
-        details.faq-item[open] .faq-icon { transform: rotate(45deg); }
+        .faq-icon { color: var(--red); flex-shrink: 0; font-size: 1.2rem; }
         .faq-body {
           padding: 0.8rem 1.5rem 1.2rem; border-top: 1px solid rgba(255,255,255,0.05);
           font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
@@ -1003,14 +1003,21 @@ export default function Landing() {
               if (results.length === 0) return (
                 <div className="faq-no-results">No results found for "{faqSearch}".</div>
               )
-              return results.map(({ q, a }) => (
-                <details key={q} className="faq-item">
-                  <summary className="faq-summary">
-                    {q} <span className="faq-icon">+</span>
-                  </summary>
-                  <div className="faq-body">{a}</div>
-                </details>
-              ))
+              return results.map(({ q, a }) => {
+                const isOpen = openFaq === q
+                return (
+                  <div
+                    key={q}
+                    className={`faq-item${isOpen ? ' faq-open' : ''}`}
+                    onClick={() => setOpenFaq(isOpen ? null : q)}
+                  >
+                    <div className="faq-summary">
+                      {q} <span className="faq-icon">{isOpen ? '×' : '+'}</span>
+                    </div>
+                    {isOpen && <div className="faq-body">{a}</div>}
+                  </div>
+                )
+              })
             })()}
           </div>
         </section>
