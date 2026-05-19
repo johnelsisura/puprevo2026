@@ -593,6 +593,91 @@ export default function Landing() {
         /* ---- SOLD OUT ---- */
         .sold-out { opacity: 0.5; pointer-events: none; }
 
+        /* ---- TICKETS URGENCY STRIP ---- */
+        .tickets-urgency {
+          display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+          margin-bottom: 1.75rem;
+        }
+        .urgency-dot {
+          display: inline-flex; align-items: center; gap: 0.45rem;
+          font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
+          letter-spacing: 0.18em; text-transform: uppercase; color: var(--red);
+        }
+        .urgency-dot::before {
+          content: ''; display: inline-block;
+          width: 8px; height: 8px; border-radius: 50%; background: var(--red);
+          animation: urgencyPulse 1.4s ease-in-out infinite;
+        }
+        @keyframes urgencyPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.75)} }
+        .urgency-wave-pill {
+          display: inline-flex; align-items: center; gap: 0.5rem;
+          font-family: 'DM Sans', sans-serif; font-size: 0.75rem;
+          color: rgba(250,245,233,0.55);
+          border: 1px solid rgba(255,255,255,0.1);
+          padding: 0.3rem 0.85rem; border-radius: 2rem;
+          background: rgba(255,255,255,0.03);
+        }
+        .urgency-wave-sep { opacity: 0.3; }
+
+        /* ---- SLOTS NOT GUARANTEED ---- */
+        .ticket-snag {
+          padding: 0 1.5rem 0.75rem;
+          font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
+          letter-spacing: 0.12em; text-transform: uppercase;
+          color: var(--red); display: flex; align-items: center; gap: 0.4rem;
+        }
+
+        /* ---- MEMBERSHIP PERK BANNER ---- */
+        .perk-banner {
+          margin-top: 2rem;
+          background: rgba(255,255,255,0.02);
+          border: 1px solid rgba(255,215,0,0.18);
+          border-radius: 12px; padding: 1.75rem 2rem;
+          position: relative; overflow: hidden;
+        }
+        .perk-banner::before {
+          content: '';
+          position: absolute; inset: 0;
+          background: linear-gradient(135deg, rgba(255,215,0,0.04) 0%, transparent 60%);
+          pointer-events: none;
+        }
+        .perk-top {
+          display: flex; align-items: flex-start; justify-content: space-between;
+          flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.6rem;
+        }
+        .perk-label {
+          font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
+          letter-spacing: 0.25em; text-transform: uppercase;
+          color: var(--gold); opacity: 0.7;
+        }
+        .perk-badge {
+          font-family: 'Syne', sans-serif; font-size: 0.62rem; font-weight: 700;
+          letter-spacing: 0.12em; text-transform: uppercase;
+          background: rgba(74,222,128,0.12); color: #4ade80;
+          border: 1px solid rgba(74,222,128,0.25);
+          padding: 0.25rem 0.7rem; border-radius: 2rem;
+        }
+        .perk-title {
+          font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.4rem,3.5vw,2rem);
+          letter-spacing: 0.06em; color: var(--cream); margin-bottom: 0.35rem;
+        }
+        .perk-sub {
+          font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+          color: rgba(250,245,233,0.45); margin-bottom: 1.1rem;
+        }
+        .perk-list { display: flex; flex-direction: column; gap: 0.55rem; }
+        .perk-item {
+          display: flex; align-items: center; gap: 0.65rem;
+          font-family: 'DM Sans', sans-serif; font-size: 0.84rem;
+          color: rgba(250,245,233,0.75);
+        }
+        .perk-check {
+          width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+          background: rgba(74,222,128,0.15); border: 1px solid rgba(74,222,128,0.3);
+          display: flex; align-items: center; justify-content: center;
+          color: #4ade80; font-size: 0.65rem;
+        }
+
         @media (max-width: 600px) {
           .countdown { gap: 0.75rem; }
           .countdown-num { min-width: 60px; padding: 0.3rem 0.6rem; }
@@ -730,6 +815,14 @@ export default function Landing() {
           <div className="section-label">Buy Now</div>
           <h2 className="section-title">Get Your Ticket</h2>
 
+          {/* Urgency strip */}
+          <div className="tickets-urgency">
+            <span className="urgency-dot">Very Limited Tickets Only</span>
+            <span className="urgency-wave-pill">
+              Wave per week <span className="urgency-wave-sep">·</span> Slots not guaranteed
+            </span>
+          </div>
+
           {loading ? (
             <p style={{ color: 'rgba(250,245,233,0.4)', fontFamily: 'DM Sans' }}>Loading ticket info...</p>
           ) : (
@@ -758,6 +851,12 @@ export default function Landing() {
                         {soldOut ? <><i className="fa-solid fa-circle-xmark" style={{ marginRight: '0.35rem', color: 'var(--red)' }} /> Sold Out</> : `${remaining} slots remaining`}
                       </div>
                     </div>
+                    {!soldOut && (
+                      <div className="ticket-snag">
+                        <i className="fa-solid fa-bolt" />
+                        Buy Now — Slots Not Guaranteed
+                      </div>
+                    )}
                     <div className="ticket-desc">
                       <i className="fa-solid fa-circle-info" style={{ marginRight: '0.35rem', color: 'rgba(255,215,0,0.5)' }} />
                       Service fee may apply for online payments.
@@ -793,6 +892,12 @@ export default function Landing() {
                         {soldOut ? <><i className="fa-solid fa-circle-xmark" style={{ marginRight: '0.35rem', color: 'var(--red)' }} /> Sold Out</> : `${remaining} slots remaining`}
                       </div>
                     </div>
+                    {!soldOut && (
+                      <div className="ticket-snag">
+                        <i className="fa-solid fa-bolt" />
+                        Buy Now — Slots Not Guaranteed
+                      </div>
+                    )}
                     <div className="ticket-desc">
                       <i className="fa-solid fa-circle-info" style={{ marginRight: '0.35rem', color: 'rgba(255,215,0,0.5)' }} />
                       Service fee may apply for online payments.
@@ -807,6 +912,33 @@ export default function Landing() {
               })()}
             </div>
           )}
+
+          {/* Online Purchase Exclusive Perk */}
+          <div className="perk-banner">
+            <div className="perk-top">
+              <div className="perk-label">Online Purchase Exclusive Perk</div>
+              <div className="perk-badge">Free ₱500-Worth Membership Upgrade</div>
+            </div>
+            <div className="perk-title">Free Laking National Plus Membership</div>
+            <div className="perk-sub">Book online and enjoy perks worth more than the ticket itself.</div>
+            <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
+              <div className="perk-list">
+                <div className="perk-item">
+                  <div className="perk-check"><i className="fa-solid fa-check" /></div>
+                  Free cashback every time you shop
+                </div>
+                <div className="perk-item">
+                  <div className="perk-check"><i className="fa-solid fa-check" /></div>
+                  10% OFF on imported books
+                </div>
+                <div className="perk-item">
+                  <div className="perk-check"><i className="fa-solid fa-check" /></div>
+                  3% OFF on select school &amp; office supplies
+                </div>
+              </div>
+              <img src="/lakingnational.png" alt="Laking National Plus" style={{ height: '52px', objectFit: 'contain', objectPosition: 'right center', opacity: 0.9, flexShrink: 0 }} />
+            </div>
+          </div>
         </section>
 
         <hr className="divider" />
