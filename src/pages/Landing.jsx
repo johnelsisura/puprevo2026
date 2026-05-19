@@ -5,7 +5,7 @@
 // Font Awesome needed in index.html:
 // <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 
@@ -114,6 +114,13 @@ export default function Landing() {
   const [privacyOpen, setPrivacyOpen] = useState(false)
   const [faqSearch, setFaqSearch] = useState('')
   const [openFaq, setOpenFaq] = useState(null)
+  const [navScrolled, setNavScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
+  const [shareOpen, setShareOpen] = useState(false)
+  const [shareCopied, setShareCopied] = useState(false)
+  const [showScrollTop, setShowScrollTop] = useState(false)
+  const [calOpen, setCalOpen] = useState(false)
+  const revealRefs = useRef([])
 
   useEffect(() => {
     async function fetchSlots() {
@@ -150,6 +157,50 @@ export default function Landing() {
     fetchSlots()
   }, [])
 
+  // Sticky nav + scroll-to-top + active section
+  useEffect(() => {
+    const SECTIONS = ['details', 'tickets', 'artists', 'sponsors', 'faq']
+    const onScroll = () => {
+      setNavScrolled(window.scrollY > 60)
+      setShowScrollTop(window.scrollY > 400)
+      // active section detection
+      let current = ''
+      for (const id of SECTIONS) {
+        const el = document.getElementById(id)
+        if (el && window.scrollY >= el.offsetTop - 100) current = id
+      }
+      setActiveSection(current)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Scroll reveal
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('reveal-visible')
+          observer.unobserve(e.target)
+        }
+      }),
+      { threshold: 0.1 }
+    )
+    revealRefs.current.forEach(el => el && observer.observe(el))
+    return () => observer.disconnect()
+  }, [loading])
+
+  const addReveal = el => { if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el) }
+
+  const scrollTo = id => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+
+  const handleShare = () => {
+    navigator.clipboard.writeText('https://puprevo2026.me').then(() => {
+      setShareCopied(true)
+      setTimeout(() => setShareCopied(false), 2000)
+    })
+  }
+
   const pad = n => String(n ?? 0).padStart(2, '0')
 
   return (
@@ -164,6 +215,139 @@ export default function Landing() {
           --cream: #FAF5E9;
           --dark: #060D1F;
           --card-bg: #0D1530;
+        }
+
+        /* ---- STICKY NAV ---- */
+        .sticky-nav {
+          position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+          display: flex; align-items: center; justify-content: space-between;
+          padding: 0.85rem 2rem;
+          transition: background 0.3s, backdrop-filter 0.3s, border-color 0.3s, box-shadow 0.3s;
+          border-bottom: 1px solid transparent;
+        }
+        .sticky-nav.nav-scrolled {
+          background: rgba(6,13,31,0.88);
+          backdrop-filter: blur(14px);
+          border-color: rgba(255,255,255,0.07);
+          box-shadow: 0 2px 24px rgba(0,0,0,0.4);
+        }
+        .nav-logo {
+          font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
+          letter-spacing: 0.12em; color: var(--cream); text-decoration: none;
+          cursor: pointer;
+        }
+        .nav-logo span { color: var(--red); }
+        .nav-links {
+          display: flex; align-items: center; gap: 2rem;
+          list-style: none;
+        }
+        @media(max-width: 640px) { .nav-links { display: none; } }
+        .nav-link {
+          font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
+          letter-spacing: 0.18em; text-transform: uppercase;
+          color: rgba(250,245,233,0.5); cursor: pointer;
+          transition: color 0.15s; border: none; background: none; padding: 0;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--cream); }
+        .nav-link.active { color: var(--gold); }
+        .nav-cta {
+          font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
+          letter-spacing: 0.1em; text-transform: uppercase;
+          background: var(--gold); color: #000; border: none;
+          padding: 0.5rem 1.2rem; border-radius: 4px; cursor: pointer;
+          transition: opacity 0.15s;
+        }
+        .nav-cta:hover { opacity: 0.85; }
+
+        /* ---- SCROLL REVEAL ---- */
+        .reveal {
+          opacity: 0; transform: translateY(32px);
+          transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .reveal-visible { opacity: 1; transform: translateY(0); }
+
+        /* ---- SCROLL TO TOP ---- */
+        .scroll-top-btn {
+          position: fixed; bottom: 2rem; right: 2rem; z-index: 800;
+          width: 44px; height: 44px; border-radius: 50%;
+          background: rgba(255,215,0,0.15); border: 1px solid rgba(255,215,0,0.35);
+          color: var(--gold); font-size: 1.1rem;
+          display: flex; align-items: center; justify-content: center;
+          cursor: pointer; transition: opacity 0.3s, transform 0.3s, background 0.2s;
+          opacity: 0; pointer-events: none;
+        }
+        .scroll-top-btn.visible { opacity: 1; pointer-events: auto; }
+        .scroll-top-btn:hover { background: rgba(255,215,0,0.25); transform: translateY(-3px); }
+
+        /* ---- SHARE MODAL ---- */
+        .share-overlay {
+          position: fixed; inset: 0; z-index: 999;
+          background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+          display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+        }
+        .share-modal {
+          background: #0D1530; border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 16px; max-width: 420px; width: 100%; padding: 2rem;
+          text-align: center;
+        }
+        .share-title {
+          font-family: 'Bebas Neue', sans-serif; font-size: 2rem;
+          letter-spacing: 0.08em; color: var(--cream); margin-bottom: 0.4rem;
+        }
+        .share-sub {
+          font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+          color: rgba(250,245,233,0.45); margin-bottom: 1.5rem;
+        }
+        .share-buttons { display: flex; flex-direction: column; gap: 0.75rem; }
+        .share-btn {
+          display: flex; align-items: center; justify-content: center; gap: 0.65rem;
+          font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700;
+          letter-spacing: 0.1em; text-transform: uppercase;
+          padding: 0.85rem 1rem; border-radius: 8px; cursor: pointer;
+          border: 1px solid rgba(255,255,255,0.1); text-decoration: none;
+          transition: opacity 0.15s, transform 0.15s;
+        }
+        .share-btn:hover { opacity: 0.85; transform: scale(0.99); }
+        .share-btn-fb { background: #1877f2; color: #fff; border-color: #1877f2; }
+        .share-btn-tw { background: #000; color: #fff; border-color: #333; }
+        .share-btn-copy { background: rgba(255,215,0,0.1); color: var(--gold); border-color: rgba(255,215,0,0.3); }
+        .share-btn-close {
+          margin-top: 1rem; background: none; color: rgba(250,245,233,0.35);
+          border: none; font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
+          cursor: pointer; text-decoration: underline;
+        }
+
+        /* ---- CALENDAR MODAL ---- */
+        .cal-modal {
+          background: #0D1530; border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 16px; max-width: 400px; width: 100%; padding: 2rem;
+          text-align: center;
+        }
+        .cal-title {
+          font-family: 'Bebas Neue', sans-serif; font-size: 2rem;
+          letter-spacing: 0.08em; color: var(--cream); margin-bottom: 0.4rem;
+        }
+        .cal-sub {
+          font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+          color: rgba(250,245,233,0.45); margin-bottom: 1.5rem;
+        }
+        .cal-buttons { display: flex; flex-direction: column; gap: 0.75rem; }
+        .cal-btn {
+          display: flex; align-items: center; justify-content: center; gap: 0.65rem;
+          font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700;
+          letter-spacing: 0.1em; text-transform: uppercase;
+          padding: 0.85rem 1rem; border-radius: 8px; cursor: pointer;
+          text-decoration: none; transition: opacity 0.15s;
+          border: 1px solid rgba(255,255,255,0.1); color: var(--cream);
+        }
+        .cal-btn-google { background: rgba(66,133,244,0.15); border-color: rgba(66,133,244,0.4); color: #6fa3f7; }
+        .cal-btn-ical { background: rgba(255,59,48,0.1); border-color: rgba(255,59,48,0.3); color: var(--red); }
+        .cal-btn-outlook { background: rgba(0,120,212,0.1); border-color: rgba(0,120,212,0.3); color: #4ea6e8; }
+        .cal-btn:hover { opacity: 0.8; }
+        .cal-btn-close {
+          margin-top: 1rem; background: none; color: rgba(250,245,233,0.35);
+          border: none; font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
+          cursor: pointer; text-decoration: underline;
         }
 
         body { background: var(--dark); color: var(--cream); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
@@ -683,6 +867,7 @@ export default function Landing() {
         @media (max-width: 600px) {
           .perk-logo { height: 52px; align-self: center; margin: 0 auto; }
         }
+        .perk-check {
           width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
           background: rgba(74,222,128,0.15); border: 1px solid rgba(74,222,128,0.3);
           display: flex; align-items: center; justify-content: center;
@@ -697,7 +882,40 @@ export default function Landing() {
 
       <div className="page">
 
-        {/* HERO */}
+        {/* STICKY NAV */}
+        <nav className={`sticky-nav${navScrolled ? ' nav-scrolled' : ''}`}>
+          <span className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            PUP <span>REVO</span> 2026
+          </span>
+          <ul className="nav-links">
+            {[
+              { label: 'Details', id: 'details' },
+              { label: 'Tickets', id: 'tickets' },
+              { label: 'Artists', id: 'artists' },
+              { label: 'Sponsors', id: 'sponsors' },
+              { label: 'FAQ', id: 'faq' },
+            ].map(({ label, id }) => (
+              <li key={id}>
+                <button
+                  className={`nav-link${activeSection === id ? ' active' : ''}`}
+                  onClick={() => scrollTo(id)}
+                >{label}</button>
+              </li>
+            ))}
+          </ul>
+          <button className="nav-cta" onClick={() => scrollTo('tickets')}>Get Tickets</button>
+        </nav>
+
+        {/* SCROLL TO TOP */}
+        <button
+          className={`scroll-top-btn${showScrollTop ? ' visible' : ''}`}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Scroll to top"
+        >
+          <i className="fa-solid fa-chevron-up" />
+        </button>
+
+
         <section className="hero">
           <div className="hero-bg" />
           <div className="hero-grid" />
@@ -747,6 +965,12 @@ export default function Landing() {
               <button className="btn-secondary" onClick={() => document.getElementById('details').scrollIntoView({ behavior: 'smooth' })}>
                 Event Details
               </button>
+              <button className="btn-secondary" onClick={() => setCalOpen(true)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <i className="fa-regular fa-calendar-plus" /> Add to Calendar
+              </button>
+              <button className="btn-secondary" onClick={() => setShareOpen(true)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <i className="fa-solid fa-share-nodes" /> Share
+              </button>
             </div>
           </div>
         </section>
@@ -754,7 +978,7 @@ export default function Landing() {
         <hr className="divider" />
 
         {/* EVENT DETAILS */}
-        <section className="section" id="details">
+        <section className="section reveal" ref={addReveal} id="details">
           <div className="section-label">About the Event</div>
           <h2 className="section-title">Event Details</h2>
 
@@ -822,7 +1046,7 @@ export default function Landing() {
         <hr className="divider" />
 
         {/* TICKETS */}
-        <section className="section" id="tickets">
+        <section className="section reveal" ref={addReveal} id="tickets">
           <div className="section-label">Buy Now</div>
           <h2 className="section-title">Get Your Ticket</h2>
 
@@ -955,7 +1179,7 @@ export default function Landing() {
         <hr className="divider" />
 
         {/* ARTISTS */}
-        <section className="section" id="artists">
+        <section className="section reveal" ref={addReveal} id="artists">
           <div className="section-label">Performing Live</div>
           <h2 className="section-title">Artists & Lineup</h2>
           <div className="artists-grid">
@@ -968,7 +1192,7 @@ export default function Landing() {
         <hr className="divider" />
 
         {/* SPONSORS */}
-        <section className="section" id="sponsors">
+        <section className="section reveal" ref={addReveal} id="sponsors">
           <div className="section-label">SUPPORTED BY OUR</div>
           <h2 className="section-title">Sponsors & Partners</h2>
           <div className="sponsors-wrap">
@@ -979,7 +1203,7 @@ export default function Landing() {
         <hr className="divider" />
 
         {/* FAQ */}
-        <section className="section" id="faq">
+        <section className="section reveal" ref={addReveal} id="faq">
           <div className="section-label">Got Questions?</div>
           <h2 className="section-title">Frequently Asked Questions</h2>
           <div className="faq-search-wrap">
@@ -1105,6 +1329,70 @@ export default function Landing() {
             </div>
           </div>
         )}
+
+        {/* SHARE MODAL */}
+        {shareOpen && (
+          <div className="share-overlay" onClick={e => { if (e.target === e.currentTarget) setShareOpen(false) }}>
+            <div className="share-modal">
+              <div className="share-title">Share the Event</div>
+              <div className="share-sub">Spread the word — every share helps the cause.</div>
+              <div className="share-buttons">
+                <a
+                  className="share-btn share-btn-fb"
+                  href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpuprevo2026.me"
+                  target="_blank" rel="noopener noreferrer"
+                >
+                  <i className="fa-brands fa-facebook-f" /> Share on Facebook
+                </a>
+                <a
+                  className="share-btn share-btn-tw"
+                  href="https://twitter.com/intent/tweet?text=PUP%20REVO%202026%3A%20Sound%20Against%20Silence%20%E2%80%94%20A%20Benefit%20Concert%20for%20Safer%20Kids%20%F0%9F%8E%B5%20June%2020%2C%202026%20at%20PUP%20Main%20Campus%20Oval%2C%20Manila.%20Get%20your%20tickets%20now!&url=https%3A%2F%2Fpuprevo2026.me"
+                  target="_blank" rel="noopener noreferrer"
+                >
+                  <i className="fa-brands fa-x-twitter" /> Share on X / Twitter
+                </a>
+                <button className="share-btn share-btn-copy" onClick={handleShare}>
+                  <i className={`fa-solid ${shareCopied ? 'fa-check' : 'fa-link'}`} />
+                  {shareCopied ? 'Link Copied!' : 'Copy Link'}
+                </button>
+              </div>
+              <button className="share-btn-close" onClick={() => setShareOpen(false)}>Close</button>
+            </div>
+          </div>
+        )}
+
+        {/* ADD TO CALENDAR MODAL */}
+        {calOpen && (() => {
+          const title = encodeURIComponent('PUP REVO 2026: Sound Against Silence')
+          const details = encodeURIComponent('A Benefit Concert for Safer Kids. Organized by PUP Communication Society.')
+          const location = encodeURIComponent('PUP Main Campus Oval, Manila')
+          const start = '20260620T010000Z' // 9AM PHT = 1AM UTC
+          const end = '20260620T110000Z'   // 7PM PHT = 11AM UTC
+          const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${details}&location=${location}`
+          const icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:PUP REVO 2026: Sound Against Silence\nDTSTART:${start}\nDTEND:${end}\nDESCRIPTION:A Benefit Concert for Safer Kids\nLOCATION:PUP Main Campus Oval, Manila\nEND:VEVENT\nEND:VCALENDAR`
+          const icsUrl = `data:text/calendar;charset=utf8,${encodeURIComponent(icsContent)}`
+          const outlookUrl = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${title}&startdt=2026-06-20T09:00:00&enddt=2026-06-20T19:00:00&location=${location}&body=${details}`
+          return (
+            <div className="share-overlay" onClick={e => { if (e.target === e.currentTarget) setCalOpen(false) }}>
+              <div className="cal-modal">
+                <div className="cal-title">Add to Calendar</div>
+                <div className="cal-sub">June 20, 2026 · 9:00 AM · PUP Main Campus Oval</div>
+                <div className="cal-buttons">
+                  <a className="cal-btn cal-btn-google" href={googleUrl} target="_blank" rel="noopener noreferrer">
+                    <i className="fa-brands fa-google" /> Google Calendar
+                  </a>
+                  <a className="cal-btn cal-btn-ical" href={icsUrl} download="puprevo2026.ics">
+                    <i className="fa-solid fa-apple-whole" /> Apple Calendar (.ics)
+                  </a>
+                  <a className="cal-btn cal-btn-outlook" href={outlookUrl} target="_blank" rel="noopener noreferrer">
+                    <i className="fa-solid fa-envelope" /> Outlook
+                  </a>
+                </div>
+                <button className="cal-btn-close" onClick={() => setCalOpen(false)}>Close</button>
+              </div>
+            </div>
+          )
+        })()}
 
       </div>
     </>
