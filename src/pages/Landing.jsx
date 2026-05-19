@@ -232,11 +232,9 @@ export default function Landing() {
           box-shadow: 0 2px 24px rgba(0,0,0,0.4);
         }
         .nav-logo {
-          font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
-          letter-spacing: 0.12em; color: var(--cream); text-decoration: none;
-          cursor: pointer;
+          cursor: pointer; display: flex; align-items: center;
         }
-        .nav-logo span { color: var(--red); }
+        .nav-logo img { height: 36px; width: auto; object-fit: contain; }
         .nav-links {
           display: flex; align-items: center; gap: 2rem;
           list-style: none;
@@ -358,7 +356,7 @@ export default function Landing() {
           min-height: 100vh;
           display: flex; flex-direction: column;
           align-items: center; justify-content: center;
-          text-align: center; padding: 2rem;
+          text-align: center; padding: 6rem 2rem 2rem;
           position: relative; overflow: hidden;
         }
         .hero-bg {
@@ -885,7 +883,7 @@ export default function Landing() {
         {/* STICKY NAV */}
         <nav className={`sticky-nav${navScrolled ? ' nav-scrolled' : ''}`}>
           <span className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            PUP <span>REVO</span> 2026
+            <img src="/logo.png" alt="PUP REVO 2026" />
           </span>
           <ul className="nav-links">
             {[
@@ -965,11 +963,11 @@ export default function Landing() {
               <button className="btn-secondary" onClick={() => document.getElementById('details').scrollIntoView({ behavior: 'smooth' })}>
                 Event Details
               </button>
-              <button className="btn-secondary" onClick={() => setCalOpen(true)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <i className="fa-regular fa-calendar-plus" /> Add to Calendar
+              <button className="btn-secondary" onClick={() => setCalOpen(true)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', padding: '1rem', flexShrink: 0 }} title="Add to Calendar">
+                <i className="fa-regular fa-calendar-plus" />
               </button>
-              <button className="btn-secondary" onClick={() => setShareOpen(true)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <i className="fa-solid fa-share-nodes" /> Share
+              <button className="btn-secondary" onClick={() => setShareOpen(true)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', padding: '1rem', flexShrink: 0 }} title="Share Event">
+                <i className="fa-solid fa-share-nodes" />
               </button>
             </div>
           </div>
