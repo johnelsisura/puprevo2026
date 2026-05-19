@@ -595,8 +595,8 @@ export default function Landing() {
 
         /* ---- TICKETS URGENCY STRIP ---- */
         .tickets-urgency {
-          display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
-          margin-bottom: 1.75rem;
+          display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;
+          margin-top: -1.5rem; margin-bottom: 1.75rem;
         }
         .urgency-dot {
           display: inline-flex; align-items: center; gap: 0.45rem;
@@ -624,7 +624,7 @@ export default function Landing() {
           padding: 0 1.5rem 0.75rem;
           font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
           letter-spacing: 0.12em; text-transform: uppercase;
-          color: var(--red); display: flex; align-items: center; gap: 0.4rem;
+          color: var(--red); display: flex; align-items: center; justify-content: center; gap: 0.4rem;
         }
 
         /* ---- MEMBERSHIP PERK BANNER ---- */
@@ -651,19 +651,25 @@ export default function Landing() {
           color: var(--gold); opacity: 0.7;
         }
         .perk-badge {
-          font-family: 'Syne', sans-serif; font-size: 0.62rem; font-weight: 700;
-          letter-spacing: 0.12em; text-transform: uppercase;
+          font-family: 'Bebas Neue', sans-serif; font-size: 1rem;
+          letter-spacing: 0.1em; text-transform: uppercase;
           background: rgba(74,222,128,0.12); color: #4ade80;
           border: 1px solid rgba(74,222,128,0.25);
           padding: 0.25rem 0.7rem; border-radius: 2rem;
         }
+        @media (max-width: 600px) {
+          .perk-label { font-size: 0.55rem; }
+          .perk-badge { font-size: 0.75rem; letter-spacing: 0.06em; padding: 0.2rem 0.5rem; }
+        }
         .perk-title {
           font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.4rem,3.5vw,2rem);
           letter-spacing: 0.06em; color: var(--cream); margin-bottom: 0.35rem;
+          text-align: left;
         }
         .perk-sub {
           font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
           color: rgba(250,245,233,0.45); margin-bottom: 1.1rem;
+          text-align: left;
         }
         .perk-list { display: flex; flex-direction: column; gap: 0.55rem; }
         .perk-item {
@@ -671,7 +677,12 @@ export default function Landing() {
           font-family: 'DM Sans', sans-serif; font-size: 0.84rem;
           color: rgba(250,245,233,0.75);
         }
-        .perk-check {
+        .perk-logo {
+          height: 80px; object-fit: contain; opacity: 0.9; flex-shrink: 0;
+        }
+        @media (max-width: 600px) {
+          .perk-logo { height: 52px; align-self: center; margin: 0 auto; }
+        }
           width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
           background: rgba(74,222,128,0.15); border: 1px solid rgba(74,222,128,0.3);
           display: flex; align-items: center; justify-content: center;
@@ -936,7 +947,7 @@ export default function Landing() {
                   3% OFF on select school &amp; office supplies
                 </div>
               </div>
-              <img src="/lakingnational.png" alt="Laking National Plus" style={{ height: '52px', objectFit: 'contain', objectPosition: 'right center', opacity: 0.9, flexShrink: 0 }} />
+              <img src="/lakingnational.png" alt="Laking National Plus" className="perk-logo" />
             </div>
           </div>
         </section>
