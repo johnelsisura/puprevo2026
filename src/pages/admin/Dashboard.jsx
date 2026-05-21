@@ -1081,6 +1081,7 @@ export default function Dashboard() {
   const [search, setSearch] = useState('')
   const [statusFilter, setStatusFilter] = useState('all')
   const [attendeeFilter, setAttendeeFilter] = useState('all')
+  const [dateFilter, setDateFilter] = useState('')
   const [modal, setModal] = useState(null)
   const [actionLoading, setActionLoading] = useState(false)
   const [editSlots, setEditSlots] = useState(null)
@@ -1166,8 +1167,15 @@ export default function Dashboard() {
       result = result.filter(o => o.attendee_type === attendeeFilter)
     }
 
+    if (dateFilter) {
+      result = result.filter(o => {
+        const orderDate = new Date(o.created_at).toLocaleDateString('en-CA') // YYYY-MM-DD
+        return orderDate === dateFilter
+      })
+    }
+
     setFiltered(result)
-  }, [orders, search, statusFilter, attendeeFilter])
+  }, [orders, search, statusFilter, attendeeFilter, dateFilter])
 
   // ── Get signed URL for private storage ─────────────────────────────────
   async function getSignedUrl(bucket, path, cacheObj, setCacheObj, orderId) {
@@ -1530,6 +1538,13 @@ export default function Dashboard() {
                     <option value="cancelled">Cancelled</option>
                     <option value="checked_in">Checked In</option>
                   </select>
+                  <input
+                    type="date"
+                    className="filter-select"
+                    value={dateFilter}
+                    onChange={e => setDateFilter(e.target.value)}
+                    title="Filter by order date"
+                  />
                 </div>
 
                 <div style={{ overflowX: 'auto' }}>
@@ -1647,11 +1662,11 @@ export default function Dashboard() {
 
                 <div className="table-footer">
                   <span>Showing {filtered.length} of {orders.length} orders</span>
-                  {(search || statusFilter !== 'all' || attendeeFilter !== 'all') && (
+                  {(search || statusFilter !== 'all' || attendeeFilter !== 'all' || dateFilter) && (
                     <button
                       className="btn-outline"
                       style={{ fontSize: '0.7rem', padding: '0.35rem 0.85rem' }}
-                      onClick={() => { setSearch(''); setStatusFilter('all'); setAttendeeFilter('all') }}
+                      onClick={() => { setSearch(''); setStatusFilter('all'); setAttendeeFilter('all'); setDateFilter('') }}
                     >
                       Clear filters
                     </button>
