@@ -774,6 +774,7 @@ export default function Landing() {
 
         /* ---- SOLD OUT ---- */
         .sold-out { opacity: 0.5; pointer-events: none; }
+        .sold-out-social-link { pointer-events: auto !important; }
 
         /* ---- TICKETS URGENCY STRIP ---- */
         .tickets-urgency {
@@ -1096,20 +1097,20 @@ export default function Landing() {
                         background: 'rgba(255,59,48,0.06)', border: '1px solid rgba(255,59,48,0.25)',
                         borderRadius: '8px', textAlign: 'center',
                       }}>
-                        <div style={{ fontFamily: "'Syne', sans-serif", fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)', marginBottom: '0.5rem' }}>
-                          🚫 Sold Out
+                        <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.2rem', letterSpacing: '0.06em', color: 'var(--cream)', marginBottom: '0.5rem' }}>
+                          Aray ko, naubusan ng tickets!
                         </div>
-                        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.78rem', color: 'rgba(250,245,233,0.55)', lineHeight: 1.7, marginBottom: '0.85rem' }}>
-                          Aray ko, naubusan ng tickets! A benefit concert this big doesn't come to PUP often. But don't worry, the next wave of tickets is coming.
+                        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.78rem', color: 'rgba(250,245,233,0.55)', lineHeight: 1.7, marginBottom: '0.5rem' }}>
+                          A benefit concert this big doesn't come to PUP often and everyone knew it. The next wave is coming, and it will go just as fast.
                         </p>
                         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.78rem', color: 'rgba(250,245,233,0.55)', lineHeight: 1.7, marginBottom: '0.85rem' }}>
                           Follow our socials. When it drops, don't think twice.
                         </p>
                         <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                          <a href="https://www.facebook.com/pupcommsoc" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: '#1877f2', color: '#fff', fontFamily: "'Syne', sans-serif", fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.45rem 0.9rem', borderRadius: '4px', textDecoration: 'none' }}>
+                          <a href="https://www.facebook.com/pupcommsoc" target="_blank" rel="noopener noreferrer" className="sold-out-social-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: '#1877f2', color: '#fff', fontFamily: "'Syne', sans-serif", fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.45rem 0.9rem', borderRadius: '4px', textDecoration: 'none' }}>
                             <i className="fa-brands fa-facebook-f" /> Facebook
                           </a>
-                          <a href="https://www.instagram.com/pupcommsoc_/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: '#c13584', color: '#fff', fontFamily: "'Syne', sans-serif", fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.45rem 0.9rem', borderRadius: '4px', textDecoration: 'none' }}>
+                          <a href="https://www.instagram.com/pupcommsoc_/" target="_blank" rel="noopener noreferrer" className="sold-out-social-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: '#c13584', color: '#fff', fontFamily: "'Syne', sans-serif", fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.45rem 0.9rem', borderRadius: '4px', textDecoration: 'none' }}>
                             <i className="fa-brands fa-instagram" /> Instagram
                           </a>
                         </div>
@@ -1120,7 +1121,7 @@ export default function Landing() {
                       Service fee may apply for online payments.
                     </div>
                     <div className="ticket-footer">
-                      <button className="ticket-btn" disabled={soldOut} onClick={() => navigate('/checkout?type=student')}>
+                      <button className="ticket-btn" disabled={soldOut} onClick={() => navigate('/checkout?type=student')} style={soldOut ? { background: 'var(--red)', color: '#fff', cursor: 'not-allowed' } : {}}>
                         {soldOut ? 'Sold Out' : 'Buy PUPian Ticket'}
                       </button>
                     </div>
@@ -1162,20 +1163,20 @@ export default function Landing() {
                         background: 'rgba(255,59,48,0.06)', border: '1px solid rgba(255,59,48,0.25)',
                         borderRadius: '8px', textAlign: 'center',
                       }}>
-                        <div style={{ fontFamily: "'Syne', sans-serif", fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)', marginBottom: '0.5rem' }}>
-                          🚫 Sold Out
+                        <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.2rem', letterSpacing: '0.06em', color: 'var(--cream)', marginBottom: '0.5rem' }}>
+                          Aray ko, naubusan ng tickets!
                         </div>
-                        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.78rem', color: 'rgba(250,245,233,0.55)', lineHeight: 1.7, marginBottom: '0.85rem' }}>
-                          Aray ko, naubusan ng tickets! A benefit concert this big doesn't come to PUP often. But don't worry, the next wave of tickets is coming.
+                        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.78rem', color: 'rgba(250,245,233,0.55)', lineHeight: 1.7, marginBottom: '0.5rem' }}>
+                          A benefit concert this big doesn't come to PUP often and everyone knew it. The next wave is coming, and it will go just as fast.
                         </p>
                         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.78rem', color: 'rgba(250,245,233,0.55)', lineHeight: 1.7, marginBottom: '0.85rem' }}>
                           Follow our socials. When it drops, don't think twice.
                         </p>
                         <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                          <a href="https://www.facebook.com/pupcommsoc" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: '#1877f2', color: '#fff', fontFamily: "'Syne', sans-serif", fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.45rem 0.9rem', borderRadius: '4px', textDecoration: 'none' }}>
+                          <a href="https://www.facebook.com/pupcommsoc" target="_blank" rel="noopener noreferrer" className="sold-out-social-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: '#1877f2', color: '#fff', fontFamily: "'Syne', sans-serif", fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.45rem 0.9rem', borderRadius: '4px', textDecoration: 'none' }}>
                             <i className="fa-brands fa-facebook-f" /> Facebook
                           </a>
-                          <a href="https://www.instagram.com/pupcommsoc_/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: '#c13584', color: '#fff', fontFamily: "'Syne', sans-serif", fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.45rem 0.9rem', borderRadius: '4px', textDecoration: 'none' }}>
+                          <a href="https://www.instagram.com/pupcommsoc_/" target="_blank" rel="noopener noreferrer" className="sold-out-social-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: '#c13584', color: '#fff', fontFamily: "'Syne', sans-serif", fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.45rem 0.9rem', borderRadius: '4px', textDecoration: 'none' }}>
                             <i className="fa-brands fa-instagram" /> Instagram
                           </a>
                         </div>
@@ -1186,7 +1187,7 @@ export default function Landing() {
                       Service fee may apply for online payments.
                     </div>
                     <div className="ticket-footer">
-                      <button className="ticket-btn" disabled={soldOut} onClick={() => navigate('/checkout?type=public')}>
+                      <button className="ticket-btn" disabled={soldOut} onClick={() => navigate('/checkout?type=public')} style={soldOut ? { background: 'var(--red)', color: '#fff', cursor: 'not-allowed' } : {}}>
                         {soldOut ? 'Sold Out' : 'Buy Non-PUPian Ticket'}
                       </button>
                     </div>
