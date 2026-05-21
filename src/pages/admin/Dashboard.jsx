@@ -612,6 +612,60 @@ const css = `
     flex-wrap: wrap;
   }
 
+  @media (max-width: 768px) {
+    .table-header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.65rem;
+    }
+    .table-header .table-title {
+      font-size: 1rem;
+    }
+    .table-header .search-wrap {
+      max-width: 100%;
+      width: 100%;
+    }
+    .table-header-filters {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    .table-header-filters .filter-select {
+      width: 100%;
+    }
+    .table-header-date {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.6rem 0.85rem;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--cream);
+    }
+    .table-header-date i {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    .table-header-date input[type="date"] {
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--cream);
+      width: 100%;
+      cursor: pointer;
+    }
+    .table-header-date input[type="date"]::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+  }
+
   .table-title {
     font-family: 'Syne', sans-serif;
     font-size: 0.82rem;
@@ -620,6 +674,38 @@ const css = `
     text-transform: uppercase;
     color: var(--cream);
     flex-shrink: 0;
+  }
+
+  .table-header-filters {
+    display: flex;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .table-header-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.6rem 0.85rem;
+    flex-shrink: 0;
+  }
+  .table-header-date i { color: var(--muted); font-size: 0.85rem; }
+  .table-header-date input[type="date"] {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--cream);
+    cursor: pointer;
+  }
+  .table-header-date input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.6);
+    cursor: pointer;
   }
 
   .search-wrap {
@@ -1516,35 +1602,48 @@ export default function Dashboard() {
                       onChange={e => setSearch(e.target.value)}
                     />
                   </div>
-                  <select
-                    className="filter-select"
-                    value={attendeeFilter}
-                    onChange={e => setAttendeeFilter(e.target.value)}
-                  >
-                    <option value="all">All Types</option>
-                    <option value="pup_student">PUP Students</option>
-                    <option value="alumni">Alumni</option>
-                    <option value="faculty">Faculty</option>
-                    <option value="outsider">Public</option>
-                  </select>
-                  <select
-                    className="filter-select"
-                    value={statusFilter}
-                    onChange={e => setStatusFilter(e.target.value)}
-                  >
-                    <option value="all">All Status</option>
-                    <option value="paid">Paid</option>
-                    <option value="pending">Pending</option>
-                    <option value="cancelled">Cancelled</option>
-                    <option value="checked_in">Checked In</option>
-                  </select>
-                  <input
-                    type="date"
-                    className="filter-select"
-                    value={dateFilter}
-                    onChange={e => setDateFilter(e.target.value)}
-                    title="Filter by order date"
-                  />
+                  <div className="table-header-filters">
+                    <select
+                      className="filter-select"
+                      value={attendeeFilter}
+                      onChange={e => setAttendeeFilter(e.target.value)}
+                    >
+                      <option value="all">All Types</option>
+                      <option value="pup_student">PUP Students</option>
+                      <option value="alumni">Alumni</option>
+                      <option value="faculty">Faculty</option>
+                      <option value="outsider">Public</option>
+                    </select>
+                    <select
+                      className="filter-select"
+                      value={statusFilter}
+                      onChange={e => setStatusFilter(e.target.value)}
+                    >
+                      <option value="all">All Status</option>
+                      <option value="paid">Paid</option>
+                      <option value="pending">Pending</option>
+                      <option value="cancelled">Cancelled</option>
+                      <option value="checked_in">Checked In</option>
+                    </select>
+                  </div>
+                  <div className="table-header-date">
+                    <i className="fa-solid fa-calendar-days" />
+                    <input
+                      type="date"
+                      value={dateFilter}
+                      onChange={e => setDateFilter(e.target.value)}
+                      title="Filter by order date"
+                    />
+                    {dateFilter && (
+                      <button
+                        onClick={() => setDateFilter('')}
+                        style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--muted)', padding: 0, lineHeight: 1 }}
+                        title="Clear date"
+                      >
+                        <i className="fa-solid fa-xmark" />
+                      </button>
+                    )}
+                  </div>
                 </div>
 
                 <div style={{ overflowX: 'auto' }}>
