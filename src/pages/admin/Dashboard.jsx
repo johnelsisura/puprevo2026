@@ -1125,6 +1125,56 @@ const css = `
     th:nth-child(3), td:nth-child(3) { display: none; }
     .stats-grid { grid-template-columns: 1fr 1fr; }
   }
+
+  /* ── Mobile compact table ── */
+  @media (max-width: 768px) {
+    table { font-size: 0.72rem; }
+    th {
+      font-size: 0.5rem;
+      letter-spacing: 0.12em;
+      padding: 0.6rem 0.65rem;
+    }
+    td { padding: 0.6rem 0.65rem; }
+    .td-name { font-size: 0.75rem; }
+    .td-code { font-size: 0.82rem; }
+    .td-muted { font-size: 0.68rem; }
+    .td-section { font-size: 0.68rem; }
+    .badge { font-size: 0.5rem; padding: 0.15rem 0.4rem; gap: 0.2rem; }
+    .pay-pill { font-size: 0.68rem; }
+    .action-btn { font-size: 0.55rem; padding: 0.22rem 0.45rem; }
+    .proof-link { font-size: 0.55rem; padding: 0.15rem 0.4rem; }
+    .row-actions { gap: 0.25rem; }
+  }
+
+  /* ── Scroll-to-top FAB ── */
+  .scroll-top-btn {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.25rem;
+    z-index: 50;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--red);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    box-shadow: 0 4px 20px rgba(228,0,27,0.35);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.25s, transform 0.25s;
+    pointer-events: none;
+  }
+  .scroll-top-btn.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .scroll-top-btn:hover { opacity: 0.85; }
 `
 
 // ── Helper: attendee badge ────────────────────────────────────────────────
@@ -1176,11 +1226,19 @@ export default function Dashboard() {
   const [editEvent, setEditEvent] = useState(false)
   const [eventForm, setEventForm] = useState({})
   const [eventLoading, setEventLoading] = useState(false)
+  const [showScrollTop, setShowScrollTop] = useState(false)
 
   // Screenshot signed URLs cache
   const [screenshotUrls, setScreenshotUrls] = useState({})
   const [idPhotoUrls, setIdPhotoUrls] = useState({})
   const [waiverUrls, setWaiverUrls] = useState({})
+
+  // ── Scroll-to-top visibility ────────────────────────────────────────────
+  useEffect(() => {
+    const onScroll = () => setShowScrollTop(window.scrollY > 300)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   // ── Auth guard ──────────────────────────────────────────────────────────
   useEffect(() => {
@@ -2109,6 +2167,15 @@ export default function Dashboard() {
           </div>
         </div>
       )}
+
+      {/* ── Scroll-to-top FAB ── */}
+      <button
+        className={`scroll-top-btn${showScrollTop ? ' visible' : ''}`}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Scroll to top"
+      >
+        <i className="fa-solid fa-chevron-up" />
+      </button>
     </>
   )
 }
