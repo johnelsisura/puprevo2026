@@ -1087,7 +1087,7 @@ const css = `
   /* Pending payment alert strip */
   .pending-alert {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.6rem;
     background: rgba(245,200,66,0.06);
     border: 1px solid rgba(245,200,66,0.2);
@@ -1096,7 +1096,9 @@ const css = `
     font-size: 0.78rem;
     color: rgba(245,200,66,0.9);
     margin-bottom: 1.5rem;
+    line-height: 1.6;
   }
+  .pending-alert i { margin-top: 0.15rem; }
 
   .spinner {
     width: 20px; height: 20px;
@@ -1518,8 +1520,10 @@ export default function Dashboard() {
               {/* ── Pending proof alert ── */}
               {pendingProof > 0 && (
                 <div className="pending-alert">
-                  <i className="fa-solid fa-triangle-exclamation" style={{marginRight:'0.4rem'}} /> <strong>{pendingProof} order{pendingProof > 1 ? 's' : ''}</strong> with uploaded payment proof waiting for verification.
-                  Click <strong>Verify</strong> on pending GCash/Maya orders below.
+                  <i className="fa-solid fa-triangle-exclamation" style={{flexShrink:0}} />
+                  <span>
+                    <strong>{pendingProof} order{pendingProof > 1 ? 's' : ''}</strong> with uploaded payment proof waiting for verification. Click <strong>Verify</strong> on pending GCash/Maya orders below.
+                  </span>
                 </div>
               )}
 
