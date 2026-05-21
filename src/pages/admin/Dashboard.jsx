@@ -1128,24 +1128,30 @@ const css = `
     .stats-grid { grid-template-columns: 1fr 1fr; }
   }
 
+  /* date toggle */
+  .date-compact { display: none; }
+  .date-full    { display: inline; }
+
   /* ── Mobile compact table ── */
   @media (max-width: 768px) {
-    table { font-size: 0.72rem; }
+    table { font-size: 0.7rem; }
     th {
-      font-size: 0.5rem;
-      letter-spacing: 0.12em;
-      padding: 0.6rem 0.65rem;
+      font-size: 0.48rem;
+      letter-spacing: 0.1em;
+      padding: 0.55rem 0.5rem;
     }
-    td { padding: 0.6rem 0.65rem; }
-    .td-name { font-size: 0.75rem; }
-    .td-code { font-size: 0.82rem; }
-    .td-muted { font-size: 0.68rem; }
-    .td-section { font-size: 0.68rem; }
-    .badge { font-size: 0.5rem; padding: 0.15rem 0.4rem; gap: 0.2rem; }
-    .pay-pill { font-size: 0.68rem; }
+    td { padding: 0.55rem 0.5rem; }
+    .td-name { font-size: 0.7rem; }
+    .td-code { font-size: 0.75rem; letter-spacing: 0.06em; }
+    .td-muted { font-size: 0.62rem; }
+    .td-section { font-size: 0.62rem; }
+    .badge { font-size: 0.48rem; padding: 0.12rem 0.35rem; gap: 0.15rem; }
+    .pay-pill { font-size: 0.62rem; }
     .action-btn { font-size: 0.55rem; padding: 0.22rem 0.45rem; }
     .proof-link { font-size: 0.55rem; padding: 0.15rem 0.4rem; }
     .row-actions { gap: 0.25rem; }
+    .date-full    { display: none; }
+    .date-compact { display: inline; font-size: 0.62rem; }
   }
 
   /* ── Scroll-to-top FAB ── */
@@ -1460,8 +1466,16 @@ export default function Dashboard() {
   const totalPupians    = orders.filter(o => o.payment_status !== 'cancelled' && o.attendee_type === 'pup_student').length
   const totalNonPupians = orders.filter(o => o.payment_status !== 'cancelled' && o.attendee_type !== 'pup_student').length
 
-  function formatDate(iso) {
+  function formatDate(iso, compact = false) {
     if (!iso) return '—'
+    if (compact) {
+      return new Date(iso).toLocaleString('en-PH', {
+        timeZone: 'Asia/Manila',
+        month: 'numeric', day: 'numeric',
+        hour: '2-digit', minute: '2-digit',
+        hour12: false,
+      }).replace(',', '')
+    }
     return new Date(iso).toLocaleString('en-PH', {
       timeZone: 'Asia/Manila',
       month: 'short', day: 'numeric',
@@ -1779,7 +1793,10 @@ export default function Dashboard() {
                                  <><i className="fa-regular fa-clock" /> Pending</>}
                               </span>
                             </td>
-                            <td className="td-muted">{formatDate(order.created_at)}</td>
+                            <td className="td-muted" style={{whiteSpace:'nowrap'}}>
+                              <span className="date-full">{formatDate(order.created_at)}</span>
+                              <span className="date-compact">{formatDate(order.created_at, true)}</span>
+                            </td>
                             <td>
                               <div className="row-actions">
                                 {order.is_checked_in && (
