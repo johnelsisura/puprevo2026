@@ -30,6 +30,7 @@ const css = `
     --muted: rgba(250,245,233,0.4);
   }
 
+  html, body { max-width: 100vw; overflow-x: hidden; }
   body { background: var(--dark); color: var(--cream); font-family: 'DM Sans', sans-serif; }
 
   .admin-wrap {
@@ -167,6 +168,8 @@ const css = `
   .main {
     padding: 2.5rem;
     overflow-y: auto;
+    min-width: 0;
+    max-width: 100%;
   }
 
   @media (max-width: 600px) { .main { padding: 1.5rem; } }
@@ -1151,7 +1154,7 @@ const css = `
     .proof-link { font-size: 0.55rem; padding: 0.15rem 0.4rem; }
     .row-actions { gap: 0.25rem; }
     .date-full    { display: none; }
-    .date-compact { display: inline; font-size: 0.62rem; }
+    .date-compact { display: block !important; font-size: 0.62rem; line-height: 1.4; }
   }
 
   /* ── Scroll-to-top FAB ── */
@@ -1468,19 +1471,19 @@ export default function Dashboard() {
 
   function formatDate(iso, compact = false) {
     if (!iso) return '—'
+    const d = new Date(new Date(iso).toLocaleString('en-US', { timeZone: 'Asia/Manila' }))
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    const mon = months[d.getMonth()]
+    const day = String(d.getDate()).padStart(2, '0')
+    const h = d.getHours()
+    const min = String(d.getMinutes()).padStart(2, '0')
+    const ampm = h >= 12 ? 'PM' : 'AM'
+    const h12 = String(h % 12 || 12).padStart(2, '0')
     if (compact) {
-      return new Date(iso).toLocaleString('en-PH', {
-        timeZone: 'Asia/Manila',
-        month: 'numeric', day: 'numeric',
-        hour: '2-digit', minute: '2-digit',
-        hour12: false,
-      }).replace(',', '')
+      // Two lines: "May 21" then "06:55PM"
+      return { date: \`\${mon} \${day}\`, time: \`\${h12}:\${min}\${ampm}\` }
     }
-    return new Date(iso).toLocaleString('en-PH', {
-      timeZone: 'Asia/Manila',
-      month: 'short', day: 'numeric',
-      hour: '2-digit', minute: '2-digit',
-    })
+    return \`\${mon} \${day}, \${h12}:\${min} \${ampm}\`
   }
 
   // ── Render ──────────────────────────────────────────────────────────────
@@ -1795,7 +1798,9 @@ export default function Dashboard() {
                             </td>
                             <td className="td-muted" style={{whiteSpace:'nowrap'}}>
                               <span className="date-full">{formatDate(order.created_at)}</span>
-                              <span className="date-compact">{formatDate(order.created_at, true)}</span>
+                              <span className="date-compact" style={{lineHeight:1.3,display:'none'}}>
+                                {(() => { const d = formatDate(order.created_at, true); return <>{d.date}<br/>{d.time}</>; })()}
+                              </span>
                             </td>
                             <td>
                               <div className="row-actions">
