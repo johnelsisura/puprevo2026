@@ -1481,9 +1481,9 @@ export default function Dashboard() {
     const h12 = String(h % 12 || 12).padStart(2, '0')
     if (compact) {
       // Two lines: "May 21" then "06:55PM"
-      return { date: \`\${mon} \${day}\`, time: \`\${h12}:\${min}\${ampm}\` }
+      return { date: `${mon} ${day}`, time: `${h12}:${min}${ampm}` }
     }
-    return \`\${mon} \${day}, \${h12}:\${min} \${ampm}\`
+    return `${mon} ${day}, ${h12}:${min} ${ampm}`
   }
 
   // ── Render ──────────────────────────────────────────────────────────────
