@@ -1223,7 +1223,7 @@ export default function Checkout() {
                     color: 'var(--muted)', lineHeight: 1.6, marginBottom: '0.75rem',
                   }}>
                     Send <strong style={{ color: 'var(--cream)' }}>₱{totalAmount.toFixed(2)}</strong> to{' '}
-                    <strong style={{ color: 'var(--gold)' }}>0924 103 1430 (Julliana Rashida E.)</strong>
+                    <strong style={{ color: 'var(--gold)' }}>0916 297 0052 (Denise Angelika G.)</strong>
                     , then fill in the details below.
                     <br />
                     <span style={{ color: 'rgba(250,245,233,0.35)', fontSize: '0.75rem' }}>
