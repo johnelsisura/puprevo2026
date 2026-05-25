@@ -103,7 +103,7 @@ const ARTISTS = [
   { name: 'SHANNE DANDAN', tag: 'Performing Live', image: '/artist8.png' },
   { name: 'Artist Name', tag: 'Performing Live', image: '/artist99.png' },
   { name: 'BRANDO BAL', tag: 'Performing Live', image: '/artist10.png' },
-  { name: 'Artist Name', tag: 'Performing Live', image: '/artist1111.png' },
+  { name: 'BITA AND THE BOTFLIES', tag: 'Performing Live', image: '/artist11.png' },
   { name: 'THE SUN', tag: 'Performing Live', image: '/artist12.png' },
 ]
 
