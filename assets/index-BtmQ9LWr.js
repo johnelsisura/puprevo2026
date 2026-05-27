@@ -566,7 +566,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         .footer {
           font-family: 'DM Sans', sans-serif;
           border-top: 1px solid rgba(255,255,255,0.06);
-          background: rgba(6,13,31,0.6);
+          background: var(--dark);
         }
         .footer-main {
           display: grid;
