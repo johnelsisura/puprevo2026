@@ -376,14 +376,14 @@ export default function Landing() {
         }
 
         body { background: var(--dark); color: var(--cream); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
-        .page { min-height: 100vh; position: relative; }
+        .page { min-height: 100vh; position: relative; padding-top: 86px; }
 
         /* ---- HERO ---- */
         .hero {
           min-height: 100vh;
           display: flex; flex-direction: column;
           align-items: center; justify-content: center;
-          text-align: center; padding: 7.5rem 2rem 2rem;
+          text-align: center; padding: 6rem 2rem 2rem;
           position: relative; overflow: hidden;
         }
         .hero-bg {
