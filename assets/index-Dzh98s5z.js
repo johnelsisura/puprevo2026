@@ -3725,7 +3725,263 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           payment_method, payment_status, amount_paid,
           is_checked_in, checked_in_at,
           ticket_types ( name, price )
-        `).eq(`ticket_code`,e).single();if(t){r=t;break}}if(!r){s({state:`invalid`,code:e}),E(`error`,e,`Ticket not found`);return}if(r.payment_status===`cancelled`){s({state:`blocked`,ticket:r}),E(`error`,r.full_name,`Blocked ticket — ${r.ticket_code}`);return}if(r.payment_status!==`paid`){s({state:`unpaid`,ticket:r}),E(`warning`,r.full_name,`Unpaid — ${r.ticket_code}`);return}if(r.is_checked_in){s({state:`already`,ticket:r}),E(`warning`,r.full_name,`Already checked in — ${r.ticket_code}`);return}s({state:`found`,ticket:r})}async function ee(){if(!o?.ticket)return;l(!0);let{error:e}=await Js.from(`orders`).update({is_checked_in:!0,checked_in_at:new Date().toISOString()}).eq(`id`,o.ticket.id);e||(E(`success`,o.ticket.full_name,`Checked in — ${o.ticket.ticket_code}`),v(`✓ ${o.ticket.full_name} checked in!`),setTimeout(()=>v(``),2e3)),l(!1),s(null)}async function T(){u.trim()&&(p(!0),await w(u.trim()),d(``),p(!1))}function E(e,t,n){let r={id:Date.now(),type:e,name:t,detail:n,time:new Date().toLocaleTimeString(`en-PH`,{hour:`2-digit`,minute:`2-digit`,second:`2-digit`})};h(e=>[r,...e].slice(0,20))}async function D(){await Js.auth.signOut(),e(`/admin`)}return(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`style`,{children:yu}),g&&(0,Q.jsx)(`div`,{className:`success-flash`,children:g}),(0,Q.jsxs)(`div`,{className:`admin-wrap`,children:[(0,Q.jsxs)(`aside`,{className:`sidebar`,children:[(0,Q.jsx)(`img`,{src:`/logo.png`,alt:`PUP REVO`,className:`sidebar-logo`}),(0,Q.jsx)(`div`,{className:`sidebar-sub`,children:`Admin Portal`}),(0,Q.jsx)(`div`,{className:`nav-label`,children:`Menu`}),y===`superadmin`&&(0,Q.jsxs)(`button`,{className:`nav-item`,onClick:()=>e(`/admin/dashboard`),children:[(0,Q.jsx)(`span`,{className:`nav-icon`,children:(0,Q.jsx)(`i`,{className:`fa-solid fa-chart-line`})}),` Dashboard`]}),(0,Q.jsxs)(`button`,{className:`nav-item active`,children:[(0,Q.jsx)(`span`,{className:`nav-icon`,children:(0,Q.jsx)(`i`,{className:`fa-solid fa-qrcode`})}),` Scanner`]}),(0,Q.jsx)(`div`,{className:`sidebar-footer`,children:(0,Q.jsxs)(`button`,{className:`signout-btn`,onClick:D,children:[(0,Q.jsx)(`i`,{className:`fa-solid fa-right-from-bracket`}),` Sign Out`]})})]}),(0,Q.jsxs)(`main`,{className:`main`,children:[(0,Q.jsxs)(`div`,{className:`page-header`,children:[(0,Q.jsx)(`div`,{className:`page-title`,children:`QR Scanner`}),(0,Q.jsx)(`div`,{className:`page-sub`,children:`Scan attendee QR codes to check them in at the venue.`})]}),(0,Q.jsxs)(`div`,{className:`scanner-card`,children:[(0,Q.jsxs)(`div`,{className:`scanner-top`,children:[(0,Q.jsxs)(`span`,{className:`scanner-label`,children:[(0,Q.jsx)(`span`,{className:`scanner-status-dot ${i?`active`:``}`}),i?`Camera Active`:`Camera Off`]}),(0,Q.jsx)(`button`,{style:{fontFamily:`Syne, sans-serif`,fontSize:`0.75rem`,fontWeight:700,letterSpacing:`0.08em`,textTransform:`uppercase`,background:i?`rgba(228,0,27,0.12)`:`var(--red)`,color:i?`#ff8080`:`white`,border:i?`1px solid rgba(228,0,27,0.3)`:`none`,padding:`0.45rem 1rem`,borderRadius:`4px`,cursor:`pointer`},onClick:i?S:x,children:i?`⏹ Stop`:`▶ Start Camera`})]}),(0,Q.jsx)(`div`,{id:`qr-reader`,ref:t}),!i&&(0,Q.jsx)(`div`,{style:{padding:`3rem`,textAlign:`center`,color:`var(--muted)`,fontSize:`0.85rem`},children:`📷 Click "Start Camera" to begin scanning QR codes.`})]}),(0,Q.jsxs)(`div`,{className:`manual-card`,children:[(0,Q.jsx)(`div`,{className:`manual-label`,children:`Manual Lookup — Enter Ticket Code`}),(0,Q.jsxs)(`div`,{className:`manual-row`,children:[(0,Q.jsx)(`input`,{className:`manual-input`,placeholder:`e.g. REVO-4264EF9B`,value:u,onChange:e=>d(e.target.value.toUpperCase()),onKeyDown:e=>e.key===`Enter`&&T(),maxLength:16}),(0,Q.jsx)(`button`,{className:`manual-btn`,onClick:T,disabled:f||!u.trim(),children:f?`...`:`Look Up`})]})]}),(0,Q.jsxs)(`div`,{className:`log-card`,children:[(0,Q.jsxs)(`div`,{className:`log-header`,children:[(0,Q.jsx)(`span`,{children:`Recent Scans`}),m.length>0&&(0,Q.jsx)(`button`,{className:`log-clear`,onClick:()=>h([]),children:`Clear`})]}),m.length===0?(0,Q.jsx)(`div`,{className:`log-empty`,children:`No scans yet. Start scanning to see results here.`}):m.map(e=>(0,Q.jsxs)(`div`,{className:`log-item`,children:[(0,Q.jsx)(`div`,{className:`log-dot ${e.type}`}),(0,Q.jsxs)(`div`,{className:`log-info`,children:[(0,Q.jsx)(`div`,{className:`log-name`,children:e.name}),(0,Q.jsx)(`div`,{className:`log-detail`,children:e.detail})]}),(0,Q.jsx)(`div`,{className:`log-time`,children:e.time})]},e.id))]})]})]}),o&&(0,Q.jsx)(`div`,{className:`modal-overlay`,onClick:()=>s(null),children:(0,Q.jsxs)(`div`,{className:`modal`,onClick:e=>e.stopPropagation(),children:[o.state===`found`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge found`,children:`✓ Valid Ticket`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Check In?`}),(0,Q.jsxs)(`div`,{className:`attendee-card`,children:[(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Name`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.full_name})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Ticket Type`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.ticket_types?.name})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Payment`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.payment_method===`walk-in`?`🏫 Walk-in`:`📱 GCash`})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Code`}),(0,Q.jsx)(`span`,{className:`att-value gold`,children:o.ticket.ticket_code})]})]}),(0,Q.jsxs)(`div`,{className:`modal-actions`,children:[(0,Q.jsx)(`button`,{className:`modal-cancel`,onClick:()=>s(null),children:`Cancel`}),(0,Q.jsx)(`button`,{className:`modal-checkin-btn`,onClick:ee,disabled:c,children:c?`Saving...`:`✓ Confirm Check-In`})]})]}),o.state===`already`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge already`,children:`Already Checked In`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Duplicate Scan`}),(0,Q.jsxs)(`div`,{className:`attendee-card`,children:[(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Name`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.full_name})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Checked in at`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.checked_in_at?new Date(o.ticket.checked_in_at).toLocaleTimeString(`en-PH`):`—`})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Code`}),(0,Q.jsx)(`span`,{className:`att-value gold`,children:o.ticket.ticket_code})]})]}),(0,Q.jsx)(`div`,{className:`modal-warning`,children:`⚠️ This QR code has already been used for entry. Do not allow re-entry.`}),(0,Q.jsx)(`button`,{className:`modal-close-btn`,onClick:()=>s(null),children:`Close`})]}),o.state===`unpaid`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge invalid`,children:`⚠️ Unpaid`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Payment Pending`}),(0,Q.jsxs)(`div`,{className:`attendee-card`,children:[(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Name`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.full_name})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Code`}),(0,Q.jsx)(`span`,{className:`att-value gold`,children:o.ticket.ticket_code})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Amount Due`}),(0,Q.jsxs)(`span`,{className:`att-value`,children:[`₱`,Number(o.ticket.amount_paid).toFixed(2)]})]})]}),(0,Q.jsx)(`div`,{className:`modal-warning`,children:`⚠️ This ticket has not been paid yet. Collect payment first, then confirm in the Dashboard before allowing entry.`}),(0,Q.jsx)(`button`,{className:`modal-close-btn`,onClick:()=>s(null),children:`Close`})]}),o.state===`blocked`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge invalid`,children:`✗ Blocked`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Ticket Blocked`}),(0,Q.jsx)(`div`,{className:`modal-error`,children:`This ticket has been cancelled or blocked by an admin. Do not allow entry.`}),(0,Q.jsx)(`button`,{className:`modal-close-btn`,onClick:()=>s(null),children:`Close`})]}),o.state===`invalid`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge invalid`,children:`✗ Invalid`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Ticket Not Found`}),(0,Q.jsxs)(`div`,{className:`modal-error`,children:[`No ticket found for code: `,(0,Q.jsx)(`strong`,{children:o.code}),(0,Q.jsx)(`br`,{}),`This QR code is not in the system.`]}),(0,Q.jsx)(`button`,{className:`modal-close-btn`,onClick:()=>s(null),children:`Close`})]})]})})]})}function xu(){return(0,Q.jsx)(gn,{children:(0,Q.jsxs)(Mt,{children:[(0,Q.jsx)(At,{path:`/`,element:(0,Q.jsx)(tc,{})}),(0,Q.jsx)(At,{path:`/checkout`,element:(0,Q.jsx)(hc,{})}),(0,Q.jsx)(At,{path:`/ticket/:code`,element:(0,Q.jsx)(Kc,{})}),(0,Q.jsx)(At,{path:`/admin`,element:(0,Q.jsx)(Jc,{})}),(0,Q.jsx)(At,{path:`/admin/dashboard`,element:(0,Q.jsx)($c,{})}),(0,Q.jsx)(At,{path:`/admin/scanner`,element:(0,Q.jsx)(bu,{})})]})})}var Su=`
+        `).eq(`ticket_code`,e).single();if(t){r=t;break}}if(!r){s({state:`invalid`,code:e}),E(`error`,e,`Ticket not found`);return}if(r.payment_status===`cancelled`){s({state:`blocked`,ticket:r}),E(`error`,r.full_name,`Blocked ticket — ${r.ticket_code}`);return}if(r.payment_status!==`paid`){s({state:`unpaid`,ticket:r}),E(`warning`,r.full_name,`Unpaid — ${r.ticket_code}`);return}if(r.is_checked_in){s({state:`already`,ticket:r}),E(`warning`,r.full_name,`Already checked in — ${r.ticket_code}`);return}s({state:`found`,ticket:r})}async function ee(){if(!o?.ticket)return;l(!0);let{error:e}=await Js.from(`orders`).update({is_checked_in:!0,checked_in_at:new Date().toISOString()}).eq(`id`,o.ticket.id);e||(E(`success`,o.ticket.full_name,`Checked in — ${o.ticket.ticket_code}`),v(`✓ ${o.ticket.full_name} checked in!`),setTimeout(()=>v(``),2e3)),l(!1),s(null)}async function T(){u.trim()&&(p(!0),await w(u.trim()),d(``),p(!1))}function E(e,t,n){let r={id:Date.now(),type:e,name:t,detail:n,time:new Date().toLocaleTimeString(`en-PH`,{hour:`2-digit`,minute:`2-digit`,second:`2-digit`})};h(e=>[r,...e].slice(0,20))}async function D(){await Js.auth.signOut(),e(`/admin`)}return(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`style`,{children:yu}),g&&(0,Q.jsx)(`div`,{className:`success-flash`,children:g}),(0,Q.jsxs)(`div`,{className:`admin-wrap`,children:[(0,Q.jsxs)(`aside`,{className:`sidebar`,children:[(0,Q.jsx)(`img`,{src:`/logo.png`,alt:`PUP REVO`,className:`sidebar-logo`}),(0,Q.jsx)(`div`,{className:`sidebar-sub`,children:`Admin Portal`}),(0,Q.jsx)(`div`,{className:`nav-label`,children:`Menu`}),y===`superadmin`&&(0,Q.jsxs)(`button`,{className:`nav-item`,onClick:()=>e(`/admin/dashboard`),children:[(0,Q.jsx)(`span`,{className:`nav-icon`,children:(0,Q.jsx)(`i`,{className:`fa-solid fa-chart-line`})}),` Dashboard`]}),(0,Q.jsxs)(`button`,{className:`nav-item active`,children:[(0,Q.jsx)(`span`,{className:`nav-icon`,children:(0,Q.jsx)(`i`,{className:`fa-solid fa-qrcode`})}),` Scanner`]}),(0,Q.jsx)(`div`,{className:`sidebar-footer`,children:(0,Q.jsxs)(`button`,{className:`signout-btn`,onClick:D,children:[(0,Q.jsx)(`i`,{className:`fa-solid fa-right-from-bracket`}),` Sign Out`]})})]}),(0,Q.jsxs)(`main`,{className:`main`,children:[(0,Q.jsxs)(`div`,{className:`page-header`,children:[(0,Q.jsx)(`div`,{className:`page-title`,children:`QR Scanner`}),(0,Q.jsx)(`div`,{className:`page-sub`,children:`Scan attendee QR codes to check them in at the venue.`})]}),(0,Q.jsxs)(`div`,{className:`scanner-card`,children:[(0,Q.jsxs)(`div`,{className:`scanner-top`,children:[(0,Q.jsxs)(`span`,{className:`scanner-label`,children:[(0,Q.jsx)(`span`,{className:`scanner-status-dot ${i?`active`:``}`}),i?`Camera Active`:`Camera Off`]}),(0,Q.jsx)(`button`,{style:{fontFamily:`Syne, sans-serif`,fontSize:`0.75rem`,fontWeight:700,letterSpacing:`0.08em`,textTransform:`uppercase`,background:i?`rgba(228,0,27,0.12)`:`var(--red)`,color:i?`#ff8080`:`white`,border:i?`1px solid rgba(228,0,27,0.3)`:`none`,padding:`0.45rem 1rem`,borderRadius:`4px`,cursor:`pointer`},onClick:i?S:x,children:i?`⏹ Stop`:`▶ Start Camera`})]}),(0,Q.jsx)(`div`,{id:`qr-reader`,ref:t}),!i&&(0,Q.jsx)(`div`,{style:{padding:`3rem`,textAlign:`center`,color:`var(--muted)`,fontSize:`0.85rem`},children:`📷 Click "Start Camera" to begin scanning QR codes.`})]}),(0,Q.jsxs)(`div`,{className:`manual-card`,children:[(0,Q.jsx)(`div`,{className:`manual-label`,children:`Manual Lookup — Enter Ticket Code`}),(0,Q.jsxs)(`div`,{className:`manual-row`,children:[(0,Q.jsx)(`input`,{className:`manual-input`,placeholder:`e.g. REVO-4264EF9B`,value:u,onChange:e=>d(e.target.value.toUpperCase()),onKeyDown:e=>e.key===`Enter`&&T(),maxLength:16}),(0,Q.jsx)(`button`,{className:`manual-btn`,onClick:T,disabled:f||!u.trim(),children:f?`...`:`Look Up`})]})]}),(0,Q.jsxs)(`div`,{className:`log-card`,children:[(0,Q.jsxs)(`div`,{className:`log-header`,children:[(0,Q.jsx)(`span`,{children:`Recent Scans`}),m.length>0&&(0,Q.jsx)(`button`,{className:`log-clear`,onClick:()=>h([]),children:`Clear`})]}),m.length===0?(0,Q.jsx)(`div`,{className:`log-empty`,children:`No scans yet. Start scanning to see results here.`}):m.map(e=>(0,Q.jsxs)(`div`,{className:`log-item`,children:[(0,Q.jsx)(`div`,{className:`log-dot ${e.type}`}),(0,Q.jsxs)(`div`,{className:`log-info`,children:[(0,Q.jsx)(`div`,{className:`log-name`,children:e.name}),(0,Q.jsx)(`div`,{className:`log-detail`,children:e.detail})]}),(0,Q.jsx)(`div`,{className:`log-time`,children:e.time})]},e.id))]})]})]}),o&&(0,Q.jsx)(`div`,{className:`modal-overlay`,onClick:()=>s(null),children:(0,Q.jsxs)(`div`,{className:`modal`,onClick:e=>e.stopPropagation(),children:[o.state===`found`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge found`,children:`✓ Valid Ticket`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Check In?`}),(0,Q.jsxs)(`div`,{className:`attendee-card`,children:[(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Name`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.full_name})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Ticket Type`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.ticket_types?.name})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Payment`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.payment_method===`walk-in`?`🏫 Walk-in`:`📱 GCash`})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Code`}),(0,Q.jsx)(`span`,{className:`att-value gold`,children:o.ticket.ticket_code})]})]}),(0,Q.jsxs)(`div`,{className:`modal-actions`,children:[(0,Q.jsx)(`button`,{className:`modal-cancel`,onClick:()=>s(null),children:`Cancel`}),(0,Q.jsx)(`button`,{className:`modal-checkin-btn`,onClick:ee,disabled:c,children:c?`Saving...`:`✓ Confirm Check-In`})]})]}),o.state===`already`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge already`,children:`Already Checked In`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Duplicate Scan`}),(0,Q.jsxs)(`div`,{className:`attendee-card`,children:[(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Name`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.full_name})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Checked in at`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.checked_in_at?new Date(o.ticket.checked_in_at).toLocaleTimeString(`en-PH`):`—`})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Code`}),(0,Q.jsx)(`span`,{className:`att-value gold`,children:o.ticket.ticket_code})]})]}),(0,Q.jsx)(`div`,{className:`modal-warning`,children:`⚠️ This QR code has already been used for entry. Do not allow re-entry.`}),(0,Q.jsx)(`button`,{className:`modal-close-btn`,onClick:()=>s(null),children:`Close`})]}),o.state===`unpaid`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge invalid`,children:`⚠️ Unpaid`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Payment Pending`}),(0,Q.jsxs)(`div`,{className:`attendee-card`,children:[(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Name`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.full_name})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Code`}),(0,Q.jsx)(`span`,{className:`att-value gold`,children:o.ticket.ticket_code})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Amount Due`}),(0,Q.jsxs)(`span`,{className:`att-value`,children:[`₱`,Number(o.ticket.amount_paid).toFixed(2)]})]})]}),(0,Q.jsx)(`div`,{className:`modal-warning`,children:`⚠️ This ticket has not been paid yet. Collect payment first, then confirm in the Dashboard before allowing entry.`}),(0,Q.jsx)(`button`,{className:`modal-close-btn`,onClick:()=>s(null),children:`Close`})]}),o.state===`blocked`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge invalid`,children:`✗ Blocked`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Ticket Blocked`}),(0,Q.jsx)(`div`,{className:`modal-error`,children:`This ticket has been cancelled or blocked by an admin. Do not allow entry.`}),(0,Q.jsx)(`button`,{className:`modal-close-btn`,onClick:()=>s(null),children:`Close`})]}),o.state===`invalid`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge invalid`,children:`✗ Invalid`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Ticket Not Found`}),(0,Q.jsxs)(`div`,{className:`modal-error`,children:[`No ticket found for code: `,(0,Q.jsx)(`strong`,{children:o.code}),(0,Q.jsx)(`br`,{}),`This QR code is not in the system.`]}),(0,Q.jsx)(`button`,{className:`modal-close-btn`,onClick:()=>s(null),children:`Close`})]})]})})]})}if(!document.querySelector(`link[href*="font-awesome"]`)){let e=document.createElement(`link`);e.rel=`stylesheet`,e.href=`https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css`,document.head.appendChild(e)}var xu=[`General Inquiry`,`Ticket Purchase`,`Ticket Concern / Issue`,`Payment Concern`,`Refund / Cancellation`,`Event Details`,`Sponsorship / Partnership`,`Media & Press`,`Other`],Su=`
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #FF3B30;
+    --gold: #FFD700;
+    --blue: #1A4FD6;
+    --cream: #FAF5E9;
+    --dark: #060D1F;
+    --card-bg: #0D1530;
+    --border: rgba(255,255,255,0.07);
+    --muted: rgba(250,245,233,0.4);
+  }
+
+  body {
+    background: var(--dark); color: var(--cream);
+    font-family: 'DM Sans', sans-serif; min-height: 100vh;
+  }
+
+  /* Background */
+  .contact-bg {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,59,48,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 80% 80%, rgba(255,215,0,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 35% at 10% 50%, rgba(26,79,214,0.12) 0%, transparent 60%),
+      var(--dark);
+  }
+  .contact-grid-overlay {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Page wrapper */
+  .contact-page {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    padding: 2rem 1.5rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Back button */
+  .back-btn {
+    background: none; border: none; cursor: pointer;
+    font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); padding: 0; margin-bottom: 2.5rem;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    transition: color 0.15s;
+  }
+  .back-btn:hover { color: var(--cream); }
+
+  /* Page header */
+  .contact-header { margin-bottom: 2.5rem; }
+  .contact-label {
+    font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 0.5rem;
+  }
+  .contact-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    letter-spacing: 0.06em; color: var(--cream);
+    line-height: 1; margin-bottom: 0.6rem;
+  }
+  .contact-sub {
+    font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 520px;
+  }
+
+  /* Two-column layout */
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 680px) {
+    .contact-layout { grid-template-columns: 1fr; }
+  }
+
+  /* Info panel (left) */
+  .info-panel {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    display: flex; flex-direction: column; gap: 1.5rem;
+  }
+  .info-section-title {
+    font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.75rem;
+  }
+  .info-item {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+  }
+  .info-icon {
+    width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+    background: rgba(255,59,48,0.12); border: 1px solid rgba(255,59,48,0.25);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--red); font-size: 0.8rem; margin-top: 0.1rem;
+  }
+  .info-item-label {
+    font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.2rem;
+  }
+  .info-item-value {
+    font-size: 0.82rem; color: var(--cream); line-height: 1.5;
+  }
+  .info-item-value a {
+    color: var(--gold); text-decoration: none;
+  }
+  .info-item-value a:hover { text-decoration: underline; }
+  .info-divider {
+    border: none; border-top: 1px solid var(--border); margin: 0;
+  }
+  .social-row {
+    display: flex; gap: 0.6rem; flex-wrap: wrap;
+  }
+  .social-btn {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    font-family: 'Syne', sans-serif; font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--cream); text-decoration: none;
+    background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+    border-radius: 6px; padding: 0.45rem 0.75rem;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .social-btn:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.15);
+  }
+
+  /* Form panel (right) */
+  .form-panel {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+  .form-panel-title {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem;
+    letter-spacing: 0.06em; color: var(--cream); margin-bottom: 1.5rem;
+  }
+
+  /* Fields */
+  .field-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;
+  }
+  @media (max-width: 520px) {
+    .field-row { grid-template-columns: 1fr; }
+  }
+  .field-group { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1rem; }
+  .field-group:last-child { margin-bottom: 0; }
+  .field-group label {
+    font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
+  }
+  .field-group input,
+  .field-group select,
+  .field-group textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem 0.9rem;
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    transition: border-color 0.15s;
+    outline: none;
+    width: 100%;
+  }
+  .field-group input::placeholder,
+  .field-group textarea::placeholder { color: rgba(250,245,233,0.2); }
+  .field-group input:focus,
+  .field-group select:focus,
+  .field-group textarea:focus {
+    border-color: rgba(255,215,0,0.4);
+    background: rgba(255,255,255,0.06);
+  }
+  .field-group input.error,
+  .field-group select.error,
+  .field-group textarea.error { border-color: rgba(255,59,48,0.6); }
+  .field-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(250,245,233,0.3)'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    padding-right: 2.2rem;
+    cursor: pointer;
+  }
+  .field-group select option { background: #0D1530; color: var(--cream); }
+  .field-group textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+  .field-error {
+    font-size: 0.75rem; color: #FF6B60;
+    display: flex; align-items: center; gap: 0.3rem;
+  }
+  .field-hint {
+    font-size: 0.73rem; color: var(--muted); line-height: 1.5;
+  }
+
+  /* Note banner */
+  .note-banner {
+    background: rgba(255,215,0,0.07);
+    border: 1px solid rgba(255,215,0,0.2);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.78rem; color: rgba(255,215,0,0.85); line-height: 1.6;
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Submit button */
+  .submit-btn {
+    width: 100%; margin-top: 1.5rem;
+    background: var(--gold); color: #000;
+    font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    border: none; border-radius: 8px;
+    padding: 1rem; cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  }
+  .submit-btn:hover:not(:disabled) { opacity: 0.88; transform: translateY(-1px); }
+  .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* Success state */
+  .success-wrap {
+    text-align: center; padding: 3rem 1.5rem;
+  }
+  .success-icon {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: rgba(74,222,128,0.12); border: 1px solid rgba(74,222,128,0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: #4ade80; font-size: 1.6rem;
+    margin: 0 auto 1.25rem;
+  }
+  .success-title {
+    font-family: 'Bebas Neue', sans-serif; font-size: 2rem;
+    letter-spacing: 0.06em; color: var(--cream); margin-bottom: 0.5rem;
+  }
+  .success-sub {
+    font-size: 0.85rem; color: var(--muted); line-height: 1.6; max-width: 360px; margin: 0 auto 1.5rem;
+  }
+  .success-back-btn {
+    background: none; border: 1px solid var(--border); border-radius: 8px;
+    padding: 0.7rem 1.5rem; color: var(--cream); cursor: pointer;
+    font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    transition: background 0.15s;
+  }
+  .success-back-btn:hover { background: rgba(255,255,255,0.06); }
+`,Cu={name:``,email:``,phone:``,order_id:``,subject:``,message:``};function wu(){let e=ot(),[t,n]=(0,_.useState)(Cu),[r,i]=(0,_.useState)({}),[a,o]=(0,_.useState)(!1),s=(e,t)=>{n(n=>({...n,[e]:t})),r[e]&&i(t=>({...t,[e]:``}))};function c(){let e={};return t.name.trim()||(e.name=`Name is required.`),t.email.trim()?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t.email)||(e.email=`Please enter a valid email.`):e.email=`Email is required.`,t.phone.trim()?/^(09|\+639)\d{9}$/.test(t.phone.replace(/\s/g,``))||(e.phone=`Enter a valid PH number (e.g. 09XXXXXXXXX).`):e.phone=`Contact number is required.`,t.subject||(e.subject=`Please select a subject.`),t.message.trim()?t.message.trim().length<10&&(e.message=`Message is too short.`):e.message=`Message is required.`,e}function l(){let e=c();if(i(e),Object.keys(e).length>0)return;let n=encodeURIComponent(`[PUP REVO 2026] ${t.subject}${t.order_id?` — Order #${t.order_id}`:``}`),r=encodeURIComponent(`Name: ${t.name}\nEmail: ${t.email}\nContact Number: ${t.phone}\n`+(t.order_id?`Order ID: ${t.order_id}\n`:``)+`Subject: ${t.subject}\n\nMessage:\n${t.message}`);window.location.href=`mailto:puprevo.commsoc@gmail.com?subject=${n}&body=${r}`,o(!0)}return(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`style`,{children:Su}),(0,Q.jsx)(`div`,{className:`contact-bg`}),(0,Q.jsx)(`div`,{className:`contact-grid-overlay`}),(0,Q.jsxs)(`div`,{className:`contact-page`,children:[(0,Q.jsxs)(`button`,{className:`back-btn`,onClick:()=>e(`/`),children:[(0,Q.jsx)(`i`,{className:`fa-solid fa-arrow-left`}),` Back to Event`]}),(0,Q.jsxs)(`div`,{className:`contact-header`,children:[(0,Q.jsx)(`div`,{className:`contact-label`,children:`✦ PUP Communication Society`}),(0,Q.jsx)(`h1`,{className:`contact-title`,children:`Feedback & Inquiry`}),(0,Q.jsx)(`p`,{className:`contact-sub`,children:`Got questions about tickets, the event, or anything else? Send us a message and we'll get back to you as soon as we can.`})]}),(0,Q.jsxs)(`div`,{className:`contact-layout`,children:[(0,Q.jsxs)(`div`,{className:`info-panel`,children:[(0,Q.jsxs)(`div`,{children:[(0,Q.jsx)(`div`,{className:`info-section-title`,children:`Contact Info`}),(0,Q.jsxs)(`div`,{className:`info-item`,children:[(0,Q.jsx)(`div`,{className:`info-icon`,children:(0,Q.jsx)(`i`,{className:`fa-solid fa-envelope`})}),(0,Q.jsxs)(`div`,{children:[(0,Q.jsx)(`div`,{className:`info-item-label`,children:`Email`}),(0,Q.jsx)(`div`,{className:`info-item-value`,children:(0,Q.jsx)(`a`,{href:`mailto:puprevo.commsoc@gmail.com`,children:`puprevo.commsoc@gmail.com`})})]})]})]}),(0,Q.jsx)(`hr`,{className:`info-divider`}),(0,Q.jsxs)(`div`,{children:[(0,Q.jsx)(`div`,{className:`info-section-title`,children:`Event Details`}),(0,Q.jsxs)(`div`,{className:`info-item`,style:{marginBottom:`0.9rem`},children:[(0,Q.jsx)(`div`,{className:`info-icon`,children:(0,Q.jsx)(`i`,{className:`fa-regular fa-calendar`})}),(0,Q.jsxs)(`div`,{children:[(0,Q.jsx)(`div`,{className:`info-item-label`,children:`Date`}),(0,Q.jsxs)(`div`,{className:`info-item-value`,children:[`June 20, 2026`,(0,Q.jsx)(`br`,{}),`Gates open at 8:00 AM`]})]})]}),(0,Q.jsxs)(`div`,{className:`info-item`,children:[(0,Q.jsx)(`div`,{className:`info-icon`,children:(0,Q.jsx)(`i`,{className:`fa-solid fa-location-dot`})}),(0,Q.jsxs)(`div`,{children:[(0,Q.jsx)(`div`,{className:`info-item-label`,children:`Venue`}),(0,Q.jsxs)(`div`,{className:`info-item-value`,children:[`PUP Main Campus Oval`,(0,Q.jsx)(`br`,{}),`Sta. Mesa, Manila`]})]})]})]}),(0,Q.jsx)(`hr`,{className:`info-divider`}),(0,Q.jsxs)(`div`,{children:[(0,Q.jsx)(`div`,{className:`info-section-title`,children:`Follow Us`}),(0,Q.jsxs)(`div`,{className:`social-row`,children:[(0,Q.jsxs)(`a`,{className:`social-btn`,href:`https://www.facebook.com/pupcommsoc`,target:`_blank`,rel:`noopener noreferrer`,children:[(0,Q.jsx)(`i`,{className:`fa-brands fa-facebook-f`}),` Facebook`]}),(0,Q.jsxs)(`a`,{className:`social-btn`,href:`https://www.instagram.com/pupcommsoc`,target:`_blank`,rel:`noopener noreferrer`,children:[(0,Q.jsx)(`i`,{className:`fa-brands fa-instagram`}),` Instagram`]})]})]}),(0,Q.jsx)(`hr`,{className:`info-divider`}),(0,Q.jsxs)(`div`,{children:[(0,Q.jsx)(`div`,{className:`info-section-title`,children:`Response Time`}),(0,Q.jsxs)(`div`,{className:`info-item`,children:[(0,Q.jsx)(`div`,{className:`info-icon`,children:(0,Q.jsx)(`i`,{className:`fa-regular fa-clock`})}),(0,Q.jsx)(`div`,{children:(0,Q.jsxs)(`div`,{className:`info-item-value`,style:{fontSize:`0.78rem`,color:`var(--muted)`},children:[`We typically respond within `,(0,Q.jsx)(`strong`,{style:{color:`var(--cream)`},children:`1–3 business days`}),`. For urgent concerns, please message us directly on Facebook.`]})})]})]})]}),(0,Q.jsx)(`div`,{className:`form-panel`,children:a?(0,Q.jsxs)(`div`,{className:`success-wrap`,children:[(0,Q.jsx)(`div`,{className:`success-icon`,children:(0,Q.jsx)(`i`,{className:`fa-solid fa-check`})}),(0,Q.jsx)(`div`,{className:`success-title`,children:`Message Sent!`}),(0,Q.jsxs)(`p`,{className:`success-sub`,children:[`Your email client should have opened. If it didn't, you can email us directly at`,` `,(0,Q.jsx)(`a`,{href:`mailto:puprevo.commsoc@gmail.com`,style:{color:`var(--gold)`},children:`puprevo.commsoc@gmail.com`}),`.`]}),(0,Q.jsx)(`button`,{className:`success-back-btn`,onClick:()=>{n(Cu),o(!1)},children:`Send Another Message`})]}):(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`form-panel-title`,children:`Send a Message`}),(0,Q.jsxs)(`div`,{className:`note-banner`,children:[(0,Q.jsx)(`i`,{className:`fa-solid fa-circle-info`,style:{marginTop:`0.1rem`,flexShrink:0}}),(0,Q.jsxs)(`span`,{children:[`Clicking `,(0,Q.jsx)(`strong`,{children:`Send Message`}),` will open your email app pre-filled with your details. All ticket sales are `,(0,Q.jsx)(`strong`,{children:`final and non-refundable`}),`.`]})]}),(0,Q.jsxs)(`div`,{className:`field-row`,children:[(0,Q.jsxs)(`div`,{className:`field-group`,children:[(0,Q.jsx)(`label`,{children:`Full Name *`}),(0,Q.jsx)(`input`,{className:r.name?`error`:``,placeholder:`Juan Dela Cruz`,value:t.name,onChange:e=>s(`name`,e.target.value)}),r.name&&(0,Q.jsxs)(`div`,{className:`field-error`,children:[(0,Q.jsx)(`i`,{className:`fa-solid fa-circle-exclamation`}),r.name]})]}),(0,Q.jsxs)(`div`,{className:`field-group`,children:[(0,Q.jsx)(`label`,{children:`Contact Number *`}),(0,Q.jsx)(`input`,{className:r.phone?`error`:``,placeholder:`09XXXXXXXXX`,value:t.phone,onChange:e=>s(`phone`,e.target.value)}),r.phone&&(0,Q.jsxs)(`div`,{className:`field-error`,children:[(0,Q.jsx)(`i`,{className:`fa-solid fa-circle-exclamation`}),r.phone]})]})]}),(0,Q.jsxs)(`div`,{className:`field-group`,children:[(0,Q.jsx)(`label`,{children:`Email Address *`}),(0,Q.jsx)(`input`,{className:r.email?`error`:``,type:`email`,placeholder:`juan@email.com`,value:t.email,onChange:e=>s(`email`,e.target.value)}),r.email&&(0,Q.jsxs)(`div`,{className:`field-error`,children:[(0,Q.jsx)(`i`,{className:`fa-solid fa-circle-exclamation`}),r.email]})]}),(0,Q.jsxs)(`div`,{className:`field-group`,children:[(0,Q.jsx)(`label`,{children:`Subject *`}),(0,Q.jsxs)(`select`,{className:r.subject?`error`:``,value:t.subject,onChange:e=>s(`subject`,e.target.value),children:[(0,Q.jsx)(`option`,{value:``,children:`Select a subject`}),xu.map(e=>(0,Q.jsx)(`option`,{value:e,children:e},e))]}),r.subject&&(0,Q.jsxs)(`div`,{className:`field-error`,children:[(0,Q.jsx)(`i`,{className:`fa-solid fa-circle-exclamation`}),r.subject]})]}),[`Ticket Purchase`,`Ticket Concern / Issue`,`Payment Concern`,`Refund / Cancellation`].includes(t.subject)&&(0,Q.jsxs)(`div`,{className:`field-group`,children:[(0,Q.jsxs)(`label`,{children:[`Order / Ticket ID `,(0,Q.jsx)(`span`,{style:{color:`var(--muted)`,fontWeight:400,textTransform:`none`,letterSpacing:0,fontSize:`0.72rem`},children:`(if applicable)`})]}),(0,Q.jsx)(`input`,{placeholder:`e.g. REVO-2026-XXXXX`,value:t.order_id,onChange:e=>s(`order_id`,e.target.value)}),(0,Q.jsx)(`div`,{className:`field-hint`,children:`Check your confirmation email for your Order ID.`})]}),(0,Q.jsxs)(`div`,{className:`field-group`,children:[(0,Q.jsx)(`label`,{children:`Message *`}),(0,Q.jsx)(`textarea`,{className:r.message?`error`:``,placeholder:`Describe your concern or question in detail...`,value:t.message,onChange:e=>s(`message`,e.target.value)}),r.message&&(0,Q.jsxs)(`div`,{className:`field-error`,children:[(0,Q.jsx)(`i`,{className:`fa-solid fa-circle-exclamation`}),r.message]}),(0,Q.jsxs)(`div`,{className:`field-hint`,children:[t.message.length,` characters`]})]}),(0,Q.jsxs)(`button`,{className:`submit-btn`,onClick:l,children:[(0,Q.jsx)(`i`,{className:`fa-solid fa-paper-plane`}),` Send Message`]})]})})]})]})]})}function Tu(){return(0,Q.jsx)(gn,{children:(0,Q.jsxs)(Mt,{children:[(0,Q.jsx)(At,{path:`/`,element:(0,Q.jsx)(tc,{})}),(0,Q.jsx)(At,{path:`/checkout`,element:(0,Q.jsx)(hc,{})}),(0,Q.jsx)(At,{path:`/ticket/:code`,element:(0,Q.jsx)(Kc,{})}),(0,Q.jsx)(At,{path:`/admin`,element:(0,Q.jsx)(Jc,{})}),(0,Q.jsx)(At,{path:`/admin/dashboard`,element:(0,Q.jsx)($c,{})}),(0,Q.jsx)(At,{path:`/admin/scanner`,element:(0,Q.jsx)(bu,{})}),(0,Q.jsx)(At,{path:`/contact`,element:(0,Q.jsx)(wu,{})})]})})}var Eu=`
   .eb-wrap {
     min-height: 100vh;
     background:
@@ -3818,4 +4074,4 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     border-radius: 2px;
     margin: 0 auto 1.5rem;
   }
-`,Cu=class extends _.Component{state={hasError:!1};static getDerivedStateFromError(){return{hasError:!0}}componentDidCatch(e,t){console.error(`ErrorBoundary caught:`,e,t)}render(){return this.state.hasError?(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`style`,{children:Su}),(0,Q.jsxs)(`div`,{className:`eb-wrap`,children:[(0,Q.jsx)(`div`,{className:`eb-grid`}),(0,Q.jsxs)(`div`,{className:`eb-content`,children:[(0,Q.jsx)(`div`,{className:`eb-label`,children:`PUP REVO 2026 — System Error`}),(0,Q.jsx)(`div`,{className:`eb-title`,children:`Oops!`}),(0,Q.jsx)(`div`,{className:`eb-sub`,children:`Something Went Wrong`}),(0,Q.jsx)(`div`,{className:`eb-divider`}),(0,Q.jsx)(`p`,{className:`eb-desc`,children:`An unexpected error occurred. Please click the button below to try again. If the problem persists, refresh the page or come back later.`}),(0,Q.jsx)(`button`,{className:`eb-btn`,onClick:()=>window.location.reload(),children:`↺ \xA0 Try Again`})]})]})]}):this.props.children}};(0,v.createRoot)(document.getElementById(`root`)).render((0,Q.jsx)(_.StrictMode,{children:(0,Q.jsx)(Cu,{children:(0,Q.jsx)(xu,{})})}));
+`,Du=class extends _.Component{state={hasError:!1};static getDerivedStateFromError(){return{hasError:!0}}componentDidCatch(e,t){console.error(`ErrorBoundary caught:`,e,t)}render(){return this.state.hasError?(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`style`,{children:Eu}),(0,Q.jsxs)(`div`,{className:`eb-wrap`,children:[(0,Q.jsx)(`div`,{className:`eb-grid`}),(0,Q.jsxs)(`div`,{className:`eb-content`,children:[(0,Q.jsx)(`div`,{className:`eb-label`,children:`PUP REVO 2026 — System Error`}),(0,Q.jsx)(`div`,{className:`eb-title`,children:`Oops!`}),(0,Q.jsx)(`div`,{className:`eb-sub`,children:`Something Went Wrong`}),(0,Q.jsx)(`div`,{className:`eb-divider`}),(0,Q.jsx)(`p`,{className:`eb-desc`,children:`An unexpected error occurred. Please click the button below to try again. If the problem persists, refresh the page or come back later.`}),(0,Q.jsx)(`button`,{className:`eb-btn`,onClick:()=>window.location.reload(),children:`↺ \xA0 Try Again`})]})]})]}):this.props.children}};(0,v.createRoot)(document.getElementById(`root`)).render((0,Q.jsx)(_.StrictMode,{children:(0,Q.jsx)(Du,{children:(0,Q.jsx)(Tu,{})})}));
