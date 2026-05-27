@@ -394,7 +394,7 @@ export default function Landing() {
           min-height: 100vh;
           display: flex; flex-direction: column;
           align-items: center; justify-content: center;
-          text-align: center; padding: 6rem 2rem 2rem;
+          text-align: center; padding: 3rem 2rem 2rem;
           position: relative; overflow: hidden;
         }
         .hero-bg {
@@ -789,9 +789,11 @@ export default function Landing() {
           font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
           letter-spacing: 0.22em; text-transform: uppercase;
           color: var(--cream); margin-bottom: 1rem;
+          text-align: left;
         }
         .footer-col-links {
           display: flex; flex-direction: column; gap: 0.6rem; list-style: none;
+          align-items: flex-start;
         }
         .footer-col-links li {}
         .footer-col-links a,
@@ -806,7 +808,7 @@ export default function Landing() {
         .footer-bottom {
           border-top: 1px solid rgba(255,255,255,0.06);
           padding: 1rem 3rem;
-          display: flex; align-items: center; justify-content: flex-start;
+          display: flex; align-items: center; justify-content: space-between;
           max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 1rem;
         }
         @media (max-width: 640px) {
@@ -1414,8 +1416,10 @@ export default function Landing() {
                 <img src="/logo.png" alt="PUP REVO 2026" />
               </div>
               <p className="footer-tagline">
-                Sound Against Silence — A Day of Advocacy, OPM Music &amp; PUP Pride.<br />
-                June 20, 2026 · PUP Main Campus Oval, Manila.
+                PUP REVO 2026<br />
+                Sound Against Silence<br />
+                June 20, 2026<br />
+                PUP Main Campus Oval, Manila.
               </p>
             </div>
 
