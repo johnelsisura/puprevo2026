@@ -160,7 +160,7 @@ const css = `
   .info-section-title {
     font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
     letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 0.75rem; text-align: center;
+    color: var(--gold); margin-bottom: 0.75rem; text-align: left;
   }
   .info-item {
     display: flex; align-items: flex-start; gap: 0.75rem;
@@ -188,20 +188,21 @@ const css = `
     border: none; border-top: 1px solid var(--border); margin: 0;
   }
   .social-row {
-    display: flex; gap: 0.6rem; flex-wrap: wrap;
+    display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center;
   }
   .social-btn {
-    display: inline-flex; align-items: center; gap: 0.45rem;
-    font-family: 'Syne', sans-serif; font-size: 0.62rem; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px;
     color: var(--cream); text-decoration: none;
     background: rgba(255,255,255,0.05); border: 1px solid var(--border);
-    border-radius: 6px; padding: 0.45rem 0.75rem;
-    transition: background 0.15s, border-color 0.15s;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
   }
   .social-btn:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.15);
+    background: rgba(255,215,0,0.1);
+    border-color: rgba(255,215,0,0.35);
+    color: var(--gold);
   }
 
   /* Form panel (right) */
@@ -329,6 +330,7 @@ const css = `
     border-top: 1px solid rgba(255,255,255,0.06);
     background: var(--dark);
     position: relative; z-index: 1;
+    width: 100%;
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   .footer-main {
@@ -612,15 +614,17 @@ export default function Contact() {
                   className="social-btn"
                   href="https://www.facebook.com/pupcommsoc"
                   target="_blank" rel="noopener noreferrer"
+                  aria-label="Facebook"
                 >
-                  <i className="fa-brands fa-facebook-f" /> Facebook
+                  <i className="fa-brands fa-facebook-f" />
                 </a>
                 <a
                   className="social-btn"
                   href="https://www.instagram.com/pupcommsoc"
                   target="_blank" rel="noopener noreferrer"
+                  aria-label="Instagram"
                 >
-                  <i className="fa-brands fa-instagram" /> Instagram
+                  <i className="fa-brands fa-instagram" />
                 </a>
               </div>
             </div>
@@ -765,6 +769,7 @@ export default function Contact() {
       </div>
 
       {/* FOOTER */}
+      <div style={{ width: '100vw', position: 'relative', left: '50%', transform: 'translateX(-50%)' }}>
       <footer className="footer">
         <div className="footer-main">
           <div className="footer-brand">
@@ -815,6 +820,7 @@ export default function Contact() {
           </div>
         </div>
       </footer>
+      </div>
 
       {/* PRIVACY MODAL */}
       {privacyOpen && (
