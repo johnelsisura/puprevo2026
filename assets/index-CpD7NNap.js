@@ -208,7 +208,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           min-height: 100vh;
           display: flex; flex-direction: column;
           align-items: center; justify-content: center;
-          text-align: center; padding: 3rem 2rem 2rem;
+          text-align: center; padding: 1rem 2rem 2rem;
           position: relative; overflow: hidden;
         }
         .hero-bg {
