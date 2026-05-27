@@ -300,6 +300,8 @@ export default function Contact() {
   const [form, setForm] = useState(EMPTY)
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [sendError, setSendError] = useState('')
 
   const set = (key, val) => {
     setForm(f => ({ ...f, [key]: val }))
@@ -319,22 +321,42 @@ export default function Contact() {
     return e
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     const e = validate()
     setErrors(e)
     if (Object.keys(e).length > 0) return
 
-    const subject = encodeURIComponent(`[PUP REVO 2026] ${form.subject}${form.order_id ? ` — Order #${form.order_id}` : ''}`)
-    const body = encodeURIComponent(
-      `Name: ${form.name}\n` +
-      `Email: ${form.email}\n` +
-      `Contact Number: ${form.phone}\n` +
-      (form.order_id ? `Order ID: ${form.order_id}\n` : '') +
-      `Subject: ${form.subject}\n\n` +
-      `Message:\n${form.message}`
-    )
-    window.location.href = `mailto:puprevo.commsoc@gmail.com?subject=${subject}&body=${body}`
-    setSubmitted(true)
+    setLoading(true)
+    setSendError('')
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: '89706857-588e-4170-8b81-0b3741c4975a',
+          subject: `[PUP REVO 2026] ${form.subject}${form.order_id ? ` — Order #${form.order_id}` : ''}`,
+          from_name: form.name,
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          order_id: form.order_id || 'N/A',
+          inquiry_subject: form.subject,
+          message: form.message,
+        }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setSubmitted(true)
+        setForm(EMPTY)
+      } else {
+        setSendError('Something went wrong. Please try again or email us directly.')
+      }
+    } catch {
+      setSendError('Network error. Please check your connection and try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -438,8 +460,7 @@ export default function Contact() {
                 <div className="success-icon"><i className="fa-solid fa-check" /></div>
                 <div className="success-title">Message Sent!</div>
                 <p className="success-sub">
-                  Your email client should have opened. If it didn't, you can email us directly at{' '}
-                  <a href="mailto:puprevo.commsoc@gmail.com" style={{ color: 'var(--gold)' }}>puprevo.commsoc@gmail.com</a>.
+                  Your message has been sent! We'll get back to you within 1–3 business days at <strong>{form.email || 'your email'}</strong>. For urgent concerns, message us on Facebook.
                 </p>
                 <button className="success-back-btn" onClick={() => { setForm(EMPTY); setSubmitted(false) }}>
                   Send Another Message
@@ -452,10 +473,15 @@ export default function Contact() {
                 <div className="note-banner">
                   <i className="fa-solid fa-circle-info" style={{ marginTop: '0.1rem', flexShrink: 0 }} />
                   <span>
-                    Clicking <strong>Send Message</strong> will open your email app pre-filled with your details.
-                    All ticket sales are <strong>final and non-refundable</strong>.
+                    We'll receive your message directly. All ticket sales are <strong>final and non-refundable</strong>.
                   </span>
                 </div>
+                {sendError && (
+                  <div className="note-banner" style={{ borderColor: 'rgba(255,59,48,0.3)', background: 'rgba(255,59,48,0.07)', color: 'rgba(255,100,90,0.9)' }}>
+                    <i className="fa-solid fa-circle-exclamation" style={{ marginTop: '0.1rem', flexShrink: 0 }} />
+                    <span>{sendError}</span>
+                  </div>
+                )}
 
                 {/* Name + Phone */}
                 <div className="field-row">
@@ -534,8 +560,11 @@ export default function Contact() {
                   <div className="field-hint">{form.message.length} characters</div>
                 </div>
 
-                <button className="submit-btn" onClick={handleSubmit}>
-                  <i className="fa-solid fa-paper-plane" /> Send Message
+                <button className="submit-btn" onClick={handleSubmit} disabled={loading}>
+                  {loading
+                    ? <><i className="fa-solid fa-spinner fa-spin" /> Sending...</>
+                    : <><i className="fa-solid fa-paper-plane" /> Send Message</>
+                  }
                 </button>
               </>
             )}
