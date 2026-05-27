@@ -937,11 +937,11 @@ export default function Landing() {
           <div className="ticker-track">
             {[...Array(2)].map((_, i) => (
               <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
-                <span className="ticker-item"><i className="fa-solid fa-ticket" /> Limited tickets available — Buy now until May 31 only!</span>
+                <span className="ticker-item"><i className="fa-solid fa-ticket" /> Limited tickets available — Buy now until May 31 only.</span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Secure yours today!</span>
+                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Secure yours today.</span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-clock" /> Deadline: May 31 · Don't miss out!</span>
+                <span className="ticker-item"><i className="fa-solid fa-clock" /> Last Day of Tickets Selling: May 31 · Don't miss out.</span>
                 <span className="ticker-sep">✦</span>
                 <span className="ticker-item"><i className="fa-solid fa-star" /> PUP REVO 2026 · June 20 · PUP Main Campus Oval</span>
                 <span className="ticker-sep">✦</span>
