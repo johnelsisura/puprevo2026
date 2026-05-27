@@ -768,7 +768,7 @@ export default function Landing() {
           .footer-main { grid-template-columns: 1fr; }
         }
         .footer-brand { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
-        .footer-logo img { height: 64px; width: auto; object-fit: contain; }
+        .footer-logo img { height: 128px; width: auto; object-fit: contain; }
         .footer-tagline {
           font-size: 0.78rem; color: rgba(250,245,233,0.35); line-height: 1.65;
           text-align: left;
@@ -812,10 +812,13 @@ export default function Landing() {
           max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 1rem;
         }
         @media (max-width: 640px) {
-          .footer-bottom { padding: 1rem 1.5rem; flex-direction: column; align-items: flex-start; }
+          .footer-bottom { padding: 1rem 1.5rem; flex-direction: column; align-items: center; }
         }
         .footer-copy {
-          font-size: 0.73rem; color: rgba(250,245,233,0.22);
+          font-size: 0.73rem; color: rgba(250,245,233,0.22); white-space: nowrap;
+        }
+        @media (max-width: 640px) {
+          .footer-copy { font-size: 0.6rem; text-align: center; white-space: normal; }
         }
         .footer-bottom-links {
           display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap;
@@ -1415,12 +1418,7 @@ export default function Landing() {
               <div className="footer-logo">
                 <img src="/logo.png" alt="PUP REVO 2026" />
               </div>
-              <p className="footer-tagline">
-                PUP REVO 2026<br />
-                Sound Against Silence<br />
-                June 20, 2026<br />
-                PUP Main Campus Oval, Manila.
-              </p>
+
             </div>
 
             {/* About Us */}
