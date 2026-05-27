@@ -220,6 +220,11 @@ export default function Landing() {
       <style>{`
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+        html, body, #root {
+          width: 100%; max-width: 100%; overflow-x: hidden;
+          background: var(--dark); border: none; outline: none;
+        }
+
         :root {
           --red: #FF3B30;
           --gold: #FFD700;
