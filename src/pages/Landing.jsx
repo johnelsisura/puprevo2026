@@ -113,6 +113,7 @@ export default function Landing() {
   const [slots, setSlots] = useState({ student: null, public: null })
   const [loading, setLoading] = useState(true)
   const [privacyOpen, setPrivacyOpen] = useState(false)
+  const [termsOpen, setTermsOpen] = useState(false)
   const [faqSearch, setFaqSearch] = useState('')
   const [openFaq, setOpenFaq] = useState(null)
   const [navScrolled, setNavScrolled] = useState(false)
@@ -749,28 +750,80 @@ export default function Landing() {
 
         /* ---- FOOTER ---- */
         .footer {
-          text-align: center; padding: 3rem 2rem;
-          font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
-          color: rgba(250,245,233,0.2);
+          font-family: 'DM Sans', sans-serif;
           border-top: 1px solid rgba(255,255,255,0.06);
+          background: rgba(6,13,31,0.6);
         }
-        .footer strong { color: var(--red); }
-        .footer-socials { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .footer-main {
+          display: grid;
+          grid-template-columns: 220px repeat(4, 1fr);
+          gap: 2.5rem;
+          padding: 3rem 3rem 2.5rem;
+          max-width: 1200px; margin: 0 auto;
+        }
+        @media (max-width: 900px) {
+          .footer-main { grid-template-columns: 1fr 1fr; padding: 2rem 1.5rem; }
+        }
+        @media (max-width: 520px) {
+          .footer-main { grid-template-columns: 1fr; }
+        }
+        .footer-brand { display: flex; flex-direction: column; gap: 1rem; }
+        .footer-logo img { height: 40px; width: auto; object-fit: contain; }
+        .footer-tagline {
+          font-size: 0.78rem; color: rgba(250,245,233,0.35); line-height: 1.65;
+        }
+        .footer-socials {
+          display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.25rem;
+        }
         .footer-social-link {
           display: flex; align-items: center; justify-content: center;
-          width: 36px; height: 36px; border-radius: 50%;
+          width: 34px; height: 34px; border-radius: 50%;
           border: 1px solid rgba(255,255,255,0.12);
-          color: rgba(250,245,233,0.45); font-size: 0.9rem;
+          color: rgba(250,245,233,0.45); font-size: 0.85rem;
           text-decoration: none; transition: border-color 0.2s, color 0.2s, background 0.2s;
         }
         .footer-social-link:hover { border-color: var(--gold); color: var(--gold); background: rgba(255,215,0,0.07); }
-        .footer-privacy-btn {
-          background: none; border: none; cursor: pointer;
-          color: rgba(250,245,233,0.3); font-family: 'DM Sans', sans-serif;
-          font-size: 0.75rem; text-decoration: underline; margin-top: 0.75rem;
-          display: inline-block; transition: color 0.15s;
+        .footer-col {}
+        .footer-col-title {
+          font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
+          letter-spacing: 0.22em; text-transform: uppercase;
+          color: var(--cream); margin-bottom: 1rem;
         }
-        .footer-privacy-btn:hover { color: rgba(250,245,233,0.6); }
+        .footer-col-links {
+          display: flex; flex-direction: column; gap: 0.6rem; list-style: none;
+        }
+        .footer-col-links li {}
+        .footer-col-links a,
+        .footer-col-links button {
+          font-size: 0.82rem; color: rgba(250,245,233,0.42);
+          text-decoration: none; background: none; border: none;
+          cursor: pointer; padding: 0; font-family: 'DM Sans', sans-serif;
+          transition: color 0.15s; text-align: left;
+        }
+        .footer-col-links a:hover,
+        .footer-col-links button:hover { color: var(--cream); }
+        .footer-bottom {
+          border-top: 1px solid rgba(255,255,255,0.06);
+          padding: 1rem 3rem;
+          display: flex; align-items: center; justify-content: space-between;
+          max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 0.75rem;
+        }
+        @media (max-width: 640px) {
+          .footer-bottom { padding: 1rem 1.5rem; flex-direction: column; align-items: flex-start; }
+        }
+        .footer-copy {
+          font-size: 0.73rem; color: rgba(250,245,233,0.22);
+        }
+        .footer-bottom-links {
+          display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap;
+        }
+        .footer-bottom-links button {
+          font-size: 0.73rem; color: rgba(250,245,233,0.3);
+          background: none; border: none; cursor: pointer;
+          font-family: 'DM Sans', sans-serif; padding: 0;
+          transition: color 0.15s;
+        }
+        .footer-bottom-links button:hover { color: rgba(250,245,233,0.7); }
 
         /* ---- PRIVACY MODAL ---- */
         .modal-overlay {
@@ -1352,30 +1405,84 @@ export default function Landing() {
 
         {/* FOOTER */}
         <footer className="footer">
-          <div className="footer-socials">
-            <a href="https://www.facebook.com/pupcommsoc" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Facebook">
-              <i className="fa-brands fa-facebook-f" />
-            </a>
-            <a href="https://www.instagram.com/pupcommsoc_/" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Instagram">
-              <i className="fa-brands fa-instagram" />
-            </a>
-            <a href="https://x.com/pupcommsoc_" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="X / Twitter">
-              <i className="fa-brands fa-x-twitter" />
-            </a>
-            <a href="http://tiktok.com/@pup_commsoc" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="TikTok">
-              <i className="fa-brands fa-tiktok" />
-            </a>
+          <div className="footer-main">
+
+            {/* Brand column */}
+            <div className="footer-brand">
+              <div className="footer-logo">
+                <img src="/logo.png" alt="PUP REVO 2026" />
+              </div>
+              <p className="footer-tagline">
+                Sound Against Silence — A Day of Advocacy, OPM Music &amp; PUP Pride.<br />
+                June 20, 2026 · PUP Main Campus Oval, Manila.
+              </p>
+              <div className="footer-socials">
+                <a href="https://www.facebook.com/pupcommsoc" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Facebook">
+                  <i className="fa-brands fa-facebook-f" />
+                </a>
+                <a href="https://www.instagram.com/pupcommsoc_/" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Instagram">
+                  <i className="fa-brands fa-instagram" />
+                </a>
+                <a href="https://x.com/pupcommsoc_" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="X / Twitter">
+                  <i className="fa-brands fa-x-twitter" />
+                </a>
+                <a href="http://tiktok.com/@pup_commsoc" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="TikTok">
+                  <i className="fa-brands fa-tiktok" />
+                </a>
+              </div>
+            </div>
+
+            {/* About Us */}
+            <div className="footer-col">
+              <div className="footer-col-title">About Us</div>
+              <ul className="footer-col-links">
+                <li><a href="https://www.facebook.com/pupcommsoc" target="_blank" rel="noopener noreferrer">PUP Communication Society</a></li>
+                <li><button onClick={() => scrollTo('details')}>Event Details</button></li>
+                <li><button onClick={() => scrollTo('artists')}>Artists & Lineup</button></li>
+                <li><button onClick={() => scrollTo('sponsors')}>Sponsors & Partners</button></li>
+              </ul>
+            </div>
+
+            {/* Customer Care */}
+            <div className="footer-col">
+              <div className="footer-col-title">Customer Care</div>
+              <ul className="footer-col-links">
+                <li><a href="mailto:puprevo.commsoc@gmail.com">Feedback &amp; Inquiry</a></li>
+                <li><button onClick={() => scrollTo('faq')}>FAQs</button></li>
+                <li><a href="https://www.facebook.com/pupcommsoc" target="_blank" rel="noopener noreferrer">Message on Facebook</a></li>
+              </ul>
+            </div>
+
+            {/* Quick Links */}
+            <div className="footer-col">
+              <div className="footer-col-title">Quick Links</div>
+              <ul className="footer-col-links">
+                <li><button onClick={() => scrollTo('tickets')}>Buy Tickets</button></li>
+                <li><button onClick={() => setCalOpen(true)}>Add to Calendar</button></li>
+                <li><button onClick={() => setShareOpen(true)}>Share the Event</button></li>
+                <li><a href="mailto:puprevo.commsoc@gmail.com">Contact Us</a></li>
+              </ul>
+            </div>
+
+            {/* Terms & Conditions */}
+            <div className="footer-col">
+              <div className="footer-col-title">Terms &amp; Conditions</div>
+              <ul className="footer-col-links">
+                <li><button onClick={() => setPrivacyOpen(true)}>Privacy Policy</button></li>
+                <li><button onClick={() => setTermsOpen(true)}>Terms of Use</button></li>
+              </ul>
+            </div>
+
           </div>
-          <p>© 2026 PUP REVO — PUP Communication Society. All rights reserved.</p>
-          <p style={{ marginTop: '0.5rem' }}>
-            For concerns, email{' '}
-            <a href="mailto:puprevo.commsoc@gmail.com" style={{ color: 'rgba(250,245,233,0.4)' }}>
-              puprevo.commsoc@gmail.com
-            </a>
-          </p>
-          <button className="footer-privacy-btn" onClick={() => setPrivacyOpen(true)}>
-            Privacy Policy
-          </button>
+
+          {/* Bottom bar */}
+          <div className="footer-bottom">
+            <p className="footer-copy">© 2026 PUP REVO — PUP Communication Society. All Rights Reserved.</p>
+            <ul className="footer-bottom-links">
+              <li><button onClick={() => setPrivacyOpen(true)}>Privacy Policy</button></li>
+              <li><button onClick={() => setTermsOpen(true)}>Terms of Use</button></li>
+            </ul>
+          </div>
         </footer>
 
         {/* PRIVACY MODAL */}
@@ -1434,7 +1541,48 @@ export default function Landing() {
           </div>
         )}
 
-        {/* SHARE MODAL */}
+        {/* TERMS OF USE MODAL */}
+        {termsOpen && (
+          <div className="modal-overlay" onClick={e => { if (e.target === e.currentTarget) setTermsOpen(false) }}>
+            <div className="modal">
+              <h2>Terms of Use</h2>
+              <p className="modal-subtitle">PUP REVO 2026: Sound Against Silence — Effective Date: January 2026</p>
+              <p>By accessing this website and purchasing tickets to PUP REVO 2026, you agree to be bound by the following Terms of Use. Please read them carefully before proceeding.</p>
+
+              <h3>1. General</h3>
+              <p>This website is operated by the PUP Communication Society for the purpose of providing event information and facilitating ticket purchases for PUP REVO 2026: Sound Against Silence, a benefit concert organized in support of ABS-CBN Foundation – Bantay Bata 163 and World Vision Philippines. By using this site, you confirm that you are at least 13 years of age and agree to these terms.</p>
+
+              <h3>2. Ticket Purchase</h3>
+              <p>All ticket purchases are subject to availability. By completing a purchase, you agree to provide accurate and truthful personal information. Each ticket is valid for one (1) person only and is non-transferable unless expressly permitted by the organizers. Physical ticket claiming is required prior to event entry and must be done at designated booths upon presentation of your e-ticket or proof of purchase.</p>
+
+              <h3>3. No Refund Policy</h3>
+              <p>All sales are final. Tickets are non-refundable and non-exchangeable under any circumstances except as required by applicable law. In the unlikely event of event cancellation or major schedule change, the organizers will communicate the appropriate course of action through official channels.</p>
+
+              <h3>4. Event Rules & Conduct</h3>
+              <p>Attendees are expected to observe proper conduct throughout the event. The organizers reserve the right to refuse admission or remove any attendee who violates event rules, poses a safety risk, or engages in disruptive behavior — without entitlement to a refund. Outside food, drinks, and items prohibited by venue regulations may be confiscated at the gate.</p>
+
+              <h3>5. Intellectual Property</h3>
+              <p>All content on this website — including but not limited to the event name, logo, poster, artist materials, and written content — is the property of the PUP Communication Society or its respective rights holders. Unauthorized reproduction, distribution, or commercial use is prohibited.</p>
+
+              <h3>6. Limitation of Liability</h3>
+              <p>The PUP Communication Society and its organizing members shall not be held liable for any loss, injury, or damage incurred during the event, unless caused by gross negligence on the part of the organizers. Attendees participate at their own risk and are encouraged to take reasonable personal precautions.</p>
+
+              <h3>7. Force Majeure</h3>
+              <p>The organizers shall not be held liable for failure to fulfill obligations due to circumstances beyond their reasonable control, including but not limited to natural disasters, government directives, public health emergencies, or acts of God. In such cases, updates will be communicated through official PUP Communication Society social media pages.</p>
+
+              <h3>8. Privacy</h3>
+              <p>Your personal data is handled in accordance with our Privacy Policy and the Data Privacy Act of 2012 (R.A. 10173). By using this site and purchasing a ticket, you consent to the collection and processing of your information as described in our Privacy Policy.</p>
+
+              <h3>9. Amendments</h3>
+              <p>The PUP Communication Society reserves the right to update or modify these Terms of Use at any time without prior notice. Continued use of the website following any changes constitutes acceptance of the revised terms. It is your responsibility to review this page periodically.</p>
+
+              <h3>10. Contact</h3>
+              <p>For questions or concerns regarding these Terms of Use, please reach out to us at <a href="mailto:puprevo.commsoc@gmail.com" style={{ color: 'var(--gold)' }}>puprevo.commsoc@gmail.com</a> or through the official PUP Communication Society social media pages.</p>
+
+              <button className="modal-close" onClick={() => setTermsOpen(false)}>Close</button>
+            </div>
+          </div>
+        )}
         {shareOpen && (
           <div className="share-overlay" onClick={e => { if (e.target === e.currentTarget) setShareOpen(false) }}>
             <div className="share-modal">
