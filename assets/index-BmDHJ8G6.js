@@ -3978,7 +3978,6 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   /* Page wrapper */
   .contact-page {
     position: relative; z-index: 1;
-    min-height: 100vh;
     padding: 2rem 1.5rem 4rem;
     max-width: 900px;
     margin: 0 auto;
@@ -4240,6 +4239,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     font-family: 'DM Sans', sans-serif;
     border-top: 1px solid rgba(255,255,255,0.06);
     background: var(--dark);
+    position: relative; z-index: 1;
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   .footer-main {
