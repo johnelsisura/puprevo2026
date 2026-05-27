@@ -43,7 +43,7 @@ const FAQ_ITEMS = [
   { q: 'What is PUP REVO 2026?', a: 'PUP REVO 2026: Sound Against Silence is a day of OPM music, advocacy, and PUP pride organized by the PUP Communication Society. It is a fundraising event where proceeds go to ABS-CBN Foundation - Bantay Bata 163 and World Vision Philippines.' },
   { q: 'When and where is the event?', a: 'The event will be held on June 20, 2026, starting at 9:00 AM at the PUP Main Campus Oval, Manila.' },
   { q: 'Who can attend?', a: 'The event is open to PUP students, alumni, and the general public. There are two ticket tiers: a discounted rate for PUP students and a regular rate for public/alumni attendees.' },
-  { q: 'How do I get a ticket?', a: 'Click the "Get Your Ticket" button on this page or scroll down to the Tickets section. Choose your ticket type and complete the checkout process online.' },
+  { q: 'How do I get a ticket?', a: 'Click the "Get Your Tickets" button on this page or scroll down to the Tickets section. Choose your ticket type and complete the checkout process online.' },
   { q: 'Do I need to bring a physical ticket?', a: 'Your e-ticket or confirmation email serves as proof of purchase. However, a physical ticket is still required for event entry. You must claim your physical ticket at any of our designated onsite ticket selling/claiming booths prior to entering the venue. Please present your e-ticket (digital or printed) upon claiming.' },
   { q: 'Is there a deadline for purchasing tickets?', a: 'Tickets are available while slots last. We encourage you to purchase early as slots are limited and may sell out before the event date.' },
   { q: 'Are tickets refundable?', a: 'All ticket sales are final and non-refundable. For special concerns, please reach out to us on Facebook or via email at puprevo.commsoc@gmail.com.' },
@@ -1014,7 +1014,7 @@ export default function Landing() {
 
             <div className="cta-group">
               <button className="btn-primary" onClick={() => document.getElementById('tickets').scrollIntoView({ behavior: 'smooth' })}>
-                Buy Your Ticket
+                Buy Tickets
               </button>
               <button className="btn-secondary" onClick={() => document.getElementById('details').scrollIntoView({ behavior: 'smooth' })}>
                 Event Details
@@ -1102,7 +1102,7 @@ export default function Landing() {
         {/* TICKETS */}
         <section className="section reveal" ref={addReveal} id="tickets">
           <div className="section-label">Buy Now</div>
-          <h2 className="section-title">Get Your Ticket</h2>
+          <h2 className="section-title">Get Your Tickets</h2>
 
           {/* Urgency strip */}
           <div className="tickets-urgency">
