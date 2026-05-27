@@ -582,7 +582,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
           .footer-main { grid-template-columns: 1fr; }
         }
         .footer-brand { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
-        .footer-logo img { height: 128px; width: auto; object-fit: contain; }
+        .footer-logo img { height: 96px; width: auto; object-fit: contain; }
         .footer-tagline {
           font-size: 0.78rem; color: rgba(250,245,233,0.35); line-height: 1.65;
           text-align: left;
