@@ -121,6 +121,8 @@ export default function Landing() {
   const [shareCopied, setShareCopied] = useState(false)
   const [showScrollTop, setShowScrollTop] = useState(false)
   const [calOpen, setCalOpen] = useState(false)
+  const [navHeight, setNavHeight] = useState(56)
+  const navRef = useRef(null)
   const revealRefs = useRef([])
 
   useEffect(() => {
@@ -158,13 +160,16 @@ export default function Landing() {
     fetchSlots()
   }, [])
 
-  // Sticky nav + scroll-to-top + active section
+  // Sticky nav + scroll-to-top + active section + nav height measurement
   useEffect(() => {
     const SECTIONS = ['details', 'tickets', 'artists', 'sponsors', 'faq']
+    const measureNav = () => {
+      if (navRef.current) setNavHeight(navRef.current.getBoundingClientRect().height)
+    }
     const onScroll = () => {
       setNavScrolled(window.scrollY > 60)
       setShowScrollTop(window.scrollY > 400)
-      // active section detection
+      measureNav()
       let current = ''
       for (const id of SECTIONS) {
         const el = document.getElementById(id)
@@ -172,8 +177,13 @@ export default function Landing() {
       }
       setActiveSection(current)
     }
+    measureNav()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    window.addEventListener('resize', measureNav)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', measureNav)
+    }
   }, [])
 
   // Scroll reveal
@@ -260,7 +270,7 @@ export default function Landing() {
 
         /* ---- TICKER BANNER ---- */
         .ticker-wrap {
-          position: fixed; top: 56px; left: 0; right: 0; z-index: 899;
+          position: fixed; left: 0; right: 0; z-index: 899;
           background: var(--red);
           overflow: hidden; white-space: nowrap;
           height: 30px; display: flex; align-items: center;
@@ -376,7 +386,7 @@ export default function Landing() {
         }
 
         body { background: var(--dark); color: var(--cream); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
-        .page { min-height: 100vh; position: relative; padding-top: 86px; }
+        .page { min-height: 100vh; position: relative; }
 
         /* ---- HERO ---- */
         .hero {
@@ -906,10 +916,10 @@ export default function Landing() {
         }
       `}</style>
 
-      <div className="page">
+      <div className="page" style={{ paddingTop: (navHeight + 30) + 'px' }}>
 
         {/* STICKY NAV */}
-        <nav className={`sticky-nav${navScrolled ? ' nav-scrolled' : ''}`}>
+        <nav ref={navRef} className={`sticky-nav${navScrolled ? ' nav-scrolled' : ''}`}>
           <span className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img src="/logo.png" alt="PUP REVO 2026" />
           </span>
@@ -929,17 +939,17 @@ export default function Landing() {
               </li>
             ))}
           </ul>
-          <button className="nav-cta" onClick={() => scrollTo('tickets')}>Get Tickets</button>
+          <button className="nav-cta" onClick={() => scrollTo('tickets')}>Buy Tickets</button>
         </nav>
 
         {/* TICKER BANNER */}
-        <div className="ticker-wrap" aria-label="Ticket announcement">
+        <div className="ticker-wrap" style={{ top: navHeight + 'px' }} aria-label="Ticket announcement">
           <div className="ticker-track">
             {[...Array(2)].map((_, i) => (
               <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
                 <span className="ticker-item"><i className="fa-solid fa-ticket" /> Limited tickets available — Buy now until May 31 only.</span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Secure yours today.</span>
+                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Buy your tickets today.</span>
                 <span className="ticker-sep">✦</span>
                 <span className="ticker-item"><i className="fa-solid fa-clock" /> Last Day of Ticket Selling: May 31 · Don't miss out.</span>
                 <span className="ticker-sep">✦</span>
@@ -1004,7 +1014,7 @@ export default function Landing() {
 
             <div className="cta-group">
               <button className="btn-primary" onClick={() => document.getElementById('tickets').scrollIntoView({ behavior: 'smooth' })}>
-                Get Your Ticket
+                Buy Your Ticket
               </button>
               <button className="btn-secondary" onClick={() => document.getElementById('details').scrollIntoView({ behavior: 'smooth' })}>
                 Event Details
