@@ -84,41 +84,42 @@ const css = `
   }
   .back-btn:hover { color: var(--cream); }
 
-  /* Navbar */
-  .contact-nav {
+  /* ---- STICKY NAV (same as Landing) ---- */
+  .sticky-nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 900;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0.85rem 2rem;
     transition: background 0.3s, backdrop-filter 0.3s, border-color 0.3s, box-shadow 0.3s;
     border-bottom: 1px solid transparent;
   }
-  .contact-nav.nav-scrolled {
+  .sticky-nav.nav-scrolled {
     background: rgba(6,13,31,0.88);
     backdrop-filter: blur(14px);
     border-color: rgba(255,255,255,0.07);
     box-shadow: 0 2px 24px rgba(0,0,0,0.4);
   }
-  .contact-nav-logo { cursor: pointer; display: flex; align-items: center; }
-  .contact-nav-logo img { height: 36px; width: auto; object-fit: contain; }
-  .contact-nav-links {
+  .nav-logo { cursor: pointer; display: flex; align-items: center; }
+  .nav-logo img { height: 36px; width: auto; object-fit: contain; }
+  .nav-links {
     display: flex; align-items: center; gap: 2rem; list-style: none;
   }
-  @media(max-width: 640px) { .contact-nav-links { display: none; } }
-  .contact-nav-link {
+  @media(max-width: 640px) { .nav-links { display: none; } }
+  .nav-link {
     font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
     letter-spacing: 0.18em; text-transform: uppercase;
     color: rgba(250,245,233,0.5); cursor: pointer;
     transition: color 0.15s; border: none; background: none; padding: 0;
   }
-  .contact-nav-link:hover { color: var(--cream); }
-  .contact-nav-cta {
+  .nav-link:hover { color: var(--cream); }
+  .nav-link.active { color: var(--gold); }
+  .nav-cta {
     font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
     letter-spacing: 0.1em; text-transform: uppercase;
     background: var(--gold); color: #000; border: none;
     padding: 0.5rem 1.2rem; border-radius: 4px; cursor: pointer;
     transition: opacity 0.15s;
   }
-  .contact-nav-cta:hover { opacity: 0.85; }
+  .nav-cta:hover { opacity: 0.85; }
 
   /* Page header */
   .contact-header { margin-bottom: 2.5rem; text-align: center; }
@@ -341,11 +342,24 @@ export default function Contact() {
   const [loading, setLoading] = useState(false)
   const [sendError, setSendError] = useState('')
   const [navScrolled, setNavScrolled] = useState(false)
+  const [navHeight, setNavHeight] = useState(56)
+  const navRef = useRef(null)
 
   useEffect(() => {
-    const onScroll = () => setNavScrolled(window.scrollY > 60)
+    const measureNav = () => {
+      if (navRef.current) setNavHeight(navRef.current.getBoundingClientRect().height)
+    }
+    const onScroll = () => {
+      setNavScrolled(window.scrollY > 60)
+      measureNav()
+    }
+    measureNav()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    window.addEventListener('resize', measureNav)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', measureNav)
+    }
   }, [])
 
   const set = (key, val) => {
@@ -410,7 +424,33 @@ export default function Contact() {
       <div className="contact-bg" />
       <div className="contact-grid-overlay" />
 
-      <div className="contact-page">
+      {/* STICKY NAV — same as Landing */}
+      <nav ref={navRef} className={`sticky-nav${navScrolled ? ' nav-scrolled' : ''}`}>
+        <span className="nav-logo" onClick={() => navigate('/')}>
+          <img src="/logo.png" alt="PUP REVO 2026" />
+        </span>
+        <ul className="nav-links">
+          {[
+            { label: 'Details', id: 'details' },
+            { label: 'Tickets', id: 'tickets' },
+            { label: 'Artists', id: 'artists' },
+            { label: 'Sponsors', id: 'sponsors' },
+            { label: 'FAQ', id: 'faq' },
+          ].map(({ label, id }) => (
+            <li key={id}>
+              <button
+                className="nav-link"
+                onClick={() => { navigate('/'); setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 100) }}
+              >{label}</button>
+            </li>
+          ))}
+        </ul>
+        <button className="nav-cta" onClick={() => { navigate('/'); setTimeout(() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' }), 100) }}>
+          Buy Tickets
+        </button>
+      </nav>
+
+      <div className="contact-page" style={{ paddingTop: navHeight + 'px' }}>
 
         <button className="back-btn" onClick={() => navigate('/')}>
           <i className="fa-solid fa-arrow-left" /> Back to Event
