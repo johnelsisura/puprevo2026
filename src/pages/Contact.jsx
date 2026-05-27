@@ -68,6 +68,8 @@ const css = `
   .contact-page {
     position: relative; z-index: 1;
     padding: 2rem 1.5rem 4rem;
+  }
+  .contact-content {
     max-width: 900px;
     margin: 0 auto;
   }
@@ -560,6 +562,7 @@ export default function Contact() {
       </nav>
 
       <div className="contact-page" style={{ paddingTop: (navHeight + 16) + 'px' }}>
+        <div className="contact-content">
 
         <div className="contact-header">
           <h1 className="contact-title">Feedback &amp; Inquiry</h1>
@@ -766,10 +769,10 @@ export default function Contact() {
           </div>
 
         </div>
+        </div>
       </div>
 
       {/* FOOTER */}
-      <div style={{ width: '100vw', position: 'relative', left: '50%', transform: 'translateX(-50%)' }}>
       <footer className="footer">
         <div className="footer-main">
           <div className="footer-brand">
@@ -820,7 +823,6 @@ export default function Contact() {
           </div>
         </div>
       </footer>
-      </div>
 
       {/* PRIVACY MODAL */}
       {privacyOpen && (
