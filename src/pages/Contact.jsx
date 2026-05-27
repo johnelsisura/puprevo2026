@@ -5,7 +5,7 @@
 // Font Awesome needed in index.html:
 // <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // Inject Font Awesome if not already loaded
@@ -84,8 +84,44 @@ const css = `
   }
   .back-btn:hover { color: var(--cream); }
 
+  /* Navbar */
+  .contact-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.85rem 2rem;
+    transition: background 0.3s, backdrop-filter 0.3s, border-color 0.3s, box-shadow 0.3s;
+    border-bottom: 1px solid transparent;
+  }
+  .contact-nav.nav-scrolled {
+    background: rgba(6,13,31,0.88);
+    backdrop-filter: blur(14px);
+    border-color: rgba(255,255,255,0.07);
+    box-shadow: 0 2px 24px rgba(0,0,0,0.4);
+  }
+  .contact-nav-logo { cursor: pointer; display: flex; align-items: center; }
+  .contact-nav-logo img { height: 36px; width: auto; object-fit: contain; }
+  .contact-nav-links {
+    display: flex; align-items: center; gap: 2rem; list-style: none;
+  }
+  @media(max-width: 640px) { .contact-nav-links { display: none; } }
+  .contact-nav-link {
+    font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(250,245,233,0.5); cursor: pointer;
+    transition: color 0.15s; border: none; background: none; padding: 0;
+  }
+  .contact-nav-link:hover { color: var(--cream); }
+  .contact-nav-cta {
+    font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    background: var(--gold); color: #000; border: none;
+    padding: 0.5rem 1.2rem; border-radius: 4px; cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .contact-nav-cta:hover { opacity: 0.85; }
+
   /* Page header */
-  .contact-header { margin-bottom: 2.5rem; }
+  .contact-header { margin-bottom: 2.5rem; text-align: center; }
   .contact-label {
     font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
     letter-spacing: 0.25em; text-transform: uppercase;
@@ -99,6 +135,7 @@ const css = `
   }
   .contact-sub {
     font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 520px;
+    margin: 0 auto;
   }
 
   /* Two-column layout */
@@ -123,16 +160,17 @@ const css = `
   .info-section-title {
     font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
     letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 0.75rem;
+    color: var(--gold); margin-bottom: 0.75rem; text-align: center;
   }
   .info-item {
     display: flex; align-items: flex-start; gap: 0.75rem;
+    text-align: left;
   }
   .info-icon {
     width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
     background: rgba(255,59,48,0.12); border: 1px solid rgba(255,59,48,0.25);
     display: flex; align-items: center; justify-content: center;
-    color: var(--red); font-size: 0.8rem; margin-top: 0.1rem;
+    color: var(--red); font-size: 0.8rem; margin-top: 0.15rem;
   }
   .info-item-label {
     font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
@@ -302,6 +340,13 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [sendError, setSendError] = useState('')
+  const [navScrolled, setNavScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setNavScrolled(window.scrollY > 60)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const set = (key, val) => {
     setForm(f => ({ ...f, [key]: val }))
@@ -558,6 +603,10 @@ export default function Contact() {
                   />
                   {errors.message && <div className="field-error"><i className="fa-solid fa-circle-exclamation" />{errors.message}</div>}
                   <div className="field-hint">{form.message.length} characters</div>
+                  <div className="field-hint" style={{ marginTop: '0.3rem' }}>
+                    <i className="fa-brands fa-google-drive" style={{ marginRight: '0.3rem', color: 'rgba(255,215,0,0.5)' }} />
+                    May screenshot? I-upload sa Google Drive → Share → "Anyone with the link" → i-paste ang link dito sa message.
+                  </div>
                 </div>
 
                 <button className="submit-btn" onClick={handleSubmit} disabled={loading}>
