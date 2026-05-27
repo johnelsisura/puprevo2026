@@ -1127,7 +1127,7 @@ export default function Landing() {
             </div>
 
             {/* BENEFICIARIES */}
-            <div className="detail-item bene-card">
+            <div id="beneficiaries" className="detail-item bene-card">
               <div className="detail-icon"><i className="fa-solid fa-heart" /></div>
               <div className="detail-label">Beneficiaries</div>
               <div className="bene-grid">
@@ -1426,6 +1426,7 @@ export default function Landing() {
               <div className="footer-col-title">About Us</div>
               <ul className="footer-col-links">
                 <li><button onClick={() => scrollTo('details')}>Event Details</button></li>
+                <li><button onClick={() => scrollTo('beneficiaries')}>Beneficiaries</button></li>
                 <li><button onClick={() => scrollTo('artists')}>Artists &amp; Lineup</button></li>
                 <li><button onClick={() => scrollTo('sponsors')}>Sponsors &amp; Partners</button></li>
               </ul>
