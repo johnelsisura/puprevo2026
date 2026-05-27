@@ -500,6 +500,7 @@ const css = `
     border-top: 1px solid rgba(255,255,255,0.06);
     background: var(--dark);
     position: relative; z-index: 1;
+    width: 100%;
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   .footer-main {
@@ -1033,7 +1034,7 @@ export default function Checkout() {
         </button>
       </nav>
 
-      <div style={{ paddingTop: navHeight + 'px', position: 'relative', zIndex: 1 }}>
+      <div style={{ paddingTop: navHeight + 'px', position: 'relative', zIndex: 1, width: '100%' }}>
         <div className="checkout-wrap">
 
           {/* ── LEFT PANEL ── */}

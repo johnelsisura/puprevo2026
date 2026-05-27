@@ -336,7 +336,6 @@ const css = `
     grid-template-columns: 220px repeat(3, 1fr);
     gap: 2.5rem;
     padding: 3rem 3rem 2.5rem;
-    max-width: 1200px; margin: 0 auto;
   }
   @media (max-width: 900px) {
     .footer-main { grid-template-columns: 1fr 1fr; padding: 2rem 1.5rem; }
@@ -381,7 +380,7 @@ const css = `
     border-top: 1px solid rgba(255,255,255,0.06);
     padding: 1rem 3rem;
     display: flex; align-items: center; justify-content: space-between;
-    max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 1rem;
+    flex-wrap: wrap; gap: 1rem;
   }
   @media (max-width: 640px) {
     .footer-bottom { padding: 1rem 1.5rem; flex-direction: column; align-items: center; }
