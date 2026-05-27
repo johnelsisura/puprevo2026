@@ -223,6 +223,7 @@ export default function Landing() {
         html, body, #root {
           width: 100%; max-width: 100%; overflow-x: hidden;
           background: var(--dark); border: none; outline: none;
+          margin: 0; padding: 0;
         }
 
         :root {
@@ -500,6 +501,7 @@ export default function Landing() {
 
         /* ---- CTA ---- */
         .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .cta-row-secondary { display: flex; gap: 1rem; }
         .btn-primary {
           font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem;
           letter-spacing: 0.05em; text-transform: uppercase;
@@ -509,6 +511,13 @@ export default function Landing() {
           box-shadow: 0 4px 30px rgba(255,215,0,0.35);
         }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(255,215,0,0.55); }
+        @media (max-width: 640px) {
+          .cta-group { flex-direction: column; align-items: stretch; width: 100%; max-width: 420px; margin: 0 auto; }
+          .btn-primary { width: 100%; }
+          .cta-row-secondary { display: flex; gap: 1rem; width: 100%; }
+          .cta-row-secondary .btn-secondary:first-child { flex: 1; }
+          .cta-row-secondary .btn-secondary.icon-btn { width: 56px; flex-shrink: 0; }
+        }
         .btn-secondary {
           font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.9rem;
           letter-spacing: 0.05em; text-transform: uppercase;
@@ -758,6 +767,7 @@ export default function Landing() {
           font-family: 'DM Sans', sans-serif;
           border-top: 1px solid rgba(255,255,255,0.06);
           background: var(--dark);
+          padding-bottom: env(safe-area-inset-bottom, 0px);
         }
         .footer-main {
           display: grid;
@@ -1080,15 +1090,17 @@ export default function Landing() {
               <button className="btn-primary" onClick={() => document.getElementById('tickets').scrollIntoView({ behavior: 'smooth' })}>
                 Buy Tickets
               </button>
-              <button className="btn-secondary" onClick={() => document.getElementById('details').scrollIntoView({ behavior: 'smooth' })}>
-                Event Details
-              </button>
-              <button className="btn-secondary" onClick={() => setCalOpen(true)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', padding: '1rem', flexShrink: 0 }} title="Add to Calendar">
-                <i className="fa-regular fa-calendar-plus" />
-              </button>
-              <button className="btn-secondary" onClick={() => setShareOpen(true)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', padding: '1rem', flexShrink: 0 }} title="Share Event">
-                <i className="fa-solid fa-share-nodes" />
-              </button>
+              <div className="cta-row-secondary">
+                <button className="btn-secondary" onClick={() => document.getElementById('details').scrollIntoView({ behavior: 'smooth' })}>
+                  Event Details
+                </button>
+                <button className="btn-secondary icon-btn" onClick={() => setCalOpen(true)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', padding: '1rem', flexShrink: 0 }} title="Add to Calendar">
+                  <i className="fa-regular fa-calendar-plus" />
+                </button>
+                <button className="btn-secondary icon-btn" onClick={() => setShareOpen(true)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', padding: '1rem', flexShrink: 0 }} title="Share Event">
+                  <i className="fa-solid fa-share-nodes" />
+                </button>
+              </div>
             </div>
           </div>
         </section>
