@@ -941,7 +941,7 @@ export default function Landing() {
                 <span className="ticker-sep">✦</span>
                 <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Secure yours today.</span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-clock" /> Last Day of Tickets Selling: May 31 · Don't miss out.</span>
+                <span className="ticker-item"><i className="fa-solid fa-clock" /> Last Day of Ticket Selling: May 31 · Don't miss out.</span>
                 <span className="ticker-sep">✦</span>
                 <span className="ticker-item"><i className="fa-solid fa-star" /> PUP REVO 2026 · June 20 · PUP Main Campus Oval</span>
                 <span className="ticker-sep">✦</span>
