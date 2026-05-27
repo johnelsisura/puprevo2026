@@ -5,7 +5,7 @@
 // Font Awesome needed in index.html:
 // <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // Inject Font Awesome if not already loaded
@@ -84,8 +84,45 @@ const css = `
   }
   .back-btn:hover { color: var(--cream); }
 
+  /* ---- STICKY NAV (same as Landing) ---- */
+  .sticky-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.85rem 2rem;
+    transition: background 0.3s, backdrop-filter 0.3s, border-color 0.3s, box-shadow 0.3s;
+    border-bottom: 1px solid transparent;
+  }
+  .sticky-nav.nav-scrolled {
+    background: rgba(6,13,31,0.88);
+    backdrop-filter: blur(14px);
+    border-color: rgba(255,255,255,0.07);
+    box-shadow: 0 2px 24px rgba(0,0,0,0.4);
+  }
+  .nav-logo { cursor: pointer; display: flex; align-items: center; }
+  .nav-logo img { height: 36px; width: auto; object-fit: contain; }
+  .nav-links {
+    display: flex; align-items: center; gap: 2rem; list-style: none;
+  }
+  @media(max-width: 640px) { .nav-links { display: none; } }
+  .nav-link {
+    font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(250,245,233,0.5); cursor: pointer;
+    transition: color 0.15s; border: none; background: none; padding: 0;
+  }
+  .nav-link:hover { color: var(--cream); }
+  .nav-link.active { color: var(--gold); }
+  .nav-cta {
+    font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    background: var(--gold); color: #000; border: none;
+    padding: 0.5rem 1.2rem; border-radius: 4px; cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
   /* Page header */
-  .contact-header { margin-bottom: 2.5rem; }
+  .contact-header { margin-bottom: 2.5rem; text-align: center; }
   .contact-label {
     font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
     letter-spacing: 0.25em; text-transform: uppercase;
@@ -99,6 +136,7 @@ const css = `
   }
   .contact-sub {
     font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 520px;
+    margin: 0 auto;
   }
 
   /* Two-column layout */
@@ -123,16 +161,17 @@ const css = `
   .info-section-title {
     font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
     letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 0.75rem;
+    color: var(--gold); margin-bottom: 0.75rem; text-align: center;
   }
   .info-item {
     display: flex; align-items: flex-start; gap: 0.75rem;
+    text-align: left;
   }
   .info-icon {
     width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
     background: rgba(255,59,48,0.12); border: 1px solid rgba(255,59,48,0.25);
     display: flex; align-items: center; justify-content: center;
-    color: var(--red); font-size: 0.8rem; margin-top: 0.1rem;
+    color: var(--red); font-size: 0.8rem; margin-top: 0.15rem;
   }
   .info-item-label {
     font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
@@ -300,6 +339,28 @@ export default function Contact() {
   const [form, setForm] = useState(EMPTY)
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [sendError, setSendError] = useState('')
+  const [navScrolled, setNavScrolled] = useState(false)
+  const [navHeight, setNavHeight] = useState(56)
+  const navRef = useRef(null)
+
+  useEffect(() => {
+    const measureNav = () => {
+      if (navRef.current) setNavHeight(navRef.current.getBoundingClientRect().height)
+    }
+    const onScroll = () => {
+      setNavScrolled(window.scrollY > 60)
+      measureNav()
+    }
+    measureNav()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', measureNav)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', measureNav)
+    }
+  }, [])
 
   const set = (key, val) => {
     setForm(f => ({ ...f, [key]: val }))
@@ -319,22 +380,42 @@ export default function Contact() {
     return e
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     const e = validate()
     setErrors(e)
     if (Object.keys(e).length > 0) return
 
-    const subject = encodeURIComponent(`[PUP REVO 2026] ${form.subject}${form.order_id ? ` — Order #${form.order_id}` : ''}`)
-    const body = encodeURIComponent(
-      `Name: ${form.name}\n` +
-      `Email: ${form.email}\n` +
-      `Contact Number: ${form.phone}\n` +
-      (form.order_id ? `Order ID: ${form.order_id}\n` : '') +
-      `Subject: ${form.subject}\n\n` +
-      `Message:\n${form.message}`
-    )
-    window.location.href = `mailto:puprevo.commsoc@gmail.com?subject=${subject}&body=${body}`
-    setSubmitted(true)
+    setLoading(true)
+    setSendError('')
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: '89706857-588e-4170-8b81-0b3741c4975a',
+          subject: `[PUP REVO 2026] ${form.subject}${form.order_id ? ` — Order #${form.order_id}` : ''}`,
+          from_name: form.name,
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          order_id: form.order_id || 'N/A',
+          inquiry_subject: form.subject,
+          message: form.message,
+        }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setSubmitted(true)
+        setForm(EMPTY)
+      } else {
+        setSendError('Something went wrong. Please try again or email us directly.')
+      }
+    } catch {
+      setSendError('Network error. Please check your connection and try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -343,7 +424,33 @@ export default function Contact() {
       <div className="contact-bg" />
       <div className="contact-grid-overlay" />
 
-      <div className="contact-page">
+      {/* STICKY NAV — same as Landing */}
+      <nav ref={navRef} className={`sticky-nav${navScrolled ? ' nav-scrolled' : ''}`}>
+        <span className="nav-logo" onClick={() => navigate('/')}>
+          <img src="/logo.png" alt="PUP REVO 2026" />
+        </span>
+        <ul className="nav-links">
+          {[
+            { label: 'Details', id: 'details' },
+            { label: 'Tickets', id: 'tickets' },
+            { label: 'Artists', id: 'artists' },
+            { label: 'Sponsors', id: 'sponsors' },
+            { label: 'FAQ', id: 'faq' },
+          ].map(({ label, id }) => (
+            <li key={id}>
+              <button
+                className="nav-link"
+                onClick={() => { navigate('/'); setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 100) }}
+              >{label}</button>
+            </li>
+          ))}
+        </ul>
+        <button className="nav-cta" onClick={() => { navigate('/'); setTimeout(() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' }), 100) }}>
+          Buy Tickets
+        </button>
+      </nav>
+
+      <div className="contact-page" style={{ paddingTop: navHeight + 'px' }}>
 
         <button className="back-btn" onClick={() => navigate('/')}>
           <i className="fa-solid fa-arrow-left" /> Back to Event
@@ -438,8 +545,7 @@ export default function Contact() {
                 <div className="success-icon"><i className="fa-solid fa-check" /></div>
                 <div className="success-title">Message Sent!</div>
                 <p className="success-sub">
-                  Your email client should have opened. If it didn't, you can email us directly at{' '}
-                  <a href="mailto:puprevo.commsoc@gmail.com" style={{ color: 'var(--gold)' }}>puprevo.commsoc@gmail.com</a>.
+                  Your message has been sent! We'll get back to you within 1–3 business days at <strong>{form.email || 'your email'}</strong>. For urgent concerns, message us on Facebook.
                 </p>
                 <button className="success-back-btn" onClick={() => { setForm(EMPTY); setSubmitted(false) }}>
                   Send Another Message
@@ -452,10 +558,15 @@ export default function Contact() {
                 <div className="note-banner">
                   <i className="fa-solid fa-circle-info" style={{ marginTop: '0.1rem', flexShrink: 0 }} />
                   <span>
-                    Clicking <strong>Send Message</strong> will open your email app pre-filled with your details.
-                    All ticket sales are <strong>final and non-refundable</strong>.
+                    We'll receive your message directly. All ticket sales are <strong>final and non-refundable</strong>.
                   </span>
                 </div>
+                {sendError && (
+                  <div className="note-banner" style={{ borderColor: 'rgba(255,59,48,0.3)', background: 'rgba(255,59,48,0.07)', color: 'rgba(255,100,90,0.9)' }}>
+                    <i className="fa-solid fa-circle-exclamation" style={{ marginTop: '0.1rem', flexShrink: 0 }} />
+                    <span>{sendError}</span>
+                  </div>
+                )}
 
                 {/* Name + Phone */}
                 <div className="field-row">
@@ -532,10 +643,17 @@ export default function Contact() {
                   />
                   {errors.message && <div className="field-error"><i className="fa-solid fa-circle-exclamation" />{errors.message}</div>}
                   <div className="field-hint">{form.message.length} characters</div>
+                  <div className="field-hint" style={{ marginTop: '0.3rem' }}>
+                    <i className="fa-brands fa-google-drive" style={{ marginRight: '0.3rem', color: 'rgba(255,215,0,0.5)' }} />
+                    May screenshot? I-upload sa Google Drive → Share → "Anyone with the link" → i-paste ang link dito sa message.
+                  </div>
                 </div>
 
-                <button className="submit-btn" onClick={handleSubmit}>
-                  <i className="fa-solid fa-paper-plane" /> Send Message
+                <button className="submit-btn" onClick={handleSubmit} disabled={loading}>
+                  {loading
+                    ? <><i className="fa-solid fa-spinner fa-spin" /> Sending...</>
+                    : <><i className="fa-solid fa-paper-plane" /> Send Message</>
+                  }
                 </button>
               </>
             )}
