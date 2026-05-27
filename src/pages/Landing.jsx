@@ -94,12 +94,12 @@ function ArtistCard({ artist }) {
 // Artists lineup — update name & tag per artist when ready for reveal
 const ARTISTS = [
   { name: 'MAYONNAISE', tag: 'Performing Live', image: '/artist1.png' },
-  { name: 'Artist Name', tag: 'Performing Live', image: '/artist22.png' },
-  { name: 'Artist Name', tag: 'Performing Live', image: '/artist33.png' },
+  { name: 'SUD', tag: 'Performing Live', image: '/artist2.png' },
+  { name: 'SOAPDISH', tag: 'Performing Live', image: '/artist3.png' },
   { name: 'Artist Name', tag: 'Performing Live', image: '/artist4.png' },
   { name: 'FRANK ELY', tag: 'Performing Live', image: '/artist5.png' },
   { name: 'IAN QUIRUZ', tag: 'Performing Live', image: '/artist6.png' },
-  { name: 'Artist Name', tag: 'Performing Live', image: '/artist77.png' },
+  { name: 'JULIA DANIEL', tag: 'Performing Live', image: '/artist7.png' },
   { name: 'SHANNE DANDAN', tag: 'Performing Live', image: '/artist8.png' },
   { name: 'Artist Name', tag: 'Performing Live', image: '/artist99.png' },
   { name: 'BRANDO BAL', tag: 'Performing Live', image: '/artist10.png' },
