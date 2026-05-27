@@ -258,6 +258,32 @@ export default function Landing() {
         }
         .nav-cta:hover { opacity: 0.85; }
 
+        /* ---- TICKER BANNER ---- */
+        .ticker-wrap {
+          position: fixed; top: 56px; left: 0; right: 0; z-index: 899;
+          background: var(--red);
+          overflow: hidden; white-space: nowrap;
+          height: 30px; display: flex; align-items: center;
+        }
+        .ticker-track {
+          display: inline-flex; align-items: center;
+          animation: ticker-scroll 28s linear infinite;
+          will-change: transform;
+        }
+        .ticker-track:hover { animation-play-state: paused; }
+        @keyframes ticker-scroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .ticker-item {
+          font-family: 'Syne', sans-serif; font-size: 0.68rem; font-weight: 700;
+          letter-spacing: 0.18em; text-transform: uppercase; color: #fff;
+          padding: 0 2rem; display: inline-flex; align-items: center; gap: 0.6rem;
+        }
+        .ticker-sep {
+          color: rgba(255,255,255,0.4); font-size: 0.55rem;
+        }
+
         /* ---- SCROLL REVEAL ---- */
         .reveal {
           opacity: 0; transform: translateY(32px);
@@ -357,7 +383,7 @@ export default function Landing() {
           min-height: 100vh;
           display: flex; flex-direction: column;
           align-items: center; justify-content: center;
-          text-align: center; padding: 6rem 2rem 2rem;
+          text-align: center; padding: 7.5rem 2rem 2rem;
           position: relative; overflow: hidden;
         }
         .hero-bg {
@@ -905,6 +931,24 @@ export default function Landing() {
           </ul>
           <button className="nav-cta" onClick={() => scrollTo('tickets')}>Get Tickets</button>
         </nav>
+
+        {/* TICKER BANNER */}
+        <div className="ticker-wrap" aria-label="Ticket announcement">
+          <div className="ticker-track">
+            {[...Array(2)].map((_, i) => (
+              <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
+                <span className="ticker-item"><i className="fa-solid fa-ticket" /> Limited tickets available — Buy now until May 31 only!</span>
+                <span className="ticker-sep">✦</span>
+                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Secure yours today!</span>
+                <span className="ticker-sep">✦</span>
+                <span className="ticker-item"><i className="fa-solid fa-clock" /> Deadline: May 31 · Don't miss out!</span>
+                <span className="ticker-sep">✦</span>
+                <span className="ticker-item"><i className="fa-solid fa-star" /> PUP REVO 2026 · June 20 · PUP Main Campus Oval</span>
+                <span className="ticker-sep">✦</span>
+              </span>
+            ))}
+          </div>
+        </div>
 
         {/* SCROLL TO TOP */}
         <button
