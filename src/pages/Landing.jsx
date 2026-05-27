@@ -444,7 +444,7 @@ export default function Landing() {
           border: 1px solid rgba(255,215,0,0.4); color: var(--gold);
           font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700;
           letter-spacing: 0.25em; text-transform: uppercase;
-          padding: 0.4rem 1.2rem; border-radius: 2rem; margin-bottom: 2rem;
+          padding: 0.4rem 1.2rem; border-radius: 2rem; margin-bottom: 1.25rem;
           background: rgba(255,215,0,0.06);
         }
 
@@ -756,7 +756,7 @@ export default function Landing() {
         }
         .footer-main {
           display: grid;
-          grid-template-columns: 220px repeat(4, 1fr);
+          grid-template-columns: 220px repeat(3, 1fr);
           gap: 2.5rem;
           padding: 3rem 3rem 2.5rem;
           max-width: 1200px; margin: 0 auto;
@@ -767,10 +767,11 @@ export default function Landing() {
         @media (max-width: 520px) {
           .footer-main { grid-template-columns: 1fr; }
         }
-        .footer-brand { display: flex; flex-direction: column; gap: 1rem; }
-        .footer-logo img { height: 40px; width: auto; object-fit: contain; }
+        .footer-brand { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+        .footer-logo img { height: 64px; width: auto; object-fit: contain; }
         .footer-tagline {
           font-size: 0.78rem; color: rgba(250,245,233,0.35); line-height: 1.65;
+          text-align: left;
         }
         .footer-socials {
           display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.25rem;
@@ -805,8 +806,8 @@ export default function Landing() {
         .footer-bottom {
           border-top: 1px solid rgba(255,255,255,0.06);
           padding: 1rem 3rem;
-          display: flex; align-items: center; justify-content: space-between;
-          max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 0.75rem;
+          display: flex; align-items: center; justify-content: flex-start;
+          max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 1rem;
         }
         @media (max-width: 640px) {
           .footer-bottom { padding: 1rem 1.5rem; flex-direction: column; align-items: flex-start; }
@@ -1035,7 +1036,7 @@ export default function Landing() {
           <div className="deco-note">♫</div>
 
           <div className="hero-content">
-            <img src="/pupxpupcommsoc.png" alt="PUP x PUP CommSoc" style={{ width: '200px', display: 'block', margin: '0 auto 1rem auto' }} />
+            <img src="/pupxpupcommsoc.png" alt="PUP x PUP CommSoc" style={{ width: '160px', display: 'block', margin: '0 auto 0.5rem auto' }} />
             <div className="badge">✦ PUP Communication Society ✦</div>
 
             {/* Event title above REVO */}
@@ -1416,30 +1417,15 @@ export default function Landing() {
                 Sound Against Silence — A Day of Advocacy, OPM Music &amp; PUP Pride.<br />
                 June 20, 2026 · PUP Main Campus Oval, Manila.
               </p>
-              <div className="footer-socials">
-                <a href="https://www.facebook.com/pupcommsoc" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Facebook">
-                  <i className="fa-brands fa-facebook-f" />
-                </a>
-                <a href="https://www.instagram.com/pupcommsoc_/" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Instagram">
-                  <i className="fa-brands fa-instagram" />
-                </a>
-                <a href="https://x.com/pupcommsoc_" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="X / Twitter">
-                  <i className="fa-brands fa-x-twitter" />
-                </a>
-                <a href="http://tiktok.com/@pup_commsoc" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="TikTok">
-                  <i className="fa-brands fa-tiktok" />
-                </a>
-              </div>
             </div>
 
             {/* About Us */}
             <div className="footer-col">
               <div className="footer-col-title">About Us</div>
               <ul className="footer-col-links">
-                <li><a href="https://www.facebook.com/pupcommsoc" target="_blank" rel="noopener noreferrer">PUP Communication Society</a></li>
                 <li><button onClick={() => scrollTo('details')}>Event Details</button></li>
-                <li><button onClick={() => scrollTo('artists')}>Artists & Lineup</button></li>
-                <li><button onClick={() => scrollTo('sponsors')}>Sponsors & Partners</button></li>
+                <li><button onClick={() => scrollTo('artists')}>Artists &amp; Lineup</button></li>
+                <li><button onClick={() => scrollTo('sponsors')}>Sponsors &amp; Partners</button></li>
               </ul>
             </div>
 
@@ -1447,20 +1433,9 @@ export default function Landing() {
             <div className="footer-col">
               <div className="footer-col-title">Customer Care</div>
               <ul className="footer-col-links">
-                <li><a href="mailto:puprevo.commsoc@gmail.com">Feedback &amp; Inquiry</a></li>
+                <li><a href="https://puprevo2026.me/contact">Feedback &amp; Inquiry</a></li>
                 <li><button onClick={() => scrollTo('faq')}>FAQs</button></li>
-                <li><a href="https://www.facebook.com/pupcommsoc" target="_blank" rel="noopener noreferrer">Message on Facebook</a></li>
-              </ul>
-            </div>
-
-            {/* Quick Links */}
-            <div className="footer-col">
-              <div className="footer-col-title">Quick Links</div>
-              <ul className="footer-col-links">
                 <li><button onClick={() => scrollTo('tickets')}>Buy Tickets</button></li>
-                <li><button onClick={() => setCalOpen(true)}>Add to Calendar</button></li>
-                <li><button onClick={() => setShareOpen(true)}>Share the Event</button></li>
-                <li><a href="mailto:puprevo.commsoc@gmail.com">Contact Us</a></li>
               </ul>
             </div>
 
@@ -1478,10 +1453,20 @@ export default function Landing() {
           {/* Bottom bar */}
           <div className="footer-bottom">
             <p className="footer-copy">© 2026 PUP REVO — PUP Communication Society. All Rights Reserved.</p>
-            <ul className="footer-bottom-links">
-              <li><button onClick={() => setPrivacyOpen(true)}>Privacy Policy</button></li>
-              <li><button onClick={() => setTermsOpen(true)}>Terms of Use</button></li>
-            </ul>
+            <div className="footer-socials" style={{ marginTop: 0 }}>
+              <a href="https://www.facebook.com/pupcommsoc" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Facebook">
+                <i className="fa-brands fa-facebook-f" />
+              </a>
+              <a href="https://www.instagram.com/pupcommsoc_/" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Instagram">
+                <i className="fa-brands fa-instagram" />
+              </a>
+              <a href="https://x.com/pupcommsoc_" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="X / Twitter">
+                <i className="fa-brands fa-x-twitter" />
+              </a>
+              <a href="http://tiktok.com/@pup_commsoc" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="TikTok">
+                <i className="fa-brands fa-tiktok" />
+              </a>
+            </div>
           </div>
         </footer>
 
