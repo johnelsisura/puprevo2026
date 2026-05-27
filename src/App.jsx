@@ -5,6 +5,7 @@ import Ticket from './pages/Ticket'
 import AdminLogin from './pages/admin/Login'
 import Dashboard from './pages/admin/Dashboard'
 import Scanner from './pages/admin/Scanner'
+import Contact from './pages/Contact'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/scanner" element={<Scanner />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
   )
