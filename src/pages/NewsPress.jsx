@@ -6,7 +6,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { NEWS_ITEMS, TYPE_COLORS } from '../data/newsData'
+import { NEWS_ITEMS, TYPE_COLORS, ALL_TAGS } from '../data/newsData'
 
 if (!document.querySelector('link[href*="font-awesome"]')) {
   const fa = document.createElement('link')
