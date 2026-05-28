@@ -736,7 +736,7 @@ export default function Ticket() {
                     <div className="detail">
                       <div className="detail-label">Payment</div>
                       <div className="detail-value bebas">
-                        {ticket.payment_method === 'walk-in'
+                        {ticket.payment_method === 'walk_in'
                           ? <><i className="fa-solid fa-school" style={{ marginRight: '0.4rem', fontSize: '0.95rem' }} />Walk-in</>
                           : <><i className="fa-solid fa-mobile-screen-button" style={{ marginRight: '0.4rem', fontSize: '0.95rem' }} />GCash</>
                         }
