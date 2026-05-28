@@ -1,6 +1,6 @@
 // src/pages/NewsArticle.jsx
 // PUPREVO 2026 — Individual Press Release / News Article Page
-// Route: /news/:id  (e.g. /news/6)
+// Route: /news/:slug  (e.g. /news/pup-revo-2026-returns-benefit-bantay-bata-world-vision)
 //
 // Requires in index.html:
 // <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -18,18 +18,61 @@ if (!document.querySelector('link[href*="font-awesome"]')) {
 }
 
 export default function NewsArticle() {
-  const { id } = useParams()
+  const { slug } = useParams()
   const navigate = useNavigate()
   const [navScrolled, setNavScrolled] = useState(false)
   const [copied, setCopied] = useState(false)
   const navRef = useRef(null)
 
-  const article = NEWS_ITEMS.find(n => String(n.id) === String(id))
-  const others = NEWS_ITEMS.filter(n => String(n.id) !== String(id)).slice(0, 3)
+  const article = NEWS_ITEMS.find(n => n.slug === slug)
+  const others = NEWS_ITEMS.filter(n => n.slug !== slug).slice(0, 3)
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [id])
+  }, [slug])
+
+  // Inject OG / Twitter meta tags for social sharing previews
+  useEffect(() => {
+    if (!article) return
+    const BASE_URL = 'https://puprevo2026.me'
+    const pageUrl = `${BASE_URL}/news/${article.slug}`
+    const ogImage = article.image ? `${BASE_URL}${article.image}` : `${BASE_URL}/PR1.png`
+
+    const setMeta = (property, content, isName = false) => {
+      const attr = isName ? 'name' : 'property'
+      let el = document.querySelector(`meta[${attr}="${property}"]`)
+      if (!el) {
+        el = document.createElement('meta')
+        el.setAttribute(attr, property)
+        document.head.appendChild(el)
+      }
+      el.setAttribute('content', content)
+    }
+
+    // Save original title to restore on unmount
+    const originalTitle = document.title
+    document.title = `${article.headline} — PUP REVO 2026`
+
+    // Open Graph
+    setMeta('og:type', 'article')
+    setMeta('og:title', article.headline)
+    setMeta('og:description', article.excerpt)
+    setMeta('og:url', pageUrl)
+    setMeta('og:image', ogImage)
+    setMeta('og:image:width', '1200')
+    setMeta('og:image:height', '630')
+    setMeta('og:site_name', 'PUP REVO 2026')
+
+    // Twitter / X Card
+    setMeta('twitter:card', 'summary_large_image', true)
+    setMeta('twitter:title', article.headline, true)
+    setMeta('twitter:description', article.excerpt, true)
+    setMeta('twitter:image', ogImage, true)
+
+    return () => {
+      document.title = originalTitle
+    }
+  }, [article])
 
   useEffect(() => {
     const onScroll = () => setNavScrolled(window.scrollY > 60)
@@ -201,8 +244,7 @@ export default function NewsArticle() {
               {others.map(item => {
                 const ts = TYPE_COLORS[item.type] || { bg: '#666', color: '#fff' }
                 return (
-                  <div key={item.id} className="na-more-card" onClick={() => navigate(`/news/${item.id}`)}>
-                    <div className="na-more-card-top">
+                  <div key={item.id} className="na-more-card" onClick={() => navigate(`/news/${item.slug}`)}>                    <div className="na-more-card-top">
                       <span className="na-more-type" style={{ background: ts.bg, color: ts.color }}>{item.type}</span>
                       <span className="na-more-date">{item.date}</span>
                     </div>

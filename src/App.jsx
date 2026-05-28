@@ -21,7 +21,7 @@ function App() {
         <Route path="/admin/scanner" element={<Scanner />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/news" element={<NewsPress />} />
-        <Route path="/news/:id" element={<NewsArticle />} />
+        <Route path="/news/:slug" element={<NewsArticle />} />
       </Routes>
     </BrowserRouter>
   )

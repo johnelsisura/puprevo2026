@@ -8,10 +8,12 @@
 //   2. Give it a unique id (increment the highest existing id).
 //   3. Set featured: true only if you want it as the hero card (set the old one to false).
 //   4. Drop any image in /public and reference it as image: '/filename.png'.
+//   5. Set slug: to a short kebab-case URL (e.g. 'pup-revo-2026-returns').
 //
 // Template:
 // {
 //   id: 7,
+//   slug: 'your-url-slug-here',
 //   type: 'Press Release',       // 'Press Release' | 'Announcement' | 'Media Advisory'
 //   date: 'June X, 2026',
 //   headline: '...',
@@ -28,6 +30,7 @@
 export const NEWS_ITEMS = [
   {
     id: 6,
+    slug: 'pup-revo-2026-returns-benefit-bantay-bata-world-vision',
     type: 'Press Release',
     date: 'May 28, 2026',
     headline: 'PUP REVO 2026 Returns in Benefit of Bantay Bata 163 and World Vision Philippines',
@@ -66,6 +69,7 @@ About World Vision Philippines. World Vision Philippines is a Christian humanita
   },
   {
     id: 1,
+    slug: 'pup-revo-2026-full-artist-lineup-revealed',
     type: 'Press Release',
     date: 'May 15, 2026',
     headline: 'PUP Communication Society Unveils Full Artist Lineup for REVO 2026',
@@ -85,6 +89,7 @@ Tickets are available now at puprevo2026.me.`,
   },
   {
     id: 2,
+    slug: 'ticket-sales-now-open-pup-revo-2026',
     type: 'Announcement',
     date: 'May 8, 2026',
     headline: 'Ticket Sales Now Open — Limited Slots Available',
@@ -104,6 +109,7 @@ Slots are strictly limited. The committee encourages early purchase to secure yo
   },
   {
     id: 3,
+    slug: 'pup-revo-2026-partners-bantay-bata-world-vision',
     type: 'Press Release',
     date: 'April 28, 2026',
     headline: 'PUP REVO 2026 Partners with ABS-CBN Foundation and World Vision Philippines',
@@ -123,6 +129,7 @@ For media inquiries, contact puprevo.commsoc@gmail.com.`,
   },
   {
     id: 4,
+    slug: 'media-accreditation-open-pup-revo-2026',
     type: 'Media Advisory',
     date: 'April 14, 2026',
     headline: 'Media Accreditation Open for PUP REVO 2026: Sound Against Silence',
@@ -143,6 +150,7 @@ Deadline for applications: June 5, 2026.`,
   },
   {
     id: 5,
+    slug: 'pup-revo-2026-officially-announced-june-20',
     type: 'Announcement',
     date: 'March 30, 2026',
     headline: 'PUP REVO 2026 Officially Announced — June 20 at PUP Main Campus Oval',

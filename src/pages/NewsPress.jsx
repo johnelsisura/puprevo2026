@@ -23,7 +23,7 @@ function NewsCard({ item, featured }) {
   const showImg = featured && item.image && !imgFailed
 
   return (
-    <div className={`np-card ${featured ? 'np-card-featured' : ''} ${showImg ? 'np-card-has-image' : ''}`} onClick={() => navigate(`/news/${item.id}`)}>
+    <div className={`np-card ${featured ? 'np-card-featured' : ''} ${showImg ? 'np-card-has-image' : ''}`} onClick={() => navigate(`/news/${item.slug}`)}>
       {showImg && (
         <div className="np-card-image-wrap">
           <img src={item.image} alt={item.headline} className="np-card-image" onError={() => setImgFailed(true)} />
