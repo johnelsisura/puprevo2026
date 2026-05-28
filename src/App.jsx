@@ -6,6 +6,7 @@ import AdminLogin from './pages/admin/Login'
 import Dashboard from './pages/admin/Dashboard'
 import Scanner from './pages/admin/Scanner'
 import Contact from './pages/Contact'
+import NewsPress from './pages/NewsPress'   // ← idagdag ito
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/scanner" element={<Scanner />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/news" element={<NewsPress />} />   {/* ← idagdag ito */}
       </Routes>
     </BrowserRouter>
   )

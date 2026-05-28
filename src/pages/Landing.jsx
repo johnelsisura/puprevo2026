@@ -1456,6 +1456,7 @@ export default function Landing() {
                 <li><a href="https://puprevo2026.me/contact">Feedback &amp; Inquiry</a></li>
                 <li><button onClick={() => scrollTo('faq')}>FAQs</button></li>
                 <li><button onClick={() => scrollTo('tickets')}>Buy Tickets</button></li>
+                <li><a href="/news">News &amp; Media Release</a></li>
               </ul>
             </div>
 
