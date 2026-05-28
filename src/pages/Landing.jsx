@@ -309,7 +309,7 @@ export default function Landing() {
         }
         .ticker-track {
           display: inline-flex; align-items: center;
-          animation: ticker-scroll 28s linear infinite;
+          animation: ticker-scroll 32s linear infinite;
           will-change: transform;
         }
         .ticker-track:hover { animation-play-state: paused; }
