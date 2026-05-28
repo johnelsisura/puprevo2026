@@ -6,7 +6,8 @@ import AdminLogin from './pages/admin/Login'
 import Dashboard from './pages/admin/Dashboard'
 import Scanner from './pages/admin/Scanner'
 import Contact from './pages/Contact'
-import NewsPress from './pages/NewsPress'   // ← idagdag ito
+import NewsPress from './pages/NewsPress'
+import NewsArticle from './pages/NewsArticle'
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/scanner" element={<Scanner />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/news" element={<NewsPress />} />   {/* ← idagdag ito */}
+        <Route path="/news" element={<NewsPress />} />
+        <Route path="/news/:id" element={<NewsArticle />} />
       </Routes>
     </BrowserRouter>
   )
