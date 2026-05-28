@@ -168,3 +168,5 @@ export const TYPE_COLORS = {
   'Announcement':   { bg: '#FFD700', color: '#000' },
   'Media Advisory': { bg: '#1A4FD6', color: '#fff' },
 }
+
+export const ALL_TAGS = ['All', ...Array.from(new Set(NEWS_ITEMS.flatMap(n => n.tags)))]
