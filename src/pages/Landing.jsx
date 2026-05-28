@@ -1261,7 +1261,7 @@ export default function Landing() {
                     {!soldOut && (
                       <div className="ticket-snag">
                         <i className="fa-solid fa-bolt" />
-                        Buy Now — Slots Not Guaranteed
+                        Buy now to secure your slot.
                       </div>
                     )}
                     {soldOut && (
@@ -1327,7 +1327,7 @@ export default function Landing() {
                     {!soldOut && (
                       <div className="ticket-snag">
                         <i className="fa-solid fa-bolt" />
-                        Buy Now — Slots Not Guaranteed
+                        Buy now to secure your slot.
                       </div>
                     )}
                     {soldOut && (
