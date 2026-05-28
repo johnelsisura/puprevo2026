@@ -432,7 +432,43 @@ const css = `
     border-radius: 4px; cursor: pointer; transition: background 0.15s;
   }
   .modal-close:hover { background: rgba(255,255,255,0.12); }
+
+  /* ---- FAQ ACCORDION (inside info panel) ---- */
+  .faq-list { display: flex; flex-direction: column; gap: 0; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-btn {
+    width: 100%; background: none; border: none; cursor: pointer;
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem;
+    padding: 0.85rem 0; text-align: left;
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500;
+    line-height: 1.5; transition: color 0.15s;
+  }
+  .faq-btn:hover { color: var(--gold); }
+  .faq-chevron {
+    flex-shrink: 0; margin-top: 0.15rem; font-size: 0.65rem; color: var(--muted);
+    transition: transform 0.2s, color 0.15s;
+  }
+  .faq-btn:hover .faq-chevron { color: var(--gold); }
+  .faq-chevron.open { transform: rotate(180deg); color: var(--gold); }
+  .faq-answer {
+    overflow: hidden; max-height: 0;
+    transition: max-height 0.28s ease, padding-bottom 0.2s;
+    padding-bottom: 0;
+  }
+  .faq-answer.open { max-height: 600px; padding-bottom: 0.9rem; }
+  .faq-answer p { font-size: 0.78rem; color: var(--muted); line-height: 1.7; }
 `
+
+const FAQ_ITEMS = [
+  { q: 'I accidentally exited the tab and tried to register again, but it says my Student ID number is already registered.', a: 'Only one registration is allowed per Student ID number. If you accidentally exited the tab during registration, kindly email or message us your details, including your reference number, so we can either delete the incomplete registration from the database for you to register again or assist you in retrieving your ticket code and link. Even if you were unable to fully submit the form or were unsure if your registration went through, the system automatically saved your details in the database.' },
+  { q: 'I selected Walk-in Payment, but I want to switch to GCash payment (or vice versa).', a: 'Kindly email or message us your details, including your reference number and full name. Your current registration will need to be deleted from the database first. Once your email or message has been acknowledged, you may register again using your preferred payment method.' },
+  { q: 'The uploaded file says "inbound" and the actual file name is not showing.', a: 'That is completely okay as long as the uploaded file is not in PDF format. You may proceed to the next step.' },
+  { q: 'I entered incorrect details during registration.', a: 'Kindly email or message us your details, including your reference number, so we can review and update your registration concern. Depending on the situation, your current registration may need to be deleted from the database for you to register again using the correct information. You might also receive an email regarding the incorrect detail(s). In this case, you will only need to send your updated detail(s) through the same email thread.' },
+  { q: 'I did not receive a confirmation email and forgot to screenshot my details or proof.', a: 'Please note that the verification process may take around 1–3 days due to the volume of registrations. Kindly email or message us your details so we can check the status of your registration. Kindly check your spam or junk folder from time to time for possible updates regarding the confirmation of your registration.' },
+  { q: 'I cannot personally claim my tickets on-site.', a: 'You may arrange a courier pick-up for your tickets instead. Kindly send us your courier details through our Facebook page, @PUPcommsoc. Please note that the delivery fee will be shouldered by the customer. Make sure to provide your PUP REVO code from the website and the full name of the ticket owner to the courier. A representative may also claim the tickets on your behalf as long as they can provide the reference code and a valid ID of the ticket owner. Tickets cannot be released on the day of the event itself as we are trying to ensure a smooth claiming process and avoid delays or long lines during the event day.' },
+]
 
 const EMPTY = {
   name: '',
@@ -454,6 +490,7 @@ export default function Contact() {
   const [navHeight, setNavHeight] = useState(56)
   const [privacyOpen, setPrivacyOpen] = useState(false)
   const [termsOpen, setTermsOpen] = useState(false)
+  const [openFaq, setOpenFaq] = useState(null)
   const navRef = useRef(null)
 
   useEffect(() => {
@@ -611,30 +648,6 @@ export default function Contact() {
             <hr className="info-divider" />
 
             <div>
-              <div className="info-section-title">Follow Us</div>
-              <div className="social-row">
-                <a
-                  className="social-btn"
-                  href="https://www.facebook.com/pupcommsoc"
-                  target="_blank" rel="noopener noreferrer"
-                  aria-label="Facebook"
-                >
-                  <i className="fa-brands fa-facebook-f" />
-                </a>
-                <a
-                  className="social-btn"
-                  href="https://www.instagram.com/pupcommsoc"
-                  target="_blank" rel="noopener noreferrer"
-                  aria-label="Instagram"
-                >
-                  <i className="fa-brands fa-instagram" />
-                </a>
-              </div>
-            </div>
-
-            <hr className="info-divider" />
-
-            <div>
               <div className="info-section-title">Response Time</div>
               <div className="info-item">
                 <div className="info-icon"><i className="fa-regular fa-clock" /></div>
@@ -643,6 +656,28 @@ export default function Contact() {
                     We typically respond within <strong style={{ color: 'var(--cream)' }}>1–3 business days</strong>. For urgent concerns, please message us directly on Facebook.
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <hr className="info-divider" />
+
+            <div>
+              <div className="info-section-title">Frequently Asked Questions</div>
+              <div className="faq-list">
+                {FAQ_ITEMS.map((item, i) => (
+                  <div className="faq-item" key={i}>
+                    <button
+                      className="faq-btn"
+                      onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    >
+                      <span>{item.q}</span>
+                      <i className={`fa-solid fa-chevron-down faq-chevron${openFaq === i ? ' open' : ''}`} />
+                    </button>
+                    <div className={`faq-answer${openFaq === i ? ' open' : ''}`}>
+                      <p>{item.a}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
