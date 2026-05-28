@@ -762,7 +762,7 @@ export default function Ticket() {
               </div>
 
               {/* Walk-in notice */}
-              {ticket.payment_method === 'walk-in' && ticket.payment_status !== 'paid' && (
+              {ticket.payment_method === 'walk_in' && ticket.payment_status !== 'paid' && (
                 <div className="walkin-notice">
                   <strong>
                     <i className="fa-solid fa-triangle-exclamation" style={{ marginRight: '0.4rem' }} />
