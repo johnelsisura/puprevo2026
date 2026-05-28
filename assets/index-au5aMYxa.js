@@ -98,7 +98,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         }
         .ticker-track {
           display: inline-flex; align-items: center;
-          animation: ticker-scroll 32s linear infinite;
+          animation: ticker-scroll 35s linear infinite;
           will-change: transform;
         }
         .ticker-track:hover { animation-play-state: paused; }
