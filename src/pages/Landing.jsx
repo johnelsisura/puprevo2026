@@ -288,6 +288,7 @@ export default function Landing() {
           letter-spacing: 0.18em; text-transform: uppercase;
           color: rgba(250,245,233,0.5); cursor: pointer;
           transition: color 0.15s; border: none; background: none; padding: 0;
+          text-decoration: none;
         }
         .nav-link:hover, .nav-link.active { color: var(--cream); }
         .nav-link.active { color: var(--gold); }
@@ -1054,6 +1055,14 @@ export default function Landing() {
                 >{label}</button>
               </li>
             ))}
+            <li>
+              <a
+                className="nav-link"
+                href="https://puprevo2026.me/contact"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Contact</a>
+            </li>
           </ul>
           <button className="nav-cta" onClick={() => scrollTo('tickets')}>Buy Tickets</button>
         </nav>
