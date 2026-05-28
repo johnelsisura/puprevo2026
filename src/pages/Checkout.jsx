@@ -1488,7 +1488,7 @@ export default function Checkout() {
                       { date: 'May 20, 2026', time: '10 AM – 5 PM', venue: 'Lagoon' },
                       { date: 'May 23, 2026', time: '10 AM – 5 PM', venue: 'Lunan' },
                       { date: 'May 25, 2026', time: '10 AM – 5 PM', venue: 'Lagoon' },
-                      { date: 'May 29, 2026', time: '10 AM – 5 PM', venue: 'Lunan' },
+                      { date: 'May 30, 2026', time: '10 AM – 5 PM', venue: 'Lunan' },
                     ].map(({ date, time, venue }) => (
                       <div key={date} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', padding: '0.2rem 0', borderBottom: '1px solid rgba(255,215,0,0.08)' }}>
                         <span style={{ fontWeight: 600 }}>{date}</span>
