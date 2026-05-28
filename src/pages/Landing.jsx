@@ -1065,7 +1065,7 @@ export default function Landing() {
               <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
                 <span className="ticker-item"><i className="fa-solid fa-ticket" /> Limited tickets available — Buy now until May 31 only.</span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Buy your tickets today.</span>
+                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Buy your tickets today. GCash Payment is working totally fine. Hehe. XD. </span>
                 <span className="ticker-sep">✦</span>
                 <span className="ticker-item"><i className="fa-solid fa-clock" /> Last Day of Ticket Selling: May 31 · Don't miss out.</span>
                 <span className="ticker-sep">✦</span>
