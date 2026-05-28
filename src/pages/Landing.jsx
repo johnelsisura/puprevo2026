@@ -39,33 +39,51 @@ function useCountdown(targetDate) {
   return timeLeft
 }
 
-const FAQ_ITEMS = [
-  { q: 'What is PUP REVO 2026?', a: 'PUP REVO 2026: Sound Against Silence is a day of OPM music, advocacy, and PUP pride organized by the PUP Communication Society. It is a fundraising event where proceeds go to ABS-CBN Foundation - Bantay Bata 163 and World Vision Philippines.' },
-  { q: 'When and where is the event?', a: 'The event will be held on June 20, 2026, starting at 9:00 AM at the PUP Main Campus Oval, Manila.' },
-  { q: 'Who can attend?', a: 'The event is open to PUP students, alumni, and the general public. There are two ticket tiers: a discounted rate for PUP students and a regular rate for public/alumni attendees.' },
-  { q: 'How do I get a ticket?', a: 'Click the "Get Your Tickets" button on this page or scroll down to the Tickets section. Choose your ticket type and complete the checkout process online.' },
-  { q: 'I accidentally exited the tab and tried to register again, but it says my Student ID number is already registered.', a: 'Only one registration is allowed per Student ID number. If you accidentally exited the tab during registration, kindly email or message us your details, including your reference number, so we can either delete the incomplete registration from the database for you to register again or assist you in retrieving your ticket code and link. Even if you were unable to fully submit the form or were unsure if your registration went through, the system automatically saved your details in the database.' },
-  { q: 'I selected Walk-in Payment, but I want to switch to GCash payment (or vice versa).', a: 'Kindly email or message us your details, including your reference number and full name. Your current registration will need to be deleted from the database first. Once your email or message has been acknowledged, you may register again using your preferred payment method.' },
-  { q: 'The uploaded file says "inbound" and the actual file name is not showing.', a: 'That is completely okay as long as the uploaded file is not in PDF format. You may proceed to the next step.' },
-  { q: 'I entered incorrect details during registration.', a: 'Kindly email or message us your details, including your reference number, so we can review and update your registration concern. Depending on the situation, your current registration may need to be deleted from the database for you to register again using the correct information. You might also receive an email regarding the incorrect detail(s). In this case, you will only need to send your updated detail(s) through the same email thread.' },
-  { q: 'I did not receive a confirmation email and forgot to screenshot my details or proof.', a: 'Please note that the verification process may take around 1–3 days due to the volume of registrations. Kindly email or message us your details so we can check the status of your registration. Kindly check your spam or junk folder from time to time for possible updates regarding the confirmation of your registration.' },
-  { q: 'I cannot personally claim my tickets on-site.', a: 'You may arrange a courier pick-up for your tickets instead. Kindly send us your courier details through our Facebook page, @PUPcommsoc. Please note that the delivery fee will be shouldered by the customer. Make sure to provide your PUP REVO code from the website and the full name of the ticket owner to the courier. A representative may also claim the tickets on your behalf as long as they can provide the reference code and a valid ID of the ticket owner. Tickets cannot be released on the day of the event itself as we are trying to ensure a smooth claiming process and avoid delays or long lines during the event day.' },
-  { q: 'Do I need to bring a physical ticket?', a: 'Your e-ticket or confirmation email serves as proof of purchase. However, a physical ticket is still required for event entry. You must claim your physical ticket at any of our designated onsite ticket selling/claiming booths prior to entering the venue. Please present your e-ticket (digital or printed) upon claiming.' },
-  { q: 'Is there a deadline for purchasing tickets?', a: 'Tickets are available while slots last. We encourage you to purchase early as slots are limited and may sell out before the event date.' },
-  { q: 'Are tickets refundable?', a: 'All ticket sales are final and non-refundable. For special concerns, please reach out to us on Facebook or via email at puprevo.commsoc@gmail.com.' },
-  { q: 'Who are the beneficiaries of this event?', a: 'A portion of ticket sales will be donated to ABS-CBN Foundation -Bantay Bata 163 and World Vision Philippines — two organizations dedicated to the welfare and development of children and communities in need.' },
-  { q: 'How can I contact the organizers?', a: 'For any questions or concerns, email us at puprevo.commsoc@gmail.com. You can also reach us through the official PUP Communication Society social media pages.' },
-  { q: 'Where can I stay updated about announcements and performer reveals?', a: 'Official announcements, performer lineups, ticket updates, and event reminders will be posted through the official PUP Communication Society social media pages.' },
-  { q: 'What time do gates open?', a: 'Gates open at 8:00 AM for the fall-in line. Early attendees will have the opportunity to witness the live soundcheck. We encourage everyone to arrive early to avoid long lines and enjoy the full REVO experience.' },
-  { q: 'Can I leave and re-enter the venue?', a: 'Re-entry policies will be announced closer to the event date. Please stay updated through the official PUP Communication Society social media pages for guidelines.' },
-  { q: 'Are outside food and drinks allowed?', a: 'Outside food and drinks may be subject to venue regulations and security policies. Official announcements regarding allowed and prohibited items will be posted before the event.' },
-  { q: 'Is there a dress code?', a: 'There is no strict dress code, but attendees are encouraged to wear comfortable and event-appropriate clothing. Come dressed for a full-day concert experience!' },
-  { q: 'Will there be food booths and concessionaires?', a: 'Yes! Food and beverage booths, partner booths, and sponsor activations will be available during the event for attendees to enjoy.' },
-  { q: 'Will there be security and medical personnel on-site?', a: 'Yes. Security personnel, event marshals, and medical responders will be present throughout the event to help ensure everyone\'s safety and well-being.' },
-  { q: 'What should I do if I lose something during the event?', a: 'A designated help desk/lost and found area will be available at the venue. Announcements may also be made during the event for recovered items.' },
-  { q: 'Is this event only for music performances?', a: 'No. PUP REVO 2026 is more than a concert — it is an advocacy-driven fundraising event that combines music, community, and collective action in support of safer spaces for kids.' },
-  { q: 'What happens if it rains?', a: 'PUP REVO 2026 will continue rain or shine unless safety concerns require further announcements from the organizers. Attendees are encouraged to prepare accordingly.' },
-  { q: 'Will merchandise be available during the event?', a: 'Official PUP REVO 2026 merchandise are available through pre-orders. Stay tuned for official announcements regarding merch releases and claiming schedules.' },
+const FAQ_CATEGORIES = [
+  {
+    label: 'General',
+    icon: 'fa-solid fa-circle-info',
+    items: [
+      { q: 'What is PUP REVO 2026?', a: 'PUP REVO 2026: Sound Against Silence is a day of OPM music, advocacy, and PUP pride organized by the PUP Communication Society. It is a fundraising event where proceeds go to ABS-CBN Foundation - Bantay Bata 163 and World Vision Philippines.' },
+      { q: 'When and where is the event?', a: 'The event will be held on June 20, 2026, starting at 9:00 AM at the PUP Main Campus Oval, Manila.' },
+      { q: 'Who can attend?', a: 'The event is open to PUP students, alumni, and the general public. There are two ticket tiers: a discounted rate for PUP students and a regular rate for public/alumni attendees.' },
+      { q: 'Who are the beneficiaries of this event?', a: 'A portion of ticket sales will be donated to ABS-CBN Foundation - Bantay Bata 163 and World Vision Philippines — two organizations dedicated to the welfare and development of children and communities in need.' },
+      { q: 'Is this event only for music performances?', a: 'No. PUP REVO 2026 is more than a concert — it is an advocacy-driven fundraising event that combines music, community, and collective action in support of safer spaces for kids.' },
+      { q: 'How can I contact the organizers?', a: 'For any questions or concerns, email us at puprevo.commsoc@gmail.com. You can also reach us through the official PUP Communication Society social media pages.' },
+      { q: 'Where can I stay updated about announcements and performer reveals?', a: 'Official announcements, performer lineups, ticket updates, and event reminders will be posted through the official PUP Communication Society social media pages.' },
+    ],
+  },
+  {
+    label: 'Registration & Tickets',
+    icon: 'fa-solid fa-ticket',
+    items: [
+      { q: 'How do I get a ticket?', a: 'Click the "Get Your Tickets" button on this page or scroll down to the Tickets section. Choose your ticket type and complete the checkout process online.' },
+      { q: 'Is there a deadline for purchasing tickets?', a: 'Tickets are available while slots last. We encourage you to purchase early as slots are limited and may sell out before the event date.' },
+      { q: 'Are tickets refundable?', a: 'All ticket sales are final and non-refundable. For special concerns, please reach out to us on Facebook or via email at puprevo.commsoc@gmail.com.' },
+      { q: 'Do I need to bring a physical ticket?', a: 'Your e-ticket or confirmation email serves as proof of purchase. However, a physical ticket is still required for event entry. You must claim your physical ticket at any of our designated onsite ticket selling/claiming booths prior to entering the venue. Please present your e-ticket (digital or printed) upon claiming.' },
+      { q: 'I accidentally exited the tab and tried to register again, but it says my Student ID number is already registered.', a: 'Only one registration is allowed per Student ID number. If you accidentally exited the tab during registration, kindly email or message us your details, including your reference number, so we can either delete the incomplete registration from the database for you to register again or assist you in retrieving your ticket code and link. Even if you were unable to fully submit the form or were unsure if your registration went through, the system automatically saved your details in the database.' },
+      { q: 'I selected Walk-in Payment, but I want to switch to GCash payment (or vice versa).', a: 'Kindly email or message us your details, including your reference number and full name. Your current registration will need to be deleted from the database first. Once your email or message has been acknowledged, you may register again using your preferred payment method.' },
+      { q: 'The uploaded file says "inbound" and the actual file name is not showing.', a: 'That is completely okay as long as the uploaded file is not in PDF format. You may proceed to the next step.' },
+      { q: 'I entered incorrect details during registration.', a: 'Kindly email or message us your details, including your reference number, so we can review and update your registration concern. Depending on the situation, your current registration may need to be deleted from the database for you to register again using the correct information. You might also receive an email regarding the incorrect detail(s). In this case, you will only need to send your updated detail(s) through the same email thread.' },
+      { q: 'I did not receive a confirmation email and forgot to screenshot my details or proof.', a: 'Please note that the verification process may take around 1–3 days due to the volume of registrations. Kindly email or message us your details so we can check the status of your registration. Kindly check your spam or junk folder from time to time for possible updates regarding the confirmation of your registration.' },
+      { q: 'I cannot personally claim my tickets on-site.', a: 'You may arrange a courier pick-up for your tickets instead. Kindly send us your courier details through our Facebook page, @PUPcommsoc. Please note that the delivery fee will be shouldered by the customer. Make sure to provide your PUP REVO code from the website and the full name of the ticket owner to the courier. A representative may also claim the tickets on your behalf as long as they can provide the reference code and a valid ID of the ticket owner. Tickets cannot be released on the day of the event itself as we are trying to ensure a smooth claiming process and avoid delays or long lines during the event day.' },
+    ],
+  },
+  {
+    label: 'On-Site & Event Day',
+    icon: 'fa-solid fa-calendar-day',
+    items: [
+      { q: 'What time do gates open?', a: 'Gates open at 8:00 AM for the fall-in line. Early attendees will have the opportunity to witness the live soundcheck. We encourage everyone to arrive early to avoid long lines and enjoy the full REVO experience.' },
+      { q: 'Can I leave and re-enter the venue?', a: 'Re-entry policies will be announced closer to the event date. Please stay updated through the official PUP Communication Society social media pages for guidelines.' },
+      { q: 'Are outside food and drinks allowed?', a: 'Outside food and drinks may be subject to venue regulations and security policies. Official announcements regarding allowed and prohibited items will be posted before the event.' },
+      { q: 'Is there a dress code?', a: 'There is no strict dress code, but attendees are encouraged to wear comfortable and event-appropriate clothing. Come dressed for a full-day concert experience!' },
+      { q: 'Will there be food booths and concessionaires?', a: 'Yes! Food and beverage booths, partner booths, and sponsor activations will be available during the event for attendees to enjoy.' },
+      { q: 'Will there be security and medical personnel on-site?', a: 'Yes. Security personnel, event marshals, and medical responders will be present throughout the event to help ensure everyone\'s safety and well-being.' },
+      { q: 'What should I do if I lose something during the event?', a: 'A designated help desk/lost and found area will be available at the venue. Announcements may also be made during the event for recovered items.' },
+      { q: 'What happens if it rains?', a: 'PUP REVO 2026 will continue rain or shine unless safety concerns require further announcements from the organizers. Attendees are encouraged to prepare accordingly.' },
+      { q: 'Will merchandise be available during the event?', a: 'Official PUP REVO 2026 merchandise are available through pre-orders. Stay tuned for official announcements regarding merch releases and claiming schedules.' },
+    ],
+  },
 ]
 
 function ArtistCard({ artist }) {
@@ -122,6 +140,7 @@ export default function Landing() {
   const [termsOpen, setTermsOpen] = useState(false)
   const [faqSearch, setFaqSearch] = useState('')
   const [openFaq, setOpenFaq] = useState(null)
+  const [faqTab, setFaqTab] = useState(0)
   const [navScrolled, setNavScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const [shareOpen, setShareOpen] = useState(false)
@@ -654,6 +673,23 @@ export default function Landing() {
         .sponsors-img:hover { opacity: 1; }
 
         /* ---- FAQ ---- */
+        .faq-tabs {
+          display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+        }
+        .faq-tab {
+          font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700;
+          letter-spacing: 0.12em; text-transform: uppercase;
+          background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 20px; padding: 0.45rem 1rem;
+          color: rgba(250,245,233,0.5); cursor: pointer;
+          transition: background 0.15s, border-color 0.15s, color 0.15s;
+          display: inline-flex; align-items: center; gap: 0.4rem;
+        }
+        .faq-tab:hover { color: var(--cream); border-color: rgba(255,255,255,0.25); }
+        .faq-tab.active {
+          background: rgba(255,59,48,0.12); border-color: rgba(255,59,48,0.4);
+          color: var(--cream);
+        }
         .faq-item {
           background: var(--card-bg); border: 1px solid rgba(255,255,255,0.07);
           border-radius: 10px; overflow: hidden; transition: border-color 0.2s;
@@ -673,7 +709,7 @@ export default function Landing() {
           color: rgba(250,245,233,0.65); line-height: 1.7; text-align: left;
         }
         .faq-search-wrap {
-          position: relative; margin-bottom: 1.5rem;
+          position: relative; margin-bottom: 1.25rem;
         }
         .faq-search-icon {
           position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
@@ -1399,17 +1435,31 @@ export default function Landing() {
               type="text"
               placeholder="Search questions..."
               value={faqSearch}
-              onChange={e => setFaqSearch(e.target.value)}
+              onChange={e => { setFaqSearch(e.target.value); setOpenFaq(null) }}
             />
           </div>
+          {!faqSearch.trim() && (
+            <div className="faq-tabs">
+              {FAQ_CATEGORIES.map((cat, i) => (
+                <button
+                  key={i}
+                  className={`faq-tab${faqTab === i ? ' active' : ''}`}
+                  onClick={() => { setFaqTab(i); setOpenFaq(null) }}
+                >
+                  <i className={cat.icon} />
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+          )}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {(() => {
               const q = faqSearch.trim().toLowerCase()
               const results = q
-                ? FAQ_ITEMS.filter(item =>
+                ? FAQ_CATEGORIES.flatMap(cat => cat.items).filter(item =>
                     item.q.toLowerCase().includes(q) || item.a.toLowerCase().includes(q)
                   )
-                : FAQ_ITEMS
+                : FAQ_CATEGORIES[faqTab].items
               if (results.length === 0) return (
                 <div className="faq-no-results">No results found for "{faqSearch}".</div>
               )
