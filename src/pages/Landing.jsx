@@ -120,7 +120,7 @@ const ARTISTS = [
   { name: 'MAYONNAISE', tag: 'Performing Live', image: '/artist1.png' },
   { name: 'SUD', tag: 'Performing Live', image: '/artist2.png' },
   { name: 'SOAPDISH', tag: 'Performing Live', image: '/artist3.png' },
-  { name: 'QUEST', tag: 'Performing Live', image: '/artist44.png' },
+  { name: 'QUEST', tag: 'Performing Live', image: '/artist4.png' },
   { name: 'FRANK ELY', tag: 'Performing Live', image: '/artist5.png' },
   { name: 'IAN QUIRUZ', tag: 'Performing Live', image: '/artist6.png' },
   { name: 'JULIA DANIEL', tag: 'Performing Live', image: '/artist7.png' },
