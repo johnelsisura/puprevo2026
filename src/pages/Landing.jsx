@@ -1059,8 +1059,6 @@ export default function Landing() {
               <a
                 className="nav-link"
                 href="https://puprevo2026.me/contact"
-                target="_blank"
-                rel="noopener noreferrer"
               >Contact</a>
             </li>
           </ul>
