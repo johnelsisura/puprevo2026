@@ -1054,6 +1054,7 @@ export default function Landing() {
           display: flex; align-items: flex-start; gap: 1rem;
           box-shadow: 0 24px 64px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,215,0,0.08);
           animation: toastPopIn 0.45s cubic-bezier(0.22,1,0.36,1) both;
+          position: relative;
         }
         @keyframes toastPopIn {
           from { opacity: 0; transform: scale(0.93) translateY(16px); }
@@ -1746,12 +1747,20 @@ export default function Landing() {
         {/* ANNOUNCEMENT TOAST */}
         {toastVisible && (
           <div className="toast-overlay" onClick={e => { if (e.target === e.currentTarget) setToastVisible(false) }}>
-            <div className="toast-announcement">
-              <div className="toast-icon">
-                <i className="fa-solid fa-bullhorn" />
+            <div className="toast-announcement" style={{ flexDirection: 'column', alignItems: 'stretch', padding: '1.5rem' }}>
+              {/* Close button */}
+              <button className="toast-close" onClick={() => setToastVisible(false)} aria-label="Close" style={{ position: 'absolute', top: '1rem', right: '1rem' }}>
+                <i className="fa-solid fa-xmark" />
+              </button>
+              {/* Icon centered top */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '0.85rem' }}>
+                <div className="toast-icon" style={{ width: '44px', height: '44px', fontSize: '1rem', marginBottom: '0.5rem' }}>
+                  <i className="fa-solid fa-bullhorn" />
+                </div>
+                <div className="toast-label">Announcement</div>
               </div>
-              <div className="toast-body">
-                <div className="toast-label">📢 Announcement</div>
+              {/* Body */}
+              <div className="toast-body" style={{ textAlign: 'center' }}>
                 <div className="toast-title">Ang init ngayon, jusko! 🥵</div>
                 <div className="toast-msg">
                   Dahil sa mataas na heat index, <strong style={{color:'var(--cream)'}}>cancelled muna ang onsite ticket selling natin ngayong araw, May 29, 2026.</strong>
@@ -1762,13 +1771,10 @@ export default function Landing() {
                   <br /><br />
                   <strong style={{color:'var(--cream)'}}>Hanggang May 31 na lang ang bentahan ng tickets,</strong> kaya buy yours today... or now na... hanggang may slots pa hehe XD
                 </div>
-                <button className="toast-dismiss" onClick={() => { setToastVisible(false); scrollTo('tickets') }}>
-                  🎟️ Buy Tickets
+                <button className="toast-dismiss" onClick={() => { setToastVisible(false); scrollTo('tickets') }} style={{ marginTop: '1.1rem', background: 'var(--gold)', color: '#000', border: 'none', width: '100%' }}>
+                  Buy Tickets
                 </button>
               </div>
-              <button className="toast-close" onClick={() => setToastVisible(false)} aria-label="Close">
-                <i className="fa-solid fa-xmark" />
-              </button>
             </div>
           </div>
         )}
