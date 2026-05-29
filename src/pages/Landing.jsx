@@ -1318,7 +1318,7 @@ export default function Landing() {
           <div className="tickets-urgency">
             <span className="urgency-dot">Very Limited Tickets Only</span>
             <span className="urgency-wave-pill">
-              Wave per week <span className="urgency-wave-sep">·</span> Slots not guaranteed
+              ENDS SOON <span className="urgency-wave-sep">·</span> UNTIL MAY 31 ONLY
             </span>
           </div>
 
