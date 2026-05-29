@@ -1027,10 +1027,10 @@ export default function Landing() {
           to   { opacity: 1; }
         }
         .toast-announcement {
-          width: 100%; max-width: 440px;
+          width: 100%; max-width: 380px;
           background: #0D1530;
           border: 1px solid rgba(255,215,0,0.4);
-          border-radius: 20px;
+          border-radius: 18px;
           overflow: hidden;
           box-shadow: 0 24px 64px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,215,0,0.08);
           animation: toastPopIn 0.45s cubic-bezier(0.22,1,0.36,1) both;
@@ -1042,55 +1042,55 @@ export default function Landing() {
         }
         .toast-header {
           display: flex; flex-direction: column; align-items: center;
-          padding: 1.5rem 1.5rem 1.25rem;
+          padding: 1.1rem 1.25rem 0.9rem;
           border-bottom: 1px solid rgba(255,215,0,0.18);
           position: relative;
         }
         .toast-icon {
-          width: 52px; height: 52px; border-radius: 50%;
+          width: 42px; height: 42px; border-radius: 50%;
           background: rgba(255,215,0,0.15); border: 1px solid rgba(255,215,0,0.3);
           display: flex; align-items: center; justify-content: center;
-          color: var(--gold); font-size: 1.2rem;
-          margin-bottom: 0.65rem;
+          color: var(--gold); font-size: 1rem;
+          margin-bottom: 0.45rem;
         }
         .toast-label {
-          font-family: 'Syne', sans-serif; font-size: 0.62rem; font-weight: 700;
+          font-family: 'Syne', sans-serif; font-size: 0.58rem; font-weight: 700;
           letter-spacing: 0.28em; text-transform: uppercase;
           color: var(--gold);
         }
         .toast-body {
-          padding: 1.5rem 1.75rem 1.75rem;
+          padding: 1.1rem 1.4rem 1.4rem;
           text-align: center;
         }
         .toast-title {
-          font-family: 'Bebas Neue', sans-serif; font-size: 1.55rem;
+          font-family: 'Bebas Neue', sans-serif; font-size: 1.35rem;
           letter-spacing: 0.06em; color: var(--cream);
-          margin-bottom: 0.25rem; line-height: 1.15;
+          margin-bottom: 0.2rem; line-height: 1.15;
         }
         .toast-subtitle {
-          font-family: 'Syne', sans-serif; font-size: 0.62rem; font-weight: 700;
+          font-family: 'Syne', sans-serif; font-size: 0.55rem; font-weight: 700;
           letter-spacing: 0.18em; text-transform: uppercase;
-          color: rgba(250,245,233,0.4); margin-bottom: 1.25rem;
+          color: rgba(250,245,233,0.4); margin-bottom: 1rem;
         }
         .toast-msg {
-          font-family: 'DM Sans', sans-serif; font-size: 0.84rem;
-          color: rgba(250,245,233,0.65); line-height: 1.75;
+          font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
+          color: rgba(250,245,233,0.65); line-height: 1.65;
           text-align: center;
         }
         .toast-close {
-          position: absolute; top: 1rem; right: 1rem;
+          position: absolute; top: 0.75rem; right: 0.85rem;
           background: none; border: none; cursor: pointer;
-          color: rgba(250,245,233,0.35); font-size: 1rem; line-height: 1;
+          color: rgba(250,245,233,0.35); font-size: 0.9rem; line-height: 1;
           padding: 0.25rem; transition: color 0.15s;
         }
         .toast-close:hover { color: rgba(250,245,233,0.7); }
         .toast-dismiss {
-          display: block; width: 100%; margin-top: 1.4rem;
-          font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700;
+          display: block; width: 100%; margin-top: 1.1rem;
+          font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
           letter-spacing: 0.14em; text-transform: uppercase;
           background: var(--gold); color: #000;
           border: none;
-          padding: 0.9rem 1rem; border-radius: 8px; cursor: pointer;
+          padding: 0.75rem 1rem; border-radius: 7px; cursor: pointer;
           transition: opacity 0.15s, transform 0.15s;
           box-shadow: 0 4px 20px rgba(255,215,0,0.3);
         }
@@ -1136,9 +1136,9 @@ export default function Landing() {
               <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
                 <span className="ticker-item"><i className="fa-solid fa-ticket" /> Limited tickets available — Buy now until May 31 only. </span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Buy your tickets today. TICKET SELLING ENDS IN 2 DAYS. </span>
+                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Buy your tickets now. TICKET SELLING ENDS IN 2 DAYS. </span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-clock" /> See you on Tomorrow, May 30, at Lunan for onsite ticket selling and physical ticket claiming! | Last Day of Ticket Selling: May 31 · Don't miss out. </span>
+                <span className="ticker-item"><i className="fa-solid fa-clock" /> See you Tomorrow, May 30, at Lunan for onsite ticket selling and physical ticket claiming! | Last Day of Ticket Selling: May 31 · Don't miss out. </span>
                 <span className="ticker-sep">✦</span>
                 <span className="ticker-item"><i className="fa-solid fa-star" /> PUP REVO 2026 · June 20 · PUP Main Campus Oval</span>
                 <span className="ticker-sep">✦</span>
