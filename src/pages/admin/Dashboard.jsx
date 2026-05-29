@@ -65,110 +65,158 @@ const css = `
   }
   @keyframes gridDrift { 0%{background-position:0 0} 100%{background-position:60px 60px} }
 
-  .sidebar, .main { position: relative; z-index: 1; }
+  .topnav-wrapper, .main { position: relative; z-index: 1; }
 
-  /* ── Top Navbar ── */
-  .topnav {
+  /* ── Main-site-style Navbar ── */
+  .topnav-wrapper {
     position: sticky;
     top: 0;
     z-index: 10;
-    background: rgba(8,15,37,0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+  }
+
+  .topnav {
+    background: rgba(6,11,28,0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
     display: flex;
     align-items: center;
-    gap: 0;
-    padding: 0 2rem;
-    height: 56px;
+    padding: 0 2.5rem;
+    height: 64px;
+    gap: 2rem;
   }
 
   .topnav-logo {
-    height: 32px;
-    margin-right: 0.75rem;
-  }
-
-  .topnav-brand {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.58rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-right: 2rem;
-    white-space: nowrap;
-  }
-
-  .topnav-divider {
-    width: 1px;
-    height: 24px;
-    background: var(--border);
-    margin-right: 1.5rem;
+    height: 36px;
+    flex-shrink: 0;
   }
 
   .topnav-links {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 2rem;
     flex: 1;
+    justify-content: center;
   }
 
   .nav-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.45rem 0.85rem;
-    border-radius: 6px;
     font-family: 'Syne', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(250,245,233,0.55);
     cursor: pointer;
     border: none;
     background: none;
-    text-align: left;
-    transition: background 0.15s, color 0.15s;
     text-decoration: none;
     white-space: nowrap;
+    padding: 0;
+    transition: color 0.18s;
+    position: relative;
   }
 
-  .nav-item:hover { background: rgba(255,255,255,0.05); color: var(--cream); }
-  .nav-item.active { background: rgba(228,0,27,0.12); color: var(--cream); }
-  .nav-item.active .nav-icon { color: var(--red); }
+  .nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0; right: 0;
+    height: 2px;
+    background: var(--red);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+  }
 
-  .nav-icon { font-size: 0.9rem; }
+  .nav-item:hover { color: var(--cream); }
+  .nav-item:hover::after { transform: scaleX(1); }
+
+  .nav-item.active { color: var(--cream); }
+  .nav-item.active::after { transform: scaleX(1); }
+
+  .nav-icon { display: none; }
 
   .topnav-right {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-left: auto;
+    gap: 0.75rem;
+    flex-shrink: 0;
   }
 
   .signout-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.45rem 0.85rem;
-    border-radius: 6px;
+    padding: 0.55rem 1.1rem;
+    border-radius: 4px;
     font-family: 'Syne', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
     cursor: pointer;
-    border: none;
-    background: none;
-    transition: background 0.15s, color 0.15s;
+    border: 1.5px solid rgba(255,255,255,0.15);
+    background: transparent;
+    transition: background 0.18s, border-color 0.18s;
   }
 
-  .signout-btn:hover { background: rgba(228,0,27,0.1); color: #ff8080; }
+  .signout-btn:hover { background: rgba(228,0,27,0.12); border-color: var(--red); color: #ff8080; }
 
-  @media (max-width: 600px) {
-    .topnav { padding: 0 1rem; }
-    .topnav-brand { display: none; }
-    .topnav-divider { display: none; }
-    .nav-item span:not(.nav-icon) { display: none; }
+  /* Red ticker strip below navbar */
+  .topnav-ticker {
+    background: var(--red);
+    height: 30px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .topnav-ticker-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    animation: ticker 24s linear infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .ticker-item {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: white;
+    padding: 0 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .ticker-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .topnav { padding: 0 1.25rem; height: 56px; gap: 1rem; }
+    .topnav-links { gap: 1.25rem; }
+    .nav-item { font-size: 0.62rem; letter-spacing: 0.1em; }
     .signout-btn span { display: none; }
+    .signout-btn i { margin: 0; }
+  }
+
+  @media (max-width: 500px) {
+    .topnav-links { gap: 0.85rem; }
+    .nav-item { font-size: 0.55rem; }
   }
 
   /* ── Main ── */
@@ -1568,28 +1616,36 @@ export default function Dashboard() {
       <div className="admin-wrap">
         <div className="admin-bg" />
         <div className="admin-bg-grid" />
-        {/* ── Sidebar ── */}
-        <aside className="sidebar">
-          <img src="/logo.png" alt="PUP REVO" className="sidebar-logo" />
-          <div className="sidebar-sub">Admin Portal</div>
 
-          <div className="nav-label">Menu</div>
-          <button className="nav-item active">
-            <span className="nav-icon"><i className="fa-solid fa-chart-line" /></span> Dashboard
-          </button>
-          <button className="nav-item" onClick={() => navigate('/admin/scanner')}>
-            <span className="nav-icon"><i className="fa-solid fa-qrcode" /></span> Scanner
-          </button>
-          <button className="nav-item" onClick={() => { setEventForm(event || {}); setEditEvent(true) }}>
-            <span className="nav-icon"><i className="fa-solid fa-ticket" /></span> Event Settings
-          </button>
-
-          <div className="sidebar-footer">
-            <button className="signout-btn" onClick={handleSignOut}>
-              <i className="fa-solid fa-right-from-bracket" /> Sign Out
-            </button>
+        {/* ── Main-site-style Navbar ── */}
+        <div className="topnav-wrapper">
+          <nav className="topnav">
+            <img src="/logo.png" alt="PUP REVO" className="topnav-logo" />
+            <div className="topnav-links">
+              <button className="nav-item active">Dashboard</button>
+              <button className="nav-item" onClick={() => navigate('/admin/scanner')}>Scanner</button>
+              <button className="nav-item" onClick={() => { setEventForm(event || {}); setEditEvent(true) }}>Event Settings</button>
+            </div>
+            <div className="topnav-right">
+              <button className="signout-btn" onClick={handleSignOut}>
+                <i className="fa-solid fa-right-from-bracket" /> <span>Sign Out</span>
+              </button>
+            </div>
+          </nav>
+          <div className="topnav-ticker">
+            <div className="topnav-ticker-inner">
+              {[...Array(2)].map((_, ri) => (
+                <span key={ri}>
+                  <span className="ticker-item">Admin Portal <span className="ticker-dot" /></span>
+                  <span className="ticker-item">PUPREVO Night 2026 <span className="ticker-dot" /></span>
+                  <span className="ticker-item">Sound Against Silence <span className="ticker-dot" /></span>
+                  <span className="ticker-item">A Benefit Concert for Safer Kids <span className="ticker-dot" /></span>
+                  <span className="ticker-item">Lunan, Manila <span className="ticker-dot" /></span>
+                </span>
+              ))}
+            </div>
           </div>
-        </aside>
+        </div>
 
         {/* ── Main ── */}
         <main className="main">
