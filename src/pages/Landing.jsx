@@ -629,8 +629,34 @@ export default function Landing() {
           border-radius: 12px; overflow: hidden; position: relative;
           transition: transform 0.2s, border-color 0.2s;
         }
+        .ticket-card::before {
+          content: '';
+          position: absolute; inset: 0; pointer-events: none; z-index: 0;
+          background-image:
+            radial-gradient(circle at 20% 50%, rgba(255,59,48,0.06) 0%, transparent 55%),
+            repeating-linear-gradient(
+              -45deg,
+              transparent,
+              transparent 18px,
+              rgba(255,255,255,0.018) 18px,
+              rgba(255,255,255,0.018) 19px
+            );
+          border-radius: 12px;
+        }
+        .ticket-card > * { position: relative; z-index: 1; }
         .ticket-card:hover { transform: translateY(-4px); border-color: rgba(255,59,48,0.4); }
         .ticket-card.featured { border-color: rgba(255,215,0,0.3); }
+        .ticket-card.featured::before {
+          background-image:
+            radial-gradient(circle at 80% 20%, rgba(255,215,0,0.07) 0%, transparent 55%),
+            repeating-linear-gradient(
+              -45deg,
+              transparent,
+              transparent 18px,
+              rgba(255,255,255,0.018) 18px,
+              rgba(255,255,255,0.018) 19px
+            );
+        }
         .ticket-header {
           padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);
           display: flex; justify-content: space-between; align-items: flex-start;
@@ -1308,7 +1334,7 @@ export default function Landing() {
           <div className="tickets-urgency">
             <span className="urgency-dot">Very Limited Tickets Only</span>
             <span className="urgency-wave-pill">
-              ENDS SOON <span className="urgency-wave-sep">·</span> UNTIL MAY 31 ONLY
+              Wave per week <span className="urgency-wave-sep">·</span> Slots not guaranteed
             </span>
           </div>
 
