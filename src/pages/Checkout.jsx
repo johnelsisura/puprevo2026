@@ -807,7 +807,6 @@ export default function Checkout() {
         .select('id, name, price, total_slots')
 
       if (types) {
-        // Count orders in DB directly (much faster than fetching all rows)
         const { data: counts } = await supabase
           .from('orders')
           .select('ticket_type_id')
@@ -825,7 +824,6 @@ export default function Checkout() {
           sold_count: countMap[t.id] || 0,
         }))
 
-        // Cache ticket types so re-opening page doesn't re-fetch
         sessionStorage.setItem('ticket_types_cache', JSON.stringify({
           data: enriched,
           ts: Date.now(),
@@ -935,9 +933,7 @@ export default function Checkout() {
     return data.path
   }
 
-  // ── FIX: handleSubmit now uploads valid_id_file for non-PUPians ────────
   async function handleSubmit() {
-    // Prevent double-submit
     if (loading) return
 
     const errs = validateStep3(form)
@@ -946,9 +942,6 @@ export default function Checkout() {
 
     setLoading(true)
     try {
-      // Upload all files in parallel
-      // - PUPians:     id_photo_file (COR) → cor_or_id_url
-      // - Non-PUPians: valid_id_file (Valid ID) → valid_id_url   ← FIX
       const [cor_or_id_url, valid_id_url, payment_screenshot_url, waiver_url] = await Promise.all([
         form.id_photo_file          ? uploadFile('student-id-photos',    form.id_photo_file)          : null,
         form.valid_id_file          ? uploadFile('student-id-photos',    form.valid_id_file)          : null,
@@ -969,10 +962,10 @@ export default function Checkout() {
           department:            form.department   || null,
           year_level:            form.year_level   || null,
           block:                 form.block        || null,
-          campus:                form.campus       || null,   // ← requires ALTER TABLE orders ADD COLUMN campus TEXT;
+          campus:                form.campus       || null,
           id_number:             form.id_number    || null,
-          cor_or_id_url,                                      // PUPian COR
-          valid_id_url,                                       // ← FIX: non-PUPian valid ID; requires ALTER TABLE orders ADD COLUMN valid_id_url TEXT;
+          cor_or_id_url,
+          valid_id_url,
           waiver_url,
           payment_method:        form.payment_method,
           payment_reference:     form.payment_reference      || null,
@@ -1477,27 +1470,20 @@ export default function Checkout() {
               {/* Walk-in instructions */}
               {form.payment_method === 'walk_in' && (
                 <div className="walkin-info">
-                  <div style={{ marginBottom: '0.6rem' }}>
+                  <div style={{ marginBottom: '0.75rem' }}>
                     <i className="fa-solid fa-school" style={{ marginRight: '0.5rem' }} /><strong>Walk-in Payment:</strong> Pay cash at the <strong>PUP REVO ticket booth</strong> before the event day. Your slot is reserved — bring your booking reference code when you pay. Slot is <strong>NOT confirmed</strong> until cash is received and confirmed. Payment must be settled within the <strong>SAME WEEK</strong> you selected this option; otherwise, your registration slot will be forfeited.
                   </div>
-                  <div style={{ borderTop: '1px solid rgba(255,215,0,0.2)', paddingTop: '0.75rem', marginTop: '0.25rem' }}>
-                    <div style={{ fontFamily: 'Syne, sans-serif', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.5rem', color: 'rgba(255,215,0,0.7)' }}>
-                      Onsite Ticket Selling Schedule
-                    </div>
-                    {[
-                      { date: 'May 20, 2026', time: '10 AM – 5 PM', venue: 'Lagoon' },
-                      { date: 'May 23, 2026', time: '10 AM – 5 PM', venue: 'Lunan' },
-                      { date: 'May 25, 2026', time: '10 AM – 5 PM', venue: 'Lagoon' },
-                      { date: 'May 30, 2026', time: '10 AM – 5 PM', venue: 'Lunan' },
-                    ].map(({ date, time, venue }) => (
-                      <div key={date} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', padding: '0.2rem 0', borderBottom: '1px solid rgba(255,215,0,0.08)' }}>
-                        <span style={{ fontWeight: 600 }}>{date}</span>
-                        <span style={{ color: 'rgba(255,215,0,0.6)' }}>{time} @ {venue}</span>
-                      </div>
-                    ))}
-                    <div style={{ fontSize: '0.72rem', color: 'rgba(255,215,0,0.4)', fontStyle: 'italic', paddingTop: '0.4rem' }}>
-                      More dates coming soon for June 2026.
-                    </div>
+                  <div style={{ borderTop: '1px solid rgba(255,215,0,0.2)', paddingTop: '0.75rem' }}>
+                    <i className="fa-brands fa-facebook-f" style={{ marginRight: '0.5rem' }} />
+                    For the latest ticket selling dates and locations, follow our official Facebook page:{' '}
+                    <a
+                      href="https://www.facebook.com/pupcommsoc"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: 'var(--gold)', fontWeight: 600 }}
+                    >
+                      facebook.com/pupcommsoc
+                    </a>
                   </div>
                 </div>
               )}
