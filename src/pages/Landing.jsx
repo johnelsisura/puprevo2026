@@ -1046,66 +1046,57 @@ export default function Landing() {
           to   { opacity: 1; }
         }
         .toast-announcement {
-          width: 100%; max-width: 420px;
+          width: 100%; max-width: 460px;
           background: #0D1530;
           border: 1px solid rgba(255,215,0,0.35);
           border-radius: 16px;
-          overflow: hidden;
+          padding: 1.75rem 1.75rem 1.5rem;
+          display: flex; align-items: flex-start; gap: 1rem;
           box-shadow: 0 24px 64px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,215,0,0.08);
           animation: toastPopIn 0.45s cubic-bezier(0.22,1,0.36,1) both;
           position: relative;
-        }
-        .toast-header {
-          background: #070e22;
-          padding: 1.25rem 1.5rem 1rem;
-          display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-          border-bottom: 1px solid rgba(255,215,0,0.15);
-        }
-        .toast-body {
-          padding: 1.25rem 1.5rem 1.5rem;
-          text-align: center;
         }
         @keyframes toastPopIn {
           from { opacity: 0; transform: scale(0.93) translateY(16px); }
           to   { opacity: 1; transform: scale(1) translateY(0); }
         }
         .toast-icon {
-          width: 42px; height: 42px; border-radius: 50%;
+          flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%;
           background: rgba(255,215,0,0.12); border: 1px solid rgba(255,215,0,0.25);
           display: flex; align-items: center; justify-content: center;
-          color: var(--gold); font-size: 0.95rem;
+          color: var(--gold); font-size: 0.9rem; margin-top: 0.1rem;
         }
+        .toast-body { flex: 1; min-width: 0; }
         .toast-label {
           font-family: 'Syne', sans-serif; font-size: 0.6rem; font-weight: 700;
           letter-spacing: 0.22em; text-transform: uppercase;
-          color: var(--gold); opacity: 0.8;
+          color: var(--gold); opacity: 0.8; margin-bottom: 0.3rem;
         }
         .toast-title {
-          font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
+          font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem;
           letter-spacing: 0.06em; color: var(--cream);
-          margin-bottom: 0.75rem; line-height: 1.2;
+          margin-bottom: 0.5rem; line-height: 1.2;
         }
         .toast-msg {
           font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
-          color: rgba(250,245,233,0.6); line-height: 1.75;
+          color: rgba(250,245,233,0.6); line-height: 1.7;
         }
         .toast-close {
-          position: absolute; top: 0.85rem; right: 1rem;
-          background: none; border: none; cursor: pointer;
+          flex-shrink: 0; background: none; border: none; cursor: pointer;
           color: rgba(250,245,233,0.3); font-size: 1.1rem; line-height: 1;
-          padding: 0.1rem; transition: color 0.15s;
+          padding: 0.1rem; transition: color 0.15s; margin-top: -0.1rem;
         }
         .toast-close:hover { color: rgba(250,245,233,0.7); }
         .toast-dismiss {
-          margin-top: 1.25rem;
-          font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700;
+          margin-top: 1rem;
+          font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
           letter-spacing: 0.12em; text-transform: uppercase;
-          background: var(--gold); color: #000;
-          border: none;
-          padding: 0.7rem 2.5rem; border-radius: 4px; cursor: pointer;
-          transition: opacity 0.15s;
+          background: rgba(255,215,0,0.1); color: var(--gold);
+          border: 1px solid rgba(255,215,0,0.25);
+          padding: 0.4rem 1rem; border-radius: 4px; cursor: pointer;
+          transition: background 0.15s;
         }
-        .toast-dismiss:hover { opacity: 0.88; }
+        .toast-dismiss:hover { background: rgba(255,215,0,0.18); }
       `}</style>
 
       <div className="page" style={{ paddingTop: (navHeight + 30) + 'px' }}>
@@ -1308,7 +1299,7 @@ export default function Landing() {
           <div className="tickets-urgency">
             <span className="urgency-dot">Very Limited Tickets Only</span>
             <span className="urgency-wave-pill">
-              ENDS SOON <span className="urgency-wave-sep">·</span> UNTIL MAY 31 ONLY
+              Wave per week <span className="urgency-wave-sep">·</span> Slots not guaranteed
             </span>
           </div>
 
@@ -1756,30 +1747,31 @@ export default function Landing() {
         {/* ANNOUNCEMENT TOAST */}
         {toastVisible && (
           <div className="toast-overlay" onClick={e => { if (e.target === e.currentTarget) setToastVisible(false) }}>
-            <div className="toast-announcement">
-              <button className="toast-close" onClick={() => setToastVisible(false)} aria-label="Close">
+            <div className="toast-announcement" style={{ flexDirection: 'column', alignItems: 'stretch', padding: '1.5rem' }}>
+              {/* Close button */}
+              <button className="toast-close" onClick={() => setToastVisible(false)} aria-label="Close" style={{ position: 'absolute', top: '1rem', right: '1rem' }}>
                 <i className="fa-solid fa-xmark" />
               </button>
-              {/* Header — darker bg with icon + label */}
-              <div className="toast-header">
-                <div className="toast-icon">
+              {/* Icon centered top */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '0.85rem' }}>
+                <div className="toast-icon" style={{ width: '44px', height: '44px', fontSize: '1rem', marginBottom: '0.5rem' }}>
                   <i className="fa-solid fa-bullhorn" />
                 </div>
                 <div className="toast-label">Announcement</div>
               </div>
               {/* Body */}
-              <div className="toast-body">
-                <div className="toast-title">2 DAYS LEFT FOR TICKET SELLING</div>
+              <div className="toast-body" style={{ textAlign: 'center' }}>
+                <div className="toast-title">Ang init ngayon, jusko! 🥵</div>
                 <div className="toast-msg">
-                  📣 Psst... Takits tomorrow (May 30) at <a href="https://share.google/Ddgx5Ov8GTy1p3gBX" target="_blank" rel="noopener noreferrer" style={{color:'var(--cream)', textDecoration:'underline'}}>LUNAN</a> for onsite ticket selling and physical ticket claiming.
+                  Dahil sa mataas na heat index, <strong style={{color:'var(--cream)'}}>cancelled muna ang onsite ticket selling natin ngayong araw, May 29, 2026.</strong>
                   <br /><br />
-                  Mainit pa rin, bes, kaya magdala ng tubig at pamaypay. Pero don't worry, may <strong style={{color:'var(--cream)'}}>free Cobra Rise at Chatlet</strong> naman.
+                  Pero don't worry, tuloy-tuloy pa rin ang <strong style={{color:'var(--cream)'}}>online ticket selling.</strong>
                   <br /><br />
-                  <strong style={{color:'var(--cream)'}}>Ticket selling ends on May 31.</strong> Buy your tickets now habang may slots pa! 🎟️
+                  Kitakits na lang tayo bukas, <strong style={{color:'var(--cream)'}}>May 30, sa LUNAN!</strong> Uminit man o umulan, tuloy ang ticket selling!
                   <br /><br />
-                  Ano, tara? 😆 <em>(Hehe, binabasa niyo ba 'to?)</em>
+                  <strong style={{color:'var(--cream)'}}>Hanggang May 31 na lang ang bentahan ng tickets,</strong> kaya buy yours today... or now na... hanggang may slots pa hehe XD
                 </div>
-                <button className="toast-dismiss" onClick={() => { setToastVisible(false); scrollTo('tickets') }}>
+                <button className="toast-dismiss" onClick={() => { setToastVisible(false); scrollTo('tickets') }} style={{ marginTop: '1.1rem', background: 'var(--gold)', color: '#000', border: 'none', width: '100%' }}>
                   Buy Tickets
                 </button>
               </div>
