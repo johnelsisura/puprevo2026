@@ -1070,11 +1070,11 @@ export default function Landing() {
           <div className="ticker-track">
             {[...Array(2)].map((_, i) => (
               <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
-                <span className="ticker-item"><i className="fa-solid fa-ticket" /> Limited tickets available — Buy now until May 31 only. Sorry for the technical errors. Huhu... It is now resolved! Thank you for your patience. :) | Bukas na po namin replyan concerns, pahinga lang po kami hehe loveuall </span>
+                <span className="ticker-item"><i className="fa-solid fa-ticket" /> Limited tickets available — Buy now until May 31 only. Bili na kayo oki? </span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Buy your tickets today. GCash Payment is working totally fine. Hehe. XD. </span>
+                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Buy your tickets today. </span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-clock" /> Onsite ticket selling tomorrow, May 29, 2026, is canceled due to the heat index. See you on May 30 at Lunan for onsite ticket selling! | Last Day of Ticket Selling: May 31 · Don't miss out.</span>
+                <span className="ticker-item"><i className="fa-solid fa-clock" /> Onsite ticket selling today, May 29, 2026, is canceled due to the heat index. See you on May 30 at Lunan for onsite ticket selling! | Last Day of Ticket Selling: May 31 · Don't miss out.</span>
                 <span className="ticker-sep">✦</span>
                 <span className="ticker-item"><i className="fa-solid fa-star" /> PUP REVO 2026 · June 20 · PUP Main Campus Oval</span>
                 <span className="ticker-sep">✦</span>
@@ -1415,6 +1415,32 @@ export default function Landing() {
             {ARTISTS.map((artist, i) => (
               <ArtistCard key={i} artist={artist} />
             ))}
+          </div>
+
+          {/* OFFICIAL PLAYLIST */}
+          <div style={{ marginTop: '3rem', textAlign: 'center' }}>
+            <div className="section-label" style={{ marginBottom: '0.75rem' }}>Listen Now</div>
+            <h3 style={{
+              fontFamily: "'Bebas Neue', sans-serif",
+              fontSize: 'clamp(1.4rem, 3.5vw, 2rem)',
+              letterSpacing: '0.06em',
+              color: 'var(--cream)',
+              marginBottom: '1.25rem',
+            }}>
+              Official Playlist
+            </h3>
+            <div style={{ maxWidth: '700px', margin: '0 auto' }}>
+              <iframe
+                style={{ borderRadius: '12px' }}
+                src="https://open.spotify.com/embed/playlist/6FmEQclu5G50ylZewMDyEO?utm_source=generator&theme=0"
+                width="100%"
+                height="152"
+                frameBorder="0"
+                allowFullScreen
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+              />
+            </div>
           </div>
         </section>
 
