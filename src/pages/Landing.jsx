@@ -148,6 +148,7 @@ export default function Landing() {
   const [showScrollTop, setShowScrollTop] = useState(false)
   const [calOpen, setCalOpen] = useState(false)
   const [navHeight, setNavHeight] = useState(56)
+  const [toastVisible, setToastVisible] = useState(true)
   const navRef = useRef(null)
   const revealRefs = useRef([])
 
@@ -1031,6 +1032,67 @@ export default function Landing() {
           .countdown { gap: 0.75rem; }
           .countdown-num { min-width: 60px; padding: 0.3rem 0.6rem; }
         }
+
+        /* ---- ANNOUNCEMENT TOAST ---- */
+        .toast-announcement {
+          position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+          z-index: 950; width: calc(100% - 2rem); max-width: 480px;
+          background: #0D1530;
+          border: 1px solid rgba(255,215,0,0.35);
+          border-radius: 14px;
+          padding: 1rem 1.1rem 1rem 1.25rem;
+          display: flex; align-items: flex-start; gap: 0.9rem;
+          box-shadow: 0 8px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,215,0,0.08);
+          animation: toastSlideUp 0.45s cubic-bezier(0.22,1,0.36,1) both;
+        }
+        .toast-announcement.toast-hide {
+          animation: toastSlideDown 0.35s cubic-bezier(0.55,0,1,0.45) both;
+        }
+        @keyframes toastSlideUp {
+          from { opacity: 0; transform: translateX(-50%) translateY(24px); }
+          to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        @keyframes toastSlideDown {
+          from { opacity: 1; transform: translateX(-50%) translateY(0); }
+          to   { opacity: 0; transform: translateX(-50%) translateY(24px); }
+        }
+        .toast-icon {
+          flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%;
+          background: rgba(255,215,0,0.12); border: 1px solid rgba(255,215,0,0.25);
+          display: flex; align-items: center; justify-content: center;
+          color: var(--gold); font-size: 0.85rem; margin-top: 0.05rem;
+        }
+        .toast-body { flex: 1; min-width: 0; }
+        .toast-label {
+          font-family: 'Syne', sans-serif; font-size: 0.6rem; font-weight: 700;
+          letter-spacing: 0.22em; text-transform: uppercase;
+          color: var(--gold); opacity: 0.8; margin-bottom: 0.2rem;
+        }
+        .toast-title {
+          font-family: 'Bebas Neue', sans-serif; font-size: 1.05rem;
+          letter-spacing: 0.06em; color: var(--cream);
+          margin-bottom: 0.25rem; line-height: 1.2;
+        }
+        .toast-msg {
+          font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
+          color: rgba(250,245,233,0.55); line-height: 1.6;
+        }
+        .toast-close {
+          flex-shrink: 0; background: none; border: none; cursor: pointer;
+          color: rgba(250,245,233,0.3); font-size: 1rem; line-height: 1;
+          padding: 0.1rem; transition: color 0.15s; margin-top: -0.1rem;
+        }
+        .toast-close:hover { color: rgba(250,245,233,0.7); }
+        .toast-dismiss {
+          margin-top: 0.65rem;
+          font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
+          letter-spacing: 0.12em; text-transform: uppercase;
+          background: rgba(255,215,0,0.1); color: var(--gold);
+          border: 1px solid rgba(255,215,0,0.25);
+          padding: 0.35rem 0.85rem; border-radius: 4px; cursor: pointer;
+          transition: background 0.15s;
+        }
+        .toast-dismiss:hover { background: rgba(255,215,0,0.18); }
       `}</style>
 
       <div className="page" style={{ paddingTop: (navHeight + 30) + 'px' }}>
@@ -1070,11 +1132,11 @@ export default function Landing() {
           <div className="ticker-track">
             {[...Array(2)].map((_, i) => (
               <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
-                <span className="ticker-item"><i className="fa-solid fa-ticket" /> Limited tickets available — Buy now until May 31 only. Bili na kayo oki? </span>
+                <span className="ticker-item"><i className="fa-solid fa-ticket" /> Limited tickets available — Buy now until May 31 only. Sorry for the technical errors. Huhu... It is now resolved! Thank you for your patience. :) | Bukas na po namin replyan concerns, pahinga lang po kami hehe loveuall </span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Buy your tickets today. </span>
+                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Buy your tickets today. GCash Payment is working totally fine. Hehe. XD. </span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-clock" /> Onsite ticket selling today, May 29, 2026, is canceled due to the heat index. See you on May 30 at Lunan for onsite ticket selling! | Last Day of Ticket Selling: May 31 · Don't miss out.</span>
+                <span className="ticker-item"><i className="fa-solid fa-clock" /> Onsite ticket selling tomorrow, May 29, 2026, is canceled due to the heat index. See you on May 30 at Lunan for onsite ticket selling! | Last Day of Ticket Selling: May 31 · Don't miss out.</span>
                 <span className="ticker-sep">✦</span>
                 <span className="ticker-item"><i className="fa-solid fa-star" /> PUP REVO 2026 · June 20 · PUP Main Campus Oval</span>
                 <span className="ticker-sep">✦</span>
@@ -1678,6 +1740,32 @@ export default function Landing() {
             </div>
           </div>
         )}
+        {/* ANNOUNCEMENT TOAST */}
+        {toastVisible && (
+          <div className="toast-announcement">
+            <div className="toast-icon">
+              <i className="fa-solid fa-bullhorn" />
+            </div>
+            <div className="toast-body">
+              <div className="toast-label">Announcement</div>
+              <div className="toast-title">Ang init ngayon, jusko! 🥵</div>
+              <div className="toast-msg">
+                Dahil sa mataas na heat index, cancelled muna ang onsite ticket selling natin ngayong May 29, 2026.
+                <br /><br />
+                Pero don't worry — bawi tayo bukas, May 30, sa LUNAN!
+                <br /><br />
+                Uminit man o umulan, tuloy ang ticket selling! 🎟️ Hanggang May 31 na lang ang bentahan ng tickets, kaya secure yours now! Oki?
+              </div>
+              <button className="toast-dismiss" onClick={() => setToastVisible(false)}>
+                Got it
+              </button>
+            </div>
+            <button className="toast-close" onClick={() => setToastVisible(false)} aria-label="Close">
+              <i className="fa-solid fa-xmark" />
+            </button>
+          </div>
+        )}
+
         {shareOpen && (
           <div className="share-overlay" onClick={e => { if (e.target === e.currentTarget) setShareOpen(false) }}>
             <div className="share-modal">
