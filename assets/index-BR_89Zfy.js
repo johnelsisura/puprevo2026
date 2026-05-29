@@ -2960,7 +2960,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   tr:last-child td { border-bottom: none; }
   tr:hover td { background: rgba(255,255,255,0.02); }
 
-  .td-name { font-weight: 500; color: var(--cream); font-size: 0.74rem; }
+  .td-name { font-weight: 500; color: var(--cream); font-size: 0.74rem; line-height: 1.2; margin-bottom: 0.08rem; }
   .td-code {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 0.82rem;
@@ -2972,12 +2972,13 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .td-muted { color: var(--muted); font-size: 0.64rem; word-break: break-all; }
+  .td-muted { color: var(--muted); font-size: 0.64rem; word-break: break-all; line-height: 1.2; margin-bottom: 0.08rem; }
   .td-section {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 0.64rem;
     letter-spacing: 0.06em;
     color: rgba(245,200,66,0.7);
+    line-height: 1.2;
   }
 
   /* Two-line date — same style always */
@@ -3371,7 +3372,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     td { padding: 0.35rem 0.3rem; }
     .td-name { font-size: 0.64rem; }
     .td-code { font-size: 0.64rem; letter-spacing: 0.04em; }
-    .td-muted { font-size: 0.5rem; }
+    .td-muted { font-size: 0.48rem; }
     .td-section { font-size: 0.55rem; }
     .badge { font-size: 0.44rem; padding: 0.1rem 0.28rem; gap: 0.1rem; }
     .pay-pill { font-size: 0.55rem; }
@@ -3382,14 +3383,14 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     .td-date-line2 { font-size: 0.58rem; }
 
     /* Mobile: show only Name/Section, Code, Date, Actions */
-    th:nth-child(1), td:nth-child(1) { width: 37%; padding-left: 1.25rem; padding-right: 0.5rem; text-align: center; }  /* Name/Section */
-    th:nth-child(2), td:nth-child(2) { width: 18%; }  /* Code */
+    th:nth-child(1), td:nth-child(1) { width: 40%; padding-left: 1.25rem; padding-right: 0.5rem; text-align: center; }  /* Name/Section */
+    th:nth-child(2), td:nth-child(2) { width: 17%; }  /* Code */
     th:nth-child(3), td:nth-child(3) { display: none; }  /* Type — hidden */
     th:nth-child(4), td:nth-child(4) { display: none; }  /* Attendee — hidden */
     th:nth-child(5), td:nth-child(5) { display: none; }  /* Method — hidden */
     th:nth-child(6), td:nth-child(6) { display: none; }  /* Status — hidden */
-    th:nth-child(7), td:nth-child(7) { width: 19%; padding-left: 0.1rem; padding-right: 0.1rem; }  /* Date */
-    th:nth-child(8), td:nth-child(8) { width: 26%; padding-left: 0.5rem; padding-right: 0.4rem; }  /* Actions */
+    th:nth-child(7), td:nth-child(7) { width: 17%; padding-left: 0; padding-right: 0; }  /* Date */
+    th:nth-child(8), td:nth-child(8) { width: 26%; padding-left: 0.3rem; padding-right: 0.4rem; }  /* Actions */
 
     /* Mobile nav: hide text on Scanner and Event Settings, keep Dashboard text */
     .nav-item.nav-scanner .nav-label,
