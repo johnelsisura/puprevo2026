@@ -1206,14 +1206,14 @@ const css = `
   table { table-layout: fixed; width: 100%; }
 
   /* Column widths: desktop */
-  th:nth-child(1), td:nth-child(1) { width: 20%; padding-left: 1.25rem; padding-right: 0.5rem; }  /* Name/Section */
+  th:nth-child(1), td:nth-child(1) { width: 22%; padding-left: 1.5rem; padding-right: 0.75rem; }  /* Name/Section */
   th:nth-child(2), td:nth-child(2) { width: 11%; }  /* Code */
   th:nth-child(3), td:nth-child(3) { width: 9%;  }  /* Type */
-  th:nth-child(4), td:nth-child(4) { width: 10%; }  /* Attendee */
+  th:nth-child(4), td:nth-child(4) { width: 10%; padding-left: 0.5rem; padding-right: 0.5rem; }  /* Attendee */
   th:nth-child(5), td:nth-child(5) { width: 12%; }  /* Method */
   th:nth-child(6), td:nth-child(6) { width: 10%; }  /* Status */
   th:nth-child(7), td:nth-child(7) { width: 9%;  }  /* Date */
-  th:nth-child(8), td:nth-child(8) { width: 19%; padding-right: 0.5rem; }  /* Actions */
+  th:nth-child(8), td:nth-child(8) { width: 17%; padding-right: 0.75rem; }  /* Actions */
 
   /* ── Mobile compact table ── */
   @media (max-width: 768px) {
@@ -1238,14 +1238,14 @@ const css = `
     .td-date-line2 { font-size: 0.58rem; }
 
     /* Mobile: show only Name/Section, Code, Date, Actions */
-    th:nth-child(1), td:nth-child(1) { width: 34%; padding-left: 0.75rem; padding-right: 0.4rem; text-align: center; }  /* Name/Section */
+    th:nth-child(1), td:nth-child(1) { width: 38%; padding-left: 1rem; padding-right: 0.5rem; text-align: center; }  /* Name/Section */
     th:nth-child(2), td:nth-child(2) { width: 18%; }  /* Code */
     th:nth-child(3), td:nth-child(3) { display: none; }  /* Type — hidden */
     th:nth-child(4), td:nth-child(4) { display: none; }  /* Attendee — hidden */
     th:nth-child(5), td:nth-child(5) { display: none; }  /* Method — hidden */
     th:nth-child(6), td:nth-child(6) { display: none; }  /* Status — hidden */
     th:nth-child(7), td:nth-child(7) { width: 20%; }  /* Date */
-    th:nth-child(8), td:nth-child(8) { width: 28%; }  /* Actions */
+    th:nth-child(8), td:nth-child(8) { width: 24%; padding-right: 0.4rem; }  /* Actions */
 
     /* Mobile nav: hide text on Scanner and Event Settings, keep Dashboard text */
     .nav-item.nav-scanner .nav-label,
@@ -1668,27 +1668,6 @@ export default function Dashboard() {
                   <span>
                     <strong>{pendingProof} order{pendingProof > 1 ? 's' : ''}</strong> with uploaded payment proof waiting for verification. Click <strong>Verify</strong> on pending GCash/Maya orders below.
                   </span>
-                </div>
-              )}
-
-              {/* ── Event Info ── */}
-              {event && (
-                <div className="stat-card highlight" style={{ marginBottom: '1.5rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', marginBottom: '0.4rem' }}>
-                    <div style={{ fontFamily: 'Bebas Neue', fontSize: '1.5rem', color: 'var(--cream)', lineHeight: 1 }}>{event.name}</div>
-                    <button
-                      className="btn-outline"
-                      style={{ whiteSpace: 'nowrap', flexShrink: 0 }}
-                      onClick={() => { setEventForm({ ...event, event_date: event.event_date?.slice(0, 16) }); setEditEvent(true) }}
-                    >
-                      <i className="fa-solid fa-pen" /> Edit
-                    </button>
-                  </div>
-                  <div className="stat-label" style={{ marginBottom: 0, textAlign: 'left' }}>Event</div>
-                  <div style={{ fontSize: '0.8rem', color: 'var(--muted)', lineHeight: 1.6, marginTop: '0.4rem', textAlign: 'left' }}>
-                    <i className="fa-solid fa-location-dot" style={{marginRight:'0.4rem'}} />{event.venue}<br />
-                    <i className="fa-regular fa-calendar" style={{marginRight:'0.4rem'}} />{new Date(event.event_date).toLocaleString('en-PH', { timeZone: 'Asia/Manila', month: 'long', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
-                  </div>
                 </div>
               )}
 
