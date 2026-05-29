@@ -919,7 +919,7 @@ const css = `
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
-    align-items: flex-start;
+    align-items: stretch;
   }
 
   .action-btn {
@@ -928,7 +928,7 @@ const css = `
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    padding: 0.28rem 0.6rem;
+    padding: 0.28rem 0.5rem;
     border-radius: 4px;
     cursor: pointer;
     border: 1px solid var(--border);
@@ -936,6 +936,8 @@ const css = `
     color: var(--muted);
     transition: all 0.15s;
     white-space: nowrap;
+    text-align: center;
+    width: 100%;
   }
 
   .action-btn:hover { border-color: rgba(255,255,255,0.2); color: var(--cream); }
@@ -1204,14 +1206,14 @@ const css = `
   table { table-layout: fixed; width: 100%; }
 
   /* Column widths: desktop */
-  th:nth-child(1), td:nth-child(1) { width: 22%; padding-left: 1rem; }  /* Name/Section */
+  th:nth-child(1), td:nth-child(1) { width: 20%; padding-left: 1.25rem; padding-right: 0.5rem; }  /* Name/Section */
   th:nth-child(2), td:nth-child(2) { width: 11%; }  /* Code */
-  th:nth-child(3), td:nth-child(3) { width: 10%;  }  /* Type */
-  th:nth-child(4), td:nth-child(4) { width: 7%;  }  /* Attendee */
-  th:nth-child(5), td:nth-child(5) { width: 11%; }  /* Method */
-  th:nth-child(6), td:nth-child(6) { width: 7%;  }  /* Status */
+  th:nth-child(3), td:nth-child(3) { width: 9%;  }  /* Type */
+  th:nth-child(4), td:nth-child(4) { width: 10%; }  /* Attendee */
+  th:nth-child(5), td:nth-child(5) { width: 12%; }  /* Method */
+  th:nth-child(6), td:nth-child(6) { width: 10%; }  /* Status */
   th:nth-child(7), td:nth-child(7) { width: 9%;  }  /* Date */
-  th:nth-child(8), td:nth-child(8) { width: 23%; }  /* Actions */
+  th:nth-child(8), td:nth-child(8) { width: 19%; padding-right: 0.5rem; }  /* Actions */
 
   /* ── Mobile compact table ── */
   @media (max-width: 768px) {
@@ -1236,7 +1238,7 @@ const css = `
     .td-date-line2 { font-size: 0.58rem; }
 
     /* Mobile: show only Name/Section, Code, Date, Actions */
-    th:nth-child(1), td:nth-child(1) { width: 34%; padding-left: 0.6rem; }  /* Name/Section */
+    th:nth-child(1), td:nth-child(1) { width: 34%; padding-left: 0.75rem; padding-right: 0.4rem; text-align: center; }  /* Name/Section */
     th:nth-child(2), td:nth-child(2) { width: 18%; }  /* Code */
     th:nth-child(3), td:nth-child(3) { display: none; }  /* Type — hidden */
     th:nth-child(4), td:nth-child(4) { display: none; }  /* Attendee — hidden */
