@@ -34,8 +34,8 @@ const css = `
   body { background: var(--dark); color: var(--cream); font-family: 'DM Sans', sans-serif; }
 
   .admin-wrap {
-    display: grid;
-    grid-template-columns: 220px 1fr;
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
     position: relative;
   }
@@ -67,93 +67,92 @@ const css = `
 
   .sidebar, .main { position: relative; z-index: 1; }
 
-  @media (max-width: 768px) {
-    .admin-wrap { grid-template-columns: 1fr; }
-    .sidebar { display: none; }
-  }
-
-  /* ── Sidebar ── */
-  .sidebar {
-    background: var(--sidebar);
-    border-right: 1px solid var(--border);
-    padding: 2rem 1.25rem;
-    display: flex;
-    flex-direction: column;
+  /* ── Top Navbar ── */
+  .topnav {
     position: sticky;
     top: 0;
-    height: 100vh;
-    overflow-y: auto;
+    z-index: 10;
+    background: rgba(8,15,37,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 2rem;
+    height: 56px;
   }
 
-  .sidebar-logo {
-    display: block;
-    width: 72px;
-    margin: 0 auto 0.5rem auto;
+  .topnav-logo {
+    height: 32px;
+    margin-right: 0.75rem;
   }
 
-  .sidebar-sub {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-
-  .nav-label {
+  .topnav-brand {
     font-family: 'Syne', sans-serif;
     font-size: 0.58rem;
     font-weight: 700;
-    letter-spacing: 0.25em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(250,245,233,0.2);
-    margin-bottom: 0.5rem;
-    padding: 0 0.5rem;
+    color: var(--muted);
+    margin-right: 2rem;
+    white-space: nowrap;
+  }
+
+  .topnav-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--border);
+    margin-right: 1.5rem;
+  }
+
+  .topnav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex: 1;
   }
 
   .nav-item {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.65rem;
-    padding: 0.65rem 0.75rem;
+    gap: 0.5rem;
+    padding: 0.45rem 0.85rem;
     border-radius: 6px;
     font-family: 'Syne', sans-serif;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 600;
     color: var(--muted);
     cursor: pointer;
     border: none;
     background: none;
-    width: 100%;
     text-align: left;
     transition: background 0.15s, color 0.15s;
-    margin-bottom: 0.15rem;
     text-decoration: none;
+    white-space: nowrap;
   }
 
-  .nav-item:hover { background: rgba(255,255,255,0.04); color: var(--cream); }
+  .nav-item:hover { background: rgba(255,255,255,0.05); color: var(--cream); }
   .nav-item.active { background: rgba(228,0,27,0.12); color: var(--cream); }
   .nav-item.active .nav-icon { color: var(--red); }
 
-  .nav-icon { font-size: 1rem; width: 20px; text-align: center; }
+  .nav-icon { font-size: 0.9rem; }
 
-  .sidebar-footer {
-    margin-top: auto;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
+  .topnav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
   }
 
   .signout-btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.65rem;
-    width: 100%;
-    padding: 0.65rem 0.75rem;
+    gap: 0.5rem;
+    padding: 0.45rem 0.85rem;
     border-radius: 6px;
     font-family: 'Syne', sans-serif;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 600;
     color: var(--muted);
     cursor: pointer;
@@ -164,15 +163,24 @@ const css = `
 
   .signout-btn:hover { background: rgba(228,0,27,0.1); color: #ff8080; }
 
+  @media (max-width: 600px) {
+    .topnav { padding: 0 1rem; }
+    .topnav-brand { display: none; }
+    .topnav-divider { display: none; }
+    .nav-item span:not(.nav-icon) { display: none; }
+    .signout-btn span { display: none; }
+  }
+
   /* ── Main ── */
   .main {
-    padding: 2.5rem;
+    padding: 2rem 2.5rem;
     overflow-y: auto;
     min-width: 0;
     max-width: 100%;
+    flex: 1;
   }
 
-  @media (max-width: 600px) { .main { padding: 1.5rem; } }
+  @media (max-width: 600px) { .main { padding: 1.25rem; } }
 
   .page-header {
     display: flex;
@@ -443,6 +451,17 @@ const css = `
   .stat-mini-value.gold  { color: var(--gold); }
   .stat-mini-value.red   { color: #ff8080; }
   .stat-mini-value.blue  { color: #93c5fd; }
+
+  .stat-mini-sub {
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+    line-height: 1.4;
+  }
+  .stat-mini-sub strong {
+    font-weight: 700;
+    color: rgba(250,245,233,0.7);
+  }
 
   /* Bottom row: 4 small stat tiles */
   .stats-grid {
@@ -769,18 +788,18 @@ const css = `
 
   th {
     font-family: 'Syne', sans-serif;
-    font-size: 0.6rem;
+    font-size: 0.55rem;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--muted);
-    padding: 0.85rem 1.25rem;
+    padding: 0.65rem 0.85rem;
     text-align: left;
     white-space: nowrap;
   }
 
   td {
-    padding: 0.9rem 1.25rem;
+    padding: 0.55rem 0.85rem;
     border-bottom: 1px solid rgba(255,255,255,0.03);
     vertical-align: middle;
   }
@@ -788,18 +807,18 @@ const css = `
   tr:last-child td { border-bottom: none; }
   tr:hover td { background: rgba(255,255,255,0.02); }
 
-  .td-name { font-weight: 500; color: var(--cream); }
+  .td-name { font-weight: 500; color: var(--cream); font-size: 0.8rem; }
   .td-code {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1rem;
-    letter-spacing: 0.1em;
+    font-size: 0.88rem;
+    letter-spacing: 0.08em;
     color: var(--gold);
     text-decoration: none;
   }
-  .td-muted { color: var(--muted); font-size: 0.8rem; }
+  .td-muted { color: var(--muted); font-size: 0.73rem; }
   .td-section {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 0.82rem;
+    font-size: 0.72rem;
     letter-spacing: 0.06em;
     color: rgba(245,200,66,0.7);
   }
@@ -912,6 +931,37 @@ const css = `
     align-items: center;
     flex-wrap: wrap;
     gap: 0.5rem;
+  }
+
+  /* ── Pagination ── */
+  .pagination {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .page-btn {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 0.32rem 0.65rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.15s;
+    line-height: 1;
+  }
+
+  .page-btn:hover:not(:disabled) { border-color: rgba(255,255,255,0.2); color: var(--cream); }
+  .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .page-btn.active { background: rgba(228,0,27,0.15); border-color: rgba(228,0,27,0.4); color: var(--cream); }
+
+  .page-ellipsis {
+    font-size: 0.72rem;
+    color: var(--muted);
+    padding: 0 0.2rem;
   }
 
   /* ── Modal base ── */
@@ -1114,11 +1164,6 @@ const css = `
 
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  @media (max-width: 768px) {
-    .admin-wrap { grid-template-columns: 1fr; }
-    .sidebar { display: none; }
-  }
-
   @media (max-width: 1100px) {
     th:nth-child(5), td:nth-child(5) { display: none; }
   }
@@ -1238,6 +1283,8 @@ export default function Dashboard() {
   const [eventForm, setEventForm] = useState({})
   const [eventLoading, setEventLoading] = useState(false)
   const [showScrollTop, setShowScrollTop] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+  const PAGE_SIZE = 300
 
   // Screenshot signed URLs cache
   const [screenshotUrls, setScreenshotUrls] = useState({})
@@ -1330,6 +1377,7 @@ export default function Dashboard() {
     }
 
     setFiltered(result)
+    setCurrentPage(1)
   }, [orders, search, statusFilter, attendeeFilter, dateFilter])
 
   // ── Get signed URL for private storage ─────────────────────────────────
@@ -1466,8 +1514,34 @@ export default function Dashboard() {
   const walkinRevenue  = orders.filter(o => o.payment_status === 'paid' && ['walk_in','walk-in'].includes(o.payment_method)).reduce((a, o) => a + Number(o.amount_paid || 0), 0)
 
   // Attendee type breakdown (all non-cancelled)
-  const totalPupians    = orders.filter(o => o.payment_status !== 'cancelled' && o.attendee_type === 'pup_student').length
-  const totalNonPupians = orders.filter(o => o.payment_status !== 'cancelled' && o.attendee_type !== 'pup_student').length
+  const totalPupians       = orders.filter(o => o.payment_status !== 'cancelled' && o.attendee_type === 'pup_student').length
+  const totalNonPupians    = orders.filter(o => o.payment_status !== 'cancelled' && o.attendee_type !== 'pup_student').length
+  const paidPupians        = orders.filter(o => o.payment_status === 'paid' && o.attendee_type === 'pup_student').length
+  const paidNonPupians     = orders.filter(o => o.payment_status === 'paid' && o.attendee_type !== 'pup_student').length
+
+  // GCash/Maya breakdown: total registrants + paid count
+  const gcashTotal  = orders.filter(o => o.payment_status !== 'cancelled' && ['gcash','maya','online'].includes(o.payment_method)).length
+  const gcashPaid   = orders.filter(o => o.payment_status === 'paid'      && ['gcash','maya','online'].includes(o.payment_method)).length
+  const walkinTotal = orders.filter(o => o.payment_status !== 'cancelled' && ['walk_in','walk-in'].includes(o.payment_method)).length
+  const walkinPaid  = orders.filter(o => o.payment_status === 'paid'      && ['walk_in','walk-in'].includes(o.payment_method)).length
+
+  // ── Pagination ──────────────────────────────────────────────────────────
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE))
+  const safePage = Math.min(currentPage, totalPages)
+  const pageStart = (safePage - 1) * PAGE_SIZE
+  const pageEnd = pageStart + PAGE_SIZE
+  const pageRows = filtered.slice(pageStart, pageEnd)
+
+  function getPageNumbers(current, total) {
+    if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1)
+    const pages = []
+    pages.push(1)
+    if (current > 3) pages.push('...')
+    for (let i = Math.max(2, current - 1); i <= Math.min(total - 1, current + 1); i++) pages.push(i)
+    if (current < total - 2) pages.push('...')
+    pages.push(total)
+    return pages
+  }
 
   function formatDate(iso, compact = false) {
     if (!iso) return '—'
@@ -1586,21 +1660,25 @@ export default function Dashboard() {
                     <div className="stat-mini-icon" style={{ color: '#4ade80' }}><i className="fa-solid fa-mobile-screen-button" /></div>
                     <div className="stat-mini-label">GCash / Maya Payments</div>
                     <div className="stat-mini-value green">₱{gcashRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</div>
+                    <div className="stat-mini-sub"><strong>{gcashPaid}</strong> paid / {gcashTotal} registered via GCash·Maya</div>
                   </div>
                   <div className="stat-mini walkin">
                     <div className="stat-mini-icon" style={{ color: 'var(--gold)' }}><i className="fa-solid fa-school" /></div>
                     <div className="stat-mini-label">Walk-in Payments</div>
                     <div className="stat-mini-value gold">₱{walkinRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</div>
+                    <div className="stat-mini-sub"><strong>{walkinPaid}</strong> paid / {walkinTotal} registered as walk-in</div>
                   </div>
                   <div className="stat-mini pupian">
                     <div className="stat-mini-icon" style={{ color: '#ff8080' }}><i className="fa-solid fa-graduation-cap" /></div>
                     <div className="stat-mini-label">PUPians Registered</div>
                     <div className="stat-mini-value red">{totalPupians}</div>
+                    <div className="stat-mini-sub"><strong>{paidPupians}</strong> confirmed / {totalPupians} total PUP students</div>
                   </div>
                   <div className="stat-mini nonpup">
                     <div className="stat-mini-icon" style={{ color: '#93c5fd' }}><i className="fa-solid fa-globe" /></div>
                     <div className="stat-mini-label">Non-PUPians Registered</div>
                     <div className="stat-mini-value blue">{totalNonPupians}</div>
+                    <div className="stat-mini-sub"><strong>{paidNonPupians}</strong> confirmed / {totalNonPupians} total non-PUP</div>
                   </div>
                 </div>
 
@@ -1740,7 +1818,7 @@ export default function Dashboard() {
                       </tr>
                     </thead>
                     <tbody>
-                      {filtered.length === 0 ? (
+                      {pageRows.length === 0 ? (
                         <tr>
                           <td colSpan={8}>
                             <div className="table-empty">
@@ -1748,7 +1826,7 @@ export default function Dashboard() {
                             </div>
                           </td>
                         </tr>
-                      ) : filtered.map(order => {
+                      ) : pageRows.map(order => {
                         const sec = sectionCode(order)
                         return (
                           <tr key={order.id}>
@@ -1844,7 +1922,32 @@ export default function Dashboard() {
                 </div>
 
                 <div className="table-footer">
-                  <span>Showing {filtered.length} of {orders.length} orders</span>
+                  <span>
+                    {filtered.length === 0
+                      ? 'No orders'
+                      : `${pageStart + 1}–${Math.min(pageEnd, filtered.length)} of ${filtered.length} orders`}
+                  </span>
+                  <div className="pagination">
+                    <button
+                      className="page-btn"
+                      disabled={safePage <= 1}
+                      onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                    >‹</button>
+                    {getPageNumbers(safePage, totalPages).map((p, i) =>
+                      p === '...'
+                        ? <span key={`e${i}`} className="page-ellipsis">…</span>
+                        : <button
+                            key={p}
+                            className={`page-btn${p === safePage ? ' active' : ''}`}
+                            onClick={() => setCurrentPage(p)}
+                          >{p}</button>
+                    )}
+                    <button
+                      className="page-btn"
+                      disabled={safePage >= totalPages}
+                      onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                    >›</button>
+                  </div>
                   {(search || statusFilter !== 'all' || attendeeFilter !== 'all' || dateFilter) && (
                     <button
                       className="btn-outline"
