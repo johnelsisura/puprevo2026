@@ -2944,7 +2944,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     text-transform: uppercase;
     color: var(--muted);
     padding: 0.5rem 0.5rem;
-    text-align: left;
+    text-align: center;
     white-space: nowrap;
     overflow: hidden;
   }
@@ -2953,7 +2953,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     padding: 0.3rem 0.5rem;
     border-bottom: 1px solid rgba(255,255,255,0.03);
     vertical-align: middle;
-    text-align: left;
+    text-align: center;
     overflow: hidden;
   }
 
@@ -3384,12 +3384,12 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
     /* Mobile: show only Name/Section, Code, Date, Actions */
     th:nth-child(1), td:nth-child(1) { width: 40%; padding-left: 1.25rem; padding-right: 0.5rem; text-align: center; }  /* Name/Section */
-    th:nth-child(2), td:nth-child(2) { width: 17%; }  /* Code */
+    th:nth-child(2), td:nth-child(2) { width: 17%; text-align: center; }  /* Code */
     th:nth-child(3), td:nth-child(3) { display: none; }  /* Type — hidden */
     th:nth-child(4), td:nth-child(4) { display: none; }  /* Attendee — hidden */
     th:nth-child(5), td:nth-child(5) { display: none; }  /* Method — hidden */
     th:nth-child(6), td:nth-child(6) { display: none; }  /* Status — hidden */
-    th:nth-child(7), td:nth-child(7) { width: 17%; padding-left: 0; padding-right: 0; }  /* Date */
+    th:nth-child(7), td:nth-child(7) { width: 17%; padding-left: 0; padding-right: 0; text-align: center; }  /* Date */
     th:nth-child(8), td:nth-child(8) { width: 26%; padding-left: 0.3rem; padding-right: 0.4rem; }  /* Actions */
 
     /* Mobile nav: hide text on Scanner and Event Settings, keep Dashboard text */
