@@ -1034,62 +1034,65 @@ export default function Landing() {
         }
 
         /* ---- ANNOUNCEMENT TOAST ---- */
+        .toast-overlay {
+          position: fixed; inset: 0; z-index: 950;
+          background: rgba(6,13,31,0.75); backdrop-filter: blur(6px);
+          display: flex; align-items: center; justify-content: center;
+          padding: 1.5rem;
+          animation: toastFadeIn 0.4s ease both;
+        }
+        @keyframes toastFadeIn {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
         .toast-announcement {
-          position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
-          z-index: 950; width: calc(100% - 2rem); max-width: 480px;
+          width: 100%; max-width: 460px;
           background: #0D1530;
           border: 1px solid rgba(255,215,0,0.35);
-          border-radius: 14px;
-          padding: 1rem 1.1rem 1rem 1.25rem;
-          display: flex; align-items: flex-start; gap: 0.9rem;
-          box-shadow: 0 8px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,215,0,0.08);
-          animation: toastSlideUp 0.45s cubic-bezier(0.22,1,0.36,1) both;
+          border-radius: 16px;
+          padding: 1.75rem 1.75rem 1.5rem;
+          display: flex; align-items: flex-start; gap: 1rem;
+          box-shadow: 0 24px 64px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,215,0,0.08);
+          animation: toastPopIn 0.45s cubic-bezier(0.22,1,0.36,1) both;
         }
-        .toast-announcement.toast-hide {
-          animation: toastSlideDown 0.35s cubic-bezier(0.55,0,1,0.45) both;
-        }
-        @keyframes toastSlideUp {
-          from { opacity: 0; transform: translateX(-50%) translateY(24px); }
-          to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
-        @keyframes toastSlideDown {
-          from { opacity: 1; transform: translateX(-50%) translateY(0); }
-          to   { opacity: 0; transform: translateX(-50%) translateY(24px); }
+        @keyframes toastPopIn {
+          from { opacity: 0; transform: scale(0.93) translateY(16px); }
+          to   { opacity: 1; transform: scale(1) translateY(0); }
         }
         .toast-icon {
-          flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%;
+          flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%;
           background: rgba(255,215,0,0.12); border: 1px solid rgba(255,215,0,0.25);
           display: flex; align-items: center; justify-content: center;
-          color: var(--gold); font-size: 0.85rem; margin-top: 0.05rem;
+          color: var(--gold); font-size: 0.9rem; margin-top: 0.1rem;
         }
         .toast-body { flex: 1; min-width: 0; }
         .toast-label {
           font-family: 'Syne', sans-serif; font-size: 0.6rem; font-weight: 700;
           letter-spacing: 0.22em; text-transform: uppercase;
-          color: var(--gold); opacity: 0.8; margin-bottom: 0.2rem;
+          color: var(--gold); opacity: 0.8; margin-bottom: 0.3rem;
         }
         .toast-title {
-          font-family: 'Bebas Neue', sans-serif; font-size: 1.05rem;
+          font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem;
           letter-spacing: 0.06em; color: var(--cream);
-          margin-bottom: 0.25rem; line-height: 1.2;
+          margin-bottom: 0.5rem; line-height: 1.2;
         }
         .toast-msg {
-          font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
-          color: rgba(250,245,233,0.55); line-height: 1.6;
+          font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+          color: rgba(250,245,233,0.6); line-height: 1.7;
         }
         .toast-close {
           flex-shrink: 0; background: none; border: none; cursor: pointer;
-          color: rgba(250,245,233,0.3); font-size: 1rem; line-height: 1;
+          color: rgba(250,245,233,0.3); font-size: 1.1rem; line-height: 1;
           padding: 0.1rem; transition: color 0.15s; margin-top: -0.1rem;
         }
         .toast-close:hover { color: rgba(250,245,233,0.7); }
         .toast-dismiss {
-          margin-top: 0.65rem;
+          margin-top: 1rem;
           font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
           letter-spacing: 0.12em; text-transform: uppercase;
           background: rgba(255,215,0,0.1); color: var(--gold);
           border: 1px solid rgba(255,215,0,0.25);
-          padding: 0.35rem 0.85rem; border-radius: 4px; cursor: pointer;
+          padding: 0.4rem 1rem; border-radius: 4px; cursor: pointer;
           transition: background 0.15s;
         }
         .toast-dismiss:hover { background: rgba(255,215,0,0.18); }
@@ -1742,29 +1745,31 @@ export default function Landing() {
         )}
         {/* ANNOUNCEMENT TOAST */}
         {toastVisible && (
-          <div className="toast-announcement">
-            <div className="toast-icon">
-              <i className="fa-solid fa-bullhorn" />
-            </div>
-            <div className="toast-body">
-              <div className="toast-label">Announcement</div>
-              <div className="toast-title">Ang init ngayon, jusko! 🥵</div>
-              <div className="toast-msg">
-                Dahil sa mataas na heat index, cancelled muna ang onsite ticket selling natin ngayong araw, May 29, 2026.
-                <br /><br />
-                Pero don't worry — tuloy-tuloy pa rin ang online ticket selling.
-                <br /><br />
-                Kitakits na lang tayo bukas, May 30, sa LUNAN! Uminit man o umulan, tuloy ang ticket selling!
-                <br /><br />
-                Hanggang May 31 na lang ang bentahan ng tickets, kaya buy yours today. Oki? XD
+          <div className="toast-overlay" onClick={e => { if (e.target === e.currentTarget) setToastVisible(false) }}>
+            <div className="toast-announcement">
+              <div className="toast-icon">
+                <i className="fa-solid fa-bullhorn" />
               </div>
-              <button className="toast-dismiss" onClick={() => setToastVisible(false)}>
-                Got it
+              <div className="toast-body">
+                <div className="toast-label">📢 Announcement</div>
+                <div className="toast-title">Ang init ngayon, jusko! 🥵</div>
+                <div className="toast-msg">
+                  Dahil sa mataas na heat index, cancelled muna ang onsite ticket selling natin ngayong araw, May 29, 2026.
+                  <br /><br />
+                  Pero don't worry — tuloy-tuloy pa rin ang online ticket selling.
+                  <br /><br />
+                  Kitakits na lang tayo bukas, May 30, sa LUNAN! Uminit man o umulan, tuloy ang ticket selling!
+                  <br /><br />
+                  Hanggang May 31 na lang ang bentahan ng tickets, kaya buy yours today. Oki? XD
+                </div>
+                <button className="toast-dismiss" onClick={() => setToastVisible(false)}>
+                  Got it!
+                </button>
+              </div>
+              <button className="toast-close" onClick={() => setToastVisible(false)} aria-label="Close">
+                <i className="fa-solid fa-xmark" />
               </button>
             </div>
-            <button className="toast-close" onClick={() => setToastVisible(false)} aria-label="Close">
-              <i className="fa-solid fa-xmark" />
-            </button>
           </div>
         )}
 
