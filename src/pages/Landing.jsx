@@ -1750,11 +1750,13 @@ export default function Landing() {
               <div className="toast-label">Announcement</div>
               <div className="toast-title">Ang init ngayon, jusko! 🥵</div>
               <div className="toast-msg">
-                Dahil sa mataas na heat index, cancelled muna ang onsite ticket selling natin ngayong May 29, 2026.
+                Dahil sa mataas na heat index, cancelled muna ang onsite ticket selling natin ngayong araw, May 29, 2026.
                 <br /><br />
-                Pero don't worry — bawi tayo bukas, May 30, sa LUNAN!
+                Pero don't worry — tuloy-tuloy pa rin ang online ticket selling.
                 <br /><br />
-                Uminit man o umulan, tuloy ang ticket selling! 🎟️ Hanggang May 31 na lang ang bentahan ng tickets, kaya secure yours now! Oki?
+                Kitakits na lang tayo bukas, May 30, sa LUNAN! Uminit man o umulan, tuloy ang ticket selling!
+                <br /><br />
+                Hanggang May 31 na lang ang bentahan ng tickets, kaya buy yours today. Oki? XD
               </div>
               <button className="toast-dismiss" onClick={() => setToastVisible(false)}>
                 Got it
