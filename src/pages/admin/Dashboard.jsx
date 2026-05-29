@@ -841,13 +841,13 @@ const css = `
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--muted);
-    padding: 0.65rem 0.85rem;
+    padding: 0.55rem 0.65rem;
     text-align: left;
     white-space: nowrap;
   }
 
   td {
-    padding: 0.55rem 0.85rem;
+    padding: 0.45rem 0.65rem;
     border-bottom: 1px solid rgba(255,255,255,0.03);
     vertical-align: middle;
   }
@@ -855,33 +855,52 @@ const css = `
   tr:last-child td { border-bottom: none; }
   tr:hover td { background: rgba(255,255,255,0.02); }
 
-  .td-name { font-weight: 500; color: var(--cream); font-size: 0.8rem; }
+  .td-name { font-weight: 500; color: var(--cream); font-size: 0.74rem; white-space: nowrap; }
   .td-code {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     letter-spacing: 0.08em;
     color: var(--gold);
     text-decoration: none;
+    white-space: nowrap;
   }
-  .td-muted { color: var(--muted); font-size: 0.73rem; }
+  .td-muted { color: var(--muted); font-size: 0.64rem; }
   .td-section {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 0.72rem;
+    font-size: 0.64rem;
     letter-spacing: 0.06em;
     color: rgba(245,200,66,0.7);
+  }
+
+  /* Two-line date */
+  .td-date-line1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cream);
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .td-date-line2 {
+    font-size: 0.62rem;
+    color: var(--muted);
+    white-space: nowrap;
+    line-height: 1.3;
   }
 
   /* Badges */
   .badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.25rem;
     font-family: 'Syne', sans-serif;
-    font-size: 0.58rem;
+    font-size: 0.5rem;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 0.22rem 0.6rem;
+    padding: 0.18rem 0.45rem;
     border-radius: 2rem;
     white-space: nowrap;
   }
@@ -1930,11 +1949,8 @@ export default function Dashboard() {
                                  <><i className="fa-regular fa-clock" /> Pending</>}
                               </span>
                             </td>
-                            <td className="td-muted" style={{whiteSpace:'nowrap'}}>
-                              <span className="date-full">{formatDate(order.created_at)}</span>
-                              <span className="date-compact" style={{lineHeight:1.3,display:'none'}}>
-                                {(() => { const d = formatDate(order.created_at, true); return <>{d.date}<br/>{d.time}</>; })()}
-                              </span>
+                            <td>
+                              {(() => { const d = formatDate(order.created_at, true); return <><div className="td-date-line1">{d.date}</div><div className="td-date-line2">{d.time}</div></>; })()}
                             </td>
                             <td>
                               <div className="row-actions">
