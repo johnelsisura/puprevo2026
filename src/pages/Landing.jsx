@@ -1280,7 +1280,7 @@ export default function Landing() {
           <div className="tickets-urgency">
             <span className="urgency-dot">Very Limited Tickets Only</span>
             <span className="urgency-wave-pill">
-              Wave per week <span className="urgency-wave-sep">·</span> Slots not guaranteed
+              ENDS SOON <span className="urgency-wave-sep">·</span> UNTIL MAY 31 ONLY
             </span>
           </div>
 
@@ -1752,7 +1752,7 @@ export default function Landing() {
                   <br /><br />
                   Ano, tara? 😆 <em>(Hehe, binabasa niyo ba 'to?)</em>
                 </div>
-                <button className="toast-dismiss" onClick={() => { setToastVisible(false); scrollTo('tickets') }} style={{ marginTop: '1.1rem', background: 'var(--gold)', color: '#000', border: 'none', width: '100%' }}>
+                <button className="toast-dismiss" onClick={() => { setToastVisible(false); scrollTo('tickets') }}>
                   Buy Tickets
                 </button>
               </div>
