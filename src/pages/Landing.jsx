@@ -1754,16 +1754,16 @@ export default function Landing() {
                 <div className="toast-label">📢 Announcement</div>
                 <div className="toast-title">Ang init ngayon, jusko! 🥵</div>
                 <div className="toast-msg">
-                  Dahil sa mataas na heat index, cancelled muna ang onsite ticket selling natin ngayong araw, May 29, 2026.
+                  Dahil sa mataas na heat index, <strong style={{color:'var(--cream)'}}>cancelled muna ang onsite ticket selling natin ngayong araw, May 29, 2026.</strong>
                   <br /><br />
-                  Pero don't worry — tuloy-tuloy pa rin ang online ticket selling.
+                  Pero don't worry, tuloy-tuloy pa rin ang <strong style={{color:'var(--cream)'}}>online ticket selling.</strong>
                   <br /><br />
-                  Kitakits na lang tayo bukas, May 30, sa LUNAN! Uminit man o umulan, tuloy ang ticket selling!
+                  Kitakits na lang tayo bukas, <strong style={{color:'var(--cream)'}}>May 30, sa LUNAN!</strong> Uminit man o umulan, tuloy ang ticket selling!
                   <br /><br />
-                  Hanggang May 31 na lang ang bentahan ng tickets, kaya buy yours today. Oki? XD
+                  <strong style={{color:'var(--cream)'}}>Hanggang May 31 na lang ang bentahan ng tickets,</strong> kaya buy yours today... or now na... hanggang may slots pa hehe XD
                 </div>
-                <button className="toast-dismiss" onClick={() => setToastVisible(false)}>
-                  Got it!
+                <button className="toast-dismiss" onClick={() => { setToastVisible(false); scrollTo('tickets') }}>
+                  🎟️ Buy Tickets
                 </button>
               </div>
               <button className="toast-close" onClick={() => setToastVisible(false)} aria-label="Close">
