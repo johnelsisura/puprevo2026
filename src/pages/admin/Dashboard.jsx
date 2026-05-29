@@ -84,7 +84,6 @@ const css = `
     padding: 0 2.5rem;
     height: 64px;
     gap: 2rem;
-    width: 100%;
   }
 
   .topnav-logo {
@@ -112,24 +111,30 @@ const css = `
     background: none;
     text-decoration: none;
     white-space: nowrap;
-    padding: 0.4rem 0.85rem;
-    border-radius: 6px;
-    transition: color 0.18s, background 0.18s;
+    padding: 0;
+    transition: color 0.18s;
     position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
   }
 
-  .nav-item:hover { color: var(--cream); background: rgba(255,255,255,0.05); }
-
-  .nav-item.active {
-    color: var(--cream);
-    background: rgba(255,59,48,0.15);
-    border: 1px solid rgba(255,59,48,0.3);
+  .nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0; right: 0;
+    height: 2px;
+    background: var(--red);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
   }
 
-  .nav-icon { display: inline; font-size: 0.8rem; }
+  .nav-item:hover { color: var(--cream); }
+  .nav-item:hover::after { transform: scaleX(1); }
+
+  .nav-item.active { color: var(--cream); }
+  .nav-item.active::after { transform: scaleX(1); }
+
+  .nav-icon { display: none; }
 
   .topnav-right {
     display: flex;
@@ -158,17 +163,60 @@ const css = `
 
   .signout-btn:hover { background: rgba(228,0,27,0.12); border-color: var(--red); color: #ff8080; }
 
+  /* Red ticker strip below navbar */
+  .topnav-ticker {
+    background: var(--red);
+    height: 30px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .topnav-ticker-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    animation: ticker 24s linear infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .ticker-item {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: white;
+    padding: 0 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .ticker-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    flex-shrink: 0;
+  }
+
   @media (max-width: 768px) {
     .topnav { padding: 0 1.25rem; height: 56px; gap: 1rem; }
-    .topnav-links { gap: 0.5rem; }
-    .nav-item { font-size: 0.62rem; letter-spacing: 0.1em; padding: 0.35rem 0.6rem; }
+    .topnav-links { gap: 1.25rem; }
+    .nav-item { font-size: 0.62rem; letter-spacing: 0.1em; }
     .signout-btn span { display: none; }
     .signout-btn i { margin: 0; }
   }
 
   @media (max-width: 500px) {
-    .topnav-links { gap: 0.25rem; }
-    .nav-item { font-size: 0.55rem; padding: 0.3rem 0.5rem; }
+    .topnav-links { gap: 0.85rem; }
+    .nav-item { font-size: 0.55rem; }
   }
 
   /* ── Main ── */
@@ -189,7 +237,6 @@ const css = `
     margin-bottom: 2rem;
     gap: 1rem;
     flex-wrap: wrap;
-    text-align: left;
   }
 
   .page-title {
@@ -197,14 +244,12 @@ const css = `
     font-size: 2.5rem;
     line-height: 1;
     color: var(--cream);
-    text-align: left;
   }
 
   .page-sub {
     font-size: 0.82rem;
     color: var(--muted);
     margin-top: 0.25rem;
-    text-align: left;
   }
 
   .header-actions {
@@ -785,7 +830,6 @@ const css = `
     width: 100%;
     border-collapse: collapse;
     font-size: 0.85rem;
-    table-layout: fixed;
   }
 
   thead tr { border-bottom: 1px solid var(--border); }
@@ -797,36 +841,30 @@ const css = `
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--muted);
-    padding: 0.5rem 0.5rem;
+    padding: 0.55rem 0.65rem;
     text-align: left;
     white-space: nowrap;
-    overflow: hidden;
   }
 
   td {
-    padding: 0.3rem 0.5rem;
+    padding: 0.45rem 0.65rem;
     border-bottom: 1px solid rgba(255,255,255,0.03);
     vertical-align: middle;
-    text-align: left;
-    overflow: hidden;
   }
 
   tr:last-child td { border-bottom: none; }
   tr:hover td { background: rgba(255,255,255,0.02); }
 
-  .td-name { font-weight: 500; color: var(--cream); font-size: 0.74rem; }
+  .td-name { font-weight: 500; color: var(--cream); font-size: 0.74rem; white-space: nowrap; }
   .td-code {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 0.82rem;
-    letter-spacing: 0.06em;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
     color: var(--gold);
     text-decoration: none;
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .td-muted { color: var(--muted); font-size: 0.64rem; word-break: break-all; }
+  .td-muted { color: var(--muted); font-size: 0.64rem; }
   .td-section {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 0.64rem;
@@ -834,21 +872,19 @@ const css = `
     color: rgba(245,200,66,0.7);
   }
 
-  /* Two-line date — same style always */
+  /* Two-line date */
   .td-date-line1 {
     font-family: 'Syne', sans-serif;
-    font-size: 0.66rem;
+    font-size: 0.68rem;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--cream);
     line-height: 1.2;
     white-space: nowrap;
   }
   .td-date-line2 {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.66rem;
-    font-weight: 700;
+    font-size: 0.62rem;
     color: var(--muted);
     white-space: nowrap;
     line-height: 1.3;
@@ -1195,56 +1231,42 @@ const css = `
 
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* No horizontal scroll — compress all columns to fit */
-  .table-scroll-wrap { width: 100%; overflow-x: hidden; }
+  @media (max-width: 1100px) {
+    th:nth-child(5), td:nth-child(5) { display: none; }
+  }
+  @media (max-width: 900px) {
+    th:nth-child(4), td:nth-child(4),
+    th:nth-child(6), td:nth-child(6) { display: none; }
+  }
+  @media (max-width: 600px) {
+    th:nth-child(3), td:nth-child(3) { display: none; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+  }
 
-  table { table-layout: fixed; width: 100%; }
-
-  /* Column widths: desktop */
-  th:nth-child(1), td:nth-child(1) { width: 22%; }  /* Name/Section */
-  th:nth-child(2), td:nth-child(2) { width: 11%; }  /* Code */
-  th:nth-child(3), td:nth-child(3) { width: 9%;  }  /* Type */
-  th:nth-child(4), td:nth-child(4) { width: 9%;  }  /* Attendee */
-  th:nth-child(5), td:nth-child(5) { width: 11%; }  /* Method */
-  th:nth-child(6), td:nth-child(6) { width: 9%;  }  /* Status */
-  th:nth-child(7), td:nth-child(7) { width: 9%;  }  /* Date */
-  th:nth-child(8), td:nth-child(8) { width: 20%; }  /* Actions */
+  /* date toggle */
+  .date-compact { display: none; }
+  .date-full    { display: inline; }
 
   /* ── Mobile compact table ── */
   @media (max-width: 768px) {
-    .main { padding: 0.85rem; }
-    table { font-size: 0.65rem; }
+    table { font-size: 0.7rem; }
     th {
-      font-size: 0.42rem;
-      letter-spacing: 0.06em;
-      padding: 0.45rem 0.3rem;
+      font-size: 0.48rem;
+      letter-spacing: 0.1em;
+      padding: 0.55rem 0.5rem;
     }
-    td { padding: 0.3rem 0.3rem; }
-    .td-name { font-size: 0.64rem; }
-    .td-code { font-size: 0.64rem; letter-spacing: 0.04em; }
-    .td-muted { font-size: 0.55rem; }
-    .td-section { font-size: 0.55rem; }
-    .badge { font-size: 0.44rem; padding: 0.1rem 0.28rem; gap: 0.1rem; }
-    .pay-pill { font-size: 0.55rem; }
-    .action-btn { font-size: 0.5rem; padding: 0.18rem 0.35rem; }
-    .proof-link { font-size: 0.5rem; padding: 0.12rem 0.3rem; }
-    .row-actions { gap: 0.2rem; }
-    .td-date-line1 { font-size: 0.58rem; }
-    .td-date-line2 { font-size: 0.58rem; }
-
-    /* Mobile column widths */
-    th:nth-child(1), td:nth-child(1) { width: 26%; }
-    th:nth-child(2), td:nth-child(2) { width: 13%; }
-    th:nth-child(3), td:nth-child(3) { width: 9%;  }
-    th:nth-child(4), td:nth-child(4) { width: 9%;  }
-    th:nth-child(5), td:nth-child(5) { width: 10%; }
-    th:nth-child(6), td:nth-child(6) { width: 9%;  }
-    th:nth-child(7), td:nth-child(7) { width: 10%; }
-    th:nth-child(8), td:nth-child(8) { width: 14%; }
-  }
-
-  @media (max-width: 600px) {
-    .stats-grid { grid-template-columns: 1fr 1fr; }
+    td { padding: 0.55rem 0.5rem; }
+    .td-name { font-size: 0.7rem; }
+    .td-code { font-size: 0.75rem; letter-spacing: 0.06em; }
+    .td-muted { font-size: 0.62rem; }
+    .td-section { font-size: 0.62rem; }
+    .badge { font-size: 0.48rem; padding: 0.12rem 0.35rem; gap: 0.15rem; }
+    .pay-pill { font-size: 0.62rem; }
+    .action-btn { font-size: 0.55rem; padding: 0.22rem 0.45rem; }
+    .proof-link { font-size: 0.55rem; padding: 0.15rem 0.4rem; }
+    .row-actions { gap: 0.25rem; }
+    .date-full    { display: none; }
+    .date-compact { display: block !important; font-size: 0.62rem; line-height: 1.4; }
   }
 
   /* ── Scroll-to-top FAB ── */
@@ -1329,7 +1351,7 @@ export default function Dashboard() {
   const [eventLoading, setEventLoading] = useState(false)
   const [showScrollTop, setShowScrollTop] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
-  const PAGE_SIZE = 150
+  const PAGE_SIZE = 300
 
   // Screenshot signed URLs cache
   const [screenshotUrls, setScreenshotUrls] = useState({})
@@ -1619,9 +1641,9 @@ export default function Dashboard() {
           <nav className="topnav">
             <img src="/logo.png" alt="PUP REVO" className="topnav-logo" />
             <div className="topnav-links">
-              <button className="nav-item active"><i className="fa-solid fa-chart-line nav-icon" /> Dashboard</button>
-              <button className="nav-item" onClick={() => navigate('/admin/scanner')}><i className="fa-solid fa-qrcode nav-icon" /> Scanner</button>
-              <button className="nav-item" onClick={() => { setEventForm(event || {}); setEditEvent(true) }}><i className="fa-solid fa-gear nav-icon" /> Event Settings</button>
+              <button className="nav-item active">Dashboard</button>
+              <button className="nav-item" onClick={() => navigate('/admin/scanner')}>Scanner</button>
+              <button className="nav-item" onClick={() => { setEventForm(event || {}); setEditEvent(true) }}>Event Settings</button>
             </div>
             <div className="topnav-right">
               <button className="signout-btn" onClick={handleSignOut}>
@@ -1629,7 +1651,19 @@ export default function Dashboard() {
               </button>
             </div>
           </nav>
-
+          <div className="topnav-ticker">
+            <div className="topnav-ticker-inner">
+              {[...Array(2)].map((_, ri) => (
+                <span key={ri}>
+                  <span className="ticker-item">Admin Portal <span className="ticker-dot" /></span>
+                  <span className="ticker-item">PUPREVO Night 2026 <span className="ticker-dot" /></span>
+                  <span className="ticker-item">Sound Against Silence <span className="ticker-dot" /></span>
+                  <span className="ticker-item">A Benefit Concert for Safer Kids <span className="ticker-dot" /></span>
+                  <span className="ticker-item">Lunan, Manila <span className="ticker-dot" /></span>
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* ── Main ── */}
@@ -1844,7 +1878,7 @@ export default function Dashboard() {
                   </div>
                 </div>
 
-                <div className="table-scroll-wrap">
+                <div style={{ overflowX: 'auto' }}>
                   <table>
                     <thead>
                       <tr>
