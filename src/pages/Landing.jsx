@@ -1779,15 +1779,13 @@ export default function Landing() {
               </div>
               {/* Body */}
               <div className="toast-body">
-                <div className="toast-title">Ang init ngayon, jusko! 🥵</div>
+                <div className="toast-title">Psst... Takits tomorrow (May 30) at LUNAN for onsite ticket selling and physical ticket claiming.</div>
                 <div className="toast-msg">
-                  Dahil sa mataas na heat index, <strong style={{color:'var(--cream)'}}>cancelled muna ang onsite ticket selling natin ngayong araw, May 29, 2026.</strong>
+                  Mainit pa rin, bes, kaya magdala ng tubig at pamaypay. Pero don't worry, may <strong style={{color:'var(--cream)'}}>free Cobra Rise at Chatlet</strong> naman.
                   <br /><br />
-                  Pero don't worry, tuloy-tuloy pa rin ang <strong style={{color:'var(--cream)'}}>online ticket selling.</strong>
+                  <strong style={{color:'var(--cream)'}}>Ticket selling ends on May 31.</strong> Buy your tickets now habang may slots pa!
                   <br /><br />
-                  Kitakits na lang tayo bukas, <strong style={{color:'var(--cream)'}}>May 30, sa LUNAN!</strong> Uminit man o umulan, tuloy ang ticket selling!
-                  <br /><br />
-                  <strong style={{color:'var(--cream)'}}>Hanggang May 31 na lang ang bentahan ng tickets,</strong> kaya buy yours today... or now na... hanggang may slots pa hehe XD
+                  Ano, tara? <em>(Hehe, binabasa niyo ba 'to?)</em>
                 </div>
                 <button className="toast-dismiss" onClick={() => { setToastVisible(false); scrollTo('tickets') }}>
                   Buy Tickets
