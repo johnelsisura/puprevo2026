@@ -1779,11 +1779,13 @@ export default function Landing() {
               </div>
               {/* Body */}
               <div className="toast-body">
-                <div className="toast-title">📣 Psst... Takits tomorrow (May 30) at <a href="https://share.google/Ddgx5Ov8GTy1p3gBX" target="_blank" rel="noopener noreferrer" style={{color:'var(--cream)', textDecoration:'underline'}}>LUNAN</a> for onsite ticket selling and physical ticket claiming.</div>
+                <div className="toast-title">2 DAYS LEFT FOR TICKET SELLING</div>
                 <div className="toast-msg">
-                  ☀️ Mainit pa rin, bes, kaya magdala ng tubig at pamaypay. Pero don't worry, may <strong style={{color:'var(--cream)'}}>free Cobra Rise at Chatlet</strong> naman. 🥤
+                  📣 Psst... Takits tomorrow (May 30) at <a href="https://share.google/Ddgx5Ov8GTy1p3gBX" target="_blank" rel="noopener noreferrer" style={{color:'var(--cream)', textDecoration:'underline'}}>LUNAN</a> for onsite ticket selling and physical ticket claiming.
                   <br /><br />
-                  🎟️ <strong style={{color:'var(--cream)'}}>Ticket selling ends on May 31.</strong> Buy your tickets now habang may slots pa!
+                  Mainit pa rin, bes, kaya magdala ng tubig at pamaypay. Pero don't worry, may <strong style={{color:'var(--cream)'}}>free Cobra Rise at Chatlet</strong> naman.
+                  <br /><br />
+                  <strong style={{color:'var(--cream)'}}>Ticket selling ends on May 31.</strong> Buy your tickets now habang may slots pa! 🎟️
                   <br /><br />
                   Ano, tara? 😆 <em>(Hehe, binabasa niyo ba 'to?)</em>
                 </div>
