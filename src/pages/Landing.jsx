@@ -1117,11 +1117,11 @@ export default function Landing() {
           <div className="ticker-track">
             {[...Array(2)].map((_, i) => (
               <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
-                <span className="ticker-item"><i className="fa-solid fa-ticket" /> Limited tickets available — Buy now until May 31 only. Sorry for the technical errors. Huhu... It is now resolved! Thank you for your patience. :) | Bukas na po namin replyan concerns, pahinga lang po kami hehe loveuall </span>
+                <span className="ticker-item"><i className="fa-solid fa-ticket" /> Limited tickets available — Buy now until May 31 only. </span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Buy your tickets today. GCash Payment is working totally fine. Hehe. XD. </span>
+                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Buy your tickets today. 2 day left for ticket selling. </span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-clock" /> Onsite ticket selling tomorrow, May 29, 2026, is canceled due to the heat index. See you on May 30 at Lunan for onsite ticket selling! | Last Day of Ticket Selling: May 31 · Don't miss out.</span>
+                <span className="ticker-item"><i className="fa-solid fa-clock" /> See you on Tomorrow, May 30, at Lunan for onsite ticket selling and physical ticket claiming! | Last Day of Ticket Selling: May 31 · Don't miss out. </span>
                 <span className="ticker-sep">✦</span>
                 <span className="ticker-item"><i className="fa-solid fa-star" /> PUP REVO 2026 · June 20 · PUP Main Campus Oval</span>
                 <span className="ticker-sep">✦</span>
