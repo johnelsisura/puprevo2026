@@ -1027,7 +1027,7 @@ export default function Landing() {
           to   { opacity: 1; }
         }
         .toast-announcement {
-          width: 100%; max-width: 480px;
+          width: 100%; max-width: 560px;
           background: #0D1530;
           border: 1px solid rgba(255,215,0,0.4);
           border-radius: 18px;
@@ -1764,11 +1764,13 @@ export default function Landing() {
                 <div className="toast-title">LOW TICKET ALERT 🚨</div>
                 <div className="toast-subtitle">DON'T MISS OUT • BUY YOUR TICKETS NOW</div>
                 <div className="toast-msg">
-                  📢 Shoutout sa mga kabataan diyan. Quick reminder lang: <strong style={{color:'var(--cream)'}}>Ticket selling ends tomorrow (May 31)</strong>, and the remaining slots for both PUPian and Public Tickets are becoming more limited.
+                  📢 Shoutout sa mga kabataan diyan.
                   <br /><br />
-                  Once these slots are claimed, <strong style={{color:'var(--cream)'}}>no additional tickets will be released.</strong> June is for ticket claiming only.
+                  Quick reminder lang: <strong style={{color:'var(--cream)'}}>Ticket selling ends tomorrow (May 31)</strong>, and the remaining slots for both PUPian and Public Tickets are becoming more limited.
                   <br /><br />
-                  🎟️ Kung ilang araw mo nang sinasabing "mamaya na lang ako bibili," ito na ang sign mo. 😭 Secure your tickets now!
+                  Once these slots are claimed, <strong style={{color:'var(--cream)'}}>no additional tickets will be released.</strong> June is for ticket claiming only. 🎟️
+                  <br /><br />
+                  Kung ilang araw mo nang sinasabing "mamaya na lang ako bibili," ito na ang sign mo to secure your tickets now!
                   <br /><br />
                   Btw, nasa <a href="https://share.google/Ddgx5Ov8GTy1p3gBX" target="_blank" rel="noopener noreferrer" style={{color:'var(--cream)', textDecoration:'underline'}}>LUNAN</a> pala kami ngayon until 5PM for onsite ticket selling and physical ticket claiming. hehe
                   <br /><br />
