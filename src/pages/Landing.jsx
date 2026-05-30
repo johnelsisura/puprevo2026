@@ -1758,16 +1758,18 @@ export default function Landing() {
               </div>
               {/* Body */}
               <div className="toast-body">
-                <div className="toast-title">TICKET SELLING ENDS IN 2 DAYS</div>
+                <div className="toast-title">LOW TICKET ALERT 🚨</div>
                 <div className="toast-subtitle">DON'T MISS OUT • BUY YOUR TICKETS NOW</div>
                 <div className="toast-msg">
-                  📣 Psst... Takits tomorrow (May 30) at <a href="https://share.google/Ddgx5Ov8GTy1p3gBX" target="_blank" rel="noopener noreferrer" style={{color:'var(--cream)', textDecoration:'underline'}}>LUNAN</a> for onsite ticket selling and physical ticket claiming.
+                  📢 Shoutout sa mga kabataan diyan. Quick reminder lang: <strong style={{color:'var(--cream)'}}>Ticket selling ends tomorrow (May 31)</strong>, and the remaining slots for both PUPian and Public Tickets are becoming more limited.
                   <br /><br />
-                  ☀️ Mainit pa rin, bes, kaya magdala ng tubig at pamaypay. Pero don't worry, may <strong style={{color:'var(--cream)'}}>free Cobra Rise at Chatlet</strong> naman. 🥤
+                  Once these slots are claimed, <strong style={{color:'var(--cream)'}}>no additional tickets will be released.</strong> June is for ticket claiming only.
                   <br /><br />
-                  🎟️ <strong style={{color:'var(--cream)'}}>Ticket selling ends on May 31.</strong> Buy your tickets now habang may slots pa!
+                  🎟️ Kung ilang araw mo nang sinasabing "mamaya na lang ako bibili," ito na ang sign mo. 😭 Secure your tickets now!
                   <br /><br />
-                  Ano, tara? 😆 <em>(Hehe, binabasa niyo ba 'to?)</em>
+                  Btw, nasa <a href="https://share.google/Ddgx5Ov8GTy1p3gBX" target="_blank" rel="noopener noreferrer" style={{color:'var(--cream)', textDecoration:'underline'}}>LUNAN</a> pala kami ngayon until 5PM for onsite ticket selling and physical ticket claiming. hehe
+                  <br /><br />
+                  <em>P.S. Beh, sagutan mo na yung waiver. Hindi 'yan kusang masasagutan. Tinatamad yarn? 😭</em>
                 </div>
                 <button className="toast-dismiss" onClick={() => { setToastVisible(false); scrollTo('tickets') }}>
                   Buy Tickets
