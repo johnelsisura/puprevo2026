@@ -1389,21 +1389,22 @@ export default function Landing() {
                 return (
                   <div className={`ticket-card featured ${soldOut ? 'sold-out' : ''}`}>
                     <div className="ticket-header">
-                      <div className="ticket-type">Non-PUPian / Alumni</div>
-                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.35rem' }}>
-                        <div className="ticket-badge">Open</div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
+                        <div className="ticket-type">Non-PUPian / Alumni</div>
                         {!soldOut && (
                           <div style={{
-                            fontFamily: "'Syne', sans-serif", fontSize: '0.6rem', fontWeight: 700,
-                            letterSpacing: '0.12em', textTransform: 'uppercase',
+                            fontFamily: "'Syne', sans-serif", fontSize: '0.58rem', fontWeight: 700,
+                            letterSpacing: '0.14em', textTransform: 'uppercase',
                             background: 'var(--red)', color: '#fff',
-                            padding: '0.2rem 0.55rem', borderRadius: '4px',
+                            padding: '0.18rem 0.5rem', borderRadius: '4px',
                             animation: 'pulse-badge 1.8s ease-in-out infinite',
+                            whiteSpace: 'nowrap',
                           }}>
-                            🔴 Final Slots
+                            Final Slots
                           </div>
                         )}
                       </div>
+                      <div className="ticket-badge">Open</div>
                     </div>
                     <div className="ticket-price">
                       <span className="price-amount">₱{slots.public.price}</span>
