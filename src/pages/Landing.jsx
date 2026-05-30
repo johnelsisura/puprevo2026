@@ -1791,8 +1791,6 @@ export default function Landing() {
                   <br /><br />
                   Kung ilang araw mo nang sinasabing "mamaya na lang ako bibili," ito na ang sign mo to secure your tickets now!
                   <br /><br />
-                  Btw, nasa <a href="https://share.google/Ddgx5Ov8GTy1p3gBX" target="_blank" rel="noopener noreferrer" style={{color:'var(--cream)', textDecoration:'underline'}}>LUNAN</a> pala kami ngayon until 5PM for onsite ticket selling and physical ticket claiming. hehe
-                  <br /><br />
                   <em>P.S. Beh, sagutan mo na yung waiver. Hindi 'yan kusang masasagutan. Tinatamad yarn? 😭</em>
                 </div>
                 <button className="toast-dismiss" onClick={() => { setToastVisible(false); scrollTo('tickets') }}>
