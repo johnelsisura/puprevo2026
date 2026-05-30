@@ -1404,7 +1404,7 @@ export default function Checkout() {
                     color: 'var(--muted)', lineHeight: 1.6, marginBottom: '0.75rem',
                   }}>
                     Send <strong style={{ color: 'var(--cream)' }}>₱{totalAmount.toFixed(2)}</strong> to{' '}
-                    <strong style={{ color: 'var(--gold)' }}>0993 321 4318 (Jewel T.)</strong>
+                    <strong style={{ color: 'var(--gold)' }}>0995 418 5939 (John Benedict S.)</strong>
                     , then fill in the details below.
                     <br />
                     <span style={{ color: 'rgba(250,245,233,0.35)', fontSize: '0.75rem' }}>
