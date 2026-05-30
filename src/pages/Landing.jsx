@@ -1027,7 +1027,7 @@ export default function Landing() {
           to   { opacity: 1; }
         }
         .toast-announcement {
-          width: 100%; max-width: 680px;
+          width: 100%; max-width: 480px;
           background: #0D1530;
           border: 1px solid rgba(255,215,0,0.4);
           border-radius: 18px;
@@ -1035,74 +1035,50 @@ export default function Landing() {
           box-shadow: 0 24px 64px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,215,0,0.08);
           animation: toastPopIn 0.45s cubic-bezier(0.22,1,0.36,1) both;
           position: relative;
-          display: grid;
-          grid-template-columns: 110px 1fr;
         }
-        @media (max-width: 560px) {
-          .toast-announcement {
-            max-width: 340px;
-            grid-template-columns: 1fr;
-          }
+        @media (max-width: 520px) {
+          .toast-announcement { max-width: 340px; }
         }
         @keyframes toastPopIn {
           from { opacity: 0; transform: scale(0.93) translateY(16px); }
           to   { opacity: 1; transform: scale(1) translateY(0); }
         }
         .toast-header {
-          display: flex; flex-direction: column; align-items: center; justify-content: center;
-          padding: 1.25rem 1rem;
-          border-right: 1px solid rgba(255,215,0,0.18);
+          display: flex; flex-direction: column; align-items: center;
+          padding: 1rem 1.25rem 0.85rem;
+          border-bottom: 1px solid rgba(255,215,0,0.18);
           position: relative;
-          background: rgba(255,215,0,0.03);
-        }
-        @media (max-width: 560px) {
-          .toast-header {
-            flex-direction: row; gap: 0.55rem;
-            padding: 0.65rem 1rem;
-            border-right: none;
-            border-bottom: 1px solid rgba(255,215,0,0.18);
-            justify-content: center;
-          }
         }
         .toast-icon {
-          width: 38px; height: 38px; border-radius: 50%;
+          width: 40px; height: 40px; border-radius: 50%;
           background: rgba(255,215,0,0.15); border: 1px solid rgba(255,215,0,0.3);
           display: flex; align-items: center; justify-content: center;
-          color: var(--gold); font-size: 0.95rem;
-          margin-bottom: 0.45rem; flex-shrink: 0;
-        }
-        @media (max-width: 560px) {
-          .toast-icon { margin-bottom: 0; width: 28px; height: 28px; font-size: 0.75rem; }
+          color: var(--gold); font-size: 1rem;
+          margin-bottom: 0.4rem;
         }
         .toast-label {
-          font-family: 'Syne', sans-serif; font-size: 0.52rem; font-weight: 700;
-          letter-spacing: 0.22em; text-transform: uppercase;
-          color: var(--gold); text-align: center;
+          font-family: 'Syne', sans-serif; font-size: 0.55rem; font-weight: 700;
+          letter-spacing: 0.28em; text-transform: uppercase;
+          color: var(--gold);
         }
         .toast-body {
-          padding: 0.95rem 1.15rem 1.15rem;
-          text-align: left;
-        }
-        @media (max-width: 560px) {
-          .toast-body { padding: 0.8rem 0.9rem 0.9rem; text-align: center; }
+          padding: 1rem 1.3rem 1.3rem;
+          text-align: center;
         }
         .toast-title {
-          font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem;
+          font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
           letter-spacing: 0.06em; color: var(--cream);
-          margin-bottom: 0.12rem; line-height: 1.15;
+          margin-bottom: 0.15rem; line-height: 1.15;
         }
         .toast-subtitle {
-          font-family: 'Syne', sans-serif; font-size: 0.5rem; font-weight: 700;
+          font-family: 'Syne', sans-serif; font-size: 0.52rem; font-weight: 700;
           letter-spacing: 0.18em; text-transform: uppercase;
-          color: rgba(250,245,233,0.4); margin-bottom: 0.65rem;
+          color: rgba(250,245,233,0.4); margin-bottom: 0.75rem;
         }
         .toast-msg {
-          font-family: 'DM Sans', sans-serif; font-size: 0.74rem;
-          color: rgba(250,245,233,0.65); line-height: 1.6;
-          text-align: left;
-        }
-        @media (max-width: 560px) {
-          .toast-msg { font-size: 0.7rem; text-align: center; }
+          font-family: 'DM Sans', sans-serif; font-size: 0.76rem;
+          color: rgba(250,245,233,0.65); line-height: 1.65;
+          text-align: center;
         }
         .toast-close {
           position: absolute; top: 0.55rem; right: 0.7rem;
