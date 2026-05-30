@@ -1027,7 +1027,7 @@ export default function Landing() {
           to   { opacity: 1; }
         }
         .toast-announcement {
-          width: 100%; max-width: 560px;
+          width: 100%; max-width: 680px;
           background: #0D1530;
           border: 1px solid rgba(255,215,0,0.4);
           border-radius: 18px;
@@ -1045,16 +1045,16 @@ export default function Landing() {
         }
         .toast-header {
           display: flex; flex-direction: column; align-items: center;
-          padding: 1rem 1.25rem 0.85rem;
+          padding: 0.7rem 1.25rem 0.6rem;
           border-bottom: 1px solid rgba(255,215,0,0.18);
           position: relative;
         }
         .toast-icon {
-          width: 40px; height: 40px; border-radius: 50%;
+          width: 34px; height: 34px; border-radius: 50%;
           background: rgba(255,215,0,0.15); border: 1px solid rgba(255,215,0,0.3);
           display: flex; align-items: center; justify-content: center;
-          color: var(--gold); font-size: 1rem;
-          margin-bottom: 0.4rem;
+          color: var(--gold); font-size: 0.85rem;
+          margin-bottom: 0.3rem;
         }
         .toast-label {
           font-family: 'Syne', sans-serif; font-size: 0.55rem; font-weight: 700;
@@ -1062,22 +1062,22 @@ export default function Landing() {
           color: var(--gold);
         }
         .toast-body {
-          padding: 1rem 1.3rem 1.3rem;
+          padding: 0.75rem 1.5rem 1rem;
           text-align: center;
         }
         .toast-title {
           font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
           letter-spacing: 0.06em; color: var(--cream);
-          margin-bottom: 0.15rem; line-height: 1.15;
+          margin-bottom: 0.1rem; line-height: 1.15;
         }
         .toast-subtitle {
           font-family: 'Syne', sans-serif; font-size: 0.52rem; font-weight: 700;
           letter-spacing: 0.18em; text-transform: uppercase;
-          color: rgba(250,245,233,0.4); margin-bottom: 0.75rem;
+          color: rgba(250,245,233,0.4); margin-bottom: 0.55rem;
         }
         .toast-msg {
           font-family: 'DM Sans', sans-serif; font-size: 0.76rem;
-          color: rgba(250,245,233,0.65); line-height: 1.65;
+          color: rgba(250,245,233,0.65); line-height: 1.55;
           text-align: center;
         }
         .toast-close {
@@ -1088,7 +1088,7 @@ export default function Landing() {
         }
         .toast-close:hover { color: rgba(250,245,233,0.7); }
         .toast-dismiss {
-          display: block; width: 100%; margin-top: 0.8rem;
+          display: block; width: 100%; margin-top: 0.6rem;
           font-family: 'Syne', sans-serif; font-size: 0.68rem; font-weight: 700;
           letter-spacing: 0.14em; text-transform: uppercase;
           background: var(--gold); color: #000;
@@ -1766,7 +1766,7 @@ export default function Landing() {
                 <div className="toast-msg">
                   📢 Shoutout sa mga kabataan diyan.
                   <br /><br />
-                  Quick reminder lang: <strong style={{color:'var(--cream)'}}>Ticket selling ends tomorrow (May 31)</strong>, and the remaining slots for both PUPian and Public Tickets are becoming more limited.
+                  Quick reminder lang: <strong style={{color:'var(--cream)'}}>Ticket selling ends tomorrow (May 31)</strong>, and the remaining slots for both PUPian and Non-PUPian Tickets are becoming more limited.
                   <br /><br />
                   Once these slots are claimed, <strong style={{color:'var(--cream)'}}>no additional tickets will be released.</strong> June is for ticket claiming only. 🎟️
                   <br /><br />
