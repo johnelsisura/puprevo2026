@@ -1098,6 +1098,11 @@ export default function Landing() {
           box-shadow: 0 4px 20px rgba(255,215,0,0.3);
         }
         .toast-dismiss:hover { opacity: 0.88; transform: translateY(-1px); }
+
+        @keyframes pulse-badge {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.75; transform: scale(0.97); }
+        }
       `}</style>
 
       <div className="page" style={{ paddingTop: (navHeight + 30) + 'px' }}>
@@ -1385,7 +1390,20 @@ export default function Landing() {
                   <div className={`ticket-card featured ${soldOut ? 'sold-out' : ''}`}>
                     <div className="ticket-header">
                       <div className="ticket-type">Non-PUPian / Alumni</div>
-                      <div className="ticket-badge">Open</div>
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.35rem' }}>
+                        <div className="ticket-badge">Open</div>
+                        {!soldOut && (
+                          <div style={{
+                            fontFamily: "'Syne', sans-serif", fontSize: '0.6rem', fontWeight: 700,
+                            letterSpacing: '0.12em', textTransform: 'uppercase',
+                            background: 'var(--red)', color: '#fff',
+                            padding: '0.2rem 0.55rem', borderRadius: '4px',
+                            animation: 'pulse-badge 1.8s ease-in-out infinite',
+                          }}>
+                            🔴 Final Slots
+                          </div>
+                        )}
+                      </div>
                     </div>
                     <div className="ticket-price">
                       <span className="price-amount">₱{slots.public.price}</span>
@@ -1395,7 +1413,7 @@ export default function Landing() {
                         <div className="slot-bar-fill" style={{ width: `${pct}%` }} />
                       </div>
                       <div className="slot-text">
-                        {soldOut ? <><i className="fa-solid fa-circle-xmark" style={{ marginRight: '0.35rem', color: 'var(--red)' }} /> Sold Out</> : `${remaining} slots remaining`}
+                        {soldOut ? <><i className="fa-solid fa-circle-xmark" style={{ marginRight: '0.35rem', color: 'var(--red)' }} /> Sold Out</> : `${remaining} final slots remaining`}
                       </div>
                     </div>
                     {!soldOut && (
