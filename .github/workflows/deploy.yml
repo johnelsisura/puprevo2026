@@ -24,7 +24,10 @@ jobs:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
           VITE_TURNSTILE_SITE_KEY: ${{ secrets.VITE_TURNSTILE_SITE_KEY }}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 65313a057e5ddf1f57c7dd83b79fe86db8dcf17e
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
