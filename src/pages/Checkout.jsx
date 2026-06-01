@@ -1017,6 +1017,7 @@ export default function Checkout() {
           body: { token: turnstileToken, orderData },
           headers: {
             Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+        },
       })
 
       if (fnError || fnData?.error) {
