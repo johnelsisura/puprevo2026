@@ -877,7 +877,6 @@ export default function Checkout() {
     if (step !== 1 && turnstileWidgetId.current != null) {
       try { window.turnstile?.reset(turnstileWidgetId.current) } catch (_) {}
       turnstileWidgetId.current = null
-      setTurnstileToken('')
     }
   }, [step])
 
