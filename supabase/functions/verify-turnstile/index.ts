@@ -24,6 +24,7 @@ Deno.serve(async (req) => {
     })
 
     const cfData = await cfRes.json()
+    console.log('CF response:', JSON.stringify(cfData))
 
     if (!cfData.success) {
       return new Response(JSON.stringify({ error: 'CAPTCHA verification failed. Please try again.' }), {
