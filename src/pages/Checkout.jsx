@@ -1014,9 +1014,6 @@ export default function Checkout() {
 
       const { data: fnData, error: fnError } = await supabase.functions.invoke('verify-turnstile', {
           body: { token: turnstileToken, orderData },
-          headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-        },
       })
 
       if (fnError || fnData?.error) {
