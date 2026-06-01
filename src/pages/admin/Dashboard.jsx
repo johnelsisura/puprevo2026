@@ -1363,13 +1363,13 @@ export default function Dashboard() {
   // ── Auth guard ──────────────────────────────────────────────────────────
   useEffect(() => {
     supabase.auth.getSession().then(async ({ data }) => {
-      if (!data.session) { navigate('/admin'); return }
+      if (!data.session) { navigate('/portal1721'); return }
       const { data: adminData } = await supabase
         .from('admin_users')
         .select('role')
         .eq('id', data.session.user.id)
         .single()
-      if (adminData?.role === 'scanner') navigate('/admin/scanner')
+      if (adminData?.role === 'scanner') navigate('/portal1721/scanner220')
     })
   }, [navigate])
 
@@ -1555,7 +1555,7 @@ export default function Dashboard() {
 
   async function handleSignOut() {
     await supabase.auth.signOut()
-    navigate('/admin')
+    navigate('/portal1721')
   }
 
   // ── Computed ────────────────────────────────────────────────────────────
@@ -1637,7 +1637,7 @@ export default function Dashboard() {
             <img src="/logo.png" alt="PUP REVO" className="topnav-logo" />
             <div className="topnav-links">
               <button className="nav-item active"><i className="fa-solid fa-chart-line nav-icon" /> <span className="nav-label">Dashboard</span></button>
-              <button className="nav-item nav-scanner" onClick={() => navigate('/admin/scanner')}><i className="fa-solid fa-qrcode nav-icon" /><span className="nav-label"> Scanner</span></button>
+              <button className="nav-item nav-scanner" onClick={() => navigate('/portal1721/scanner220')}><i className="fa-solid fa-qrcode nav-icon" /><span className="nav-label"> Scanner</span></button>
               <button className="nav-item nav-settings" onClick={() => { setEventForm(event || {}); setEditEvent(true) }}><i className="fa-solid fa-gear nav-icon" /><span className="nav-label"> Event Settings</span></button>
             </div>
             <div className="topnav-right">
@@ -1658,7 +1658,7 @@ export default function Dashboard() {
             </div>
             <div className="header-actions">
               <button className="btn-outline" onClick={fetchData}><i className="fa-solid fa-rotate-right" /> Refresh</button>
-              <button className="btn-red" onClick={() => navigate('/admin/scanner')}>
+              <button className="btn-red" onClick={() => navigate('/portal1721/scanner220')}>
                 <i className="fa-solid fa-qrcode" /> Open Scanner
               </button>
             </div>

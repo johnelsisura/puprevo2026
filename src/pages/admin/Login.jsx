@@ -234,9 +234,9 @@ export default function Login() {
 
     // Redirect based on role
     if (adminData.role === 'scanner') {
-      navigate('/admin/scanner')
+      navigate('/portal1721/scanner220')
     } else {
-      navigate('/admin/dashboard')
+      navigate('/portal1721/panel62')
     }
   }
 

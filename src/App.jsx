@@ -16,9 +16,9 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/ticket/:code" element={<Ticket />} />
-        <Route path="/admin" element={<AdminLogin />} />
-        <Route path="/admin/dashboard" element={<Dashboard />} />
-        <Route path="/admin/scanner" element={<Scanner />} />
+        <Route path="/portal1721" element={<AdminLogin />} />
+        <Route path="/portal1721/panel62" element={<Dashboard />} />
+        <Route path="/portal1721/scanner220" element={<Scanner />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/news" element={<NewsPress />} />
         <Route path="/news/:slug" element={<NewsArticle />} />

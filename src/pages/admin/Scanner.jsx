@@ -717,7 +717,7 @@ export default function Scanner() {
   // ── Auth guard ──────────────────────────────────────────────────────────
   useEffect(() => {
     supabase.auth.getSession().then(async ({ data }) => {
-      if (!data.session) { navigate('/admin'); return }
+      if (!data.session) { navigate('/portal1721'); return }
       const { data: adminData } = await supabase
         .from('admin_users')
         .select('role')
@@ -878,7 +878,7 @@ export default function Scanner() {
 
   async function handleSignOut() {
     await supabase.auth.signOut()
-    navigate('/admin')
+    navigate('/portal1721')
   }
 
   // ── Render ──────────────────────────────────────────────────────────────
@@ -895,7 +895,7 @@ export default function Scanner() {
           <div className="sidebar-sub">Admin Portal</div>
           <div className="nav-label">Menu</div>
           {userRole === 'superadmin' && (
-            <button className="nav-item" onClick={() => navigate('/admin/dashboard')}>
+            <button className="nav-item" onClick={() => navigate('/portal1721/panel62')}>
               <span className="nav-icon"><i className="fa-solid fa-chart-line" /></span> Dashboard
             </button>
           )}
