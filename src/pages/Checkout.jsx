@@ -679,6 +679,8 @@ function validateStep1(form) {
   const errors = {}
   if (!form.full_name.trim()) errors.full_name = 'Required'
   if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) errors.email = 'Valid email required'
+  if (!form.confirm_email.trim()) errors.confirm_email = 'Please confirm your email'
+  else if (form.confirm_email.trim().toLowerCase() !== form.email.trim().toLowerCase()) errors.confirm_email = 'Emails do not match'
   if (!form.phone.trim() || form.phone.replace(/\D/g, '').length < 10) errors.phone = 'Valid PH number required'
   if (!form.school_affiliation.trim()) errors.school_affiliation = 'Required'
   if (!form.privacy_consent) errors.privacy_consent = 'You must agree to the Data Privacy Notice to continue'
@@ -741,12 +743,16 @@ export default function Checkout() {
   const [navHeight, setNavHeight] = useState(56)
   const [privacyOpen, setPrivacyOpen] = useState(false)
   const [termsOpen, setTermsOpen] = useState(false)
+  const [turnstileToken, setTurnstileToken] = useState('')
+  const turnstileRef = useRef(null)
+  const turnstileWidgetId = useRef(null)
   const navRef = useRef(null)
 
   const [form, setForm] = useState({
     // Step 1
     full_name: '',
     email: '',
+    confirm_email: '',
     phone: '',
     school_affiliation: '',
     privacy_consent: false,
@@ -802,26 +808,17 @@ export default function Checkout() {
         }
       } catch (_) { /* ignore bad cache */ }
 
-      const { data: types } = await supabase
-        .from('ticket_types')
-        .select('id, name, price, total_slots')
+      const { data: slotData } = await supabase
+        .from('slot_counts')
+        .select('ticket_type_id, ticket_type, price, total_slots, sold_count')
 
-      if (types) {
-        const { data: counts } = await supabase
-          .from('orders')
-          .select('ticket_type_id')
-          .neq('payment_status', 'cancelled')
-
-        const countMap = {}
-        if (counts) {
-          counts.forEach(o => {
-            countMap[o.ticket_type_id] = (countMap[o.ticket_type_id] || 0) + 1
-          })
-        }
-
-        const enriched = types.map(t => ({
-          ...t,
-          sold_count: countMap[t.id] || 0,
+      if (slotData) {
+        const enriched = slotData.map(t => ({
+          id: t.ticket_type_id,
+          name: t.ticket_type,
+          price: t.price,
+          total_slots: t.total_slots,
+          sold_count: t.sold_count,
         }))
 
         sessionStorage.setItem('ticket_types_cache', JSON.stringify({
@@ -843,6 +840,46 @@ export default function Checkout() {
     }
     fetchTickets()
   }, [])
+
+  // Load Cloudflare Turnstile script
+  useEffect(() => {
+    if (document.getElementById('cf-turnstile-script')) return
+    const script = document.createElement('script')
+    script.id = 'cf-turnstile-script'
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js'
+    script.async = true
+    script.defer = true
+    document.head.appendChild(script)
+  }, [])
+
+  // Render Turnstile widget when Step 1 is active
+  useEffect(() => {
+    if (step !== 1) return
+    const tryRender = () => {
+      if (!turnstileRef.current || !window.turnstile) return
+      if (turnstileWidgetId.current != null) return
+      turnstileWidgetId.current = window.turnstile.render(turnstileRef.current, {
+        sitekey: import.meta.env.VITE_TURNSTILE_SITE_KEY || '1x00000000000000000000AA', // replace with your real key
+        callback: (token) => setTurnstileToken(token),
+        'expired-callback': () => setTurnstileToken(''),
+        'error-callback': () => setTurnstileToken(''),
+        theme: 'dark',
+      })
+    }
+    const interval = setInterval(() => {
+      if (window.turnstile) { tryRender(); clearInterval(interval) }
+    }, 200)
+    return () => clearInterval(interval)
+  }, [step])
+
+  // Reset Turnstile when leaving Step 1
+  useEffect(() => {
+    if (step !== 1 && turnstileWidgetId.current != null) {
+      try { window.turnstile?.reset(turnstileWidgetId.current) } catch (_) {}
+      turnstileWidgetId.current = null
+      setTurnstileToken('')
+    }
+  }, [step])
 
   // Nav scroll effect
   useEffect(() => {
@@ -877,6 +914,9 @@ export default function Checkout() {
     let errs = {}
     if (step === 1) errs = validateStep1(form)
     if (step === 2) errs = validateStep2(form)
+    if (step === 1 && !turnstileToken) {
+      errs.turnstile = 'Please complete the CAPTCHA verification before continuing.'
+    }
     setErrors(errs)
     if (Object.keys(errs).length === 0) setStep(s => s + 1)
   }
@@ -949,44 +989,45 @@ export default function Checkout() {
         form.waiver_file            ? uploadFile('waiver-forms',         form.waiver_file)            : null,
       ])
 
-      const { data: order, error } = await supabase
-        .from('orders')
-        .insert({
-          ticket_type_id:        form.ticket_type_id,
-          full_name:             form.full_name,
-          email:                 form.email,
-          phone:                 form.phone,
-          school_affiliation:    form.school_affiliation,
-          attendee_type:         isPUPian ? 'pup_student' : form.attendee_type,
-          student_id:            form.student_id   || null,
-          department:            form.department   || null,
-          year_level:            form.year_level   || null,
-          block:                 form.block        || null,
-          campus:                form.campus       || null,
-          id_number:             form.id_number    || null,
-          cor_or_id_url,
-          valid_id_url,
-          waiver_url,
-          payment_method:        form.payment_method,
-          payment_reference:     form.payment_reference      || null,
-          payment_screenshot_url,
-          payment_status:        'pending',
-          amount_paid:           totalAmount,
-        })
-        .select()
-        .single()
+      const orderData = {
+        ticket_type_id:        form.ticket_type_id,
+        full_name:             form.full_name,
+        email:                 form.email,
+        phone:                 form.phone,
+        school_affiliation:    form.school_affiliation,
+        attendee_type:         isPUPian ? 'pup_student' : form.attendee_type,
+        student_id:            form.student_id   || null,
+        department:            form.department   || null,
+        year_level:            form.year_level   || null,
+        block:                 form.block        || null,
+        campus:                form.campus       || null,
+        id_number:             form.id_number    || null,
+        cor_or_id_url,
+        valid_id_url,
+        waiver_url,
+        payment_method:        form.payment_method,
+        payment_reference:     form.payment_reference      || null,
+        payment_screenshot_url,
+        payment_status:        'pending',
+        amount_paid:           totalAmount,
+      }
 
-      if (error) {
-        if (error.code === '23505' && error.message.includes('student_id')) {
+      const { data: fnData, error: fnError } = await supabase.functions.invoke('verify-turnstile', {
+        body: { token: turnstileToken, orderData },
+      })
+
+      if (fnError || fnData?.error) {
+        const msg = fnData?.error || fnError?.message || 'Something went wrong. Please try again.'
+        if (msg.includes('student_id') || msg.includes('23505')) {
           setErrors({ student_id: 'This Student Number already has a ticket registered.' })
           setStep(2)
           setLoading(false)
           return
         }
-        throw error
+        throw new Error(msg)
       }
 
-      navigate(`/ticket/${order.ticket_code}`)
+      navigate(`/ticket/${fnData.ticket_code}`)
     } catch (err) {
       console.error(err)
       setErrors({ submit: err.message || 'Something went wrong. Please try again.' })
@@ -1092,6 +1133,20 @@ export default function Checkout() {
               </div>
 
               <div className="field-group">
+                <label>Confirm Email Address *</label>
+                <input
+                  className={errors.confirm_email ? 'error' : ''}
+                  type="email"
+                  placeholder="Re-enter your email"
+                  value={form.confirm_email}
+                  onChange={e => set('confirm_email', e.target.value)}
+                  onPaste={e => e.preventDefault()}
+                />
+                {errors.confirm_email && <div className="field-error">{errors.confirm_email}</div>}
+                <div className="field-hint">Must match the email above. Paste is disabled.</div>
+              </div>
+
+              <div className="field-group">
                 <label>{isPUPian ? 'Campus * (Required — No N/A)' : 'School / Affiliation * (Required — No N/A)'}</label>
                 <input
                   className={errors.school_affiliation ? 'error' : ''}
@@ -1130,6 +1185,12 @@ export default function Checkout() {
                   </div>
                 </div>
                 {errors.privacy_consent && <div className="field-error" style={{ marginTop: '0.5rem' }}>{errors.privacy_consent}</div>}
+              </div>
+
+              {/* Cloudflare Turnstile CAPTCHA */}
+              <div style={{ marginBottom: '1.25rem' }}>
+                <div ref={turnstileRef} />
+                {errors.turnstile && <div className="field-error" style={{ marginTop: '0.5rem' }}>{errors.turnstile}</div>}
               </div>
 
               <div className="step-nav">

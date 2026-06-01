@@ -510,8 +510,6 @@ export default function Ticket() {
         ticket_code,
         full_name,
         email,
-        phone,
-        student_id,
         payment_method,
         payment_status,
         amount_paid,
@@ -793,7 +791,7 @@ export default function Ticket() {
                 Screenshot this page to save your ticket. Save this link — this will be your first confirmed ticket and the final QR code for the event will appear here once confirmed.
                 <br /><br />
                 A copy has been sent to{' '}
-                <strong style={{ color: 'var(--cream)' }}>{ticket.email}</strong>
+                <strong style={{ color: 'var(--cream)' }}>{(() => { const [user, domain] = ticket.email.split('@'); return user.slice(0, 2) + '***@' + domain; })()}</strong>
               </div>
 
               {/* Presented by */}
