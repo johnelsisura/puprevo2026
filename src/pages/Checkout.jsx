@@ -852,9 +852,9 @@ export default function Checkout() {
     document.head.appendChild(script)
   }, [])
 
-  // Render Turnstile widget when Step 1 is active
+  // Render Turnstile widget when Step 3 is active
   useEffect(() => {
-    if (step !== 1) return
+    if (step !== 3) return
     const tryRender = () => {
       if (!turnstileRef.current || !window.turnstile) return
       if (turnstileWidgetId.current != null) return
@@ -872,11 +872,12 @@ export default function Checkout() {
     return () => clearInterval(interval)
   }, [step])
 
-  // Reset Turnstile when leaving Step 1
+  // Reset Turnstile when leaving Step 3
   useEffect(() => {
-    if (step !== 1 && turnstileWidgetId.current != null) {
+    if (step !== 3 && turnstileWidgetId.current != null) {
       try { window.turnstile?.reset(turnstileWidgetId.current) } catch (_) {}
       turnstileWidgetId.current = null
+      setTurnstileToken('')
     }
   }, [step])
 
@@ -913,9 +914,6 @@ export default function Checkout() {
     let errs = {}
     if (step === 1) errs = validateStep1(form)
     if (step === 2) errs = validateStep2(form)
-    if (step === 1 && !turnstileToken) {
-      errs.turnstile = 'Please complete the CAPTCHA verification before continuing.'
-    }
     setErrors(errs)
     if (Object.keys(errs).length === 0) setStep(s => s + 1)
   }
@@ -977,6 +975,9 @@ export default function Checkout() {
     console.log('Turnstile token:', turnstileToken)
 
     const errs = validateStep3(form)
+    if (!turnstileToken) {
+      errs.turnstile = 'Please wait for the security check to complete.'
+    }
     setErrors(errs)
     if (Object.keys(errs).length > 0) return
 
@@ -1185,12 +1186,6 @@ export default function Checkout() {
                   </div>
                 </div>
                 {errors.privacy_consent && <div className="field-error" style={{ marginTop: '0.5rem' }}>{errors.privacy_consent}</div>}
-              </div>
-
-              {/* Cloudflare Turnstile CAPTCHA */}
-              <div style={{ marginBottom: '1.25rem' }}>
-                <div ref={turnstileRef} />
-                {errors.turnstile && <div className="field-error" style={{ marginTop: '0.5rem' }}>{errors.turnstile}</div>}
               </div>
 
               <div className="step-nav">
@@ -1548,6 +1543,12 @@ export default function Checkout() {
                   </div>
                 </div>
               )}
+
+              {/* Cloudflare Turnstile CAPTCHA */}
+              <div style={{ marginBottom: "1.25rem", marginTop: "1rem" }}>
+                <div ref={turnstileRef} />
+                {errors.turnstile && <div className="field-error" style={{ marginTop: "0.5rem" }}>{errors.turnstile}</div>}
+              </div>
 
               {errors.submit && (
                 <div className="field-error" style={{ marginTop: '1rem' }}>{errors.submit}</div>
