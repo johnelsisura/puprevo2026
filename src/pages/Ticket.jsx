@@ -767,7 +767,7 @@ export default function Ticket() {
                     Walk-in Payment Required
                   </strong>
                   Please present this QR code at the registration table and pay{' '}
-                  ₱{Number(ticket.price ?? ticket.amount_paid).toFixed(2)} during your scheduled walk-in payment.
+                  ₱{Number(ticket.price ?? ticket.amount_paid).toFixed(2)} during the scheduled walk-in payment period.
                   Your slot is reserved but <em>not confirmed</em> until payment is made.
                 </div>
               )}
