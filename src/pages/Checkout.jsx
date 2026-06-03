@@ -1025,6 +1025,12 @@ export default function Checkout() {
           setLoading(false)
           return
         }
+        if (msg.includes('CAPTCHA')) {
+          throw new Error('Oops! Something went wrong. Please refresh the page and resubmit your order quickly.')
+        }
+        if (msg.includes('No slots available for this ticket type.')) {
+          throw new Error('Sorry, this ticket type is already sold out.')
+        }
         throw new Error(msg)
       }
 
