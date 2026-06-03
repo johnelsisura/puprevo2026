@@ -1012,12 +1012,18 @@ export default function Checkout() {
         amount_paid:           totalAmount,
       }
 
-      const { data: fnData, error: fnError } = await supabase.functions.invoke('verify-turnstile', {
-          body: { token: turnstileToken, orderData },
+      const fnRes = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/verify-turnstile`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+        },
+        body: JSON.stringify({ token: turnstileToken, orderData }),
       })
+      const fnData = await fnRes.json()
 
-      if (fnError || fnData?.error) {
-        const msg = fnData?.error || fnError?.message || 'Something went wrong. Please try again.'
+      if (!fnRes.ok) {
+        const msg = fnData?.error || 'Something went wrong. Please try again.'
         if (msg.includes('student_id') || msg.includes('23505')) {
           setErrors({ student_id: 'This Student Number already has a ticket registered.' })
           setStep(2)
