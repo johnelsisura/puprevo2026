@@ -1781,7 +1781,7 @@ export default function Landing() {
               {/* Body */}
               <div className="toast-body">
                 <div className="toast-title">ABANGERS YARN? 👀</div>
-                <div className="toast-subtitle">STAY TUNED • OFFICIAL UPDATES COMING SOON</div>
+                <div className="toast-subtitle">STAY TUNED • UPDATES COMING SOON</div>
                 <div className="toast-msg">
                   📢 Shoutout sa mga abangers diyan.
                   <br /><br />
