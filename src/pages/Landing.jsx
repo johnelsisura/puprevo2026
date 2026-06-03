@@ -1305,7 +1305,7 @@ export default function Landing() {
           <div className="tickets-urgency">
             <span className="urgency-dot">Very Limited Tickets Only</span>
             <span className="urgency-wave-pill">
-              ENDS SOON <span className="urgency-wave-sep">·</span> UNTIL MAY 31 ONLY
+              STAY TUNED <span className="urgency-wave-sep">·</span> UPDATES COMING SOON
             </span>
           </div>
 
