@@ -972,7 +972,6 @@ export default function Checkout() {
 
   async function handleSubmit() {
     if (loading) return
-    console.log('Turnstile token:', turnstileToken)
 
     const errs = validateStep3(form)
     if (!turnstileToken) {
