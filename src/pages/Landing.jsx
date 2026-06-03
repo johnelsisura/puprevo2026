@@ -1142,11 +1142,11 @@ export default function Landing() {
           <div className="ticker-track">
             {[...Array(2)].map((_, i) => (
               <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
-                <span className="ticker-item"><i className="fa-solid fa-ticket" /> Limited tickets available — Buy now until May 31 only. </span>
+                <span className="ticker-item"><i className="fa-solid fa-ticket" /> Join thousands of REVO attendees </span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Buy your tickets now. TICKET SELLING ENDS IN 2 DAYS. </span>
+                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are running out — Buy your tickets now </span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-clock" /> See you Tomorrow, May 30, at Lunan for onsite ticket selling and physical ticket claiming! | Last Day of Ticket Selling: May 31 · Don't miss out. </span>
+                <span className="ticker-item"><i className="fa-solid fa-clock" /> Event is on June 20 — secure your slot now. </span>
                 <span className="ticker-sep">✦</span>
                 <span className="ticker-item"><i className="fa-solid fa-star" /> PUP REVO 2026 · June 20 · PUP Main Campus Oval</span>
                 <span className="ticker-sep">✦</span>
@@ -1780,18 +1780,18 @@ export default function Landing() {
               </div>
               {/* Body */}
               <div className="toast-body">
-                <div className="toast-title">LOW TICKET ALERT 🚨</div>
-                <div className="toast-subtitle">DON'T MISS OUT • BUY YOUR TICKETS NOW</div>
+                <div className="toast-title">ABANGERS YARN? 👀</div>
+                <div className="toast-subtitle">STAY TUNED • OFFICIAL UPDATES COMING SOON</div>
                 <div className="toast-msg">
-                  📢 Shoutout sa mga kabataan diyan.
+                  📢 Shoutout sa mga abangers diyan.
                   <br /><br />
-                  Quick reminder lang: <strong style={{color:'var(--cream)'}}>Ticket selling ends tomorrow (May 31)</strong>, and the remaining slots for both PUPian and Non-PUPian Tickets are becoming more limited.
+                  We're verifying the orders, we'll schedule dates this June for the walk-in payments and claiming of physical tickets.
                   <br /><br />
-                  Once these slots are claimed, <strong style={{color:'var(--cream)'}}>no additional tickets will be released.</strong> June is for ticket claiming only. 🎟️
+                  At dahil maraming nagrerequest... we hear you! We're still working on it hehe. Kaya kung isa ka sa mga hindi naka-secure noon, huwag masyadong mawalan ng pag-asa. 😌
                   <br /><br />
-                  Kung ilang araw mo nang sinasabing "mamaya na lang ako bibili," ito na ang sign mo to secure your tickets now!
+                  <strong style={{color:'var(--cream)'}}>📌 Follow our page and stay tuned for official announcements and updates.</strong> Kapag may dapat malaman, kayo ang unang makakaalam.
                   <br /><br />
-                  <em>P.S. Beh, sagutan mo na yung waiver. Hindi 'yan kusang masasagutan. Tinatamad yarn? 😭</em>
+                  <em>P.S. 'Wag puro refresh nang refresh ah. Follow mo muna page namin. 😭</em>
                 </div>
                 <button className="toast-dismiss" onClick={() => { setToastVisible(false); scrollTo('tickets') }}>
                   Buy Tickets
