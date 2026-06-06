@@ -1228,16 +1228,23 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     border: 1px solid rgba(34,197,94,0.2);
   }
   .payment-card.disabled {
-    opacity: 0.38; cursor: not-allowed; pointer-events: none;
-    filter: grayscale(0.6);
+    cursor: not-allowed; pointer-events: none;
+    border-color: rgba(255,59,48,0.4);
+    background: rgba(255,59,48,0.06);
+    opacity: 0.6;
+  }
+  .payment-card.disabled .payment-card-icon,
+  .payment-card.disabled .payment-card-name,
+  .payment-card.disabled .payment-card-desc {
+    color: rgba(255,100,90,0.55);
   }
   .payment-card-unavailable {
     position: absolute; top: 0.6rem; right: 0.6rem;
     font-family: 'Syne', sans-serif; font-size: 0.55rem; font-weight: 700;
     letter-spacing: 0.08em;
-    background: rgba(255,255,255,0.06); color: rgba(250,245,233,0.35);
+    background: rgba(255,59,48,0.18); color: #ff6b6b;
     padding: 0.15rem 0.4rem; border-radius: 2rem;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,59,48,0.35);
   }
   .gcash-only-notice {
     display: flex; align-items: flex-start; gap: 0.75rem;
