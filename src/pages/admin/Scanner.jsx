@@ -65,103 +65,113 @@ const css = `
   }
   @keyframes gridDrift { 0%{background-position:0 0} 100%{background-position:60px 60px} }
 
-  .sidebar, .main { position: relative; z-index: 1; }
+  .topnav-wrapper, .main { position: relative; z-index: 1; }
 
-  @media (max-width: 768px) {
-    .admin-wrap { grid-template-columns: 1fr; }
-    .sidebar { display: none; }
-  }
-
-  /* ── Sidebar ── */
-  .sidebar {
-    background: var(--sidebar);
-    border-right: 1px solid var(--border);
-    padding: 2rem 1.25rem;
-    display: flex;
-    flex-direction: column;
+  /* ── Topnav ── */
+  .topnav-wrapper {
     position: sticky;
     top: 0;
-    height: 100vh;
-    overflow-y: auto;
+    z-index: 10;
+    width: 100%;
   }
 
-  .sidebar-logo {
-    display: block;
-    width: 72px;
-    margin: 0 auto 0.5rem auto;
+  .topnav {
+    background: rgba(6,11,28,0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    padding: 0 2.5rem;
+    height: 64px;
+    gap: 2rem;
+    width: 100%;
   }
 
-  .sidebar-sub {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 2rem;
-    text-align: center;
+  .topnav-logo {
+    height: 36px;
+    flex-shrink: 0;
   }
 
-  .nav-label {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.58rem;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: rgba(250,245,233,0.2);
-    margin-bottom: 0.5rem;
-    padding: 0 0.5rem;
+  .topnav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex: 1;
+    justify-content: center;
   }
 
   .nav-item {
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-    padding: 0.65rem 0.75rem;
-    border-radius: 6px;
     font-family: 'Syne', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(250,245,233,0.55);
     cursor: pointer;
     border: none;
     background: none;
-    width: 100%;
-    text-align: left;
-    transition: background 0.15s, color 0.15s;
-    margin-bottom: 0.15rem;
+    white-space: nowrap;
+    padding: 0.4rem 0.85rem;
+    border-radius: 6px;
+    transition: color 0.18s, background 0.18s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
   }
 
-  .nav-item:hover { background: rgba(255,255,255,0.04); color: var(--cream); }
-  .nav-item.active { background: rgba(255,59,48,0.12); color: var(--cream); }
-  .nav-item.active .nav-icon { color: var(--red); }
+  .nav-item:hover { color: var(--cream); background: rgba(255,255,255,0.05); }
 
-  .nav-icon { font-size: 1rem; width: 20px; text-align: center; }
+  .nav-item.active {
+    color: var(--cream);
+    background: rgba(255,59,48,0.15);
+    border: 1px solid rgba(255,59,48,0.3);
+  }
 
-  .sidebar-footer {
-    margin-top: auto;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
+  .nav-icon { display: inline; font-size: 0.8rem; }
+
+  .topnav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
   }
 
   .signout-btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.65rem;
-    width: 100%;
-    padding: 0.65rem 0.75rem;
-    border-radius: 6px;
+    gap: 0.5rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 4px;
     font-family: 'Syne', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
     cursor: pointer;
-    border: none;
-    background: none;
-    transition: background 0.15s, color 0.15s;
+    border: 1.5px solid rgba(255,255,255,0.15);
+    background: transparent;
+    transition: background 0.18s, border-color 0.18s;
   }
 
-  .signout-btn:hover { background: rgba(255,59,48,0.1); color: #ff8080; }
+  .signout-btn:hover { background: rgba(228,0,27,0.12); border-color: var(--red); color: #ff8080; }
+
+  @media (max-width: 768px) {
+    .topnav { padding: 0 1.25rem; height: 56px; gap: 1rem; }
+    .topnav-links { gap: 0.5rem; }
+    .nav-item { font-size: 0.62rem; letter-spacing: 0.1em; padding: 0.35rem 0.6rem; }
+    /* On scanner page mobile: hide Dashboard text, keep Scanner text */
+    .nav-item.nav-dashboard .nav-label { display: none; }
+    .signout-btn span { display: none; }
+    .signout-btn i { margin: 0; }
+    .signout-btn { padding: 0.55rem 0.75rem; }
+  }
+
+  @media (max-width: 500px) {
+    .topnav-links { gap: 0.25rem; }
+    .nav-item { font-size: 0.55rem; padding: 0.3rem 0.5rem; }
+  }
 
   /* ── Main ── */
   .main {
@@ -169,6 +179,9 @@ const css = `
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    z-index: 1;
+    flex: 1;
   }
 
   @media (max-width: 600px) { .main { padding: 1.5rem; } }
@@ -698,6 +711,129 @@ const css = `
 
   @keyframes flashIn  { from { opacity: 0; transform: translateX(-50%) translateY(-10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
   @keyframes flashOut { to   { opacity: 0; transform: translateX(-50%) translateY(-10px); } }
+
+  /* ── Check-in History ── */
+  .history-card {
+    width: 100%;
+    max-width: 560px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .history-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .history-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .history-count {
+    background: rgba(74,222,128,0.1);
+    border: 1px solid rgba(74,222,128,0.25);
+    color: #4ade80;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2rem;
+  }
+
+  .history-refresh {
+    font-size: 0.62rem;
+    color: var(--muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .history-refresh:hover { color: var(--cream); }
+
+  .history-list {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .history-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+
+  .history-item:last-child { border-bottom: none; }
+
+  .history-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    flex-shrink: 0;
+  }
+
+  .history-info { flex: 1; min-width: 0; }
+
+  .history-name {
+    font-weight: 500;
+    color: var(--cream);
+    font-size: 0.88rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .history-detail {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
+  .history-time {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.62rem;
+    color: rgba(250,245,233,0.2);
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .history-empty {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .history-loading {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
 `
 
 export default function Scanner() {
@@ -713,6 +849,8 @@ export default function Scanner() {
   const [scanLog, setScanLog] = useState([]) // recent scan history
   const [successFlash, setSuccessFlash] = useState('')
   const [userRole, setUserRole] = useState(null)
+  const [checkInHistory, setCheckInHistory] = useState([])
+  const [historyLoading, setHistoryLoading] = useState(false)
 
   // ── Auth guard ──────────────────────────────────────────────────────────
   useEffect(() => {
@@ -735,6 +873,9 @@ export default function Scanner() {
       }
     }
   }, [])
+
+  // ── Fetch history on mount ──────────────────────────────────────────────
+  useEffect(() => { fetchHistory() }, [])
 
   // ── Start/stop scanner ──────────────────────────────────────────────────
   async function startScanner() {
@@ -849,6 +990,7 @@ export default function Scanner() {
       addLog('success', modal.ticket.full_name, `Checked in — ${modal.ticket.ticket_code}`)
       setSuccessFlash(`✓ ${modal.ticket.full_name} checked in!`)
       setTimeout(() => setSuccessFlash(''), 2000)
+      fetchHistory()
     }
 
     setActionLoading(false)
@@ -876,6 +1018,18 @@ export default function Scanner() {
     setScanLog(prev => [entry, ...prev].slice(0, 20))
   }
 
+  // ── Fetch check-in history ─────────────────────────────────────────────
+  async function fetchHistory() {
+    setHistoryLoading(true)
+    const { data } = await supabase
+      .from('orders')
+      .select('id, full_name, ticket_code, checked_in_at, ticket_types(name)')
+      .eq('is_checked_in', true)
+      .order('checked_in_at', { ascending: false })
+    if (data) setCheckInHistory(data)
+    setHistoryLoading(false)
+  }
+
   async function handleSignOut() {
     await supabase.auth.signOut()
     navigate('/portal1721')
@@ -889,25 +1043,27 @@ export default function Scanner() {
       {successFlash && <div className="success-flash">{successFlash}</div>}
 
       <div className="admin-wrap">
-        {/* Sidebar */}
-        <aside className="sidebar">
-          <img src="/logo.png" alt="PUP REVO" className="sidebar-logo" />
-          <div className="sidebar-sub">Admin Portal</div>
-          <div className="nav-label">Menu</div>
-          {userRole === 'superadmin' && (
-            <button className="nav-item" onClick={() => navigate('/portal1721/panel62')}>
-              <span className="nav-icon"><i className="fa-solid fa-chart-line" /></span> Dashboard
-            </button>
-          )}
-          <button className="nav-item active">
-            <span className="nav-icon"><i className="fa-solid fa-qrcode" /></span> Scanner
-          </button>
-          <div className="sidebar-footer">
-            <button className="signout-btn" onClick={handleSignOut}>
-              <i className="fa-solid fa-right-from-bracket" /> Sign Out
-            </button>
-          </div>
-        </aside>
+        {/* ── Topnav ── */}
+        <div className="topnav-wrapper">
+          <nav className="topnav">
+            <img src="/logo.png" alt="PUP REVO" className="topnav-logo" />
+            <div className="topnav-links">
+              <button className="nav-item active">
+                <i className="fa-solid fa-qrcode nav-icon" /> <span className="nav-label">Scanner</span>
+              </button>
+              {userRole === 'superadmin' && (
+                <button className="nav-item nav-dashboard" onClick={() => navigate('/portal1721/panel62')}>
+                  <i className="fa-solid fa-chart-line nav-icon" /><span className="nav-label"> Dashboard</span>
+                </button>
+              )}
+            </div>
+            <div className="topnav-right">
+              <button className="signout-btn" onClick={handleSignOut}>
+                <i className="fa-solid fa-right-from-bracket" /> <span>Sign Out</span>
+              </button>
+            </div>
+          </nav>
+        </div>
 
         {/* Main */}
         <main className="main">
@@ -998,6 +1154,46 @@ export default function Scanner() {
               </div>
             ))}
           </div>
+
+          {/* ── Check-in History ── */}
+          <div className="history-card">
+            <div className="history-header">
+              <div className="history-title">
+                <i className="fa-solid fa-circle-check" style={{ color: '#4ade80' }} />
+                Check-in History
+                {!historyLoading && (
+                  <span className="history-count">{checkInHistory.length} checked in</span>
+                )}
+              </div>
+              <button className="history-refresh" onClick={fetchHistory} disabled={historyLoading}>
+                <i className={`fa-solid fa-rotate-right ${historyLoading ? 'fa-spin' : ''}`} />
+                Refresh
+              </button>
+            </div>
+            <div className="history-list">
+              {historyLoading ? (
+                <div className="history-loading">Loading...</div>
+              ) : checkInHistory.length === 0 ? (
+                <div className="history-empty">No check-ins yet.</div>
+              ) : checkInHistory.map(order => (
+                <div className="history-item" key={order.id}>
+                  <div className="history-dot" />
+                  <div className="history-info">
+                    <div className="history-name">{order.full_name}</div>
+                    <div className="history-detail">
+                      {order.ticket_types?.name} &nbsp;·&nbsp; {order.ticket_code}
+                    </div>
+                  </div>
+                  <div className="history-time">
+                    {order.checked_in_at
+                      ? new Date(order.checked_in_at).toLocaleTimeString('en-PH', { hour: '2-digit', minute: '2-digit' })
+                      : '—'}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </main>
       </div>
 
