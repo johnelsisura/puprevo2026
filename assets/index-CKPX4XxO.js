@@ -3515,8 +3515,8 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   body { background: var(--dark); color: var(--cream); font-family: 'DM Sans', sans-serif; }
 
   .admin-wrap {
-    display: grid;
-    grid-template-columns: 220px 1fr;
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
     position: relative;
   }
