@@ -1780,21 +1780,21 @@ export default function Landing() {
               </div>
               {/* Body */}
               <div className="toast-body">
-                <div className="toast-title">ABANGERS YARN? 👀</div>
-                <div className="toast-subtitle">STAY TUNED • UPDATES COMING SOON</div>
+                <div className="toast-title">PARA SA ABANGERS DYAN 👀</div>
+                <div className="toast-subtitle">LAST WAVE · JUNE 11, 12AM</div>
                 <div className="toast-msg">
-                  📢 Shoutout sa mga abangers diyan.
+                  We see you. We hear you. And honestly? We respect the patience. 🫡
                   <br /><br />
-                  We're verifying the orders, we'll schedule dates this June for the walk-in payments and claiming of physical tickets.
+                  Good news: tickets are officially back on the table — but only for a very, very limited time. Like, blink-and-you'll-miss-it limited.
                   <br /><br />
-                  At dahil maraming nagrerequest... we hear you! We're still working on it hehe. Kaya kung isa ka sa mga hindi naka-secure noon, huwag masyadong mawalan ng pag-asa. 😌
+                  <strong style={{color:'var(--cream)'}}>June 11. 12AM. Set your alarms. 🔔</strong>
                   <br /><br />
-                  <strong style={{color:'var(--cream)'}}>📌 Follow our page and stay tuned for official announcements and updates.</strong> Kapag may dapat malaman, kayo ang unang makakaalam.
+                  ⚠ Online payments only. GCash. No walk-in.
                   <br /><br />
-                  <em>P.S. 'Wag puro refresh nang refresh ah. Follow mo muna page namin. 😭</em>
+                  <em>Huwag na kayong mag-refresh nang mag-refresh. June 11 pa. 😭</em>
                 </div>
                 <button className="toast-dismiss" onClick={() => { setToastVisible(false); scrollTo('tickets') }}>
-                  Buy Tickets
+                  Got It!
                 </button>
               </div>
             </div>
