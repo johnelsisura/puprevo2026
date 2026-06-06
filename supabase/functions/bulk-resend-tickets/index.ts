@@ -32,6 +32,7 @@ serve(async (req) => {
       .select('full_name, email, ticket_code, amount_paid, ticket_type_id')
       .eq('payment_status', 'paid')
       .order('paid_at', { ascending: true })
+      .gte('paid_at', '2026-05-28 10:13:34')
 
     if (fetchError) throw fetchError
 
@@ -157,7 +158,7 @@ serve(async (req) => {
             <div style="background:#2a1a1a;border-radius:8px;padding:14px 18px;border-left:3px solid #FF3B30;">
               <p style="margin:0 0 4px;font-size:13px;font-weight:700;color:#FF3B30;">NO PHYSICAL TICKET = NO ENTRY</p>
               <p style="margin:0;font-size:13px;color:rgba(250,245,233,0.8);line-height:1.6;">
-                You may now proceed with ticket pick-up during our scheduled physical ticket claiming dates. Please make sure to claim within the given schedule. <strong style="color:#FAF5E9;">There will be no ticket distribution on the day of the event.</strong>
+                You may now proceed with ticket pick-up during our scheduled physical selling dates. Please make sure to claim within the given schedule. <strong style="color:#FAF5E9;">There will be no ticket distribution on the day of the event.</strong>
               </p>
             </div>
           </td></tr>
@@ -177,9 +178,9 @@ serve(async (req) => {
 
           <tr><td style="padding-bottom:20px;">
             <div style="background:#1a2340;border-radius:8px;padding:14px 18px;">
-              <p style="margin:0 0 6px;font-size:13px;font-weight:700;color:#FAF5E9;">&#128197; Ticket Claiming Schedule</p>
+              <p style="margin:0 0 6px;font-size:13px;font-weight:700;color:#FAF5E9;">&#128197; Ticket Selling Schedule</p>
               <p style="margin:0;font-size:13px;color:rgba(250,245,233,0.8);line-height:1.6;">
-                For the latest ticket claiming dates and locations, follow our official Facebook page:
+                For the latest ticket selling dates and locations, follow our official Facebook page:
                 <a href="https://www.facebook.com/pupcommsoc" style="color:#FFD700;">facebook.com/pupcommsoc</a>
               </p>
             </div>
@@ -297,7 +298,7 @@ serve(async (req) => {
           },
           body: JSON.stringify({
             from: FROM_EMAIL,
-            to: [email], // TEST MODE
+            to: [email],
             subject: `Registration Confirmed! What to do next? | PUP REVO 2026`,
             html,
           }),
