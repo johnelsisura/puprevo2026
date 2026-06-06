@@ -3546,103 +3546,113 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   }
   @keyframes gridDrift { 0%{background-position:0 0} 100%{background-position:60px 60px} }
 
-  .sidebar, .main { position: relative; z-index: 1; }
+  .topnav-wrapper, .main { position: relative; z-index: 1; }
 
-  @media (max-width: 768px) {
-    .admin-wrap { grid-template-columns: 1fr; }
-    .sidebar { display: none; }
-  }
-
-  /* ── Sidebar ── */
-  .sidebar {
-    background: var(--sidebar);
-    border-right: 1px solid var(--border);
-    padding: 2rem 1.25rem;
-    display: flex;
-    flex-direction: column;
+  /* ── Topnav ── */
+  .topnav-wrapper {
     position: sticky;
     top: 0;
-    height: 100vh;
-    overflow-y: auto;
+    z-index: 10;
+    width: 100%;
   }
 
-  .sidebar-logo {
-    display: block;
-    width: 72px;
-    margin: 0 auto 0.5rem auto;
+  .topnav {
+    background: rgba(6,11,28,0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    padding: 0 2.5rem;
+    height: 64px;
+    gap: 2rem;
+    width: 100%;
   }
 
-  .sidebar-sub {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 2rem;
-    text-align: center;
+  .topnav-logo {
+    height: 36px;
+    flex-shrink: 0;
   }
 
-  .nav-label {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.58rem;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: rgba(250,245,233,0.2);
-    margin-bottom: 0.5rem;
-    padding: 0 0.5rem;
+  .topnav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex: 1;
+    justify-content: center;
   }
 
   .nav-item {
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-    padding: 0.65rem 0.75rem;
-    border-radius: 6px;
     font-family: 'Syne', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(250,245,233,0.55);
     cursor: pointer;
     border: none;
     background: none;
-    width: 100%;
-    text-align: left;
-    transition: background 0.15s, color 0.15s;
-    margin-bottom: 0.15rem;
+    white-space: nowrap;
+    padding: 0.4rem 0.85rem;
+    border-radius: 6px;
+    transition: color 0.18s, background 0.18s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
   }
 
-  .nav-item:hover { background: rgba(255,255,255,0.04); color: var(--cream); }
-  .nav-item.active { background: rgba(255,59,48,0.12); color: var(--cream); }
-  .nav-item.active .nav-icon { color: var(--red); }
+  .nav-item:hover { color: var(--cream); background: rgba(255,255,255,0.05); }
 
-  .nav-icon { font-size: 1rem; width: 20px; text-align: center; }
+  .nav-item.active {
+    color: var(--cream);
+    background: rgba(255,59,48,0.15);
+    border: 1px solid rgba(255,59,48,0.3);
+  }
 
-  .sidebar-footer {
-    margin-top: auto;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
+  .nav-icon { display: inline; font-size: 0.8rem; }
+
+  .topnav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
   }
 
   .signout-btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.65rem;
-    width: 100%;
-    padding: 0.65rem 0.75rem;
-    border-radius: 6px;
+    gap: 0.5rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 4px;
     font-family: 'Syne', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
     cursor: pointer;
-    border: none;
-    background: none;
-    transition: background 0.15s, color 0.15s;
+    border: 1.5px solid rgba(255,255,255,0.15);
+    background: transparent;
+    transition: background 0.18s, border-color 0.18s;
   }
 
-  .signout-btn:hover { background: rgba(255,59,48,0.1); color: #ff8080; }
+  .signout-btn:hover { background: rgba(228,0,27,0.12); border-color: var(--red); color: #ff8080; }
+
+  @media (max-width: 768px) {
+    .topnav { padding: 0 1.25rem; height: 56px; gap: 1rem; }
+    .topnav-links { gap: 0.5rem; }
+    .nav-item { font-size: 0.62rem; letter-spacing: 0.1em; padding: 0.35rem 0.6rem; }
+    /* On scanner page mobile: hide Dashboard text, keep Scanner text */
+    .nav-item.nav-dashboard .nav-label { display: none; }
+    .signout-btn span { display: none; }
+    .signout-btn i { margin: 0; }
+    .signout-btn { padding: 0.55rem 0.75rem; }
+  }
+
+  @media (max-width: 500px) {
+    .topnav-links { gap: 0.25rem; }
+    .nav-item { font-size: 0.55rem; padding: 0.3rem 0.5rem; }
+  }
 
   /* ── Main ── */
   .main {
@@ -3650,6 +3660,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    z-index: 1;
+    flex: 1;
   }
 
   @media (max-width: 600px) { .main { padding: 1.5rem; } }
@@ -4179,12 +4192,135 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 
   @keyframes flashIn  { from { opacity: 0; transform: translateX(-50%) translateY(-10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
   @keyframes flashOut { to   { opacity: 0; transform: translateX(-50%) translateY(-10px); } }
-`;function bu(){let e=ot(),t=(0,_.useRef)(null),n=(0,_.useRef)(null),r=(0,_.useRef)(!1),[i,a]=(0,_.useState)(!1),[o,s]=(0,_.useState)(null),[c,l]=(0,_.useState)(!1),[u,d]=(0,_.useState)(``),[f,p]=(0,_.useState)(!1),[m,h]=(0,_.useState)([]),[g,v]=(0,_.useState)(``),[y,b]=(0,_.useState)(null);(0,_.useEffect)(()=>{Js.auth.getSession().then(async({data:t})=>{if(!t.session){e(`/portal1721`);return}let{data:n}=await Js.from(`admin_users`).select(`role`).eq(`id`,t.session.user.id).single();n&&b(n.role)})},[e]),(0,_.useEffect)(()=>()=>{n.current&&n.current.stop().catch(()=>{})},[]);async function x(){if(n.current)return;let e=new Kl(`qr-reader`);n.current=e;try{await e.start({facingMode:`environment`},{fps:10,qrbox:{width:250,height:250}},C,()=>{}),a(!0)}catch(e){console.error(`Camera error:`,e),E(`error`,`Camera`,`Could not access camera. Check permissions.`),n.current=null}}async function S(){n.current&&=(await n.current.stop().catch(()=>{}),null),a(!1)}async function C(e){if(r.current)return;r.current=!0;let t=e.trim(),n=t.match(/\/ticket\/([A-Z0-9-]+)$/i);n&&(t=n[1].toUpperCase()),await w(t),setTimeout(()=>{r.current=!1},2e3)}async function w(e){if(!e)return;let t=[e.toUpperCase()],n=e.match(/^[A-Z]+-([A-Z0-9]+)$/i);n&&t.push(n[1].toUpperCase());let r=null;for(let e of t){let{data:t}=await Js.from(`orders`).select(`
+
+  /* ── Check-in History ── */
+  .history-card {
+    width: 100%;
+    max-width: 560px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .history-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .history-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .history-count {
+    background: rgba(74,222,128,0.1);
+    border: 1px solid rgba(74,222,128,0.25);
+    color: #4ade80;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2rem;
+  }
+
+  .history-refresh {
+    font-size: 0.62rem;
+    color: var(--muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .history-refresh:hover { color: var(--cream); }
+
+  .history-list {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .history-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+
+  .history-item:last-child { border-bottom: none; }
+
+  .history-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    flex-shrink: 0;
+  }
+
+  .history-info { flex: 1; min-width: 0; }
+
+  .history-name {
+    font-weight: 500;
+    color: var(--cream);
+    font-size: 0.88rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .history-detail {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
+  .history-time {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.62rem;
+    color: rgba(250,245,233,0.2);
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .history-empty {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .history-loading {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+`;function bu(){let e=ot(),t=(0,_.useRef)(null),n=(0,_.useRef)(null),r=(0,_.useRef)(!1),[i,a]=(0,_.useState)(!1),[o,s]=(0,_.useState)(null),[c,l]=(0,_.useState)(!1),[u,d]=(0,_.useState)(``),[f,p]=(0,_.useState)(!1),[m,h]=(0,_.useState)([]),[g,v]=(0,_.useState)(``),[y,b]=(0,_.useState)(null),[x,S]=(0,_.useState)([]),[C,w]=(0,_.useState)(!1);(0,_.useEffect)(()=>{Js.auth.getSession().then(async({data:t})=>{if(!t.session){e(`/portal1721`);return}let{data:n}=await Js.from(`admin_users`).select(`role`).eq(`id`,t.session.user.id).single();n&&b(n.role)})},[e]),(0,_.useEffect)(()=>()=>{n.current&&n.current.stop().catch(()=>{})},[]),(0,_.useEffect)(()=>{te()},[]);async function ee(){if(n.current)return;let e=new Kl(`qr-reader`);n.current=e;try{await e.start({facingMode:`environment`},{fps:10,qrbox:{width:250,height:250}},E,()=>{}),a(!0)}catch(e){console.error(`Camera error:`,e),A(`error`,`Camera`,`Could not access camera. Check permissions.`),n.current=null}}async function T(){n.current&&=(await n.current.stop().catch(()=>{}),null),a(!1)}async function E(e){if(r.current)return;r.current=!0;let t=e.trim(),n=t.match(/\/ticket\/([A-Z0-9-]+)$/i);n&&(t=n[1].toUpperCase()),await D(t),setTimeout(()=>{r.current=!1},2e3)}async function D(e){if(!e)return;let t=[e.toUpperCase()],n=e.match(/^[A-Z]+-([A-Z0-9]+)$/i);n&&t.push(n[1].toUpperCase());let r=null;for(let e of t){let{data:t}=await Js.from(`orders`).select(`
           id, ticket_code, full_name, email, phone,
           payment_method, payment_status, amount_paid,
           is_checked_in, checked_in_at,
           ticket_types ( name, price )
-        `).eq(`ticket_code`,e).single();if(t){r=t;break}}if(!r){s({state:`invalid`,code:e}),E(`error`,e,`Ticket not found`);return}if(r.payment_status===`cancelled`){s({state:`blocked`,ticket:r}),E(`error`,r.full_name,`Blocked ticket — ${r.ticket_code}`);return}if(r.payment_status!==`paid`){s({state:`unpaid`,ticket:r}),E(`warning`,r.full_name,`Unpaid — ${r.ticket_code}`);return}if(r.is_checked_in){s({state:`already`,ticket:r}),E(`warning`,r.full_name,`Already checked in — ${r.ticket_code}`);return}s({state:`found`,ticket:r})}async function ee(){if(!o?.ticket)return;l(!0);let{error:e}=await Js.from(`orders`).update({is_checked_in:!0,checked_in_at:new Date().toISOString()}).eq(`id`,o.ticket.id);e||(E(`success`,o.ticket.full_name,`Checked in — ${o.ticket.ticket_code}`),v(`✓ ${o.ticket.full_name} checked in!`),setTimeout(()=>v(``),2e3)),l(!1),s(null)}async function T(){u.trim()&&(p(!0),await w(u.trim()),d(``),p(!1))}function E(e,t,n){let r={id:Date.now(),type:e,name:t,detail:n,time:new Date().toLocaleTimeString(`en-PH`,{hour:`2-digit`,minute:`2-digit`,second:`2-digit`})};h(e=>[r,...e].slice(0,20))}async function D(){await Js.auth.signOut(),e(`/portal1721`)}return(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`style`,{children:yu}),g&&(0,Q.jsx)(`div`,{className:`success-flash`,children:g}),(0,Q.jsxs)(`div`,{className:`admin-wrap`,children:[(0,Q.jsxs)(`aside`,{className:`sidebar`,children:[(0,Q.jsx)(`img`,{src:`/logo.png`,alt:`PUP REVO`,className:`sidebar-logo`}),(0,Q.jsx)(`div`,{className:`sidebar-sub`,children:`Admin Portal`}),(0,Q.jsx)(`div`,{className:`nav-label`,children:`Menu`}),y===`superadmin`&&(0,Q.jsxs)(`button`,{className:`nav-item`,onClick:()=>e(`/portal1721/panel62`),children:[(0,Q.jsx)(`span`,{className:`nav-icon`,children:(0,Q.jsx)(`i`,{className:`fa-solid fa-chart-line`})}),` Dashboard`]}),(0,Q.jsxs)(`button`,{className:`nav-item active`,children:[(0,Q.jsx)(`span`,{className:`nav-icon`,children:(0,Q.jsx)(`i`,{className:`fa-solid fa-qrcode`})}),` Scanner`]}),(0,Q.jsx)(`div`,{className:`sidebar-footer`,children:(0,Q.jsxs)(`button`,{className:`signout-btn`,onClick:D,children:[(0,Q.jsx)(`i`,{className:`fa-solid fa-right-from-bracket`}),` Sign Out`]})})]}),(0,Q.jsxs)(`main`,{className:`main`,children:[(0,Q.jsxs)(`div`,{className:`page-header`,children:[(0,Q.jsx)(`div`,{className:`page-title`,children:`QR Scanner`}),(0,Q.jsx)(`div`,{className:`page-sub`,children:`Scan attendee QR codes to check them in at the venue.`})]}),(0,Q.jsxs)(`div`,{className:`scanner-card`,children:[(0,Q.jsxs)(`div`,{className:`scanner-top`,children:[(0,Q.jsxs)(`span`,{className:`scanner-label`,children:[(0,Q.jsx)(`span`,{className:`scanner-status-dot ${i?`active`:``}`}),i?`Camera Active`:`Camera Off`]}),(0,Q.jsx)(`button`,{style:{fontFamily:`Syne, sans-serif`,fontSize:`0.75rem`,fontWeight:700,letterSpacing:`0.08em`,textTransform:`uppercase`,background:i?`rgba(228,0,27,0.12)`:`var(--red)`,color:i?`#ff8080`:`white`,border:i?`1px solid rgba(228,0,27,0.3)`:`none`,padding:`0.45rem 1rem`,borderRadius:`4px`,cursor:`pointer`},onClick:i?S:x,children:i?`⏹ Stop`:`▶ Start Camera`})]}),(0,Q.jsx)(`div`,{id:`qr-reader`,ref:t}),!i&&(0,Q.jsx)(`div`,{style:{padding:`3rem`,textAlign:`center`,color:`var(--muted)`,fontSize:`0.85rem`},children:`📷 Click "Start Camera" to begin scanning QR codes.`})]}),(0,Q.jsxs)(`div`,{className:`manual-card`,children:[(0,Q.jsx)(`div`,{className:`manual-label`,children:`Manual Lookup — Enter Ticket Code`}),(0,Q.jsxs)(`div`,{className:`manual-row`,children:[(0,Q.jsx)(`input`,{className:`manual-input`,placeholder:`e.g. REVO-4264EF9B`,value:u,onChange:e=>d(e.target.value.toUpperCase()),onKeyDown:e=>e.key===`Enter`&&T(),maxLength:16}),(0,Q.jsx)(`button`,{className:`manual-btn`,onClick:T,disabled:f||!u.trim(),children:f?`...`:`Look Up`})]})]}),(0,Q.jsxs)(`div`,{className:`log-card`,children:[(0,Q.jsxs)(`div`,{className:`log-header`,children:[(0,Q.jsx)(`span`,{children:`Recent Scans`}),m.length>0&&(0,Q.jsx)(`button`,{className:`log-clear`,onClick:()=>h([]),children:`Clear`})]}),m.length===0?(0,Q.jsx)(`div`,{className:`log-empty`,children:`No scans yet. Start scanning to see results here.`}):m.map(e=>(0,Q.jsxs)(`div`,{className:`log-item`,children:[(0,Q.jsx)(`div`,{className:`log-dot ${e.type}`}),(0,Q.jsxs)(`div`,{className:`log-info`,children:[(0,Q.jsx)(`div`,{className:`log-name`,children:e.name}),(0,Q.jsx)(`div`,{className:`log-detail`,children:e.detail})]}),(0,Q.jsx)(`div`,{className:`log-time`,children:e.time})]},e.id))]})]})]}),o&&(0,Q.jsx)(`div`,{className:`modal-overlay`,onClick:()=>s(null),children:(0,Q.jsxs)(`div`,{className:`modal`,onClick:e=>e.stopPropagation(),children:[o.state===`found`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge found`,children:`✓ Valid Ticket`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Check In?`}),(0,Q.jsxs)(`div`,{className:`attendee-card`,children:[(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Name`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.full_name})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Ticket Type`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.ticket_types?.name})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Payment`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.payment_method===`walk-in`?`🏫 Walk-in`:`📱 GCash`})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Code`}),(0,Q.jsx)(`span`,{className:`att-value gold`,children:o.ticket.ticket_code})]})]}),(0,Q.jsxs)(`div`,{className:`modal-actions`,children:[(0,Q.jsx)(`button`,{className:`modal-cancel`,onClick:()=>s(null),children:`Cancel`}),(0,Q.jsx)(`button`,{className:`modal-checkin-btn`,onClick:ee,disabled:c,children:c?`Saving...`:`✓ Confirm Check-In`})]})]}),o.state===`already`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge already`,children:`Already Checked In`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Duplicate Scan`}),(0,Q.jsxs)(`div`,{className:`attendee-card`,children:[(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Name`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.full_name})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Checked in at`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.checked_in_at?new Date(o.ticket.checked_in_at).toLocaleTimeString(`en-PH`):`—`})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Code`}),(0,Q.jsx)(`span`,{className:`att-value gold`,children:o.ticket.ticket_code})]})]}),(0,Q.jsx)(`div`,{className:`modal-warning`,children:`⚠️ This QR code has already been used for entry. Do not allow re-entry.`}),(0,Q.jsx)(`button`,{className:`modal-close-btn`,onClick:()=>s(null),children:`Close`})]}),o.state===`unpaid`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge invalid`,children:`⚠️ Unpaid`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Payment Pending`}),(0,Q.jsxs)(`div`,{className:`attendee-card`,children:[(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Name`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.full_name})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Code`}),(0,Q.jsx)(`span`,{className:`att-value gold`,children:o.ticket.ticket_code})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Amount Due`}),(0,Q.jsxs)(`span`,{className:`att-value`,children:[`₱`,Number(o.ticket.amount_paid).toFixed(2)]})]})]}),(0,Q.jsx)(`div`,{className:`modal-warning`,children:`⚠️ This ticket has not been paid yet. Collect payment first, then confirm in the Dashboard before allowing entry.`}),(0,Q.jsx)(`button`,{className:`modal-close-btn`,onClick:()=>s(null),children:`Close`})]}),o.state===`blocked`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge invalid`,children:`✗ Blocked`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Ticket Blocked`}),(0,Q.jsx)(`div`,{className:`modal-error`,children:`This ticket has been cancelled or blocked by an admin. Do not allow entry.`}),(0,Q.jsx)(`button`,{className:`modal-close-btn`,onClick:()=>s(null),children:`Close`})]}),o.state===`invalid`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge invalid`,children:`✗ Invalid`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Ticket Not Found`}),(0,Q.jsxs)(`div`,{className:`modal-error`,children:[`No ticket found for code: `,(0,Q.jsx)(`strong`,{children:o.code}),(0,Q.jsx)(`br`,{}),`This QR code is not in the system.`]}),(0,Q.jsx)(`button`,{className:`modal-close-btn`,onClick:()=>s(null),children:`Close`})]})]})})]})}if(!document.querySelector(`link[href*="font-awesome"]`)){let e=document.createElement(`link`);e.rel=`stylesheet`,e.href=`https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css`,document.head.appendChild(e)}var xu=[`General Inquiry`,`Ticket Purchase`,`Ticket Concern / Issue`,`Payment Concern`,`Refund / Cancellation`,`Event Details`,`Sponsorship / Partnership`,`Media & Press`,`Other`],Su=`
+        `).eq(`ticket_code`,e).single();if(t){r=t;break}}if(!r){s({state:`invalid`,code:e}),A(`error`,e,`Ticket not found`);return}if(r.payment_status===`cancelled`){s({state:`blocked`,ticket:r}),A(`error`,r.full_name,`Blocked ticket — ${r.ticket_code}`);return}if(r.payment_status!==`paid`){s({state:`unpaid`,ticket:r}),A(`warning`,r.full_name,`Unpaid — ${r.ticket_code}`);return}if(r.is_checked_in){s({state:`already`,ticket:r}),A(`warning`,r.full_name,`Already checked in — ${r.ticket_code}`);return}s({state:`found`,ticket:r})}async function O(){if(!o?.ticket)return;l(!0);let{error:e}=await Js.from(`orders`).update({is_checked_in:!0,checked_in_at:new Date().toISOString()}).eq(`id`,o.ticket.id);e||(A(`success`,o.ticket.full_name,`Checked in — ${o.ticket.ticket_code}`),v(`✓ ${o.ticket.full_name} checked in!`),setTimeout(()=>v(``),2e3),te()),l(!1),s(null)}async function k(){u.trim()&&(p(!0),await D(u.trim()),d(``),p(!1))}function A(e,t,n){let r={id:Date.now(),type:e,name:t,detail:n,time:new Date().toLocaleTimeString(`en-PH`,{hour:`2-digit`,minute:`2-digit`,second:`2-digit`})};h(e=>[r,...e].slice(0,20))}async function te(){w(!0);let{data:e}=await Js.from(`orders`).select(`id, full_name, ticket_code, checked_in_at, ticket_types(name)`).eq(`is_checked_in`,!0).order(`checked_in_at`,{ascending:!1});e&&S(e),w(!1)}async function ne(){await Js.auth.signOut(),e(`/portal1721`)}return(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`style`,{children:yu}),g&&(0,Q.jsx)(`div`,{className:`success-flash`,children:g}),(0,Q.jsxs)(`div`,{className:`admin-wrap`,children:[(0,Q.jsx)(`div`,{className:`topnav-wrapper`,children:(0,Q.jsxs)(`nav`,{className:`topnav`,children:[(0,Q.jsx)(`img`,{src:`/logo.png`,alt:`PUP REVO`,className:`topnav-logo`}),(0,Q.jsxs)(`div`,{className:`topnav-links`,children:[(0,Q.jsxs)(`button`,{className:`nav-item active`,children:[(0,Q.jsx)(`i`,{className:`fa-solid fa-qrcode nav-icon`}),` `,(0,Q.jsx)(`span`,{className:`nav-label`,children:`Scanner`})]}),y===`superadmin`&&(0,Q.jsxs)(`button`,{className:`nav-item nav-dashboard`,onClick:()=>e(`/portal1721/panel62`),children:[(0,Q.jsx)(`i`,{className:`fa-solid fa-chart-line nav-icon`}),(0,Q.jsx)(`span`,{className:`nav-label`,children:` Dashboard`})]})]}),(0,Q.jsx)(`div`,{className:`topnav-right`,children:(0,Q.jsxs)(`button`,{className:`signout-btn`,onClick:ne,children:[(0,Q.jsx)(`i`,{className:`fa-solid fa-right-from-bracket`}),` `,(0,Q.jsx)(`span`,{children:`Sign Out`})]})})]})}),(0,Q.jsxs)(`main`,{className:`main`,children:[(0,Q.jsxs)(`div`,{className:`page-header`,children:[(0,Q.jsx)(`div`,{className:`page-title`,children:`QR Scanner`}),(0,Q.jsx)(`div`,{className:`page-sub`,children:`Scan attendee QR codes to check them in at the venue.`})]}),(0,Q.jsxs)(`div`,{className:`scanner-card`,children:[(0,Q.jsxs)(`div`,{className:`scanner-top`,children:[(0,Q.jsxs)(`span`,{className:`scanner-label`,children:[(0,Q.jsx)(`span`,{className:`scanner-status-dot ${i?`active`:``}`}),i?`Camera Active`:`Camera Off`]}),(0,Q.jsx)(`button`,{style:{fontFamily:`Syne, sans-serif`,fontSize:`0.75rem`,fontWeight:700,letterSpacing:`0.08em`,textTransform:`uppercase`,background:i?`rgba(228,0,27,0.12)`:`var(--red)`,color:i?`#ff8080`:`white`,border:i?`1px solid rgba(228,0,27,0.3)`:`none`,padding:`0.45rem 1rem`,borderRadius:`4px`,cursor:`pointer`},onClick:i?T:ee,children:i?`⏹ Stop`:`▶ Start Camera`})]}),(0,Q.jsx)(`div`,{id:`qr-reader`,ref:t}),!i&&(0,Q.jsx)(`div`,{style:{padding:`3rem`,textAlign:`center`,color:`var(--muted)`,fontSize:`0.85rem`},children:`📷 Click "Start Camera" to begin scanning QR codes.`})]}),(0,Q.jsxs)(`div`,{className:`manual-card`,children:[(0,Q.jsx)(`div`,{className:`manual-label`,children:`Manual Lookup — Enter Ticket Code`}),(0,Q.jsxs)(`div`,{className:`manual-row`,children:[(0,Q.jsx)(`input`,{className:`manual-input`,placeholder:`e.g. REVO-4264EF9B`,value:u,onChange:e=>d(e.target.value.toUpperCase()),onKeyDown:e=>e.key===`Enter`&&k(),maxLength:16}),(0,Q.jsx)(`button`,{className:`manual-btn`,onClick:k,disabled:f||!u.trim(),children:f?`...`:`Look Up`})]})]}),(0,Q.jsxs)(`div`,{className:`log-card`,children:[(0,Q.jsxs)(`div`,{className:`log-header`,children:[(0,Q.jsx)(`span`,{children:`Recent Scans`}),m.length>0&&(0,Q.jsx)(`button`,{className:`log-clear`,onClick:()=>h([]),children:`Clear`})]}),m.length===0?(0,Q.jsx)(`div`,{className:`log-empty`,children:`No scans yet. Start scanning to see results here.`}):m.map(e=>(0,Q.jsxs)(`div`,{className:`log-item`,children:[(0,Q.jsx)(`div`,{className:`log-dot ${e.type}`}),(0,Q.jsxs)(`div`,{className:`log-info`,children:[(0,Q.jsx)(`div`,{className:`log-name`,children:e.name}),(0,Q.jsx)(`div`,{className:`log-detail`,children:e.detail})]}),(0,Q.jsx)(`div`,{className:`log-time`,children:e.time})]},e.id))]}),(0,Q.jsxs)(`div`,{className:`history-card`,children:[(0,Q.jsxs)(`div`,{className:`history-header`,children:[(0,Q.jsxs)(`div`,{className:`history-title`,children:[(0,Q.jsx)(`i`,{className:`fa-solid fa-circle-check`,style:{color:`#4ade80`}}),`Check-in History`,!C&&(0,Q.jsxs)(`span`,{className:`history-count`,children:[x.length,` checked in`]})]}),(0,Q.jsxs)(`button`,{className:`history-refresh`,onClick:te,disabled:C,children:[(0,Q.jsx)(`i`,{className:`fa-solid fa-rotate-right ${C?`fa-spin`:``}`}),`Refresh`]})]}),(0,Q.jsx)(`div`,{className:`history-list`,children:C?(0,Q.jsx)(`div`,{className:`history-loading`,children:`Loading...`}):x.length===0?(0,Q.jsx)(`div`,{className:`history-empty`,children:`No check-ins yet.`}):x.map(e=>(0,Q.jsxs)(`div`,{className:`history-item`,children:[(0,Q.jsx)(`div`,{className:`history-dot`}),(0,Q.jsxs)(`div`,{className:`history-info`,children:[(0,Q.jsx)(`div`,{className:`history-name`,children:e.full_name}),(0,Q.jsxs)(`div`,{className:`history-detail`,children:[e.ticket_types?.name,` \xA0·\xA0 `,e.ticket_code]})]}),(0,Q.jsx)(`div`,{className:`history-time`,children:e.checked_in_at?new Date(e.checked_in_at).toLocaleTimeString(`en-PH`,{hour:`2-digit`,minute:`2-digit`}):`—`})]},e.id))})]})]})]}),o&&(0,Q.jsx)(`div`,{className:`modal-overlay`,onClick:()=>s(null),children:(0,Q.jsxs)(`div`,{className:`modal`,onClick:e=>e.stopPropagation(),children:[o.state===`found`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge found`,children:`✓ Valid Ticket`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Check In?`}),(0,Q.jsxs)(`div`,{className:`attendee-card`,children:[(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Name`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.full_name})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Ticket Type`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.ticket_types?.name})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Payment`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.payment_method===`walk-in`?`🏫 Walk-in`:`📱 GCash`})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Code`}),(0,Q.jsx)(`span`,{className:`att-value gold`,children:o.ticket.ticket_code})]})]}),(0,Q.jsxs)(`div`,{className:`modal-actions`,children:[(0,Q.jsx)(`button`,{className:`modal-cancel`,onClick:()=>s(null),children:`Cancel`}),(0,Q.jsx)(`button`,{className:`modal-checkin-btn`,onClick:O,disabled:c,children:c?`Saving...`:`✓ Confirm Check-In`})]})]}),o.state===`already`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge already`,children:`Already Checked In`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Duplicate Scan`}),(0,Q.jsxs)(`div`,{className:`attendee-card`,children:[(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Name`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.full_name})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Checked in at`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.checked_in_at?new Date(o.ticket.checked_in_at).toLocaleTimeString(`en-PH`):`—`})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Code`}),(0,Q.jsx)(`span`,{className:`att-value gold`,children:o.ticket.ticket_code})]})]}),(0,Q.jsx)(`div`,{className:`modal-warning`,children:`⚠️ This QR code has already been used for entry. Do not allow re-entry.`}),(0,Q.jsx)(`button`,{className:`modal-close-btn`,onClick:()=>s(null),children:`Close`})]}),o.state===`unpaid`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge invalid`,children:`⚠️ Unpaid`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Payment Pending`}),(0,Q.jsxs)(`div`,{className:`attendee-card`,children:[(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Name`}),(0,Q.jsx)(`span`,{className:`att-value`,children:o.ticket.full_name})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Code`}),(0,Q.jsx)(`span`,{className:`att-value gold`,children:o.ticket.ticket_code})]}),(0,Q.jsxs)(`div`,{className:`att-row`,children:[(0,Q.jsx)(`span`,{className:`att-label`,children:`Amount Due`}),(0,Q.jsxs)(`span`,{className:`att-value`,children:[`₱`,Number(o.ticket.amount_paid).toFixed(2)]})]})]}),(0,Q.jsx)(`div`,{className:`modal-warning`,children:`⚠️ This ticket has not been paid yet. Collect payment first, then confirm in the Dashboard before allowing entry.`}),(0,Q.jsx)(`button`,{className:`modal-close-btn`,onClick:()=>s(null),children:`Close`})]}),o.state===`blocked`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge invalid`,children:`✗ Blocked`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Ticket Blocked`}),(0,Q.jsx)(`div`,{className:`modal-error`,children:`This ticket has been cancelled or blocked by an admin. Do not allow entry.`}),(0,Q.jsx)(`button`,{className:`modal-close-btn`,onClick:()=>s(null),children:`Close`})]}),o.state===`invalid`&&(0,Q.jsxs)(Q.Fragment,{children:[(0,Q.jsx)(`div`,{className:`modal-badge invalid`,children:`✗ Invalid`}),(0,Q.jsx)(`div`,{className:`modal-title`,children:`Ticket Not Found`}),(0,Q.jsxs)(`div`,{className:`modal-error`,children:[`No ticket found for code: `,(0,Q.jsx)(`strong`,{children:o.code}),(0,Q.jsx)(`br`,{}),`This QR code is not in the system.`]}),(0,Q.jsx)(`button`,{className:`modal-close-btn`,onClick:()=>s(null),children:`Close`})]})]})})]})}if(!document.querySelector(`link[href*="font-awesome"]`)){let e=document.createElement(`link`);e.rel=`stylesheet`,e.href=`https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css`,document.head.appendChild(e)}var xu=[`General Inquiry`,`Ticket Purchase`,`Ticket Concern / Issue`,`Payment Concern`,`Refund / Cancellation`,`Event Details`,`Sponsorship / Partnership`,`Media & Press`,`Other`],Su=`
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
