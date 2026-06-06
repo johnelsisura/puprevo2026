@@ -334,6 +334,30 @@ const css = `
     padding: 0.15rem 0.4rem; border-radius: 2rem;
     border: 1px solid rgba(34,197,94,0.2);
   }
+  .payment-card.disabled {
+    opacity: 0.38; cursor: not-allowed; pointer-events: none;
+    filter: grayscale(0.6);
+  }
+  .payment-card-unavailable {
+    position: absolute; top: 0.6rem; right: 0.6rem;
+    font-family: 'Syne', sans-serif; font-size: 0.55rem; font-weight: 700;
+    letter-spacing: 0.08em;
+    background: rgba(255,255,255,0.06); color: rgba(250,245,233,0.35);
+    padding: 0.15rem 0.4rem; border-radius: 2rem;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .gcash-only-notice {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    background: rgba(255,215,0,0.05);
+    border: 1px solid rgba(255,215,0,0.25);
+    border-radius: 10px; padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.8rem; color: rgba(255,215,0,0.85); line-height: 1.6;
+  }
+  .gcash-only-notice strong { color: var(--gold); }
+  .gcash-only-notice-icon {
+    font-size: 1rem; color: var(--gold); flex-shrink: 0; margin-top: 0.1rem;
+  }
 
   /* ── Payment proof fields ── */
   .payment-proof {
@@ -1442,20 +1466,34 @@ export default function Checkout() {
 
               <div className="field-group">
                 <label>Payment Method *</label>
+                <div className="gcash-only-notice">
+                  <i className="fa-solid fa-circle-info gcash-only-notice-icon" />
+                  <div>
+                    <strong>Extended Ticket Selling — GCash Only</strong><br />
+                    Walk-in payment is no longer available. This checkout is for the extended online selling period only. Please pay via <strong>GCash</strong> to complete your registration.
+                  </div>
+                </div>
                 <div className="payment-options">
-                  {PAYMENT_OPTS.map(opt => (
-                    <div
-                      key={opt.key}
-                      className={`payment-card ${form.payment_method === opt.key ? 'selected' : ''}`}
-                      onClick={() => set('payment_method', opt.key)}
-                    >
-                      {opt.hasFee && <div className="payment-card-fee">+6% service fee</div>}
-                      {!opt.hasFee && <div className="payment-card-free">No fee</div>}
-                      <div className="payment-card-icon"><i className={opt.icon} /></div>
-                      <div className="payment-card-name">{opt.name}</div>
-                      <div className="payment-card-desc">{opt.desc}</div>
-                    </div>
-                  ))}
+                  {PAYMENT_OPTS.map(opt => {
+                    const isDisabled = opt.key === 'walk_in'
+                    return (
+                      <div
+                        key={opt.key}
+                        className={`payment-card ${form.payment_method === opt.key ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`}
+                        onClick={() => !isDisabled && set('payment_method', opt.key)}
+                      >
+                        {isDisabled
+                          ? <div className="payment-card-unavailable">Unavailable</div>
+                          : opt.hasFee
+                            ? <div className="payment-card-fee">+6% service fee</div>
+                            : <div className="payment-card-free">No fee</div>
+                        }
+                        <div className="payment-card-icon"><i className={opt.icon} /></div>
+                        <div className="payment-card-name">{opt.name}</div>
+                        <div className="payment-card-desc">{opt.desc}</div>
+                      </div>
+                    )
+                  })}
                 </div>
                 {errors.payment_method && <div className="field-error">{errors.payment_method}</div>}
               </div>
