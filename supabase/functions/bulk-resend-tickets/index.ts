@@ -32,7 +32,6 @@ serve(async (req) => {
       .select('full_name, email, ticket_code, amount_paid, ticket_type_id')
       .eq('payment_status', 'paid')
       .order('paid_at', { ascending: true })
-      .limit(2) // TEST MODE — 2 emails lang
 
     if (fetchError) throw fetchError
 
