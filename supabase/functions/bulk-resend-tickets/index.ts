@@ -32,7 +32,7 @@ serve(async (req) => {
       .select('full_name, email, ticket_code, amount_paid, ticket_type_id')
       .eq('payment_status', 'paid')
       .order('paid_at', { ascending: true })
-      .gte('paid_at', '2026-06-04 10:51:41')
+      .gte('paid_at', '2026-06-05 10:43:35')
 
     if (fetchError) throw fetchError
 
