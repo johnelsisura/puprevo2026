@@ -1407,6 +1407,11 @@ export default function Dashboard() {
   useEffect(() => { fetchData() }, [fetchData])
 
   // ── Filter logic ────────────────────────────────────────────────────────
+  // Reset to page 1 only when filters change, NOT when orders data refreshes
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [search, statusFilter, attendeeFilter, dateFilter])
+
   useEffect(() => {
     let result = [...orders]
 
@@ -1439,7 +1444,6 @@ export default function Dashboard() {
     }
 
     setFiltered(result)
-    setCurrentPage(1)
   }, [orders, search, statusFilter, attendeeFilter, dateFilter])
 
   // ── Get signed URL for private storage ─────────────────────────────────
