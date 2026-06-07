@@ -671,7 +671,7 @@ export default function Ticket() {
               <div className="thank-you" style={{ marginBottom: '1.5rem' }}>
                 <strong>Thank you for registering!</strong> Your support for <strong>PUP REVO 2026: Sound Against Silence — A Benefit Concert for Safer Kids</strong> means a lot in helping amplify voices that deserve to be heard.
                 <br /><br />
-                Please allow <strong>2–3 working days</strong> for your email confirmation and ticket pickup details. Kindly note that <strong>physical tickets are required for entry</strong>, so make sure to claim yours once details are sent.
+                Please allow <strong>3–5 working days</strong> for your email confirmation and ticket pickup details. Kindly note that <strong>physical tickets are required for entry</strong>, so make sure to claim yours once details are sent.
                 <br /><br />
                 We look forward to seeing you! For more updates, stay connected with{' '}
                 <a href="https://www.facebook.com/share/1ErP5gDH6o/" target="_blank" rel="noopener noreferrer">
