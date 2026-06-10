@@ -1515,7 +1515,7 @@ export default function Checkout() {
                     borderRadius: '8px', padding: '0.85rem 1rem', fontSize: '0.8rem',
                     color: 'var(--muted)', lineHeight: 1.6, marginBottom: '0.75rem',
                   }}>
-                    Send your payment of <strong style={{ color: 'var(--cream)' }}>₱{totalAmount.toFixed(2)}</strong> by scanning the{' '}
+                    Send your payment of <strong style={{ color: 'var(--cream)' }}>₱{totalAmount.toFixed(2)}</strong> by scanning the {' '}
                     <strong style={{ color: 'var(--gold)' }}>GCash QR Code below</strong>
                     , then fill in the details provided.
                     <br />
