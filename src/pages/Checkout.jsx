@@ -1515,9 +1515,9 @@ export default function Checkout() {
                     borderRadius: '8px', padding: '0.85rem 1rem', fontSize: '0.8rem',
                     color: 'var(--muted)', lineHeight: 1.6, marginBottom: '0.75rem',
                   }}>
-                    Send <strong style={{ color: 'var(--cream)' }}>₱{totalAmount.toFixed(2)}</strong> to{' '}
-                    <strong style={{ color: 'var(--gold)' }}>0995 418 5939 (John Benedict S.)</strong>
-                    , then fill in the details below.
+                    Send your payment of <strong style={{ color: 'var(--cream)' }}>₱{totalAmount.toFixed(2)}</strong> by scanning the{' '}
+                    <strong style={{ color: 'var(--gold)' }}>GCash QR Code below</strong>
+                    , then fill in the details provided.
                     <br />
                     <span style={{ color: 'rgba(250,245,233,0.35)', fontSize: '0.75rem' }}>
                       <i className="fa-solid fa-circle-info" style={{ marginRight: '0.3rem' }} />Upload your screenshot and reference number. Admin will verify and confirm your ticket within 24–48 hours.
