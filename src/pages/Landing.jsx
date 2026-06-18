@@ -1780,21 +1780,21 @@ export default function Landing() {
               </div>
               {/* Body */}
               <div className="toast-body">
-                <div className="toast-title">PARA SA ABANGERS DYAN 👀</div>
-                <div className="toast-subtitle">LAST WAVE · JUNE 11, 12AM</div>
+                <div className="toast-title">🚨 FINAL WAVE 🚨</div>
+                <div className="toast-subtitle">THIS IS YOUR LAST CHANCE.</div>
                 <div className="toast-msg">
-                  We see you. We hear you. And honestly? We respect the patience. 🫡
+                  Nag-open kami ulit. Pero hanggang TODAY na lang.
                   <br /><br />
-                  Good news: tickets are officially back on the table — but only for a very, very limited time. Like, blink-and-you'll-miss-it limited.
+                  After this, tapos na talaga.
                   <br /><br />
-                  <strong style={{color:'var(--cream)'}}>June 11. 12AM. Set your alarms. 🔔</strong>
+                  <strong style={{color:'var(--cream)'}}>❌ No next wave | ❌ No extensions | ❌ No walk-ins</strong>
                   <br /><br />
-                  ⚠ Online payments only. GCash. No walk-in.
+                  Secure your tickets before it’s too late.
                   <br /><br />
-                  <em>Huwag na kayong mag-refresh nang mag-refresh. June 11 pa. 😭</em>
+                  <em>’Wag mong hayaang stories na lang ng iba ang mapanood mo. 😭</em>
                 </div>
                 <button className="toast-dismiss" onClick={() => { setToastVisible(false); scrollTo('tickets') }}>
-                  Got It!
+                  BUY YOUR TICKETS NOW!
                 </button>
               </div>
             </div>
