@@ -936,7 +936,7 @@ export default function Checkout() {
     ? parseFloat((form.ticket_price * SERVICE_FEE_RATE).toFixed(2))
     : 0
   const isWalkinDiscount = form.payment_method === 'walk_in' && form.ticket_name === 'PUP Student'
-  const totalAmount = isWalkinDiscount ? 239 : form.ticket_price + serviceFee
+  const totalAmount = isWalkinDiscount ? 219 : form.ticket_price + serviceFee
 
   const sectionCode = isPUPian
     ? [form.department, form.year_level, form.block].filter(Boolean).join('-')
