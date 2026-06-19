@@ -1293,6 +1293,30 @@ const css = `
     pointer-events: auto;
   }
   .scroll-top-btn:hover { opacity: 0.85; }
+
+  .blurred {
+    filter: blur(8px);
+    user-select: none;
+    transition: filter 0.3s;
+  }
+  .reveal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--muted);
+    padding: 0.35rem 0.8rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .reveal-btn:hover { background: rgba(255,255,255,0.1); color: var(--cream); border-color: rgba(255,255,255,0.25); }
 `
 
 // ── Helper: attendee badge ────────────────────────────────────────────────
@@ -1346,6 +1370,7 @@ export default function Dashboard() {
   const [eventLoading, setEventLoading] = useState(false)
   const [showScrollTop, setShowScrollTop] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
+  const [showRevenue, setShowRevenue] = useState(false)
   const PAGE_SIZE = 150
 
   // Screenshot signed URLs cache
@@ -1687,10 +1712,16 @@ export default function Dashboard() {
                 <div className="stats-overview-top">
                   <div>
                     <div className="rev-label">Total Revenue</div>
-                    <div className="rev-value">₱{totalRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</div>
+                    <div className={`rev-value${showRevenue ? '' : ' blurred'}`}>₱{totalRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</div>
                     <div className="rev-sub">Paid orders only</div>
                   </div>
-                  <div className="rev-icon-bg"><i className="fa-solid fa-peso-sign" /></div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <button className="reveal-btn" onClick={() => setShowRevenue(v => !v)}>
+                      <i className={`fa-solid ${showRevenue ? 'fa-eye-slash' : 'fa-eye'}`} />
+                      {showRevenue ? 'Hide' : 'Show'}
+                    </button>
+                    <div className="rev-icon-bg"><i className="fa-solid fa-peso-sign" /></div>
+                  </div>
                 </div>
 
                 <div className="stats-overview-divider" />
@@ -1700,26 +1731,26 @@ export default function Dashboard() {
                   <div className="stat-mini gcash">
                     <div className="stat-mini-icon" style={{ color: '#4ade80' }}><i className="fa-solid fa-mobile-screen-button" /></div>
                     <div className="stat-mini-label">GCash / Maya Payments</div>
-                    <div className="stat-mini-value green">₱{gcashRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</div>
-                    <div className="stat-mini-sub"><strong>{gcashPaid}</strong> paid / {gcashTotal} registered via GCash·Maya</div>
+                    <div className={`stat-mini-value green${showRevenue ? '' : ' blurred'}`}>₱{gcashRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</div>
+                    <div className="stat-mini-sub"><strong className={showRevenue ? '' : 'blurred'}>{gcashPaid}</strong> paid / <span className={showRevenue ? '' : 'blurred'}>{gcashTotal}</span> registered via GCash·Maya</div>
                   </div>
                   <div className="stat-mini walkin">
                     <div className="stat-mini-icon" style={{ color: 'var(--gold)' }}><i className="fa-solid fa-school" /></div>
                     <div className="stat-mini-label">Walk-in Payments</div>
-                    <div className="stat-mini-value gold">₱{walkinRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</div>
-                    <div className="stat-mini-sub"><strong>{walkinPaid}</strong> paid / {walkinTotal} registered as walk-in</div>
+                    <div className={`stat-mini-value gold${showRevenue ? '' : ' blurred'}`}>₱{walkinRevenue.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</div>
+                    <div className="stat-mini-sub"><strong className={showRevenue ? '' : 'blurred'}>{walkinPaid}</strong> paid / <span className={showRevenue ? '' : 'blurred'}>{walkinTotal}</span> registered as walk-in</div>
                   </div>
                   <div className="stat-mini pupian">
                     <div className="stat-mini-icon" style={{ color: '#ff8080' }}><i className="fa-solid fa-graduation-cap" /></div>
                     <div className="stat-mini-label">PUPians Registered</div>
-                    <div className="stat-mini-value red">{totalPupians}</div>
-                    <div className="stat-mini-sub"><strong>{paidPupians}</strong> confirmed / {totalPupians} total PUP students</div>
+                    <div className={`stat-mini-value red${showRevenue ? '' : ' blurred'}`}>{totalPupians}</div>
+                    <div className="stat-mini-sub"><strong className={showRevenue ? '' : 'blurred'}>{paidPupians}</strong> confirmed / <span className={showRevenue ? '' : 'blurred'}>{totalPupians}</span> total PUP students</div>
                   </div>
                   <div className="stat-mini nonpup">
                     <div className="stat-mini-icon" style={{ color: '#93c5fd' }}><i className="fa-solid fa-globe" /></div>
                     <div className="stat-mini-label">Non-PUPians Registered</div>
-                    <div className="stat-mini-value blue">{totalNonPupians}</div>
-                    <div className="stat-mini-sub"><strong>{paidNonPupians}</strong> confirmed / {totalNonPupians} total non-PUP</div>
+                    <div className={`stat-mini-value blue${showRevenue ? '' : ' blurred'}`}>{totalNonPupians}</div>
+                    <div className="stat-mini-sub"><strong className={showRevenue ? '' : 'blurred'}>{paidNonPupians}</strong> confirmed / <span className={showRevenue ? '' : 'blurred'}>{totalNonPupians}</span> total non-PUP</div>
                   </div>
                 </div>
 
