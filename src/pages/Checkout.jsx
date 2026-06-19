@@ -935,7 +935,8 @@ export default function Checkout() {
   const serviceFee = hasFee
     ? parseFloat((form.ticket_price * SERVICE_FEE_RATE).toFixed(2))
     : 0
-  const totalAmount = form.ticket_price + serviceFee
+  const isWalkinDiscount = form.payment_method === 'walk_in' && form.ticket_name === 'PUP Student'
+  const totalAmount = isWalkinDiscount ? 239 : form.ticket_price + serviceFee
 
   const sectionCode = isPUPian
     ? [form.department, form.year_level, form.block].filter(Boolean).join('-')
@@ -1473,16 +1474,9 @@ export default function Checkout() {
 
               <div className="field-group">
                 <label>Payment Method *</label>
-                <div className="gcash-only-notice">
-                  <i className="fa-solid fa-circle-info gcash-only-notice-icon" />
-                  <div>
-                    <strong>Extended Ticket Selling — GCash Only</strong><br />
-                    Walk-in payment is no longer available. This checkout is for the extended online selling period only. Please pay via <strong>GCash</strong> to complete your registration.
-                  </div>
-                </div>
                 <div className="payment-options">
                   {PAYMENT_OPTS.map(opt => {
-                    const isDisabled = opt.key === 'walk_in'
+                    const isDisabled = false
                     return (
                       <div
                         key={opt.key}
@@ -1664,8 +1658,11 @@ export default function Checkout() {
           <div className="breakdown">
             <div className="breakdown-row">
               <span>Base ticket price</span>
-              <span>₱{form.ticket_price > 0 ? form.ticket_price.toFixed(2) : '0.00'}</span>
+              <span style={isWalkinDiscount ? { textDecoration: 'line-through', color: 'var(--muted)' } : {}}>
+                ₱{form.ticket_price > 0 ? form.ticket_price.toFixed(2) : '0.00'}
+              </span>
             </div>
+
             <div className="breakdown-row">
               <span className={serviceFee > 0 ? 'breakdown-fee' : ''}>
                 Service fee
