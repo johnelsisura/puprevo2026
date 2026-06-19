@@ -1780,21 +1780,21 @@ export default function Landing() {
               </div>
               {/* Body */}
               <div className="toast-body">
-                <div className="toast-title">🚨 FINAL WAVE 🚨</div>
-                <div className="toast-subtitle">THIS IS YOUR LAST CHANCE.</div>
+                <div className="toast-title">⚡ SURPRISE FLASH SALE! ⚡</div>
+                <div className="toast-subtitle">TODAY ONLY — JUNE 19</div>
                 <div className="toast-msg">
-                  Nag-open kami ulit. Pero hanggang TODAY na lang.
+                  Alam naming hinihintay niyo ‘to.
                   <br /><br />
-                  After this, tapos na talaga.
+                  At dahil June 19 today, <strong style={{color:'var(--cream)'}}>PHP 219 na lang ang PUPian Tickets</strong> for walk-in payments only!
                   <br /><br />
-                  <strong style={{color:'var(--cream)'}}>❌ No next wave | ❌ No extensions | ❌ No walk-ins</strong>
+                  📍 Kitakita tayo 1PM sa Lunan!
                   <br /><br />
-                  Secure your tickets before it’s too late.
+                  <em>Until tickets last.</em>
                   <br /><br />
-                  <em>’Wag mong hayaang stories na lang ng iba ang mapanood mo. 😭</em>
+                  See you tomorrow! 👋
                 </div>
                 <button className="toast-dismiss" onClick={() => { setToastVisible(false); scrollTo('tickets') }}>
-                  BUY YOUR TICKETS NOW!
+                  GRAB YOUR TICKET NOW!
                 </button>
               </div>
             </div>
