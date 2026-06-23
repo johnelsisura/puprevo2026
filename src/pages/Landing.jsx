@@ -17,27 +17,6 @@ if (!document.querySelector('link[href*="font-awesome"]')) {
   document.head.appendChild(fa)
 }
 
-const EVENT_DATE = new Date('2026-06-20T09:00:00+08:00')
-
-function useCountdown(targetDate) {
-  const [timeLeft, setTimeLeft] = useState({})
-  useEffect(() => {
-    const calc = () => {
-      const diff = targetDate - new Date()
-      if (diff <= 0) return setTimeLeft({ d: 0, h: 0, m: 0, s: 0 })
-      setTimeLeft({
-        d: Math.floor(diff / 86400000),
-        h: Math.floor((diff % 86400000) / 3600000),
-        m: Math.floor((diff % 3600000) / 60000),
-        s: Math.floor((diff % 60000) / 1000),
-      })
-    }
-    calc()
-    const id = setInterval(calc, 1000)
-    return () => clearInterval(id)
-  }, [targetDate])
-  return timeLeft
-}
 
 const FAQ_CATEGORIES = [
   {
@@ -133,7 +112,6 @@ const ARTISTS = [
 
 export default function Landing() {
   const navigate = useNavigate()
-  const { d, h, m, s } = useCountdown(EVENT_DATE)
   const [slots, setSlots] = useState({ student: null, public: null })
   const [loading, setLoading] = useState(true)
   const [privacyOpen, setPrivacyOpen] = useState(false)
@@ -219,8 +197,6 @@ export default function Landing() {
       setTimeout(() => setShareCopied(false), 2000)
     })
   }
-
-  const pad = n => String(n ?? 0).padStart(2, '0')
 
   return (
     <>
@@ -491,20 +467,6 @@ export default function Landing() {
           border: 1px solid rgba(255,255,255,0.15);
           padding: 0.5rem 1.4rem; border-radius: 2rem; margin-bottom: 3rem;
           background: rgba(255,255,255,0.05);
-        }
-
-        /* ---- COUNTDOWN ---- */
-        .countdown { display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 3rem; flex-wrap: wrap; }
-        .countdown-unit { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
-        .countdown-num {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; color: var(--cream);
-          background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-          padding: 0.4rem 1rem; border-radius: 8px; min-width: 80px; text-align: center;
-        }
-        .countdown-label {
-          font-family: 'Syne', sans-serif; font-size: 0.6rem;
-          letter-spacing: 0.2em; text-transform: uppercase; color: rgba(250,245,233,0.35);
         }
 
         /* ---- CTA ---- */
@@ -1192,25 +1154,19 @@ export default function Landing() {
               JUNE 20, 2026
             </div>
 
-            {/* Countdown */}
-            <div className="countdown">
-              {[
-                { val: d, label: 'Days' },
-                { val: h, label: 'Hours' },
-                { val: m, label: 'Mins' },
-                { val: s, label: 'Secs' },
-              ].map(({ val, label }) => (
-                <div className="countdown-unit" key={label}>
-                  <div className="countdown-num">{pad(val)}</div>
-                  <div className="countdown-label">{label}</div>
-                </div>
-              ))}
+            <div style={{
+              fontFamily: "'Bebas Neue', sans-serif",
+              fontSize: 'clamp(1.3rem, 3.5vw, 2rem)',
+              letterSpacing: '0.08em',
+              color: 'var(--gold)',
+              textAlign: 'center',
+              margin: '1.5rem 0 2.5rem',
+              lineHeight: 1.3,
+            }}>
+              🎵 See you on the next PUP REVO. 🔥
             </div>
 
             <div className="cta-group">
-              <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.4rem', letterSpacing: '0.08em', color: 'var(--gold)', marginBottom: '0.5rem' }}>
-                🔥 See you on the next PUP REVO!
-              </div>
               <div className="cta-row-secondary">
                 <button className="btn-secondary" onClick={() => document.getElementById('details').scrollIntoView({ behavior: 'smooth' })}>
                   Event Details
