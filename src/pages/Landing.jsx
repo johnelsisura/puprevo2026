@@ -872,33 +872,6 @@ export default function Landing() {
 
         /* ---- SOLD OUT ---- */
         .sold-out { opacity: 0.5; pointer-events: none; }
-        .sold-out-social-link { pointer-events: auto !important; }
-
-        /* ---- TICKETS URGENCY STRIP ---- */
-        .tickets-urgency {
-          display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;
-          margin-top: -1.5rem; margin-bottom: 1.75rem;
-        }
-        .urgency-dot {
-          display: inline-flex; align-items: center; gap: 0.45rem;
-          font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
-          letter-spacing: 0.18em; text-transform: uppercase; color: var(--red);
-        }
-        .urgency-dot::before {
-          content: ''; display: inline-block;
-          width: 8px; height: 8px; border-radius: 50%; background: var(--red);
-          animation: urgencyPulse 1.4s ease-in-out infinite;
-        }
-        @keyframes urgencyPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.75)} }
-        .urgency-wave-pill {
-          display: inline-flex; align-items: center; gap: 0.5rem;
-          font-family: 'DM Sans', sans-serif; font-size: 0.75rem;
-          color: rgba(250,245,233,0.55);
-          border: 1px solid rgba(255,255,255,0.1);
-          padding: 0.3rem 0.85rem; border-radius: 2rem;
-          background: rgba(255,255,255,0.03);
-        }
-        .urgency-wave-sep { opacity: 0.3; }
 
         /* ---- SLOTS NOT GUARANTEED ---- */
         .ticket-snag {
@@ -1257,14 +1230,6 @@ export default function Landing() {
           <div className="section-label">Buy Now</div>
           <h2 className="section-title">Get Your Tickets</h2>
 
-          {/* Urgency strip */}
-          <div className="tickets-urgency">
-            <span className="urgency-dot">Very Limited Tickets Only</span>
-            <span className="urgency-wave-pill">
-              LAST WAVE <span className="urgency-wave-sep">·</span> JUNE 11, 12AM
-            </span>
-          </div>
-
           {loading ? (
             <p style={{ color: 'rgba(250,245,233,0.4)', fontFamily: 'DM Sans' }}>Loading ticket info...</p>
           ) : (
@@ -1297,31 +1262,6 @@ export default function Landing() {
                       <div className="ticket-snag">
                         <i className="fa-solid fa-bolt" />
                         Buy now to secure your slot.
-                      </div>
-                    )}
-                    {soldOut && (
-                      <div style={{
-                        margin: '0 1.5rem 0.75rem', padding: '1rem 1.25rem',
-                        background: 'rgba(255,59,48,0.06)', border: '1px solid rgba(255,59,48,0.25)',
-                        borderRadius: '8px', textAlign: 'center',
-                      }}>
-                        <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.2rem', letterSpacing: '0.06em', color: 'var(--cream)', marginBottom: '0.5rem' }}>
-                          Aray ko, naubusan ng tickets!
-                        </div>
-                        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.78rem', color: 'rgba(250,245,233,0.55)', lineHeight: 1.7, marginBottom: '0.5rem' }}>
-                          A benefit concert this big doesn't come to PUP often and everyone knew it. The next wave is coming, and it will go just as fast.
-                        </p>
-                        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.78rem', color: 'rgba(250,245,233,0.55)', lineHeight: 1.7, marginBottom: '0.85rem' }}>
-                          Follow our socials. When it drops, don't think twice.
-                        </p>
-                        <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                          <a href="https://www.facebook.com/pupcommsoc" target="_blank" rel="noopener noreferrer" className="sold-out-social-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: '#1877f2', color: '#fff', fontFamily: "'Syne', sans-serif", fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.45rem 0.9rem', borderRadius: '4px', textDecoration: 'none' }}>
-                            <i className="fa-brands fa-facebook-f" /> Facebook
-                          </a>
-                          <a href="https://www.instagram.com/pupcommsoc_/" target="_blank" rel="noopener noreferrer" className="sold-out-social-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: '#c13584', color: '#fff', fontFamily: "'Syne', sans-serif", fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.45rem 0.9rem', borderRadius: '4px', textDecoration: 'none' }}>
-                            <i className="fa-brands fa-instagram" /> Instagram
-                          </a>
-                        </div>
                       </div>
                     )}
                     <div className="ticket-desc">
@@ -1377,31 +1317,6 @@ export default function Landing() {
                       <div className="ticket-snag">
                         <i className="fa-solid fa-bolt" />
                         Buy now to secure your slot.
-                      </div>
-                    )}
-                    {soldOut && (
-                      <div style={{
-                        margin: '0 1.5rem 0.75rem', padding: '1rem 1.25rem',
-                        background: 'rgba(255,59,48,0.06)', border: '1px solid rgba(255,59,48,0.25)',
-                        borderRadius: '8px', textAlign: 'center',
-                      }}>
-                        <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.2rem', letterSpacing: '0.06em', color: 'var(--cream)', marginBottom: '0.5rem' }}>
-                          Aray ko, naubusan ng tickets!
-                        </div>
-                        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.78rem', color: 'rgba(250,245,233,0.55)', lineHeight: 1.7, marginBottom: '0.5rem' }}>
-                          A benefit concert this big doesn't come to PUP often and everyone knew it. The next wave is coming, and it will go just as fast.
-                        </p>
-                        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.78rem', color: 'rgba(250,245,233,0.55)', lineHeight: 1.7, marginBottom: '0.85rem' }}>
-                          Follow our socials. When it drops, don't think twice.
-                        </p>
-                        <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                          <a href="https://www.facebook.com/pupcommsoc" target="_blank" rel="noopener noreferrer" className="sold-out-social-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: '#1877f2', color: '#fff', fontFamily: "'Syne', sans-serif", fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.45rem 0.9rem', borderRadius: '4px', textDecoration: 'none' }}>
-                            <i className="fa-brands fa-facebook-f" /> Facebook
-                          </a>
-                          <a href="https://www.instagram.com/pupcommsoc_/" target="_blank" rel="noopener noreferrer" className="sold-out-social-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: '#c13584', color: '#fff', fontFamily: "'Syne', sans-serif", fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.45rem 0.9rem', borderRadius: '4px', textDecoration: 'none' }}>
-                            <i className="fa-brands fa-instagram" /> Instagram
-                          </a>
-                        </div>
                       </div>
                     )}
                     <div className="ticket-desc">
