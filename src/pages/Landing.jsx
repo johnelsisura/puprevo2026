@@ -1134,7 +1134,7 @@ export default function Landing() {
               >Contact</a>
             </li>
           </ul>
-          <button className="nav-cta" onClick={() => scrollTo('tickets')}>Buy Tickets</button>
+          <button className="nav-cta" onClick={() => scrollTo('details')}>PUP REVO 2026</button>
         </nav>
 
         {/* TICKER BANNER */}
@@ -1142,13 +1142,13 @@ export default function Landing() {
           <div className="ticker-track">
             {[...Array(2)].map((_, i) => (
               <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
-                <span className="ticker-item"><i className="fa-solid fa-ticket" /> Join thousands of PUP REVO 2026 attendees </span>
+                <span className="ticker-item"><i className="fa-solid fa-heart" /> Thank you for attending PUP REVO 2026! </span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-fire" /> Slots are sold out — Please wait for official updates and announcements </span>
+                <span className="ticker-item"><i className="fa-solid fa-music" /> Sound Against Silence — June 20, 2026 </span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-clock" /> Event is on June 20 — See you there, PUP REVO 2026 attendees! </span>
+                <span className="ticker-item"><i className="fa-solid fa-fire" /> See you on the next PUP REVO! </span>
                 <span className="ticker-sep">✦</span>
-                <span className="ticker-item"><i className="fa-solid fa-star" /> PUP REVO 2026 · June 20 · PUP Main Campus Oval</span>
+                <span className="ticker-item"><i className="fa-solid fa-star" /> PUP REVO 2026 · PUP Communication Society · Maraming Salamat!</span>
                 <span className="ticker-sep">✦</span>
               </span>
             ))}
@@ -1192,24 +1192,31 @@ export default function Landing() {
               JUNE 20, 2026
             </div>
 
-            {/* Post-event message replacing countdown */}
+            {/* Countdown */}
             <div className="countdown">
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.4rem' }}>
-                <div className="countdown-num" style={{ fontSize: '1.1rem', minWidth: 'auto', padding: '1rem 1.5rem', letterSpacing: '0.04em' }}>
-                  🔥 SEE YOU ON THE
+              {[
+                { val: d, label: 'Days' },
+                { val: h, label: 'Hours' },
+                { val: m, label: 'Mins' },
+                { val: s, label: 'Secs' },
+              ].map(({ val, label }) => (
+                <div className="countdown-unit" key={label}>
+                  <div className="countdown-num">{pad(val)}</div>
+                  <div className="countdown-label">{label}</div>
                 </div>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.4rem' }}>
-                <div className="countdown-num" style={{ fontSize: '1.1rem', minWidth: 'auto', padding: '1rem 1.5rem', letterSpacing: '0.04em', color: 'var(--gold)' }}>
-                  NEXT PUP REVO!
-                </div>
-              </div>
+              ))}
             </div>
 
             <div className="cta-group">
+              <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '1.4rem', letterSpacing: '0.08em', color: 'var(--gold)', marginBottom: '0.5rem' }}>
+                🔥 See you on the next PUP REVO!
+              </div>
               <div className="cta-row-secondary">
                 <button className="btn-secondary" onClick={() => document.getElementById('details').scrollIntoView({ behavior: 'smooth' })}>
                   Event Details
+                </button>
+                <button className="btn-secondary icon-btn" onClick={() => setCalOpen(true)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', padding: '1rem', flexShrink: 0 }} title="Add to Calendar">
+                  <i className="fa-regular fa-calendar-plus" />
                 </button>
                 <button className="btn-secondary icon-btn" onClick={() => setShareOpen(true)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', padding: '1rem', flexShrink: 0 }} title="Share Event">
                   <i className="fa-solid fa-share-nodes" />
@@ -1773,21 +1780,17 @@ export default function Landing() {
               </div>
               {/* Body */}
               <div className="toast-body">
-                <div className="toast-title">⚡ SURPRISE FLASH SALE! ⚡</div>
-                <div className="toast-subtitle">TODAY ONLY — JUNE 19</div>
+                <div className="toast-title">💛 THANK YOU, PUP REVO FAM! 💛</div>
+                <div className="toast-subtitle">PUP REVO 2026 — JUNE 20</div>
                 <div className="toast-msg">
-                  Alam naming hinihintay niyo ‘to.
+                  Salamat sa lahat ng dumalo, sumuporta, at sumigaw kasabay namin.
                   <br /><br />
-                  At dahil June 19 today, <strong style={{color:'var(--cream)'}}>PHP 219 na lang ang PUPian Tickets</strong> for walk-in payments only!
+                  PUP REVO 2026: Sound Against Silence — it was more than just a concert.
                   <br /><br />
-                  📍 Kitakita tayo 1PM sa Lunan!
-                  <br /><br />
-                  <em>Until tickets last.</em>
-                  <br /><br />
-                  See you tomorrow! 👋
+                  🎵 See you on the next PUP REVO. 🔥
                 </div>
-                <button className="toast-dismiss" onClick={() => { setToastVisible(false); scrollTo('tickets') }}>
-                  GRAB YOUR TICKET NOW!
+                <button className="toast-dismiss" onClick={() => setToastVisible(false)}>
+                  CLOSE
                 </button>
               </div>
             </div>
